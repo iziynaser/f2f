@@ -1,2 +1,2 @@
 # f2f
-face 2 face application
+face 2 face ui application
