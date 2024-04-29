@@ -14,6 +14,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -96,8 +98,18 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Bean
     public KeyPair keyPair() {
+<<<<<<< Updated upstream
         KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("jwt.jks"),
             "keypass" .toCharArray());
+=======
+        //Resource resource = new ClassPathResource("file:src/main/resources/jwt.jks");
+        Resource resource = new FileSystemResource("src/main/resources/jwt.jks");
+        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(resource,
+                "keypass".toCharArray());
+
+//        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("jwt.jks"),
+//                "keypass".toCharArray());
+>>>>>>> Stashed changes
         return keyStoreKeyFactory.getKeyPair("jwt");
     }
 

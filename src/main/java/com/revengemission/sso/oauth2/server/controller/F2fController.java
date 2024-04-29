@@ -26,12 +26,17 @@ public class F2fController {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
     @ResponseBody
-    @RequestMapping("/f2f/hello")
+    @RequestMapping("/hello")
     public Map<String, Object> info() {
         Map<String, Object> result = new HashMap<>(16);
 
+<<<<<<< Updated upstream
         log.info("/f2f/hello is called successfully!!");
         result.put("message","this is a test controller");
+=======
+        log.info("/hello is called successfully!!");
+        result.put("message", "this is a test controller");
+>>>>>>> Stashed changes
         return result;
     }
 }

@@ -1,5 +1,6 @@
 package com.revengemission.sso.oauth2.server;
 
+<<<<<<< Updated upstream
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.revengemission.sso.oauth2.server.persistence.entity.UserAccountEntity;
 import com.revengemission.sso.oauth2.server.persistence.repository.UserAccountRepository;
@@ -19,6 +20,10 @@ import java.util.UUID;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+=======
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
+>>>>>>> Stashed changes
 public class ApplicationTests {
 
 

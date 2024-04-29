@@ -92,10 +92,38 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //        http.exceptionHandling().accessDeniedHandler(customAccessDeniedHandler);
 //    }
 
+    //before moduleing!!???
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+/////        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
+//        http
+//                .authorizeRequests()
+//                .mvcMatchers("/favicon.ico", "/signIn", "/signUp", "/security_check", "/404", "/captcha/**", "/user/me", "/f2f/storage/images/**", "/images/**", "/static/**", "/fonts/**").permitAll()
+//                .mvcMatchers("/oauth/signUp").permitAll()
+//                //.mvcMatchers("/f2f/**").hasAuthority("AUTHORITY_F2F_USER")
+//                .mvcMatchers("/management/**").hasAnyAuthority(RoleEnum.ROLE_SUPER.name())
+//                .anyRequest().authenticated()
+//                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+//                .csrf().disable();
+//        //.logout()
+//        //.logoutUrl("/logout")
+//        //.logoutSuccessUrl("/signIn?out")
+//        //.and()
+//        //.formLogin()
+//        //.authenticationDetailsSource(authenticationDetailsSource)
+//        //.failureHandler(customAuthenticationFailureHandler)
+//        //.successHandler(customAuthenticationSuccessHandler)
+//        //.loginPage("/signIn").loginProcessingUrl("/security_check").permitAll();
+//
+//        http.exceptionHandling().accessDeniedHandler(customAccessDeniedHandler);
+//    }
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 ///        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
         http
+<<<<<<< Updated upstream
             .authorizeRequests()
             .mvcMatchers("/favicon.ico", "/signIn", "/signUp", "/security_check", "/404","/captcha/**", "/user/me","/f2f/storage/images/**","/images/**","/static/**","/fonts/**").permitAll()
             .mvcMatchers("/oauth/signUp").permitAll()
@@ -115,6 +143,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             //.loginPage("/signIn").loginProcessingUrl("/security_check").permitAll();
 
         http.exceptionHandling().accessDeniedHandler(customAccessDeniedHandler);
+=======
+                .authorizeRequests()
+                .mvcMatchers("**/**").permitAll();
+>>>>>>> Stashed changes
     }
 
 }
