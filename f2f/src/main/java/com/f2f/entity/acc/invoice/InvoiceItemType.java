@@ -1,14 +1,7 @@
 package com.f2f.entity.acc.invoice;
 
-<<<<<<< Updated upstream:src/main/java/com/f2f/entity/acc/invoice/InvoiceItemType.java
-import com.revengemission.sso.oauth2.server.persistence.entity.BaseEntity;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-=======
-//import com.revengemission.sso.oauth2.server.persistence.entity.BaseEntity;
 import com.f2f.persistance.entity.BaseEntity;
->>>>>>> Stashed changes:f2f/src/main/java/com/f2f/entity/acc/invoice/InvoiceItemType.java
+
 
 import javax.persistence.*;
 
