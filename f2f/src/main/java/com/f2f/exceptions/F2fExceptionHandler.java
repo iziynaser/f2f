@@ -1,8 +1,7 @@
-package com.exceptions;
+package com.f2f.exceptions;
 
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import com.revengemission.sso.oauth2.server.domain.EntityNotFoundException;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.http.HttpHeaders;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
 
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDateTime;

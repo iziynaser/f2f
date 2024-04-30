@@ -1,6 +1,6 @@
-package com.exceptions;
+package com.f2f.exceptions;
 
-import org.apache.tomcat.jni.Local;
+
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
