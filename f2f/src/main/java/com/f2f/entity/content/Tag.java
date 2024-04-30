@@ -1,12 +1,6 @@
 package com.f2f.entity.content;
 
-<<<<<<< Updated upstream:src/main/java/com/f2f/entity/content/Tag.java
-import com.revengemission.sso.oauth2.server.persistence.entity.BaseEntity;
-import org.apache.catalina.LifecycleState;
-=======
-//import com.revengemission.sso.oauth2.server.persistence.entity.BaseEntity;
 import com.f2f.persistance.entity.BaseEntity;
->>>>>>> Stashed changes:f2f/src/main/java/com/f2f/entity/content/Tag.java
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
