@@ -1,8 +1,8 @@
 package com.f2f.back.entity;
 
-//import com.revengemission.sso.oauth2.server.persistence.entity.BaseEntity;
+
 import com.f2f.persistance.entity.BaseEntity;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,21 +19,21 @@ public class SocialSetting extends BaseEntity implements Serializable {
     @Column(name = "LINKEDIN_ADDRESS")
     public String linkedInAddress;
     @Column(name = "LINKEDIN_ADDRESS_ENABLE")
-    public Bool linkedInAddressEnabled;
+    public Boolean linkedInAddressEnabled;
 
     @Column(name = "APARAT_ADDRESS")
     public String aparatAddress;
     @Column(name = "APARAT_ADDRESS_ENABLED")
-    public Bool aparatAddressEnabled;
+    public Boolean aparatAddressEnabled;
 
     @Column(name = "INSTA_ADDRESS")
     public String instaAddress;
     @Column(name = "INSTA_ADDRESS_ENABLED")
-    public Bool  instaAddressEnabled;
+    public Boolean  instaAddressEnabled;
     @Column(name = "TWITTER_ADDRESS")
     public String twitterAddress;
     @Column(name = "TWITTER_ADDRESS_ENABLED")
-    public Bool twitterAddressEnabled;
+    public Boolean twitterAddressEnabled;
 
     public String getLinkedInAddress() {
         return linkedInAddress;
@@ -43,11 +43,11 @@ public class SocialSetting extends BaseEntity implements Serializable {
         this.linkedInAddress = linkedInAddress;
     }
 
-    public Bool getLinkedInAddressEnabled() {
+    public Boolean getLinkedInAddressEnabled() {
         return linkedInAddressEnabled;
     }
 
-    public void setLinkedInAddressEnabled(Bool linkedInAddressEnabled) {
+    public void setLinkedInAddressEnabled(Boolean linkedInAddressEnabled) {
         this.linkedInAddressEnabled = linkedInAddressEnabled;
     }
 
@@ -59,11 +59,11 @@ public class SocialSetting extends BaseEntity implements Serializable {
         this.aparatAddress = aparatAddress;
     }
 
-    public Bool getAparatAddressEnabled() {
+    public Boolean getAparatAddressEnabled() {
         return aparatAddressEnabled;
     }
 
-    public void setAparatAddressEnabled(Bool aparatAddressEnabled) {
+    public void setAparatAddressEnabled(Boolean aparatAddressEnabled) {
         this.aparatAddressEnabled = aparatAddressEnabled;
     }
 
@@ -75,11 +75,11 @@ public class SocialSetting extends BaseEntity implements Serializable {
         this.instaAddress = instaAddress;
     }
 
-    public Bool getInstaAddressEnabled() {
+    public Boolean getInstaAddressEnabled() {
         return instaAddressEnabled;
     }
 
-    public void setInstaAddressEnabled(Bool instaAddressEnabled) {
+    public void setInstaAddressEnabled(Boolean instaAddressEnabled) {
         this.instaAddressEnabled = instaAddressEnabled;
     }
 
@@ -91,11 +91,11 @@ public class SocialSetting extends BaseEntity implements Serializable {
         this.twitterAddress = twitterAddress;
     }
 
-    public Bool getTwitterAddressEnabled() {
+    public Boolean getTwitterAddressEnabled() {
         return twitterAddressEnabled;
     }
 
-    public void setTwitterAddressEnabled(Bool twitterAddressEnabled) {
+    public void setTwitterAddressEnabled(Boolean twitterAddressEnabled) {
         this.twitterAddressEnabled = twitterAddressEnabled;
     }
 }

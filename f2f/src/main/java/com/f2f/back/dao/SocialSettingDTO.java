@@ -1,18 +1,17 @@
 package com.f2f.back.dao;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 public interface SocialSettingDTO {
     public String getLinkedInAddress();
-    public Bool    getLinkedInAddressEnabled();
+    public Boolean    getLinkedInAddressEnabled();
 
     public String getAparatAddress();
-    public Bool getAparatAddressEnabled();
+    public Boolean getAparatAddressEnabled();
 
 
     public String getInstaAddress();
-    public Bool   getInstaAddressEnabled();
+    public Boolean   getInstaAddressEnabled();
 
     public String getTwitterAddress();
-    public Bool getTwitterAddressEnabled();
+    public Boolean getTwitterAddressEnabled();
 }
