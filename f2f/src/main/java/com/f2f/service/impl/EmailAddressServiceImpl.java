@@ -4,19 +4,11 @@ import com.f2f.entity.EmailAddress;
 import com.f2f.persistance.entity.EmailAddressEntity;
 import com.f2f.persistance.repository.EmailAdressRepository;
 import com.f2f.service.EmailAddressService;
-import com.github.dozermapper.core.Mapper;
-<<<<<<< Updated upstream:src/main/java/com/f2f/service/impl/EmailAddressServiceImpl.java
-import com.revengemission.sso.oauth2.server.domain.AlreadyExistsException;
-import com.revengemission.sso.oauth2.server.domain.JsonObjects;
-//import org.apache.catalina.mapper.Mapper;
-=======
 import com.f2f.domain.AlreadyExistsException;
 import com.f2f.domain.JsonObjects;
->>>>>>> Stashed changes:f2f/src/main/java/com/f2f/service/impl/EmailAddressServiceImpl.java
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
+import com.github.dozermapper.core.*;
 
 @Service
 public class EmailAddressServiceImpl implements EmailAddressService {
