@@ -4,12 +4,7 @@ import com.f2f.dao.OstanDao;
 import com.f2f.dao.ShahrDao;
 import com.f2f.entity.Ostan;
 import com.f2f.entity.Shahr;
-<<<<<<< Updated upstream:src/main/java/com/f2f/service/ShahrService.java
-import com.revengemission.sso.oauth2.server.domain.EntityNotFoundException;
-import org.apache.commons.codec.EncoderException;
-=======
 import com.f2f.domain.EntityNotFoundException;
->>>>>>> Stashed changes:f2f/src/main/java/com/f2f/service/ShahrService.java
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
