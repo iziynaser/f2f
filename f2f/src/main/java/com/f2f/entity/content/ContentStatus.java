@@ -1,14 +1,7 @@
 package com.f2f.entity.content;
 
-<<<<<<< Updated upstream:src/main/java/com/f2f/entity/content/ContentStatus.java
-import com.revengemission.sso.oauth2.server.domain.UserAccount;
-import com.revengemission.sso.oauth2.server.persistence.entity.BaseEntity;
-import com.revengemission.sso.oauth2.server.persistence.entity.UserAccountEntity;
-=======
+
 import com.f2f.persistance.entity.*;
-
->>>>>>> Stashed changes:f2f/src/main/java/com/f2f/entity/content/ContentStatus.java
-
 import javax.persistence.*;
 import java.io.Serializable;
 
