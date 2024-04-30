@@ -4,19 +4,14 @@ import com.f2f.dao.comment.CommentDTO;
 import com.f2f.dao.product.FeaturesDTO;
 import com.f2f.dao.product.ProductDao;
 import com.f2f.dao.product.ProductFeatureGroupDao;
-import com.f2f.entity.common.Comment;
+
 import com.f2f.entity.common.CommentTarget;
 import com.f2f.entity.product.NameValueDTO;
 import com.f2f.entity.product.Product;
 import com.f2f.entity.product.ProductDTO;
 import com.f2f.service.comment.CommentTargetService;
-<<<<<<< Updated upstream:src/main/java/com/f2f/service/product/ProductService.java
-import com.revengemission.sso.oauth2.server.domain.EntityNotFoundException;
-import com.revengemission.sso.oauth2.server.domain.UserAccount;
-import com.revengemission.sso.oauth2.server.persistence.entity.UserAccountEntity;
-=======
+
 import com.f2f.domain.EntityNotFoundException;
->>>>>>> Stashed changes:f2f/src/main/java/com/f2f/service/product/ProductService.java
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
