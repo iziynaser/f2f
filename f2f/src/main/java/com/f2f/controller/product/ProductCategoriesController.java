@@ -20,7 +20,7 @@ public class ProductCategoriesController {
     @PostMapping(value = "/save")
     public ProductCategories createProductCategories(@RequestBody ProductCategoriesDTO productCategoriesDTO){
         Long categoryId = productCategoriesDTO.getCategoryId();
-        String productId = productCategoriesDTO.getProductId();
+        String productId = productCategoriesDTO.getProductId().toString();
         return productCategoriesService.save(categoryId,Long.valueOf(productId));
     }
 
