@@ -98,18 +98,16 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Bean
     public KeyPair keyPair() {
-<<<<<<< Updated upstream
-        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("jwt.jks"),
-            "keypass" .toCharArray());
-=======
+
+//        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("jwt.jks"),
+//            "keypass" .toCharArray());
+
         //Resource resource = new ClassPathResource("file:src/main/resources/jwt.jks");
         Resource resource = new FileSystemResource("src/main/resources/jwt.jks");
         KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(resource,
                 "keypass".toCharArray());
-
 //        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("jwt.jks"),
 //                "keypass".toCharArray());
->>>>>>> Stashed changes
         return keyStoreKeyFactory.getKeyPair("jwt");
     }
 

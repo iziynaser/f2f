@@ -5,19 +5,13 @@ import com.f2f.dao.CategoryDao;
 import com.f2f.dao.CategoryTypeDao;
 import com.f2f.entity.common.Category;
 import com.f2f.entity.common.CategoryType;
-<<<<<<< Updated upstream:src/main/java/com/f2f/service/CategoryService.java
-import com.revengemission.sso.oauth2.server.domain.EntityNotFoundException;
-import org.apache.commons.codec.EncoderException;
-=======
-import com.f2f.domain.EntityNotFoundException;
->>>>>>> Stashed changes:f2f/src/main/java/com/f2f/service/CategoryService.java
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-import javax.swing.text.html.Option;
+import com.f2f.domain.EntityNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.stereotype.Component;
 
 @Component
 public class CategoryService {

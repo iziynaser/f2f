@@ -1,14 +1,7 @@
 package com.f2f.entity.content;
 
 import com.f2f.entity.common.Category;
-<<<<<<< Updated upstream:src/main/java/com/f2f/entity/content/Article.java
-import com.f2f.entity.content.Page;
-import com.revengemission.sso.oauth2.server.persistence.entity.BaseEntity;
-=======
-//import com.revengemission.sso.oauth2.server.persistence.entity.BaseEntity;
 import com.f2f.persistance.entity.BaseEntity;
->>>>>>> Stashed changes:f2f/src/main/java/com/f2f/entity/content/Article.java
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;

@@ -3,9 +3,9 @@ package com.f2f.controller.product;
 import com.f2f.entity.common.Category;
 import com.f2f.entity.product.Brand;
 import com.f2f.entity.product.BrandDTO;
+import com.f2f.exceptions.F2fNotFoundException;
 import com.f2f.service.CategoryService;
 import com.f2f.service.product.BrandService;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +31,10 @@ public class BrandController {
     }
 
     @GetMapping("/brand/{id}")
-    public Brand  findById(@PathVariable(value = "id") Long id)throws NotFoundException{
+    public Brand  findById(@PathVariable(value = "id") Long id)throws F2fNotFoundException{
         Optional<Brand> b= brandService.findById(id);
         if(!b.isPresent())
-            throw new NotFoundException("id:"+id);
+            throw new F2fNotFoundException("id:"+id);
         return b.get();
     }
 
@@ -60,10 +60,10 @@ public class BrandController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public Map<String,Boolean> deleteById(@PathVariable Long id)throws NotFoundException{
+    public Map<String,Boolean> deleteById(@PathVariable Long id)throws F2fNotFoundException {
         Optional<Brand> b= brandService.findById(id);
         if(!b.isPresent())
-            throw new NotFoundException("id:"+id);
+            throw new F2fNotFoundException("id:"+id);
 
         brandService.delete(b.get());
         HashMap response = new HashMap();

@@ -2,12 +2,7 @@ package com.f2f.service;
 
 import com.f2f.dao.AboutUsDao;
 import com.f2f.entity.AboutUs;
-<<<<<<< Updated upstream:src/main/java/com/f2f/service/AboutUsService.java
-import com.f2f.entity.AboutUsDTO;
-import com.revengemission.sso.oauth2.server.domain.EntityNotFoundException;
-=======
 import com.f2f.domain.EntityNotFoundException;
->>>>>>> Stashed changes:f2f/src/main/java/com/f2f/service/AboutUsService.java
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
