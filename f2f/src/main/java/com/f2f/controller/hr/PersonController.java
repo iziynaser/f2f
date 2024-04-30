@@ -1,8 +1,8 @@
 package com.f2f.controller.hr;
 
 import com.f2f.entity.common.Person;
+import com.f2f.exceptions.F2fNotFoundException;
 import com.f2f.service.hr.PersonService;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,10 +26,10 @@ public class PersonController {
     }
 
     @GetMapping("/person/{id}")
-    public Person findById(@PathVariable(value = "id") Long id)throws NotFoundException {
+    public Person findById(@PathVariable(value = "id") Long id)throws F2fNotFoundException {
         Optional<Person> b= service.findById(id);
         if(!b.isPresent())
-            throw new NotFoundException("id:"+id);
+            throw new F2fNotFoundException("id:"+id);
         Person pfbi = b.get();
         return pfbi;
     }
@@ -42,10 +42,10 @@ public class PersonController {
     }
 
     @DeleteMapping("person/{id}")
-    public Map<String,Boolean> deleteById(@PathVariable Long id)throws NotFoundException{
+    public Map<String,Boolean> deleteById(@PathVariable Long id)throws F2fNotFoundException {
         Optional<Person> b= service.findById(id);
         if(!b.isPresent())
-            throw new NotFoundException("id:"+id);
+            throw new F2fNotFoundException("id:"+id);
 
         Person dpf = b.get();
 
