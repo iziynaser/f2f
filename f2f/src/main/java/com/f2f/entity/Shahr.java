@@ -1,13 +1,9 @@
 package com.f2f.entity;
 
-<<<<<<< Updated upstream:src/main/java/com/f2f/entity/Shahr.java
-import com.revengemission.sso.oauth2.server.persistence.entity.BaseEntity;
-import org.springframework.context.annotation.EnableMBeanExport;
-=======
-//import com.revengemission.sso.oauth2.server.persistence.entity.BaseEntity;
-import com.f2f.persistance.entity.BaseEntity;
->>>>>>> Stashed changes:f2f/src/main/java/com/f2f/entity/Shahr.java
 
+
+import org.springframework.context.annotation.EnableMBeanExport;
+import com.f2f.persistance.entity.BaseEntity;
 import javax.persistence.*;
 import java.io.Serializable;
 
