@@ -18,4 +18,35 @@ public class EmailAddress extends BaseDomain {
     private String fullName;
     private EmailAddressType addressType;
 
+    public Integer getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(Integer personId) {
+        this.personId = personId;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public EmailAddressType getAddressType() {
+        return addressType;
+    }
+
+    public void setAddressType(EmailAddressType addressType) {
+        this.addressType = addressType;
+    }
 }
