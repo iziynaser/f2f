@@ -1,12 +1,9 @@
 package com.f2f.entity.product;
 
 
-<<<<<<< Updated upstream:src/main/java/com/f2f/entity/product/ProductPrice.java
 
-import com.revengemission.sso.oauth2.server.persistence.entity.BaseEntity;
-=======
 import com.f2f.persistance.entity.BaseEntity;
->>>>>>> Stashed changes:f2f/src/main/java/com/f2f/entity/product/ProductPrice.java
+
 
 import javax.persistence.*;
 
