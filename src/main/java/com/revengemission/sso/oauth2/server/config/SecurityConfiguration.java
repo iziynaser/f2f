@@ -123,7 +123,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 ///        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
         http
-<<<<<<< Updated upstream
             .authorizeRequests()
             .mvcMatchers("/favicon.ico", "/signIn", "/signUp", "/security_check", "/404","/captcha/**", "/user/me","/f2f/storage/images/**","/images/**","/static/**","/fonts/**").permitAll()
             .mvcMatchers("/oauth/signUp").permitAll()
@@ -142,11 +141,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             //.successHandler(customAuthenticationSuccessHandler)
             //.loginPage("/signIn").loginProcessingUrl("/security_check").permitAll();
 
-        http.exceptionHandling().accessDeniedHandler(customAccessDeniedHandler);
-=======
-                .authorizeRequests()
-                .mvcMatchers("**/**").permitAll();
->>>>>>> Stashed changes
+//        http.exceptionHandling().accessDeniedHandler(customAccessDeniedHandler);
+//                .authorizeRequests()
+//                .mvcMatchers("**/**").permitAll();
     }
 
 }
