@@ -300,9 +300,9 @@
                         <webapp>
                             <!-- -->
                             <contextPath>/pub</contextPath>
-                            <groupId>com.f2f</groupId>
+                            <groupId>com.f2f.pub</groupId>
                             <artifactId>pub</artifactId>
-                            <version>0.0.3-SNAPSHOT</version>
+                            <version>SNAPSHOT</version>
                             <type>war</type>
                             <asWebapp>true</asWebapp>
                         </webapp>
@@ -311,7 +311,7 @@
                             <contextPath>/f2fc</contextPath>
                             <groupId>com.f2f</groupId>
                             <artifactId>f2fc</artifactId>
-                            <version>0.0.3-SNAPSHOT</version>
+                            <version>SNAPSHOT</version>
                             <type>war</type>
                             <asWebapp>true</asWebapp>
                         </webapp>

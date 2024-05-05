@@ -9,15 +9,19 @@
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
+
+    <groupId>com.f2f.pub</groupId>
     <artifactId>pub</artifactId>
-<!--    <version>0.0.3-SNAPSHOT</version>-->
+    <version>SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <packaging>war</packaging>
+
+
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
