@@ -10,15 +10,15 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.f2f</groupId>
-    <artifactId>f2f-server</artifactId>
+    <artifactId>f2fserver</artifactId>
     <version>0.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>f2f-server</name>
     <description>f2f backend server</description>
     <modules>
-        <module>f2f</module>
         <module>sso</module>
         <module>pub</module>
+        <module>f2fc</module>
     </modules>
 
     <properties>

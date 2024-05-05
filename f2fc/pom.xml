@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.f2f</groupId>
-        <artifactId>f2f-server</artifactId>
+        <artifactId>f2fserver</artifactId>
         <version>0.0.3-SNAPSHOT</version>
     </parent>
     <packaging>war</packaging>
