@@ -3,12 +3,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.f2f</groupId>
     <artifactId>f2fServer</artifactId>
     <version>0.0.3-SNAPSHOT</version>
@@ -53,11 +55,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
         <dependency>
@@ -262,16 +259,13 @@
         </dependencies>
     </dependencyManagement>
     <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
             </resource>
         </resources>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -293,24 +287,16 @@
                 <version>2.2</version>
                 <configuration>
                     <!-- http port -->
-                    <port>9090</port>
+                    <port>8080</port>
+                    <url>http://localhost:8080/manager</url>
+                    <server>localhost</server>
                     <!-- application path always starts with /-->
                     <path>/</path>
                     <webapps>
                         <webapp>
-                            <!-- -->
                             <contextPath>/pub</contextPath>
                             <groupId>com.f2f.pub</groupId>
                             <artifactId>pub</artifactId>
-                            <version>SNAPSHOT</version>
-                            <type>war</type>
-                            <asWebapp>true</asWebapp>
-                        </webapp>
-                        <webapp>
-                            <!-- -->
-                            <contextPath>/f2fc</contextPath>
-                            <groupId>com.f2f</groupId>
-                            <artifactId>f2fc</artifactId>
                             <version>SNAPSHOT</version>
                             <type>war</type>
                             <asWebapp>true</asWebapp>
