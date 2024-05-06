@@ -20,7 +20,7 @@
     <modules>
         <module>sso</module>
         <module>pub</module>
-        <module>f2fc</module>
+<!--        <module>f2fc</module>-->
     </modules>
 
     <properties>
@@ -50,6 +50,26 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -179,8 +199,14 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>4.0.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-json</artifactId>
+            <version>3.0.2</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>jakarta.persistence</groupId>
@@ -235,6 +261,22 @@
             <artifactId>spring-boot</artifactId>
             <version>3.0.13</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.23.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.15.0</version>
+        </dependency>
+
+
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
 <!--        <dependency>-->
 <!--            <groupId>org.springframework</groupId>-->
@@ -292,16 +334,16 @@
                     <server>localhost</server>
                     <!-- application path always starts with /-->
                     <path>/</path>
-                    <webapps>
-                        <webapp>
-                            <contextPath>/pub</contextPath>
-                            <groupId>com.f2f.pub</groupId>
-                            <artifactId>pub</artifactId>
-                            <version>SNAPSHOT</version>
-                            <type>war</type>
-                            <asWebapp>true</asWebapp>
-                        </webapp>
-                    </webapps>
+<!--                    <webapps>-->
+<!--                        <webapp>-->
+<!--                            <contextPath>/pub</contextPath>-->
+<!--                            <groupId>com.f2f.pub</groupId>-->
+<!--                            <artifactId>pub</artifactId>-->
+<!--                            <version>0.3-SNAPSHOT</version>-->
+<!--                            <type>war</type>-->
+<!--                            <asWebapp>true</asWebapp>-->
+<!--                        </webapp>-->
+<!--                    </webapps>-->
                 </configuration>
             </plugin>
         </plugins>
