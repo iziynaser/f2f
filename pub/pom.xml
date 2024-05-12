@@ -19,30 +19,17 @@
     <description>pub application</description>
 
     <properties>
-        <maven.compiler.source>19</maven.compiler.source>
-        <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
 
     <dependencies>
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-web</artifactId>-->
-<!--&lt;!&ndash;            <exclusions>&ndash;&gt;-->
-<!--&lt;!&ndash;                <exclusion>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <groupId>org.springframework.boot</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <artifactId>spring-boot-starter-logging</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;                </exclusion>&ndash;&gt;-->
-<!--&lt;!&ndash;                <exclusion>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <groupId>org.springframework.boot</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <artifactId>spring-boot-starter-tomcat</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;                </exclusion>&ndash;&gt;-->
-<!--&lt;!&ndash;            </exclusions>&ndash;&gt;-->
-<!--        </dependency>-->
-
-
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>6.1.6</version>
+        </dependency>
     </dependencies>
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
@@ -53,18 +40,18 @@
         </resources>
         <pluginManagement>
             <plugins>
-<!--                <plugin>-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-war-plugin</artifactId>-->
-<!--                    <version>3.4.0</version>-->
-<!--                    <configuration>-->
-<!--                        <archive>-->
-<!--                            <manifest>-->
-<!--                                <addClasspath>true</addClasspath>-->
-<!--                            </manifest>-->
-<!--                        </archive>-->
-<!--                    </configuration>-->
-<!--                </plugin>-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.4.0</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addClasspath>true</addClasspath>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-devtools</artifactId>
