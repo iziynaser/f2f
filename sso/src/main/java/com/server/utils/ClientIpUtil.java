@@ -1,5 +1,6 @@
 package com.revengemission.sso.oauth2.server.utils;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 public class ClientIpUtil {

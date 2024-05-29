@@ -1,9 +1,11 @@
 package com.revengemission.sso.oauth2.server.config;
 
 import com.revengemission.sso.oauth2.server.domain.GlobalConstant;
+
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 
 import javax.servlet.http.HttpServletRequest;
+
 
 public class CustomWebAuthenticationDetails extends WebAuthenticationDetails {
     private static final long serialVersionUID = 6975601077710753878L;

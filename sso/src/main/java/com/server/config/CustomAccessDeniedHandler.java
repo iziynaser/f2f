@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revengemission.sso.oauth2.server.domain.GlobalConstant;
 import com.revengemission.sso.oauth2.server.domain.ResponseResult;
 import com.revengemission.sso.oauth2.server.utils.ClientIpUtil;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.security.access.AccessDeniedException;

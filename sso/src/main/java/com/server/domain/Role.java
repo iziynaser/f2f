@@ -12,6 +12,14 @@ import java.util.List;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class Role extends BaseDomain {
+public class Role extends com.revengemission.sso.oauth2.server.domain.BaseDomain {
     private String roleName;
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
 }

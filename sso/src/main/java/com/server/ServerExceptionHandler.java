@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.NoHandlerFoundException;
-
+//
 import javax.servlet.http.HttpServletRequest;
 import java.security.AccessControlException;
 import java.util.Date;
@@ -23,9 +23,9 @@ public class ServerExceptionHandler {
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
 
 
-    @ExceptionHandler({
-        NoHandlerFoundException.class
-    })
+//    @ExceptionHandler({
+//        NoHandlerFoundException.class
+//    })
     public ResponseEntity<Object> handleNoHandlerFoundException(Exception ex, HttpServletRequest request) {
         HttpStatus httpStatus = HttpStatus.NOT_FOUND;
         logRequest(ex, httpStatus, request);
@@ -37,8 +37,8 @@ public class ServerExceptionHandler {
         return new ResponseEntity<>(responseResult, headers, httpStatus);
     }
 
-    @ExceptionHandler({
-        AccessControlException.class, AccessDeniedException.class
+    @ExceptionHandler(value = {
+            AccessControlException.class, AccessDeniedException.class
     })
     @ResponseBody
     ResponseEntity<Object> handleDeniedException(Exception ex, HttpServletRequest request) {

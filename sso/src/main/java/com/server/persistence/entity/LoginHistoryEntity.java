@@ -2,12 +2,13 @@ package com.revengemission.sso.oauth2.server.persistence.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Index;
+//import javax.persistence.Index;
 import javax.persistence.Table;
 
 
 @Entity
-@Table(indexes = {@Index(name = "index_username", columnList = "username")})
+//@Table(indexes = {@Index(name = "index_username", columnList = "username")})
+@Table()
 public class LoginHistoryEntity extends BaseEntity {
 
     /**

@@ -42,15 +42,15 @@ public class WebRequestLogAspect {
         if (log.isInfoEnabled()) {
             ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
             if (attributes != null) {
-                HttpServletRequest request = attributes.getRequest();
-                Map<String, String[]> parameters = request.getParameterMap();
+                //HttpServletRequest request = attributes.getRequest();
+                //Map<String, String[]> parameters = request.getParameterMap();
 
                 try {
                     String parametersString = null;
                     String requestBody = null;
-                    if (parameters != null) {
-                        parametersString = JsonUtil.multiValueMapToJsonString(parameters);
-                    }
+//                    if (parameters != null) {
+//                        parametersString = JsonUtil.multiValueMapToJsonString(parameters);
+//                    }
                     MethodSignature signature = (MethodSignature) joinPoint.getSignature();
                     //get blocked method
                     Method method = signature.getMethod();
@@ -60,16 +60,16 @@ public class WebRequestLogAspect {
                     }
                     StringBuffer stringBuffer = new StringBuffer();
                     stringBuffer.append("\nRequest from = ");
-                    stringBuffer.append(ClientIpUtil.getIpAddress(request));
+                    stringBuffer.append("ClientIpUtil.getIpAddress(request)");// stringBuffer.append(ClientIpUtil.getIpAddress(request));
                     stringBuffer.append(";\n");
                     stringBuffer.append("uri = ");
-                    stringBuffer.append(request.getRequestURL().toString());
+                    stringBuffer.append("request.getRequestURL().toString()");// stringBuffer.append(request.getRequestURL().toString());
                     stringBuffer.append(";\n");
                     stringBuffer.append("request method = ");
-                    stringBuffer.append(request.getMethod());
+                    stringBuffer.append("request.getMethod()");// stringBuffer.append(request.getMethod());
                     stringBuffer.append(";\n");
                     stringBuffer.append("content type = ");
-                    stringBuffer.append(request.getContentType());
+                    stringBuffer.append("request.getContentType()");//stringBuffer.append(request.getContentType());
                     stringBuffer.append(";\n");
                     stringBuffer.append("request parameters = ");
                     stringBuffer.append(parametersString);
@@ -80,13 +80,13 @@ public class WebRequestLogAspect {
 
                     //stringBuffer.append("request headers="+request.getHeaderNames())
                     stringBuffer.append("headers:{");
-                    Enumeration<String> headeNames = request.getHeaderNames();
-                    while(headeNames.hasMoreElements()){
-                        String headerName = headeNames.nextElement();
-                        String headerValue = request.getHeader(headerName);
-                        stringBuffer.append(headerName+":"+headerValue);
-                        stringBuffer.append(";\n");
-                    }
+                    //Enumeration<String> headeNames = request.getHeaderNames();
+//                    while(headeNames.hasMoreElements()){
+//                        String headerName = headeNames.nextElement();
+//                        String headerValue = request.getHeader(headerName);
+//                        stringBuffer.append(headerName+":"+headerValue);
+//                        stringBuffer.append(";\n");
+//                    }
                     stringBuffer.append("}");
 
                     log.info(stringBuffer.toString());

@@ -49,24 +49,24 @@ public class ClientDetailsServiceImpl implements ClientDetailsService {
             }
             BaseClientDetails baseClientDetails = new BaseClientDetails();
             baseClientDetails.setClientId(oauthClientEntity.getClientId());
-            if (!StringUtils.isEmpty(oauthClientEntity.getResourceIds())) {
+            if (!org.apache.commons.lang3.StringUtils.isEmpty((oauthClientEntity.getResourceIds()))) {
                 baseClientDetails.setResourceIds(StringUtils.commaDelimitedListToSet(oauthClientEntity.getResourceIds()));
             }
             baseClientDetails.setClientSecret(oauthClientEntity.getClientSecret());
-            if (!StringUtils.isEmpty(oauthClientEntity.getScope())) {
+            if (!org.apache.commons.lang3.StringUtils.isEmpty((oauthClientEntity.getScope()))) {
                 baseClientDetails.setScope(StringUtils.commaDelimitedListToSet(oauthClientEntity.getScope()));
             }
-            if (!StringUtils.isEmpty(oauthClientEntity.getAuthorizedGrantTypes())) {
+            if (!org.apache.commons.lang3.StringUtils.isEmpty((oauthClientEntity.getAuthorizedGrantTypes()))) {
                 baseClientDetails.setAuthorizedGrantTypes(StringUtils.commaDelimitedListToSet(oauthClientEntity.getAuthorizedGrantTypes()));
             } else {
                 baseClientDetails.setAuthorizedGrantTypes(StringUtils.commaDelimitedListToSet("authorization_code"));
             }
-            if (!StringUtils.isEmpty(oauthClientEntity.getWebServerRedirectUri())) {
+            if (!org.apache.commons.lang3.StringUtils.isEmpty((oauthClientEntity.getWebServerRedirectUri()))) {
                 baseClientDetails.setRegisteredRedirectUri(StringUtils.commaDelimitedListToSet(oauthClientEntity.getWebServerRedirectUri()));
             }
-            if (!StringUtils.isEmpty(oauthClientEntity.getAuthorities())) {
+            if (!org.apache.commons.lang3.StringUtils.isEmpty(oauthClientEntity.getAuthorities())) {
                 List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
-                StringUtils.commaDelimitedListToSet(oauthClientEntity.getAuthorities()).forEach(s -> authorities.add(new SimpleGrantedAuthority(s)));
+                StringUtils.commaDelimitedListToSet(oauthClientEntity.getAuthorities()).forEach(s -> authorities.add(new SimpleGrantedAuthority(s.toString())));
                 baseClientDetails.setAuthorities(authorities);
             }
             if (oauthClientEntity.getAccessTokenValidity() != null && oauthClientEntity.getAccessTokenValidity() > 0) {
@@ -76,7 +76,8 @@ public class ClientDetailsServiceImpl implements ClientDetailsService {
                 baseClientDetails.setRefreshTokenValiditySeconds(oauthClientEntity.getRefreshTokenValidity());
             }
 ///            baseClientDetails.setAdditionalInformation(oauthClientEntity.getAdditionalInformation());
-            if (!StringUtils.isEmpty(oauthClientEntity.getAutoApprove())) {
+            if (!org.apache.commons.lang3.StringUtils.isEmpty(oauthClientEntity.getAutoApprove())) {
+
                 baseClientDetails.setAutoApproveScopes(StringUtils.commaDelimitedListToSet(oauthClientEntity.getAutoApprove()));
             }
             cacheManager.getCache(CachesEnum.Oauth2ClientCache.name()).put(clientId, baseClientDetails);

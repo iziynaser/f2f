@@ -1,5 +1,6 @@
 package com.revengemission.sso.oauth2.server.config;
 
+
 import org.springframework.security.authentication.AuthenticationDetailsSource;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;

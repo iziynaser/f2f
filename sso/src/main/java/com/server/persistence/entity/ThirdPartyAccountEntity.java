@@ -19,8 +19,8 @@ public class ThirdPartyAccountEntity extends BaseEntity {
      */
     private String accountOpenCode;
     @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    @JoinTable(joinColumns = @JoinColumn(name = "third_party_account_id", referencedColumnName = "id"), foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"), inverseForeignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-    List<RoleEntity> roles = new ArrayList<>();
+    //@JoinTable(joinColumns = @JoinColumn(name = "third_party_account_id", referencedColumnName = "id"), foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"), inverseForeignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+    @JoinTable(joinColumns = @JoinColumn(name = "third_party_account_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))List<RoleEntity> roles = new ArrayList<>();
     private String nickName;
     private String avatarUrl;
 
