@@ -21,7 +21,7 @@ public class SqlConfig {
 
     public void runSqlFile(String sqlFileName){
         Resource resource = applicationContext.getResource(sqlFileName);
-        EncodedResource encodedResource = new EncodedResource(resource,Charset.forName("UTF-8"));
+        EncodedResource encodedResource = new EncodedResource(resource);//,Charset.forName("UTF-8"));
         try{
             ScriptUtils.executeSqlScript(dataSource.getConnection(),encodedResource);
         }catch (Exception ex){

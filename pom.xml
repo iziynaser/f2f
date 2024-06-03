@@ -22,7 +22,7 @@
         <module>dbc</module>
         <module>sso</module>
         <module>f2fc</module>
-        <module>pub</module>
+<!--        <module>pub</module>-->
     </modules>
 
     <properties>

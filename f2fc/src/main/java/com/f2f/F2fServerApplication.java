@@ -17,8 +17,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 @EnableScheduling
 @SpringBootApplication
-@PropertySource("file:src/main/resources/application.properties")
-@PropertySource("file:src/main/resources/storage.properties")
+//@PropertySource("file:src/main/resources/application.properties")
+//@PropertySource("file:src/main/resources/storage.properties")
 //@PropertySource("file:src/main/resources/postgresFile.properties")
 //@EnableConfigurationProperties(StorageProperties.class)
 public class F2fServerApplication {
