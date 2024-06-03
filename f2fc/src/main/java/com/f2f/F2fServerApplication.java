@@ -1,9 +1,9 @@
-package com;
+package com.f2f;
 
-import com.f2f.StorageProperties;
+//import com.f2f.StorageProperties;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
@@ -19,8 +19,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @PropertySource("file:src/main/resources/application.properties")
 @PropertySource("file:src/main/resources/storage.properties")
-@PropertySource("file:src/main/resources/postgresFile.properties")
-@EnableConfigurationProperties(StorageProperties.class)
+//@PropertySource("file:src/main/resources/postgresFile.properties")
+//@EnableConfigurationProperties(StorageProperties.class)
 public class F2fServerApplication {
 
     public static void main(String[] args) {

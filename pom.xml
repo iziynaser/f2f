@@ -21,6 +21,7 @@
         <module>sso</module>
         <module>pub</module>
         <module>f2fc</module>
+        <module>dbc</module>
 
     </modules>
 
