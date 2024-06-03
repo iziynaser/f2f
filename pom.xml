@@ -17,12 +17,12 @@
     <packaging>pom</packaging>
     <name>f2fServer</name>
     <description>f2f backend server</description>
-    <modules>
-        <module>sso</module>
-        <module>pub</module>
-        <module>f2fc</module>
-        <module>dbc</module>
 
+    <modules>
+        <module>dbc</module>
+        <module>sso</module>
+        <module>f2fc</module>
+        <module>pub</module>
     </modules>
 
     <properties>
