@@ -1,9 +1,13 @@
-package com.revengemission.sso.oauth2.server.config;
+package com.f2f.sso.server.config;
 
-import com.revengemission.sso.oauth2.server.persistence.repository.RoleRepository;
-import com.revengemission.sso.oauth2.server.persistence.repository.ThirdPartyAccountRepository;
-import com.revengemission.sso.oauth2.server.service.CaptchaService;
-import com.revengemission.sso.oauth2.server.service.impl.ClientDetailsServiceImpl;
+//import com.revengemission.sso.oauth2.server.persistence.repository.RoleRepository;
+//import com.revengemission.sso.oauth2.server.persistence.repository.ThirdPartyAccountRepository;
+//import com.revengemission.sso.oauth2.server.service.CaptchaService;
+//import com.revengemission.sso.oauth2.server.service.impl.ClientDetailsServiceImpl;
+import com.f2f.persistence.repository.RoleRepository;
+import com.f2f.persistence.repository.ThirdPartyAccountRepository;
+import com.f2f.sso.server.service.CaptchaService;
+import com.f2f.sso.server.service.impl.ClientDetailsServiceImpl;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

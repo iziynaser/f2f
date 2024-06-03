@@ -4,7 +4,8 @@ import com.f2f.entity.acc.AccountResourceType;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("AccountResourceTypeDao")
+//@Repository("AccountResourceTypeDao")
+@Repository
 public interface AccountResourceTypeDao extends CrudRepository<AccountResourceType,Long>{
 
 }

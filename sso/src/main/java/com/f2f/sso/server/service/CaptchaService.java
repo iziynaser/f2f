@@ -1,6 +1,8 @@
-package com.revengemission.sso.oauth2.server.service;
+package com.f2f.sso.server.service;
 
-import com.revengemission.sso.oauth2.server.config.CachesEnum;
+//import com.revengemission.sso.oauth2.server.config.CachesEnum;
+
+import com.f2f.sso.server.config.CachesEnum;
 
 public interface CaptchaService {
     boolean saveCaptcha(CachesEnum cachesEnum, String key, Object value);

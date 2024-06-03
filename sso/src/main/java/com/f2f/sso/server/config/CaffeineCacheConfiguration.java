@@ -1,4 +1,4 @@
-package com.revengemission.sso.oauth2.server.config;
+package com.f2f.sso.server.config;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;

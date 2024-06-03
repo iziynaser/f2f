@@ -1,9 +1,12 @@
-package com.revengemission.sso.oauth2.server.controller;
+package com.f2f.sso.server.controller;
 
+import com.f2f.sso.server.config.CachesEnum;
+import com.f2f.sso.server.service.CaptchaService;
+import com.f2f.sso.server.service.UserAccountService;
 import com.revengemission.commons.captcha.core.VerificationCodeUtil;
-import com.revengemission.sso.oauth2.server.config.CachesEnum;
-import com.revengemission.sso.oauth2.server.service.CaptchaService;
-import com.revengemission.sso.oauth2.server.service.UserAccountService;
+//import com.revengemission.sso.oauth2.server.config.CachesEnum;
+//import com.revengemission.sso.oauth2.server.service.CaptchaService;
+//import com.revengemission.sso.oauth2.server.service.UserAccountService;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
