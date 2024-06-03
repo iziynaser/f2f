@@ -21,11 +21,6 @@
 
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>com.vladmihalcea</groupId>-->
-<!--            <artifactId>hibernate-types-52</artifactId>-->
-<!--&lt;!&ndash;            <version>2.7.1</version>&ndash;&gt;-->
-<!--        </dependency>-->
 
     <dependency>
         <groupId>mysql</groupId>
@@ -46,11 +41,6 @@
             <scope>provided</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.hibernate</groupId>-->
-<!--            <artifactId>hibernate-annotations</artifactId>-->
-<!--&lt;!&ndash;            <version>3.5.6-Final</version>&ndash;&gt;-->
-<!--        </dependency>-->
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
@@ -72,16 +62,6 @@
             <version>5.7.11</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-web</artifactId>-->
-<!--            <exclusions>-->
-<!--                <exclusion>-->
-<!--                    <groupId>org.springframework.boot</groupId>-->
-<!--                    <artifactId>spring-boot-starter-tomcat</artifactId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -102,29 +82,39 @@
         </resources>
         <pluginManagement>
             <plugins>
-<!--                <plugin>-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-war-plugin</artifactId>-->
-<!--                    <version>3.4.0</version>-->
-<!--                    <configuration>-->
-<!--                        <archive>-->
-<!--                            <manifest>-->
-<!--                                <addClasspath>true</addClasspath>-->
-<!--                            </manifest>-->
-<!--                        </archive>-->
-<!--                    </configuration>-->
-<!--                </plugin>-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>3.1.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>3.1.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.4.0</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addClasspath>true</addClasspath>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
 <!--                <plugin>-->
 <!--                    <groupId>org.springframework.boot</groupId>-->
 <!--                    <artifactId>spring-boot-devtools</artifactId>-->
 <!--                </plugin>-->
-<!--                <plugin>-->
-<!--                    <groupId>org.springframework.boot</groupId>-->
-<!--                    <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--                    <configuration>-->
-<!--                        <skip>true</skip>-->
-<!--                    </configuration>-->
-<!--                </plugin>-->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
