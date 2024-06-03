@@ -4,6 +4,7 @@ import com.f2f.entity.hr.EmployeeTermination;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("EmployeeTerminationDao")
+//@Repository("EmployeeTerminationDao")
+@Repository
 public interface EmployeeTerminationDao extends CrudRepository<EmployeeTermination,Long> {
 }

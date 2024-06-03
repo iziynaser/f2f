@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("CommentDao")
+@Repository
+//@Repository("CommentDao")
 public interface CommentDao extends JpaRepository<Comment,Long> {
 
 //    @Query("select l.numberOfLikes,l.numberOfDisLikes,u.nickName,c.benefits,c.disadvatages,c.body,c.dateCreated,c.subject from Comment as c inner join UserAccountEntity as u on c.userAccountEntity = u left join CommentLikes as l on l.id = c.id")

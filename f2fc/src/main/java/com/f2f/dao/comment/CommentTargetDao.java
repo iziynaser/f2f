@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("CommentTargetDao")
+//@Repository("CommentTargetDao")
+@Repository
 public interface CommentTargetDao extends JpaRepository<CommentTarget,Long> {
 
 //    select

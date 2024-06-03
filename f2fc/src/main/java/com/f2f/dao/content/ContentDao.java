@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Repository("ContentDao")
+//@Repository("ContentDao")
+@Repository
 public interface ContentDao extends JpaRepository<Content,Long>,JpaSpecificationExecutor<Content> {
 
     //@Query("select count(content.id) from Content content where content.status = :status and content.language = :language")

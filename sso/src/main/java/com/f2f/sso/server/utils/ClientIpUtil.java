@@ -1,4 +1,4 @@
-package com.revengemission.sso.oauth2.server.utils;
+package com.f2f.sso.server.utils;
 
 
 import javax.servlet.http.HttpServletRequest;

@@ -4,7 +4,8 @@ import com.f2f.entity.hr.ContactType;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("ContactTypeDao")
+//@Repository("ContactTypeDao")
+@Repository
 public interface ContactTypeDao extends CrudRepository<ContactType,Long> {
 
 }

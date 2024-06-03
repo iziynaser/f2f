@@ -4,7 +4,8 @@ import com.f2f.entity.hr.Connection;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("ConnectionDao")
+//@Repository("ConnectionDao")
+@Repository
 public interface ConnectionDao extends CrudRepository<Connection,Long> {
 
 }

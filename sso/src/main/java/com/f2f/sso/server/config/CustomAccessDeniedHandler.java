@@ -1,11 +1,14 @@
-package com.revengemission.sso.oauth2.server.config;
+package com.f2f.sso.server.config;
 
+import com.f2f.domain.GlobalConstant;
+import com.f2f.domain.ResponseResult;
+import com.f2f.sso.server.utils.ClientIpUtil;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revengemission.sso.oauth2.server.domain.GlobalConstant;
-import com.revengemission.sso.oauth2.server.domain.ResponseResult;
-import com.revengemission.sso.oauth2.server.utils.ClientIpUtil;
+//import com.revengemission.sso.oauth2.server.domain.GlobalConstant;
+//import com.revengemission.sso.oauth2.server.domain.ResponseResult;
+//import com.revengemission.sso.oauth2.server.utils.ClientIpUtil;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.converter.HttpMessageNotWritableException;

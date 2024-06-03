@@ -1,10 +1,15 @@
-package com.revengemission.sso.oauth2.server.service.impl;
+package com.f2f.sso.server.service.impl;
 
-import com.revengemission.sso.oauth2.server.config.CachesEnum;
-import com.revengemission.sso.oauth2.server.domain.AlreadyExpiredException;
-import com.revengemission.sso.oauth2.server.domain.InvalidClientException;
-import com.revengemission.sso.oauth2.server.persistence.entity.OauthClientEntity;
-import com.revengemission.sso.oauth2.server.persistence.repository.OauthClientRepository;
+//import com.revengemission.sso.oauth2.server.config.CachesEnum;
+//import com.revengemission.sso.oauth2.server.domain.AlreadyExpiredException;
+//import com.revengemission.sso.oauth2.server.domain.InvalidClientException;
+//import com.revengemission.sso.oauth2.server.persistence.entity.OauthClientEntity;
+//import com.revengemission.sso.oauth2.server.persistence.repository.OauthClientRepository;
+import com.f2f.domain.AlreadyExpiredException;
+import com.f2f.domain.InvalidClientException;
+import com.f2f.persistence.entity.OauthClientEntity;
+import com.f2f.persistence.repository.OauthClientRepository;
+import com.f2f.sso.server.config.CachesEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;

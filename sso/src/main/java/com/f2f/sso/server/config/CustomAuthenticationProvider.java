@@ -1,8 +1,11 @@
-package com.revengemission.sso.oauth2.server.config;
+package com.f2f.sso.server.config;
 
-import com.revengemission.sso.oauth2.server.domain.GlobalConstant;
-import com.revengemission.sso.oauth2.server.domain.VerificationCodeException;
-import com.revengemission.sso.oauth2.server.service.CaptchaService;
+//import com.revengemission.sso.oauth2.server.domain.GlobalConstant;
+//import com.revengemission.sso.oauth2.server.domain.VerificationCodeException;
+//import com.revengemission.sso.oauth2.server.service.CaptchaService;
+import com.f2f.domain.GlobalConstant;
+import com.f2f.domain.VerificationCodeException;
+import com.f2f.sso.server.service.CaptchaService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
