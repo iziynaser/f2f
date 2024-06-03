@@ -4,7 +4,8 @@ import com.f2f.entity.acc.TransactionStatus;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("TransactionStatusDao")
+//@Repository("TransactionStatusDao")
+@Repository
 public interface TransactionStatusDao extends CrudRepository<TransactionStatus,Long>{
 
 }

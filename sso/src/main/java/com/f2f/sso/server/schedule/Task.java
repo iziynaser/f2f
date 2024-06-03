@@ -1,4 +1,4 @@
-package com.revengemission.sso.oauth2.server.schedule;
+package com.f2f.sso.server.schedule;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

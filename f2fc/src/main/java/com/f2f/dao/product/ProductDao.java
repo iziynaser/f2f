@@ -10,7 +10,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository("ProductDao")
+//@Repository("ProductDao")
+@Repository
 public interface ProductDao extends CrudRepository<Product,Long> {
 
     List<String> findAllByNameContains(String productName);

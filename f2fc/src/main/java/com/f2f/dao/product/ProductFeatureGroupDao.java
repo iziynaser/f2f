@@ -9,7 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("ProductFeatureGroupDao")
+//@Repository("ProductFeatureGroupDao")
+@Repository
 public interface ProductFeatureGroupDao extends JpaRepository<ProductFeatureGroup,Long> {
 
     List<ProductFeatureGroup> findAll();

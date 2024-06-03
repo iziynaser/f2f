@@ -4,7 +4,8 @@ import com.f2f.entity.hr.Resume;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("ResumeDao")
+//@Repository("ResumeDao")
+@Repository
 public interface ResumeDao extends CrudRepository<Resume,Long> {
 
 }

@@ -4,7 +4,8 @@ import com.f2f.entity.common.PriceType;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("PriceTypeDao")
+//@Repository("PriceTypeDao")
+@Repository
 public interface PriceTypeDao extends CrudRepository<PriceType,Long> {
 
 }

@@ -6,7 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("ProductMeasureDao")
+//@Repository("ProductMeasureDao")
+@Repository
 public interface ProductMeasureDao extends CrudRepository<ProductMeasure,Long> {
 
     //@Query("select pm.id,pm.depth,pm.depthType,pm.height,pm.heightType,pm.weight,pm.weightType from ProductMeasure as pm where pm.product.id = ? productId")

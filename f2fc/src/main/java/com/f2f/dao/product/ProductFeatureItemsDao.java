@@ -9,7 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("ProductFeatureItemsDao")
+//@Repository("ProductFeatureItemsDao")
+@Repository
 public interface ProductFeatureItemsDao extends JpaRepository<ProductFeatureItems,Long> {
 
     @Query("select t.name from ProductFeatureItems as t where t.name=:featureItemsName and t.featureItem=:featureItem")

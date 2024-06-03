@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("RelatedProductsDao")
+//@Repository("RelatedProductsDao")
+@Repository
 public interface RelatedProductsDao extends JpaRepository<Product,Long> {
 
     //List<RelatedProductsDTO> listOfRelatedProducts(Long productId);

@@ -1,9 +1,13 @@
-package com.revengemission.sso.oauth2.server.service.impl;
+package com.f2f.sso.server.service.impl;
 
-import com.revengemission.sso.oauth2.server.domain.UserInfo;
-import com.revengemission.sso.oauth2.server.persistence.entity.RoleEntity;
-import com.revengemission.sso.oauth2.server.persistence.entity.UserAccountEntity;
-import com.revengemission.sso.oauth2.server.persistence.repository.UserAccountRepository;
+//import com.f2f.sso.oauth2.server.domain.UserInfo;
+//import com.revengemission.sso.oauth2.server.persistence.entity.RoleEntity;
+//import com.revengemission.sso.oauth2.server.persistence.entity.UserAccountEntity;
+//import com.revengemission.sso.oauth2.server.persistence.repository.UserAccountRepository;
+import com.f2f.domain.UserInfo;
+import com.f2f.persistence.entity.RoleEntity;
+import com.f2f.persistence.entity.UserAccountEntity;
+import com.f2f.persistence.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

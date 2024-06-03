@@ -1,6 +1,7 @@
-package com.revengemission.sso.oauth2.server.config;
+package com.f2f.sso.server.config;
 
-import com.revengemission.sso.oauth2.server.service.CaptchaService;
+//import com.revengemission.sso.oauth2.server.service.CaptchaService;
+import com.f2f.sso.server.service.CaptchaService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

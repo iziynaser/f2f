@@ -11,7 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("ProductCategoriesDao")
+//@Repository("ProductCategoriesDao")
+@Repository
 public interface ProductCategoriesDao extends CrudRepository<ProductCategories,Long> {
 
         @Query("select  p.id as productId, " +

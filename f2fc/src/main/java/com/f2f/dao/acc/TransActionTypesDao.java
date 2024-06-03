@@ -4,7 +4,8 @@ import com.f2f.entity.acc.TransActionTypes;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("TransActionTypesDao")
+//@Repository("TransActionTypesDao")
+@Repository
 public interface TransActionTypesDao extends CrudRepository<TransActionTypes,Long>{
 
 }

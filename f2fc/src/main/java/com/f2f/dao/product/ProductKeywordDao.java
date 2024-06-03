@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("ProductKeywordDao")
+//@Repository("ProductKeywordDao")
+@Repository
 public interface ProductKeywordDao extends JpaRepository<ProductKeyword,Long> {
 
     List<ProductKeyword> findAllByProduct(Product product);

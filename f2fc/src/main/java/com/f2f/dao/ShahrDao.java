@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("ShahrDao")
+//@Repository("ShahrDao")
+@Repository
 public interface ShahrDao extends JpaRepository<Shahr,Long> {
 
     //@Query("select Shahr from Shahr as s where s.ostan.id = :id")

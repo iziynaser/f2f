@@ -1,7 +1,8 @@
-package com.revengemission.sso.oauth2.server;
+package com.f2f.sso.server;
 
-import com.revengemission.sso.oauth2.server.utils.ClientIpUtil;
-import com.revengemission.sso.oauth2.server.utils.JsonUtil;
+//import com.revengemission.sso.oauth2.server.utils.ClientIpUtil;
+//import com.revengemission.sso.oauth2.server.utils.JsonUtil;
+import com.f2f.sso.server.utils.JsonUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;

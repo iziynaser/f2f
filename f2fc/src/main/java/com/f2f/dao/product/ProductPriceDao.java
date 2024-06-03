@@ -10,7 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("ProductPriceDao")
+//@Repository("ProductPriceDao")
+@Repository
 public interface ProductPriceDao extends JpaRepository<ProductPrice,Long> {
 
     //@Query("select pps.* from ProductPrices as pps where pps.product = :product")

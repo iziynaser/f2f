@@ -1,11 +1,16 @@
-package com.revengemission.sso.oauth2.server.service.impl;
+package com.f2f.sso.server.service.impl;
 
+import com.f2f.domain.NotImplementException;
+import com.f2f.domain.ScopeDefinition;
+import com.f2f.persistence.entity.ScopeDefinitionEntity;
+import com.f2f.persistence.repository.ScopeDefinitionRepository;
+import com.f2f.sso.server.service.ScopeDefinitionService;
 import com.github.dozermapper.core.Mapper;
-import com.revengemission.sso.oauth2.server.domain.NotImplementException;
-import com.revengemission.sso.oauth2.server.domain.ScopeDefinition;
-import com.revengemission.sso.oauth2.server.persistence.entity.ScopeDefinitionEntity;
-import com.revengemission.sso.oauth2.server.persistence.repository.ScopeDefinitionRepository;
-import com.revengemission.sso.oauth2.server.service.ScopeDefinitionService;
+//import com.revengemission.sso.oauth2.server.domain.NotImplementException;
+//import com.revengemission.sso.oauth2.server.domain.ScopeDefinition;
+//import com.revengemission.sso.oauth2.server.persistence.entity.ScopeDefinitionEntity;
+//import com.revengemission.sso.oauth2.server.persistence.repository.ScopeDefinitionRepository;
+//import com.revengemission.sso.oauth2.server.service.ScopeDefinitionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

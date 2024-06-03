@@ -4,7 +4,8 @@ import com.f2f.entity.hr.PositionType;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("PositionTypeDao")
+//@Repository("PositionTypeDao")
+@Repository
 public interface PositionTypeDao extends CrudRepository<PositionType,Long> {
 
 }

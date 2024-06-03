@@ -1,4 +1,4 @@
-package com.revengemission.sso.oauth2.server;
+package com.f2f.sso.server;
 
 /*
     made by iziy

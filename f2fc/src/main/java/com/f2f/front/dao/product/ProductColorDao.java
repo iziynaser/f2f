@@ -11,7 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("ProductColorDao")
+//@Repository("ProductColorDao")
+@Repository
 public interface ProductColorDao extends JpaRepository<ProductColor,Long> {
 
     @Query(nativeQuery = true,value="select pc.color_name as name, pc.color_value as value from Product_Color as pc where pc.product_id = :id")
