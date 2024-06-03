@@ -1,4 +1,4 @@
-package com.revengemission.sso.oauth2.server.config;
+package com.f2f.sso.server.config;
 
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;

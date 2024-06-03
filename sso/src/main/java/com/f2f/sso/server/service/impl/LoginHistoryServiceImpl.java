@@ -1,12 +1,18 @@
-package com.revengemission.sso.oauth2.server.service.impl;
+package com.f2f.sso.server.service.impl;
 
+import com.f2f.domain.AlreadyExistsException;
+import com.f2f.domain.JsonObjects;
+import com.f2f.domain.LoginHistory;
+import com.f2f.persistence.entity.LoginHistoryEntity;
+import com.f2f.persistence.repository.LoginHistoryRepository;
+import com.f2f.sso.server.service.LoginHistoryService;
 import com.github.dozermapper.core.Mapper;
-import com.revengemission.sso.oauth2.server.domain.AlreadyExistsException;
-import com.revengemission.sso.oauth2.server.domain.JsonObjects;
-import com.revengemission.sso.oauth2.server.domain.LoginHistory;
-import com.revengemission.sso.oauth2.server.persistence.entity.LoginHistoryEntity;
-import com.revengemission.sso.oauth2.server.persistence.repository.LoginHistoryRepository;
-import com.revengemission.sso.oauth2.server.service.LoginHistoryService;
+//import com.revengemission.sso.oauth2.server.domain.AlreadyExistsException;
+//import com.revengemission.sso.oauth2.server.domain.JsonObjects;
+//import com.revengemission.sso.oauth2.server.domain.LoginHistory;
+//import com.revengemission.sso.oauth2.server.persistence.entity.LoginHistoryEntity;
+//import com.revengemission.sso.oauth2.server.persistence.repository.LoginHistoryRepository;
+//import com.revengemission.sso.oauth2.server.service.LoginHistoryService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

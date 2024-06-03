@@ -4,7 +4,8 @@ import com.f2f.entity.hr.Holiday;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("HolidayDao")
+//@Repository("HolidayDao")
+@Repository
 public interface HolidayDao extends CrudRepository<Holiday,Long> {
 
 }

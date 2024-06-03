@@ -4,7 +4,8 @@ import com.f2f.entity.hr.*;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("EventDao")
+//@Repository("EventDao")
+@Repository
 public interface EventDao extends CrudRepository<Event,Long> {
 
 }

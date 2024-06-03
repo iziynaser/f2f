@@ -4,6 +4,7 @@ import com.f2f.entity.acc.invoice.InvoiceStatus;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("InvoiceStatusDao")
+//@Repository("InvoiceStatusDao")
+@Repository
 public interface InvoiceStatusDao extends CrudRepository<InvoiceStatus,Long>{
 }

@@ -4,7 +4,8 @@ import com.f2f.entity.acc.PaymentType;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("PaymentTypeDao")
+//@Repository("PaymentTypeDao")
+@Repository
 public interface PaymentTypeDao extends CrudRepository<PaymentType,Long>{
 
 }

@@ -1,10 +1,15 @@
-package com.revengemission.sso.oauth2.server.controller;
+package com.f2f.sso.server.controller;
 
-import com.revengemission.sso.oauth2.server.domain.GlobalConstant;
-import com.revengemission.sso.oauth2.server.domain.JsonObjects;
-import com.revengemission.sso.oauth2.server.domain.OauthClient;
-import com.revengemission.sso.oauth2.server.domain.ResponseResult;
-import com.revengemission.sso.oauth2.server.service.OauthClientService;
+//import com.revengemission.sso.oauth2.server.domain.GlobalConstant;
+//import com.revengemission.sso.oauth2.server.domain.JsonObjects;
+//import com.revengemission.sso.oauth2.server.domain.OauthClient;
+//import com.revengemission.sso.oauth2.server.domain.ResponseResult;
+//import com.revengemission.sso.oauth2.server.service.OauthClientService;
+import com.f2f.domain.GlobalConstant;
+import com.f2f.domain.JsonObjects;
+import com.f2f.domain.OauthClient;
+import com.f2f.domain.ResponseResult;
+import com.f2f.sso.server.service.OauthClientService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

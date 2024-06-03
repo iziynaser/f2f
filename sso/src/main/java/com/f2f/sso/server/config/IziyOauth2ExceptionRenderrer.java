@@ -1,4 +1,4 @@
-package com.revengemission.sso.oauth2.server.config;
+package com.f2f.sso.server.config;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.security.oauth2.provider.error.OAuth2ExceptionRenderer;
