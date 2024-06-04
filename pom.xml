@@ -60,24 +60,24 @@
 <!--            <groupId>org.springframework.boot</groupId>-->
 <!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
 <!--        </dependency>-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>tomcat-embed-logging-juli</artifactId>
-                    <groupId>org.apache.tomcat.embed</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>tomcat-embed-websocket</artifactId>
-                    <groupId>org.apache.tomcat.embed</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>tomcat-embed-el</artifactId>
-                    <groupId>org.apache.tomcat.embed</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-web</artifactId>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>tomcat-embed-logging-juli</artifactId>-->
+<!--                    <groupId>org.apache.tomcat.embed</groupId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>tomcat-embed-websocket</artifactId>-->
+<!--                    <groupId>org.apache.tomcat.embed</groupId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>tomcat-embed-el</artifactId>-->
+<!--                    <groupId>org.apache.tomcat.embed</groupId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.modulith</groupId>
             <artifactId>spring-modulith-starter-core</artifactId>
@@ -222,27 +222,28 @@
                     </excludes>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
-                <version>1.8.3</version>
-                <configuration>
-                    <container>
-                        <containerId>tomcat9x</containerId>
-                        <type>embedded</type>
-                    </container>
-                    <deployables>
-                        <deployable>
-                            <type>war</type>
-<!--                            <location>${project.build.directory}/${project.build.finalName}.war</location>-->
-                            <location>${project.basedir}/f2fc/target/f2fc-1.0.war</location>
-                            <properties>
-                                <context>/</context>
-                            </properties>
-                        </deployable>
-                    </deployables>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.codehaus.cargo</groupId>-->
+<!--                <artifactId>cargo-maven2-plugin</artifactId>-->
+<!--                <version>1.8.3</version>-->
+<!--                <configuration>-->
+<!--                    <container>-->
+<!--                        <containerId>tomcat9x</containerId>-->
+<!--                        <type>embedded</type>-->
+<!--                    </container>-->
+<!--                    <deployables>-->
+<!--                        <deployable>-->
+<!--                            <type>war</type>-->
+<!--&lt;!&ndash;                            <location>${project.build.directory}/${project.build.finalName}.war</location>&ndash;&gt;-->
+<!--                            <location>${project.basedir}/f2fc/target/f2fc-1.0.war</location>-->
+<!--                            <location>${project.basedir}/pub/target/pub-1.0.war</location>-->
+<!--                            <properties>-->
+<!--                                <context>/</context>-->
+<!--                            </properties>-->
+<!--                        </deployable>-->
+<!--                    </deployables>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
