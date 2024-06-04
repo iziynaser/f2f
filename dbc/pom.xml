@@ -47,6 +47,7 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <configuration>
+<!--                        <outputDirectory>${user.home}/${project.parent.artifactId}/target/</outputDirectory>-->
                         <skip>true</skip>
                     </configuration>
                 </plugin>

@@ -231,15 +231,16 @@
                         <containerId>tomcat9x</containerId>
                         <type>embedded</type>
                     </container>
-<!--                    <deployables>-->
-<!--                        <deployable>-->
-<!--                            <type>war</type>-->
+                    <deployables>
+                        <deployable>
+                            <type>war</type>
 <!--                            <location>${project.build.directory}/${project.build.finalName}.war</location>-->
-<!--                            <properties>-->
-<!--                                <context>/</context>-->
-<!--                            </properties>-->
-<!--                        </deployable>-->
-<!--                    </deployables>                    -->
+                            <location>${project.basedir}/f2fc/target/f2fc-1.0.war</location>
+                            <properties>
+                                <context>/</context>
+                            </properties>
+                        </deployable>
+                    </deployables>
                 </configuration>
             </plugin>
             <plugin>
