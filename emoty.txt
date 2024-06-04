@@ -1,0 +1,30 @@
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat8-maven-plugin</artifactId>
+                <version>3.0-r1756463</version>
+<!--                <dependencies>-->
+<!--                    <dependency>-->
+<!--                        <groupId>org.apache.tomcat.embed</groupId>-->
+<!--                        <artifactId>tomcat-embed-core</artifactId>-->
+<!--                        <version>${tomcat7-version}</version>-->
+<!--                    </dependency>-->
+<!--                </dependencies>-->
+                <configuration>
+                    <!-- http port -->
+                    <port>8080</port>
+                    <url>http://localhost:8080/manager</url>
+                    <server>localhost</server>
+                    <!-- application path always starts with /-->
+                    <path>/</path>
+                    <!--			                    <webapps>-->
+                    <!--			                        <webapp>-->
+                    <!--			                            <contextPath>/hr</contextPath>-->
+                    <!--			                            <groupId>hr</groupId>-->
+                    <!--			                            <artifactId>hr</artifactId>-->
+                    <!--			                            <version>0.3-SNAPSHOT</version>-->
+                    <!--			                            <type>war</type>-->
+                    <!--			                            <asWebapp>true</asWebapp>-->
+                    <!--			                        </webapp>-->
+                    <!--			                    </webapps>-->
+                </configuration>
+            </plugin>
