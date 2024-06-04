@@ -21,8 +21,8 @@
     <modules>
         <module>dbc</module>
         <module>sso</module>
+        <module>pub</module>
         <module>f2fc</module>
-<!--        <module>pub</module>-->
     </modules>
 
     <properties>
@@ -36,8 +36,24 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <jakarta-servlet.version>5.0.0</jakarta-servlet.version>
-        <tomcat7-version>7.0.93</tomcat7-version>
+<!--        <tomcat7-version>9.0.83</tomcat7-version> &lt;!&ndash;         <tomcat7-version>7.0.93</tomcat7-version> &ndash;&gt;-->
     </properties>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Repository Switchboard</name>
+            <layout>default</layout>
+            <url>https://repo1.maven.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>alfresco-public</id>
+            <url>https://artifacts.alfresco.com/nexus/content/repositories/public</url>
+        </repository>
+    </repositories>
 
     <dependencies>
 <!--        <dependency>-->
@@ -47,6 +63,20 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>tomcat-embed-logging-juli</artifactId>
+                    <groupId>org.apache.tomcat.embed</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>tomcat-embed-websocket</artifactId>
+                    <groupId>org.apache.tomcat.embed</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>tomcat-embed-el</artifactId>
+                    <groupId>org.apache.tomcat.embed</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.modulith</groupId>
@@ -61,11 +91,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -198,33 +223,23 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.tomcat.embed</groupId>
-                        <artifactId>tomcat-embed-core</artifactId>
-                        <version>${tomcat7-version}</version>
-                    </dependency>
-                </dependencies>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.8.3</version>
                 <configuration>
-                    <!-- http port -->
-                    <port>8080</port>
-                    <url>http://localhost:8080/manager</url>
-                    <server>localhost</server>
-                    <!-- application path always starts with /-->
-                    <path>/</path>
-                    <!--			                    <webapps>-->
-                    <!--			                        <webapp>-->
-                    <!--			                            <contextPath>/hr</contextPath>-->
-                    <!--			                            <groupId>hr</groupId>-->
-                    <!--			                            <artifactId>hr</artifactId>-->
-                    <!--			                            <version>0.3-SNAPSHOT</version>-->
-                    <!--			                            <type>war</type>-->
-                    <!--			                            <asWebapp>true</asWebapp>-->
-                    <!--			                        </webapp>-->
-                    <!--			                    </webapps>-->
+                    <container>
+                        <containerId>tomcat9x</containerId>
+                        <type>embedded</type>
+                    </container>
+<!--                    <deployables>-->
+<!--                        <deployable>-->
+<!--                            <type>war</type>-->
+<!--                            <location>${project.build.directory}/${project.build.finalName}.war</location>-->
+<!--                            <properties>-->
+<!--                                <context>/</context>-->
+<!--                            </properties>-->
+<!--                        </deployable>-->
+<!--                    </deployables>                    -->
                 </configuration>
             </plugin>
             <plugin>
