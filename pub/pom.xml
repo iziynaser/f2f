@@ -10,18 +10,28 @@
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.f2f.pub</groupId>
+    <packaging>war</packaging>
+    <groupId>com.f2f</groupId>
     <artifactId>pub</artifactId>
     <version>1.0</version>
-
-    <packaging>war</packaging>
-
-    <description>pub application</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
@@ -47,7 +57,7 @@
                     <artifactId>maven-war-plugin</artifactId>
                     <version>3.4.0</version>
                     <configuration>
-<!--                        <outputDirectory>${user.home}/${project.parent.artifactId}/target/</outputDirectory>-->
+                        <!--                        <outputDirectory>${user.home}/${project.parent.artifactId}/target/</outputDirectory>-->
                         <archive>
                             <manifest>
                                 <addClasspath>true</addClasspath>
