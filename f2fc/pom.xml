@@ -13,7 +13,7 @@
     <packaging>war</packaging>
     <groupId>com.f2f</groupId>
     <artifactId>f2fc</artifactId>
-    <version>${project.version}</version>
+    <version>1.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -85,7 +85,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>6.1.6</version>
+<!--            <version>6.1.6</version>-->
         </dependency>
     </dependencies>
     <build>

@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>dbc</artifactId>
-    <version>${project.version}</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -19,6 +19,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-data-jpa</artifactId>

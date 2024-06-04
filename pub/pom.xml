@@ -12,7 +12,7 @@
 
     <groupId>com.f2f.pub</groupId>
     <artifactId>pub</artifactId>
-    <version>${project.version}</version>
+    <version>1.0</version>
 
     <packaging>war</packaging>
 
