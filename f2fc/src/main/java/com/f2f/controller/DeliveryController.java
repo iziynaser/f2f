@@ -1,4 +1,4 @@
-package com.f2f;
+package com.f2f.controller;
 
 import com.f2f.entity.Delivery;
 import com.f2f.entity.DeliveryDTO;

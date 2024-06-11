@@ -1,7 +1,6 @@
 package com.f2f.controller.product.storage;
 
 import com.f2f.config.StorageProperties;
-import org.bouncycastle.util.StoreException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -67,10 +66,12 @@ public class FileSystemStorageService implements StorageService{
                 Files.copy(inputStream,dirPathObj.resolve(filename),StandardCopyOption.REPLACE_EXISTING);
 
             }catch (IOException ioe){
-                throw new StoreException("failed to store file"+filename,ioe);
+                //throw new StoreException("failed to store file"+filename,ioe);
+                throw new Exception("failed to store file"+filename);
             }
         }catch (Exception e){
-            throw new StoreException("failed to store file"+filename,e);
+            //throw new StoreException("failed to store file"+filename,e);
+            System.out.println("failed to store file"+filename+e.toString());
         }
         return filename;
     }

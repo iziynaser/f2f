@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 @PreAuthorize("isAuthenticated()")
 public class SocialSettingService {
 
-    @Autowired
-    SocialSettingDao socialSettingDao ;
+//    @Autowired
+//    SocialSettingDao socialSettingDao ;
 
     public SocialSettingDTO saveOrUpdate(SocialSettingDTO socialSettingDTO) {
         SocialSetting socialSetting = new SocialSetting();

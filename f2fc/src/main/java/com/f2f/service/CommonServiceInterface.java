@@ -5,7 +5,9 @@ import com.f2f.domain.AlreadyExistsException;
 import com.f2f.domain.EntityNotFoundException;
 import com.f2f.domain.JsonObjects;
 import com.f2f.domain.NotImplementException;
+import org.springframework.stereotype.Service;
 
+@Service
 public interface CommonServiceInterface<T> {
 
 

@@ -16,12 +16,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class CategoryService {
 
-    @Autowired
-    CategoryDao categoryDao;
+
+    private CategoryDao categoryDao;
 
     @Autowired
     CategoryTypeDao categoryTypeDao;
 
+    @Autowired
+    CategoryService(CategoryDao categoryDao){
+        this.categoryDao = categoryDao;
+    }
     public Category save(CategoryDTO categoryDTO){
 
         Optional<Category> optionalCategory = categoryDao.findById(Long.valueOf(categoryDTO.getParentCategory()));
