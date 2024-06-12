@@ -1,7 +1,7 @@
 package com.f2f.entity.content;
 
 import com.f2f.entity.common.Category;
-import com.f2f.persistance.entity.BaseEntity;
+import com.f2f.persistence.entity.BaseEntity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;

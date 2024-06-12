@@ -3,13 +3,15 @@ package com.f2f.service.comment;
 import com.f2f.dao.comment.CommentDTO;
 import com.f2f.dao.comment.CommentDTOS;
 import com.f2f.dao.comment.CommentDao;
+import com.f2f.domain.UserAccount;
 import com.f2f.entity.common.Comment;
 import com.f2f.entity.common.CommentBenefits;
 import com.f2f.entity.common.CommentTarget;
 import com.f2f.entity.common.CommentUpsets;
+import com.f2f.persistence.entity.UserAccountEntity;
 import com.f2f.service.product.ProductService;
 import com.github.dozermapper.core.Mapper;
-import com.f2f.domain.UserAccount;
+//import com.f2f.domain.UserAccount;
 import com.f2f.persistance.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -43,7 +45,7 @@ public class CommentService {
 
     public CommentDTOS createComment(CommentDTOS commentDTO, CommentTarget commentTarget, UserAccount userAccount) {
 
-        UserAccountEntity userAccountEntity = mapper.map(userAccount,UserAccountEntity.class);
+        UserAccountEntity userAccountEntity = mapper.map(userAccount, UserAccountEntity.class);
 
         Comment comment = new Comment();
 

@@ -1,10 +1,6 @@
-package com.revengemission.sso.oauth2.server.f2f.domain.budget;
+package com.f2f.entity.budget;
 
-import com.f2f.persistance.entity.BaseEntity;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.f2f.persistence.entity.BaseEntity;
 import java.io.Serializable;
 
 public class BudgetItemType extends BaseEntity implements Serializable {

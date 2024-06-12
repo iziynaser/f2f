@@ -1,6 +1,7 @@
 package com.f2f.persistance.repository;
 
 import com.f2f.persistance.entity.*;
+import com.f2f.persistence.entity.UserAccountEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

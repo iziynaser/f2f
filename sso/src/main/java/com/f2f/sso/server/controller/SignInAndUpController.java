@@ -1,12 +1,5 @@
 package com.f2f.sso.server.controller;
 
-//import com.revengemission.sso.oauth2.server.config.CachesEnum;
-//import com.revengemission.sso.oauth2.server.domain.*;
-//import com.revengemission.sso.oauth2.server.service.CaptchaService;
-//import com.revengemission.sso.oauth2.server.service.OauthClientService;
-//import com.revengemission.sso.oauth2.server.service.RoleService;
-//import com.revengemission.sso.oauth2.server.service.UserAccountService;
-//import com.revengemission.sso.oauth2.server.utils.CheckPasswordStrength;
 //import io.micrometer.core.annotation.Timed;
 import com.f2f.domain.*;
 import com.f2f.sso.server.config.CachesEnum;

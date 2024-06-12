@@ -1,6 +1,6 @@
-package com.revengemission.sso.oauth2.server.f2f.domain.budget;
+package com.f2f.entity.budget;
 
-import com.f2f.persistance.entity.BaseEntity;
+import com.f2f.persistence.entity.BaseEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;

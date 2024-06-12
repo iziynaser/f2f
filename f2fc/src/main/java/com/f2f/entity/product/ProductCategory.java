@@ -1,10 +1,8 @@
 package  com.f2f.entity.product;
 
-import com.f2f.persistance.entity.BaseEntity;
-
+import com.f2f.persistence.entity.BaseEntity;
 import javax.persistence.*;
 import java.io.Serializable;
-
 @Entity
 @Table(name = "PRODUCT_CATEGORY")
 public class ProductCategory extends BaseEntity implements Serializable {

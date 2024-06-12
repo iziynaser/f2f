@@ -5,6 +5,7 @@ import com.f2f.entity.Delivery;
 import com.f2f.domain.UserAccount;
 import com.f2f.persistance.entity.*;
 import com.f2f.persistance.entity.*;
+import com.f2f.persistence.entity.UserAccountEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.f2f.persistance.repository.*;

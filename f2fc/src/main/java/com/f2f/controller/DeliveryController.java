@@ -1,17 +1,17 @@
 package com.f2f.controller;
 
+import com.f2f.domain.UserAccount;
 import com.f2f.entity.Delivery;
 import com.f2f.entity.DeliveryDTO;
 import com.f2f.entity.Ostan;
 import com.f2f.entity.Shahr;
+import com.f2f.persistence.entity.UserAccountEntity;
 import com.f2f.service.DeliveryService;
 import com.f2f.service.OstanService;
 import com.f2f.service.ShahrService;
+import com.f2f.service.UserAccountService;
 import com.github.dozermapper.core.Mapper;
 import com.f2f.domain.EntityNotFoundException;
-import com.f2f.domain.UserAccount;
-import com.f2f.persistance.entity.*;
-import com.f2f.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +21,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/f2f/Delivery")
 public class DeliveryController {
-
 
     @Autowired
     UserAccountService userAccountService;

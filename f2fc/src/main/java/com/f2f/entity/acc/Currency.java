@@ -1,11 +1,8 @@
 package com.f2f.entity.acc;
 
-//import com.revengemission.sso.oauth2.server.persistence.entity.BaseEntity;
-import com.f2f.persistance.entity.BaseEntity;
-
+import com.f2f.persistence.entity.BaseEntity;
 import javax.persistence.*;
 import java.io.Serializable;
-
 @Entity
 @Table(name = "ACC_CURRENCY")
 public class Currency extends BaseEntity implements Serializable {

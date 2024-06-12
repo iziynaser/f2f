@@ -1,13 +1,12 @@
 package com.f2f.entity.common;
 
-//import com.revengemission.sso.oauth2.server.persistence.entity.BaseEntity;
-import com.f2f.persistance.entity.BaseEntity;
-
+import com.f2f.persistence.entity.BaseEntity;
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "ROLE_TYPE")
-public class RoleType extends BaseEntity {
+public class RoleType extends BaseEntity implements Serializable {
 
     @Column(name = "NAME")
     private String name;

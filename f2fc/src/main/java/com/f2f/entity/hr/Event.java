@@ -1,9 +1,7 @@
 package com.f2f.entity.hr;
 
-
 import com.f2f.entity.common.Person;
-import com.f2f.persistance.entity.BaseEntity;
-
+import com.f2f.persistence.entity.BaseEntity;
 import javax.persistence.*;
 import java.io.Serializable;
 

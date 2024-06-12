@@ -1,7 +1,6 @@
-package com.revengemission.sso.oauth2.server.f2f.domain.common;
+package com.f2f.entity.common;
 
-//import com.revengemission.sso.oauth2.server.persistence.entity.BaseEntity;
-import com.f2f.persistance.entity.BaseEntity;
+import com.f2f.persistence.entity.BaseEntity;
 
 public class UserDetailsAdapter extends BaseEntity {
 

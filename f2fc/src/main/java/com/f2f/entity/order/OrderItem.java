@@ -1,8 +1,6 @@
-package com.revengemission.sso.oauth2.server.f2f.domain.order;
+package com.f2f.entity.order;
 
-//import com.revengemission.sso.oauth2.server.persistence.entity.BaseEntity;
-import com.f2f.persistance.entity.BaseEntity;
-
+import com.f2f.persistence.entity.BaseEntity;
 import javax.persistence.*;
 import java.io.Serializable;
 

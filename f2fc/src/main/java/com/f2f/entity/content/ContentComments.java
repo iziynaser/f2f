@@ -1,9 +1,7 @@
 package com.f2f.entity.content;
 
 import com.f2f.entity.common.Comment;
-//import com.revengemission.sso.oauth2.server.persistence.entity.BaseEntity;
-import com.f2f.persistance.entity.BaseEntity;
-
+import com.f2f.persistence.entity.BaseEntity;
 import javax.persistence.*;
 import java.io.Serializable;
 
