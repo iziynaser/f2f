@@ -5,10 +5,11 @@ package com.f2f.entity.hr;
 import com.f2f.persistence.entity.BaseEntity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "PAYMENT_METHOD_TYPE")
-public class PaymentMethodType extends BaseEntity {
+public class PaymentMethodType extends BaseEntity implements Serializable {
 
     @Column(name = "NAME")
     private String name;
