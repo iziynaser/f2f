@@ -21,4 +21,12 @@ public class RoleEntity extends BaseEntity {
     public void setRoleName(String roleName) {
         this.roleName = roleName;
     }
+
+    public RoleEntity(){
+        this.roleName="";
+    }
+
+    public RoleEntity(String roleName){
+         this.roleName = roleName;
+    }
 }

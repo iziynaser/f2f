@@ -19,4 +19,12 @@ public class Role extends BaseDomain {
     public void setRoleName(String roleName) {
         this.roleName = roleName;
     }
+
+    public Role(){
+        roleName = "";
+    }
+
+    public Role(String roleName){
+        this.roleName = roleName;
+    }
 }
