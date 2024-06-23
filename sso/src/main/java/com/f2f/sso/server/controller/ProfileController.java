@@ -2,7 +2,7 @@ package com.f2f.sso.server.controller;
 
 import com.f2f.domain.EntityNotFoundException;
 import com.f2f.domain.UserAccount;
-import com.f2f.sso.server.service.UserAccountService;
+import com.f2f.dbc.service.UserAccountService;
 import com.fasterxml.jackson.annotation.JsonFormat;
 //import com.revengemission.sso.oauth2.server.domain.EntityNotFoundException;
 //import com.revengemission.sso.oauth2.server.domain.UserAccount;
