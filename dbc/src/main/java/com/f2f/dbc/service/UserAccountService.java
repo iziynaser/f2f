@@ -1,4 +1,4 @@
-package com.f2f.sso.server.service;
+package com.f2f.dbc.service;
 
 import com.f2f.domain.EntityNotFoundException;
 import com.f2f.domain.JsonObjects;
