@@ -2,10 +2,11 @@ package com.f2f.entity.hr;
 
 import com.f2f.persistence.entity.BaseEntity;
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "PERIOD_TYPE")
-public class PeriodType extends BaseEntity {
+public class PeriodType extends BaseEntity implements Serializable {
 
     @Column(name = "NAME")
     private String name;
