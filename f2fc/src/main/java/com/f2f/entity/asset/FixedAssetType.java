@@ -2,10 +2,11 @@ package com.f2f.entity.asset;
 
 import com.f2f.persistence.entity.BaseEntity;
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "FIXED_ASSET_TYPE")
-public class FixedAssetType extends BaseEntity {
+public class FixedAssetType extends BaseEntity implements Serializable {
 
     @Column(name = "NAME")
     private String name;
