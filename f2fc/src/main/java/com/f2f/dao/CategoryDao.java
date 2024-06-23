@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 //@Repository("CategoryDao")
-@Repository("CategoryDao")
+@Repository
 public interface CategoryDao  extends CrudRepository<Category,Long> {
 
 //    Iterable<Category> findAllByParentCategory(Category parentCategory);
