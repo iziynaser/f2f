@@ -1,21 +1,23 @@
 package com.f2f.controller;
 
+import com.f2f.dbc.service.UserAccountService;
+import com.f2f.domain.Role;
 import com.f2f.domain.UserAccount;
 import com.f2f.entity.Delivery;
 import com.f2f.entity.DeliveryDTO;
 import com.f2f.entity.Ostan;
 import com.f2f.entity.Shahr;
+import com.f2f.persistence.entity.RoleEntity;
 import com.f2f.persistence.entity.UserAccountEntity;
 import com.f2f.service.DeliveryService;
 import com.f2f.service.OstanService;
 import com.f2f.service.ShahrService;
-import com.f2f.service.UserAccountService;
-import com.github.dozermapper.core.Mapper;
 import com.f2f.domain.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -34,9 +36,35 @@ public class DeliveryController {
     @Autowired
     ShahrService shahrService;
 
-    @Autowired
-    Mapper mapper;
+//    @Autowired
+//    Mapper mapper;
 
+    public UserAccountEntity copy(UserAccount ua){
+        UserAccountEntity uae = new UserAccountEntity();
+        uae.setUsername(ua.getUsername());
+        uae.setPassword(ua.getPassword());
+        uae.setAccountOpenCode(ua.getAccountOpenCode());
+        uae.setNickName(ua.getNickName());
+        uae.setAvatarUrl(ua.getAvatarUrl());
+        uae.setEmail(ua.getEmail());
+        uae.setMobile(ua.getMobile());
+        uae.setProvince(ua.getProvince());
+        uae.setCity(ua.getCity());
+        uae.setAddress(ua.getAddress());
+        uae.setBirthday(ua.getBirthday());
+        uae.setGender(ua.getGender());
+        uae.setFailureTime(ua.getFailureTime());
+        uae.setFailureCount(ua.getFailureCount());
+        uae.setRoles(copyRoles(ua.getRoles()));
+        return uae;
+    }
+    public List<RoleEntity> copyRoles(List<Role> list){
+        List<RoleEntity> roles = new ArrayList<RoleEntity>();
+        for(int i=0;i<roles.size();i++){
+            roles.add(new RoleEntity(roles.get(i).getRoleName()));
+        }
+        return roles;
+    }
     @GetMapping("/list")
     public List<Delivery> getDeliveriesForUser(Principal principal){
         UserAccount userAccount = userAccountService.findByUsername(principal.getName());
@@ -57,7 +85,8 @@ public class DeliveryController {
     @DeleteMapping("/delete")
     public String deleteDeliveryAddress(Principal principal,@RequestBody DeliveryDTO deliveryDto){
         UserAccount userAccount = userAccountService.findByUsername(principal.getName());
-        UserAccountEntity userAccountEntity = mapper.map(userAccount,UserAccountEntity.class);
+        //UserAccountEntity userAccountEntity = mapper.map(userAccount,UserAccountEntity.class);
+        UserAccountEntity userAccountEntity = copy(userAccount);
 
         Delivery delivery = deliveryService.findFirstById(deliveryDto.getId());
         if(!delivery.getUserAccountEntity().getUsername().equals(userAccount.getUsername()))
@@ -72,7 +101,8 @@ public class DeliveryController {
     public DeliveryDTO createDeliveryAddress(Principal principal,@RequestBody DeliveryDTO deliveryDto){
 
         UserAccount userAccount = userAccountService.findByUsername(principal.getName());
-        UserAccountEntity userAccountEntity = mapper.map(userAccount, UserAccountEntity.class);
+        //UserAccountEntity userAccountEntity = mapper.map(userAccount, UserAccountEntity.class);
+        UserAccountEntity userAccountEntity = copy(userAccount);
 
         Ostan ostan = ostanService.getOne(deliveryDto.getOstanId());
         if(ostan==null)
