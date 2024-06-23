@@ -8,13 +8,6 @@ import com.f2f.persistence.entity.OauthClientEntity;
 import com.f2f.persistence.repository.OauthClientRepository;
 import com.f2f.sso.server.service.OauthClientService;
 import com.github.dozermapper.core.Mapper;
-//import com.revengemission.sso.oauth2.server.domain.AlreadyExistsException;
-//import com.revengemission.sso.oauth2.server.domain.EntityNotFoundException;
-//import com.revengemission.sso.oauth2.server.domain.JsonObjects;
-//import com.revengemission.sso.oauth2.server.domain.OauthClient;
-//import com.revengemission.sso.oauth2.server.persistence.entity.OauthClientEntity;
-//import com.revengemission.sso.oauth2.server.persistence.repository.OauthClientRepository;
-//import com.revengemission.sso.oauth2.server.service.OauthClientService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,6 +17,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.Column;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -32,14 +27,51 @@ public class OauthClientServiceImpl implements OauthClientService {
     @Autowired
     OauthClientRepository oauthClientRepository;
 
-    @Autowired
-    Mapper dozerMapper;
+//    @Autowired
+//    Mapper dozerMapper;
+
+    public OauthClient copy(OauthClientEntity oauthClientEntity){
+        OauthClient oauthClient = new OauthClient();
+        oauthClient.setClientId(oauthClientEntity.getClientId());
+        oauthClient.setApplicationName(oauthClientEntity.getApplicationName());
+        oauthClient.setResourceIds(oauthClientEntity.getResourceIds());
+        oauthClient.setClientSecret(oauthClientEntity.getClientSecret());
+        oauthClient.setScope(oauthClientEntity.getScope());
+        oauthClient.setAuthorizedGrantTypes(oauthClientEntity.getAuthorizedGrantTypes());
+        oauthClient.setWebServerRedirectUri(oauthClientEntity.getWebServerRedirectUri());
+        oauthClient.setAuthorities(oauthClientEntity.getAuthorities());
+        oauthClient.setAccessTokenValidity(oauthClientEntity.getAccessTokenValidity());
+        oauthClient.setRefreshTokenValidity(oauthClientEntity.getRefreshTokenValidity());
+        oauthClient.setAdditionalInformation(oauthClientEntity.getAdditionalInformation());
+        oauthClient.setAutoApprove(oauthClientEntity.getAutoApprove());
+        oauthClient.setExpirationDate(oauthClientEntity.getExpirationDate());
+        return oauthClient;
+    }
+
+    public OauthClientEntity copy(OauthClient oauthClient){
+        OauthClientEntity oauthClientEntity = new OauthClientEntity();
+        oauthClientEntity.setClientId(oauthClient.getClientId());
+        oauthClientEntity.setApplicationName(oauthClient.getApplicationName());
+        oauthClientEntity.setResourceIds(oauthClient.getResourceIds());
+        oauthClientEntity.setClientSecret(oauthClient.getClientSecret());
+        oauthClientEntity.setScope(oauthClient.getScope());
+        oauthClientEntity.setAuthorizedGrantTypes(oauthClient.getAuthorizedGrantTypes());
+        oauthClientEntity.setWebServerRedirectUri(oauthClient.getWebServerRedirectUri());
+        oauthClientEntity.setAuthorities(oauthClient.getAuthorities());
+        oauthClientEntity.setAccessTokenValidity(oauthClient.getAccessTokenValidity());
+        oauthClientEntity.setRefreshTokenValidity(oauthClient.getRefreshTokenValidity());
+        oauthClientEntity.setAdditionalInformation(oauthClient.getAdditionalInformation());
+        oauthClientEntity.setAutoApprove(oauthClient.getAutoApprove());
+        oauthClientEntity.setExpirationDate(oauthClient.getExpirationDate());
+        return oauthClientEntity;
+    }
 
     @Override
     public OauthClient findByClientId(String clientId) {
         OauthClientEntity oauthClientEntity = oauthClientRepository.findByClientId(clientId);
         if (oauthClientEntity != null) {
-            return dozerMapper.map(oauthClientEntity, OauthClient.class);
+            //return dozerMapper.map(oauthClientEntity, OauthClient.class);
+            return copy(oauthClientEntity);
         } else {
             return null;
         }
@@ -59,7 +91,8 @@ public class OauthClientServiceImpl implements OauthClientService {
         if (page.getContent() != null && page.getContent().size() > 0) {
             jsonObjects.setRecordsTotal(page.getTotalElements());
             jsonObjects.setRecordsFiltered(page.getTotalElements());
-            page.getContent().forEach(u -> jsonObjects.getData().add(dozerMapper.map(u, OauthClient.class)));
+            //page.getContent().forEach(u -> jsonObjects.getData().add(dozerMapper.map(u, OauthClient.class)));
+            page.getContent().forEach(u -> jsonObjects.getData().add(copy(u)));
         }
         return jsonObjects;
     }
@@ -70,15 +103,19 @@ public class OauthClientServiceImpl implements OauthClientService {
         if (exist != null) {
             throw new AlreadyExistsException(oauthClient.getClientId() + " already exists!");
         }
-        OauthClientEntity oauthClientEntity = dozerMapper.map(oauthClient, OauthClientEntity.class);
+        //OauthClientEntity oauthClientEntity = dozerMapper.map(oauthClient, OauthClientEntity.class);
+        OauthClientEntity oauthClientEntity = copy(oauthClient);
         oauthClientRepository.save(oauthClientEntity);
-        return dozerMapper.map(oauthClientEntity, OauthClient.class);
+        //return dozerMapper.map(oauthClientEntity, OauthClient.class);
+        return copy(oauthClientEntity);
     }
 
     @Override
     public OauthClient retrieveById(long id) throws EntityNotFoundException {
         Optional<OauthClientEntity> entityOptional = oauthClientRepository.findById(id);
-        return dozerMapper.map(entityOptional.orElseThrow(EntityNotFoundException::new), OauthClient.class);
+        //return dozerMapper.map(entityOptional.orElseThrow(EntityNotFoundException::new), OauthClient.class);
+        OauthClientEntity  oe = entityOptional.orElseThrow(EntityNotFoundException::new);
+        return copy(oe);
     }
 
     @Override
@@ -98,7 +135,8 @@ public class OauthClientServiceImpl implements OauthClientService {
         }
 
         oauthClientRepository.save(e);
-        return dozerMapper.map(e, OauthClient.class);
+        //return dozerMapper.map(e, OauthClient.class);
+        return copy(e);
     }
 
     @Override
