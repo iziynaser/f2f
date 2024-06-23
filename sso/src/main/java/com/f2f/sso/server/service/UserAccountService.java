@@ -1,9 +1,5 @@
 package com.f2f.sso.server.service;
 
-//import com.revengemission.sso.oauth2.server.domain.EntityNotFoundException;
-//import com.revengemission.sso.oauth2.server.domain.JsonObjects;
-//import com.revengemission.sso.oauth2.server.domain.UserAccount;
-
 import com.f2f.domain.EntityNotFoundException;
 import com.f2f.domain.JsonObjects;
 import com.f2f.domain.UserAccount;
