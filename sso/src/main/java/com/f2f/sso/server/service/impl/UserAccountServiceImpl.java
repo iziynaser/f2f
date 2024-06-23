@@ -1,16 +1,13 @@
 package com.f2f.sso.server.service.impl;
 
-import com.f2f.domain.AlreadyExistsException;
+import com.f2f.domain.*;
 import com.f2f.domain.EntityNotFoundException;
-import com.f2f.domain.JsonObjects;
-import com.f2f.domain.UserAccount;
 import com.f2f.persistence.entity.RoleEntity;
 import com.f2f.persistence.entity.UserAccountEntity;
 import com.f2f.persistence.repository.RoleRepository;
 import com.f2f.persistence.repository.UserAccountRepository;
-import com.f2f.sso.server.service.UserAccountService;
+import com.f2f.dbc.service.UserAccountService;
 import com.f2f.sso.server.utils.DateUtil;
-import com.github.dozermapper.core.Mapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,6 +20,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,8 +33,8 @@ public class UserAccountServiceImpl implements UserAccountService {
     @Autowired
     RoleRepository roleRepository;
 
-    @Autowired
-    Mapper dozerMapper;
+//    @Autowired
+//    Mapper dozerMapper;
 
     @Value("${signin.failure.max:5}")
     private int failureMax;
@@ -59,7 +58,8 @@ public class UserAccountServiceImpl implements UserAccountService {
         if (page.getContent() != null && page.getContent().size() > 0) {
             jsonObjects.setRecordsTotal(page.getTotalElements());
             jsonObjects.setRecordsFiltered(page.getTotalElements());
-            page.getContent().forEach(u -> jsonObjects.getData().add(dozerMapper.map(u, UserAccount.class)));
+            //page.getContent().forEach(u -> jsonObjects.getData().add(dozerMapper.map(u, UserAccount.class)));
+            page.getContent().forEach(u -> jsonObjects.getData().add(copy(u)));
         }
         return jsonObjects;
 
@@ -72,7 +72,8 @@ public class UserAccountServiceImpl implements UserAccountService {
         if (exist != null) {
             throw new AlreadyExistsException(userAccount.getUsername() + " already exists!");
         }
-        UserAccountEntity userAccountEntity = dozerMapper.map(userAccount, UserAccountEntity.class);
+        //UserAccountEntity userAccountEntity = dozerMapper.map(userAccount, UserAccountEntity.class);
+        UserAccountEntity userAccountEntity = copy(userAccount);
         userAccountEntity.getRoles().clear();
         if (userAccount.getRoles() != null && userAccount.getRoles().size() > 0) {
             userAccount.getRoles().forEach(e -> {
@@ -85,13 +86,70 @@ public class UserAccountServiceImpl implements UserAccountService {
             });
         }
         userAccountRepository.save(userAccountEntity);
-        return dozerMapper.map(userAccountEntity, UserAccount.class);
+        //return dozerMapper.map(userAccountEntity, UserAccount.class);
+        return copy(userAccountEntity);
+    }
+
+    public UserAccountEntity copy(UserAccount ua){
+        UserAccountEntity uae = new UserAccountEntity();
+        uae.setUsername(ua.getUsername());
+        uae.setPassword(ua.getPassword());
+        uae.setAccountOpenCode(ua.getAccountOpenCode());
+        uae.setNickName(ua.getNickName());
+        uae.setAvatarUrl(ua.getAvatarUrl());
+        uae.setEmail(ua.getEmail());
+        uae.setMobile(ua.getMobile());
+        uae.setProvince(ua.getProvince());
+        uae.setCity(ua.getCity());
+        uae.setAddress(ua.getAddress());
+        uae.setBirthday(ua.getBirthday());
+        uae.setGender(ua.getGender());
+        uae.setFailureTime(ua.getFailureTime());
+        uae.setFailureCount(ua.getFailureCount());
+        uae.setRoles(copyRoles(ua.getRoles()));
+        return uae;
+    }
+
+    public UserAccount copy(UserAccountEntity uae){
+         UserAccount ua = new UserAccount();
+         ua.setUsername(uae.getUsername());
+         ua.setPassword(uae.getPassword());
+         ua.setAccountOpenCode(uae.getAccountOpenCode());
+         ua.setNickName(uae.getNickName());
+         ua.setAvatarUrl(uae.getAvatarUrl());
+         ua.setEmail(uae.getEmail());
+         ua.setMobile(uae.getMobile());
+         ua.setProvince(uae.getProvince());
+         ua.setCity(uae.getCity());
+         ua.setAddress(uae.getAddress());
+         ua.setBirthday(uae.getBirthday());
+         ua.setGender(uae.getGender());
+         ua.setFailureTime(uae.getFailureTime());
+         ua.setFailureCount(uae.getFailureCount());
+         ua.setRoles(copyRoleEntities(uae.getRoles())); ;
+         return ua;
+    }
+
+    public List<RoleEntity> copyRoles(List<Role> list){
+        List<RoleEntity> roles = new ArrayList<RoleEntity>();
+        for(int i=0;i<roles.size();i++){
+            roles.add(new RoleEntity(roles.get(i).getRoleName()));
+        }
+        return roles;
+    }
+    public List<Role> copyRoleEntities(List<RoleEntity> roleEntities){
+        List<Role> roles = new ArrayList<Role>();
+        for(int i=0;i<roleEntities.size();i++)
+            roles.add(new Role(roleEntities.get(i).getRoleName()));
+        return roles;
     }
 
     @Override
     public UserAccount retrieveById(long id) throws EntityNotFoundException {
         Optional<UserAccountEntity> entityOptional = userAccountRepository.findById(id);
-        return dozerMapper.map(entityOptional.orElseThrow(EntityNotFoundException::new), UserAccount.class);
+        //return dozerMapper.map(entityOptional.orElseThrow(EntityNotFoundException::new), UserAccount.class);
+        UserAccount ua = copy(entityOptional.orElseThrow(EntityNotFoundException::new));
+        return ua;
     }
 
     @Override
@@ -112,7 +170,8 @@ public class UserAccountServiceImpl implements UserAccountService {
         e.setEmail(userAccount.getEmail());
 
         userAccountRepository.save(e);
-        return dozerMapper.map(e, UserAccount.class);
+        //return dozerMapper.map(e, UserAccount.class);
+        return copy(e);
     }
 
     @Override
@@ -128,7 +187,8 @@ public class UserAccountServiceImpl implements UserAccountService {
     public UserAccount findByUsername(String username) throws EntityNotFoundException {
         UserAccountEntity userAccountEntity = userAccountRepository.findByUsername(username);
         if (userAccountEntity != null) {
-            return dozerMapper.map(userAccountEntity, UserAccount.class);
+            //return dozerMapper.map(userAccountEntity, UserAccount.class);
+            return copy(userAccountEntity);
         } else {
             throw new EntityNotFoundException(username + " not found!");
         }
