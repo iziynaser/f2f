@@ -1,5 +1,6 @@
 package com.f2f.service.impl;
 
+import com.f2f.email.EmailAddressType;
 import com.f2f.entity.EmailAddress;
 import com.f2f.persistance.entity.EmailAddressEntity;
 import com.f2f.persistance.repository.EmailAdressRepository;
@@ -16,8 +17,8 @@ public class EmailAddressServiceImpl implements EmailAddressService {
     @Autowired
 EmailAdressRepository emailAdressRepository;
 
-    @Autowired
-    Mapper dozerMapper;
+//    @Autowired
+//    Mapper dozerMapper;
 
     @Override
     public JsonObjects<EmailAddressEntity> listOfEmailsByPersonId(Integer personId) {
@@ -33,8 +34,28 @@ EmailAdressRepository emailAdressRepository;
             throw new AlreadyExistsException("emailAddress :"+address+" for user :"+personId +" already exist");
         }
 
-        EmailAddressEntity emailAddressEntity = dozerMapper.map(emailAddress,EmailAddressEntity.class);
+        //EmailAddressEntity emailAddressEntity = dozerMapper.map(emailAddress,EmailAddressEntity.class);
+        EmailAddressEntity emailAddressEntity = copy(emailAddress);
         emailAdressRepository.save(emailAddressEntity);
-        return dozerMapper.map(emailAddressEntity,EmailAddress.class);
+        //return dozerMapper.map(emailAddressEntity,EmailAddress.class);
+        return copy(emailAddressEntity);
+    }
+
+    public EmailAddress copy(EmailAddressEntity emailAddressEntity ){
+        EmailAddress emailAddress = new EmailAddress();
+        emailAddress.setPersonId(emailAddressEntity.getPersonId());
+        emailAddress.setAddress(emailAddressEntity.getEmailAddress());
+        emailAddress.setFullName(emailAddressEntity.getFullName());
+        emailAddress.setAddressType(emailAddressEntity.getAddressType());
+        return emailAddress;
+    }
+
+    public EmailAddressEntity copy(EmailAddress emailAddress){
+        EmailAddressEntity emailAddressEntity = new EmailAddressEntity();
+        emailAddressEntity.setPersonId(emailAddress.getPersonId());
+        emailAddressEntity.setEmailAddress(emailAddress.getAddress());
+        emailAddressEntity.setFullName(emailAddress.getFullName());
+        emailAddressEntity.setAddressType(emailAddress.getAddressType());
+        return emailAddressEntity;
     }
 }
