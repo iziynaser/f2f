@@ -1,9 +1,5 @@
 package com.f2f.sso.server.service.impl;
 
-//import com.f2f.sso.oauth2.server.domain.UserInfo;
-//import com.revengemission.sso.oauth2.server.persistence.entity.RoleEntity;
-//import com.revengemission.sso.oauth2.server.persistence.entity.UserAccountEntity;
-//import com.revengemission.sso.oauth2.server.persistence.repository.UserAccountRepository;
 import com.f2f.domain.UserInfo;
 import com.f2f.persistence.entity.RoleEntity;
 import com.f2f.persistence.entity.UserAccountEntity;
