@@ -6,7 +6,7 @@ import com.f2f.domain.GlobalConstant;
 import com.f2f.domain.JsonObjects;
 import com.f2f.domain.ResponseResult;
 import com.f2f.domain.UserAccount;
-import com.f2f.sso.server.service.UserAccountService;
+import com.f2f.dbc.service.UserAccountService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
