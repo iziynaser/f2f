@@ -6,7 +6,7 @@ import com.f2f.sso.server.config.CachesEnum;
 import com.f2f.sso.server.service.CaptchaService;
 import com.f2f.sso.server.service.OauthClientService;
 import com.f2f.sso.server.service.RoleService;
-import com.f2f.sso.server.service.UserAccountService;
+import com.f2f.dbc.service.UserAccountService;
 import com.f2f.sso.server.utils.CheckPasswordStrength;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringEscapeUtils;
@@ -17,7 +17,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
