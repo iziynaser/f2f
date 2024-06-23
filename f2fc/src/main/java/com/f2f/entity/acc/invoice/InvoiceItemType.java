@@ -3,10 +3,11 @@ package com.f2f.entity.acc.invoice;
 import com.f2f.persistence.entity.BaseEntity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "INVOICE_ITEM_TYPE")
-public class InvoiceItemType extends BaseEntity {
+public class InvoiceItemType extends BaseEntity implements Serializable {
 
 
     @Column(name = "NAME")
