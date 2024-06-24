@@ -1,5 +1,5 @@
 
-package com.f2f.persistance.repository;
+package com.f2f.dao;
 
 import com.f2f.entity.hr.Notes;
 import org.springframework.data.jpa.repository.JpaRepository;
