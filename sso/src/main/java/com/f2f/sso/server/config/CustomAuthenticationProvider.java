@@ -1,8 +1,5 @@
 package com.f2f.sso.server.config;
 
-//import com.revengemission.sso.oauth2.server.domain.GlobalConstant;
-//import com.revengemission.sso.oauth2.server.domain.VerificationCodeException;
-//import com.revengemission.sso.oauth2.server.service.CaptchaService;
 import com.f2f.domain.GlobalConstant;
 import com.f2f.domain.VerificationCodeException;
 import com.f2f.sso.server.service.CaptchaService;
