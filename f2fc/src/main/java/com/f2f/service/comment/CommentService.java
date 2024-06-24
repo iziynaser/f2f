@@ -12,16 +12,10 @@ import com.f2f.entity.common.CommentUpsets;
 import com.f2f.persistence.entity.RoleEntity;
 import com.f2f.persistence.entity.UserAccountEntity;
 import com.f2f.service.product.ProductService;
-import com.github.dozermapper.core.Mapper;
-//import com.f2f.domain.UserAccount;
-import com.f2f.persistance.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

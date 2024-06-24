@@ -1,4 +1,4 @@
-package com.f2f.exception;
+package com.f2f.exceptions;
 
 //import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
