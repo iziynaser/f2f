@@ -1,6 +1,6 @@
-package com.f2f.persistance.repository;
+package com.f2f.dao;
 
-import com.f2f.persistance.entity.EmailAddressEntity;
+import com.f2f.entity.EmailAddressEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EmailAdressRepository extends JpaRepository<EmailAddressEntity,Long> {
