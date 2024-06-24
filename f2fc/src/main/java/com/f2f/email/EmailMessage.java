@@ -1,6 +1,6 @@
 package com.f2f.email;
 
-import com.f2f.persistance.entity.EmailAddressEntity;
+import com.f2f.entity.EmailAddressEntity;
 
 import java.io.Serializable;
 import java.util.Set;
