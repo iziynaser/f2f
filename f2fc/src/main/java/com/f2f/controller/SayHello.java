@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/f2f/hello")
+@RequestMapping("/hello")
 public class SayHello {
 
 
