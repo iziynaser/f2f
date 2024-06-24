@@ -1,9 +1,5 @@
 package com.f2f.sso.server.controller;
 
-//import com.revengemission.sso.oauth2.server.domain.OauthClient;
-//import com.revengemission.sso.oauth2.server.domain.ScopeDefinition;
-//import com.revengemission.sso.oauth2.server.service.OauthClientService;
-//import com.revengemission.sso.oauth2.server.service.ScopeDefinitionService;
 import com.f2f.domain.OauthClient;
 import com.f2f.domain.ScopeDefinition;
 import com.f2f.sso.server.service.OauthClientService;
