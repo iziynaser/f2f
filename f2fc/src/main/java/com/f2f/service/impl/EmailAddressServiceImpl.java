@@ -1,15 +1,13 @@
 package com.f2f.service.impl;
 
-import com.f2f.email.EmailAddressType;
 import com.f2f.entity.EmailAddress;
-import com.f2f.persistance.entity.EmailAddressEntity;
-import com.f2f.persistance.repository.EmailAdressRepository;
+import com.f2f.entity.EmailAddressEntity;
+import com.f2f.dao.EmailAdressRepository;
 import com.f2f.service.EmailAddressService;
 import com.f2f.domain.AlreadyExistsException;
 import com.f2f.domain.JsonObjects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.github.dozermapper.core.*;
 
 @Service
 public class EmailAddressServiceImpl implements EmailAddressService {
