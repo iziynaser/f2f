@@ -1,4 +1,4 @@
-package com.revengemission.sso.oauth2.server.f2f.app;
+package com.f2f.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
