@@ -1,4 +1,4 @@
-package com.f2f.persistance.entity;
+package com.f2f.entity;
 
 import com.f2f.persistence.entity.BaseEntity;
 import javax.persistence.Entity;
