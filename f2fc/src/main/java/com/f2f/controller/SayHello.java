@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/hello")
+@RequestMapping("/f2f")
 public class SayHello {
 
 
 
-    @GetMapping("/sayhello")
+    @GetMapping("/hi")
     public String findAll() {
         return "Hello f2f";
     }

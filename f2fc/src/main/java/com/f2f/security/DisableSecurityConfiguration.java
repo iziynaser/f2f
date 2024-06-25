@@ -11,6 +11,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.stereotype.Component;
 
 @Configuration
+@EnableWebSecurity
+@Component("disableSecurityConfigurationBean")
+@Order(value=Ordered.HIGHEST_PRECEDENCE)
+@Profile("develop")
 public class DisableSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
@@ -26,7 +30,7 @@ public class DisableSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/**")
+                .antMatchers("/***")
                 .permitAll();
     }
 }
