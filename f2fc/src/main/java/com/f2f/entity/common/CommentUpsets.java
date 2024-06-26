@@ -34,6 +34,9 @@ public class CommentUpsets extends BaseEntity implements Serializable {
         this.name = name;
     }
 
+    public CommentUpsets(){
+
+    }
     public CommentUpsets(Comment comment, String name) {
         this.comment = comment;
         this.name = name;

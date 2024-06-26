@@ -29,6 +29,9 @@ public class TerminationType extends BaseEntity {
         this.description = description;
     }
 
+    public TerminationType(){
+
+    }
     public TerminationType(String name, String description) {
         this.name = name;
         this.description = description;

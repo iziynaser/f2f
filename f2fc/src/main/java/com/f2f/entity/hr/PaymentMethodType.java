@@ -33,6 +33,9 @@ public class PaymentMethodType extends BaseEntity implements Serializable {
         this.description = description;
     }
 
+    public PaymentMethodType(){
+
+    }
     public PaymentMethodType(String name, String description) {
         this.name = name;
         this.description = description;

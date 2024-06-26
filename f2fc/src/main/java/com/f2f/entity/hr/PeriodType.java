@@ -30,6 +30,9 @@ public class PeriodType extends BaseEntity implements Serializable {
         this.description = description;
     }
 
+    public PeriodType(){
+
+    }
     public PeriodType(String name, String description) {
         this.name = name;
         this.description = description;

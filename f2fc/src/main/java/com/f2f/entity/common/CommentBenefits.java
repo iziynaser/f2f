@@ -34,6 +34,7 @@ public class CommentBenefits extends BaseEntity implements Serializable {
         this.name = name;
     }
 
+    public CommentBenefits(){}
     public CommentBenefits(Comment comment, String name) {
         this.comment = comment;
         this.name = name;

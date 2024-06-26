@@ -32,6 +32,9 @@ public class InvoiceItemType extends BaseEntity implements Serializable {
         this.description = description;
     }
 
+    public InvoiceItemType(){
+
+    }
     public InvoiceItemType(String name, String description) {
         this.name = name;
         this.description = description;

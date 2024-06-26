@@ -29,7 +29,9 @@ public class RoleType extends BaseEntity implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+    public RoleType(){
 
+    }
     public RoleType(String name, String description) {
         this.name = name;
         this.description = description;

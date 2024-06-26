@@ -29,7 +29,9 @@ public class FixedAssetType extends BaseEntity implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+    public FixedAssetType(){
 
+    }
     public FixedAssetType(String name, String description) {
         this.name = name;
         this.description = description;
