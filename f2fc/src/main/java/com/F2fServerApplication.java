@@ -20,8 +20,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ComponentScan(value= {"com...service","com...controller"})
 //@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class},
 //        scanBasePackages = "com.f2f.security.*,com.f2f.dao.acc.*,com.f2f.dbc.service.*,com.f2f.persistence.*,com.f2f.domain.*,com.f2f.sso.*,com.f2f.controller.*,com.f2f.service.*,com.f2f.config.*,com.f2f.sso.server.config.*")
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class},
+@SpringBootApplication(exclude = { SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class},
         scanBasePackages = {"com.f2f.security.*","com.f2f.dao.acc.*","com.f2f.dbc.service.*","com.f2f.persistence.*","com.f2f.domain.*","com.f2f.sso.*","com.f2f.controller.*","com.f2f.service.*","com.f2f.config.*","com.f2f.sso.server.config.*"})
+@PropertySources({
+        @PropertySource(value="classpath:application.properties"),
+        @PropertySource(value = "classpath:postgresFile.properties")
+})
 public class F2fServerApplication {
 
     public static void main(String[] args) {
