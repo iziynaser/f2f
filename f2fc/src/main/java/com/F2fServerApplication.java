@@ -2,6 +2,7 @@ package com;
 
 import com.f2f.config.StorageProperties;
 import com.f2f.dbc.service.UserAccountDbcService;
+import com.f2f.security.DisableCorsConfiguration;
 import com.f2f.security.DisableSecurityConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
 @ComponentScan(
-        basePackageClasses={StorageProperties.class ,UserAccountDbcService.class, DisableSecurityConfiguration.class}
+        basePackageClasses={StorageProperties.class ,UserAccountDbcService.class, DisableCorsConfiguration.class, DisableSecurityConfiguration.class}
         ,
         basePackages= {"com.f2f.dbc.persistence.entity","com.f2f.entity","com.f2f.dao","com.f2f.dbc.service","com.f2f.service","com.f2f.controller"}
         )
