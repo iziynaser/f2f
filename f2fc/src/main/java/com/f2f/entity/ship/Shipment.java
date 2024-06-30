@@ -1,6 +1,6 @@
 package com.f2f.entity.ship;
 
-import com.f2f.persistence.entity.BaseEntity;
+import com.f2f.dbc.persistence.entity.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

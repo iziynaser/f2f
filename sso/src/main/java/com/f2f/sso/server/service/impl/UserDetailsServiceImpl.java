@@ -1,9 +1,9 @@
 package com.f2f.sso.server.service.impl;
 
 import com.f2f.domain.UserInfo;
-import com.f2f.persistence.entity.RoleEntity;
-import com.f2f.persistence.entity.UserAccountEntity;
-import com.f2f.persistence.repository.UserAccountRepository;
+import com.f2f.dbc.persistence.entity.RoleEntity;
+import com.f2f.dbc.persistence.entity.UserAccountEntity;
+import com.f2f.dbc.persistence.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

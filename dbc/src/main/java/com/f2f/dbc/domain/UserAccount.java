@@ -1,4 +1,4 @@
-package com.f2f.domain;
+package com.f2f.dbc.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;

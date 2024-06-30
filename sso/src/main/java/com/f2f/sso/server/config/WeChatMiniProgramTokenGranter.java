@@ -1,11 +1,11 @@
 package com.f2f.sso.server.config;
 
-import com.f2f.domain.RoleEnum;
+import com.f2f.dbc.domain.RoleEnum;
 import com.f2f.domain.UserInfo;
-import com.f2f.persistence.entity.RoleEntity;
-import com.f2f.persistence.entity.ThirdPartyAccountEntity;
-import com.f2f.persistence.repository.RoleRepository;
-import com.f2f.persistence.repository.ThirdPartyAccountRepository;
+import com.f2f.dbc.persistence.entity.RoleEntity;
+import com.f2f.dbc.persistence.entity.ThirdPartyAccountEntity;
+import com.f2f.dbc.persistence.repository.RoleRepository;
+import com.f2f.dbc.persistence.repository.ThirdPartyAccountRepository;
 import com.f2f.sso.server.utils.JsonUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.security.authentication.AbstractAuthenticationToken;

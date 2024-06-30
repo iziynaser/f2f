@@ -1,9 +1,9 @@
 package com.f2f.sso.server.service.impl;
 
-import com.f2f.domain.NotImplementException;
-import com.f2f.domain.ScopeDefinition;
-import com.f2f.persistence.entity.ScopeDefinitionEntity;
-import com.f2f.persistence.repository.ScopeDefinitionRepository;
+import com.f2f.dbc.domain.NotImplementException;
+import com.f2f.dbc.domain.ScopeDefinition;
+import com.f2f.dbc.persistence.entity.ScopeDefinitionEntity;
+import com.f2f.dbc.persistence.repository.ScopeDefinitionRepository;
 import com.f2f.sso.server.service.ScopeDefinitionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -19,7 +19,7 @@ package com.f2f.sso.server.config;
 //public class SecurityConfiguration{}
 
 
-import com.f2f.domain.RoleEnum;
+import com.f2f.dbc.domain.RoleEnum;
 import com.f2f.sso.server.service.CaptchaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

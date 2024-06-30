@@ -1,8 +1,9 @@
 package com.f2f.sso.server.controller;
 
 //import io.micrometer.core.annotation.Timed;
+import com.f2f.dbc.domain.*;
 import com.f2f.domain.*;
-import com.f2f.service.UserAccountDbcService;
+import com.f2f.dbc.service.UserAccountDbcService;
 import com.f2f.sso.server.config.CachesEnum;
 import com.f2f.sso.server.service.CaptchaService;
 import com.f2f.sso.server.service.OauthClientService;

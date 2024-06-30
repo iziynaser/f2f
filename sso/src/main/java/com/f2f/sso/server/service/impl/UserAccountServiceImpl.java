@@ -1,11 +1,12 @@
 package com.f2f.sso.server.service.impl;
 
+import com.f2f.dbc.domain.*;
 import com.f2f.domain.*;
-import com.f2f.persistence.entity.RoleEntity;
-import com.f2f.persistence.entity.UserAccountEntity;
-import com.f2f.persistence.repository.RoleRepository;
-import com.f2f.persistence.repository.UserAccountRepository;
-import com.f2f.service.UserAccountDbcService;
+import com.f2f.dbc.persistence.entity.RoleEntity;
+import com.f2f.dbc.persistence.entity.UserAccountEntity;
+import com.f2f.dbc.persistence.repository.RoleRepository;
+import com.f2f.dbc.persistence.repository.UserAccountRepository;
+import com.f2f.dbc.service.UserAccountDbcService;
 import com.f2f.sso.server.utils.DateUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
