@@ -1,6 +1,7 @@
 package com.f2f.entity.product;
 
 import com.f2f.persistence.entity.BaseEntity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;

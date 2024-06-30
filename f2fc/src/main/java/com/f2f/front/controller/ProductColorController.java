@@ -1,8 +1,6 @@
 package com.f2f.front.controller;
 
-import com.f2f.entity.common.KeyValues;
 import com.f2f.entity.common.ProductColorDTO;
-import com.f2f.entity.product.ProductColor;
 import com.f2f.front.service.product.ProductColorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

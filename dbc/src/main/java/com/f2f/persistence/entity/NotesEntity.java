@@ -1,7 +1,7 @@
 package com.f2f.persistence.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.*;
+import javax.persistence.Table;
 
 @Entity
 @Table

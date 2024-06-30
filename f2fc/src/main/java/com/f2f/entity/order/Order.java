@@ -3,9 +3,8 @@ package com.f2f.entity.order;
 import com.f2f.entity.Delivery;
 import com.f2f.entity.acc.PaymentType;
 import com.f2f.persistence.entity.BaseEntity;
+
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import java.io.Serializable;
 
