@@ -1,6 +1,7 @@
 package com;
 
 import com.f2f.dbc.service.UserAccountDbcService;
+import com.f2f.security.DisableSecurityConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -11,9 +12,17 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
-@ComponentScan(basePackageClasses={UserAccountDbcService.class})
-@SpringBootApplication(scanBasePackages = {"com.f2f.dbc.service","com.f2f.dbc.persistence.entity","com.f2f.service","com.f2f.controller"}
-        ,scanBasePackageClasses = UserAccountDbcService.class)
+@ComponentScan(
+        basePackageClasses={UserAccountDbcService.class, DisableSecurityConfiguration.class}
+        ,
+        basePackages= {"com.f2f.dbc.persistence.entity","com.f2f.entity","com.f2f.dao","com.f2f.dbc.service","com.f2f.service","com.f2f.controller"}
+        )
+@SpringBootApplication(
+        scanBasePackageClasses = {UserAccountDbcService.class}
+        ,
+        scanBasePackages = {"com.f2f.dbc.service","com.f2f.dbc.persistence.entity","com.f2f.service","com.f2f.controller"}
+
+        )
 @PropertySources({
         @PropertySource(value="classpath:application.properties"),
         @PropertySource(value = "classpath:postgresFile.properties"),
