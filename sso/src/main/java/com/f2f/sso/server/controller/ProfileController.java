@@ -2,11 +2,8 @@ package com.f2f.sso.server.controller;
 
 import com.f2f.domain.EntityNotFoundException;
 import com.f2f.domain.UserAccount;
-import com.f2f.dbc.service.UserAccountService;
+import com.f2f.service.UserAccountDbcService;
 import com.fasterxml.jackson.annotation.JsonFormat;
-//import com.revengemission.sso.oauth2.server.domain.EntityNotFoundException;
-//import com.revengemission.sso.oauth2.server.domain.UserAccount;
-//import com.revengemission.sso.oauth2.server.service.UserAccountService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringEscapeUtils;
 import org.slf4j.Logger;
@@ -35,7 +32,7 @@ public class ProfileController {
     private static final Pattern AUTHORIZATION_PATTERN = Pattern.compile("^Bearer (?<token>[a-zA-Z0-9-._~+/]+)=*$");
 
     @Autowired
-    UserAccountService userAccountService;
+    UserAccountDbcService userAccountService;
 
     @Autowired
     TokenStore tokenStore;
