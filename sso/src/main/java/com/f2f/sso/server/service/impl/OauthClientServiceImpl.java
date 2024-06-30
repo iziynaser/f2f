@@ -1,11 +1,11 @@
 package com.f2f.sso.server.service.impl;
 
-import com.f2f.domain.AlreadyExistsException;
-import com.f2f.domain.EntityNotFoundException;
-import com.f2f.domain.JsonObjects;
-import com.f2f.domain.OauthClient;
-import com.f2f.persistence.entity.OauthClientEntity;
-import com.f2f.persistence.repository.OauthClientRepository;
+import com.f2f.dbc.domain.AlreadyExistsException;
+import com.f2f.dbc.domain.EntityNotFoundException;
+import com.f2f.dbc.domain.JsonObjects;
+import com.f2f.dbc.domain.OauthClient;
+import com.f2f.dbc.persistence.entity.OauthClientEntity;
+import com.f2f.dbc.persistence.repository.OauthClientRepository;
 import com.f2f.sso.server.service.OauthClientService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

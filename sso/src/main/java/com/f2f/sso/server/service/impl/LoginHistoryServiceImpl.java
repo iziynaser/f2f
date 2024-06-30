@@ -1,10 +1,10 @@
 package com.f2f.sso.server.service.impl;
 
-import com.f2f.domain.AlreadyExistsException;
-import com.f2f.domain.JsonObjects;
-import com.f2f.domain.LoginHistory;
-import com.f2f.persistence.entity.LoginHistoryEntity;
-import com.f2f.persistence.repository.LoginHistoryRepository;
+import com.f2f.dbc.domain.AlreadyExistsException;
+import com.f2f.dbc.domain.JsonObjects;
+import com.f2f.dbc.domain.LoginHistory;
+import com.f2f.dbc.persistence.entity.LoginHistoryEntity;
+import com.f2f.dbc.persistence.repository.LoginHistoryRepository;
 import com.f2f.sso.server.service.LoginHistoryService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

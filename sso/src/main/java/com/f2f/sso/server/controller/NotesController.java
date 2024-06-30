@@ -1,10 +1,10 @@
 package com.f2f.sso.server.controller;
 
-import com.f2f.domain.EntityNotFoundException;
-import com.f2f.domain.JsonObjects;
-import com.f2f.domain.Note;
-import com.f2f.domain.UserAccount;
-import com.f2f.service.UserAccountDbcService;
+import com.f2f.dbc.domain.EntityNotFoundException;
+import com.f2f.dbc.domain.JsonObjects;
+import com.f2f.dbc.domain.Note;
+import com.f2f.dbc.domain.UserAccount;
+import com.f2f.dbc.service.UserAccountDbcService;
 import com.f2f.sso.server.service.NotesService;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.slf4j.Logger;

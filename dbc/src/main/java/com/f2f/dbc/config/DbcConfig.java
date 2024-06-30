@@ -1,4 +1,4 @@
-package com.f2f.config;
+package com.f2f.dbc.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;

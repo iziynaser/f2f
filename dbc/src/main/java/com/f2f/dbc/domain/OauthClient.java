@@ -1,39 +1,37 @@
-package com.f2f.persistence.entity;
+package com.f2f.dbc.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 import java.time.LocalDateTime;
 
-@Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"clientId"}))
-public class OauthClientEntity extends BaseEntity {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@Data
+public class OauthClient extends BaseDomain {
     /**
      *
      */
-    private static final long serialVersionUID = -3042356579574873614L;
-    @Column(nullable = false)
+    private static final long serialVersionUID = 8626957691648832578L;
     private String clientId;
     private String applicationName;
     private String resourceIds;
-    @Column(nullable = false)
     private String clientSecret;
     private String scope;
-    @Column(nullable = false)
     private String authorizedGrantTypes;
     private String webServerRedirectUri;
-    @Column(nullable = false)
     private String authorities;
     private Integer accessTokenValidity;
     private Integer refreshTokenValidity;
     private String additionalInformation;
     private String autoApprove;
     /**
-     * 客户端过期时间，比如应用于多店系统
+     * 客户端过期时间
      */
     private LocalDateTime expirationDate;
-
 
     public String getClientId() {
         return clientId;

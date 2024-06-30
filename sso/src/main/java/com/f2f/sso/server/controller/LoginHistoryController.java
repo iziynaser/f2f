@@ -1,7 +1,8 @@
 package com.f2f.sso.server.controller;
 
+import com.f2f.dbc.domain.*;
 import com.f2f.domain.*;
-import com.f2f.service.UserAccountDbcService;
+import com.f2f.dbc.service.UserAccountDbcService;
 import com.f2f.sso.server.service.LoginHistoryService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

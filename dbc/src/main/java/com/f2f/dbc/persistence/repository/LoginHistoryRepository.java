@@ -1,6 +1,6 @@
-package com.f2f.persistence.repository;
+package com.f2f.dbc.persistence.repository;
 
-import com.f2f.persistence.entity.LoginHistoryEntity;
+import com.f2f.dbc.persistence.entity.LoginHistoryEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
