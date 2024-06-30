@@ -1,9 +1,7 @@
 package com.f2f.entity.budget;
 
 import com.f2f.persistence.entity.BaseEntity;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
 import java.io.Serializable;
 
 public class BudgetItem extends BaseEntity implements Serializable {

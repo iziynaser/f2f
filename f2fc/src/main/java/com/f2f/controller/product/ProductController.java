@@ -1,9 +1,7 @@
 package com.f2f.controller.product;
 
-import com.f2f.entity.common.KeyValues;
 import com.f2f.entity.product.NameValueDTO;
 import com.f2f.entity.product.Product;
-import com.f2f.entity.product.ProductDTO;
 import com.f2f.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

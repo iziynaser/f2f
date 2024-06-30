@@ -3,7 +3,6 @@ package com.f2f.service.product;
 import com.f2f.dao.product.ProductFeatureItemDao;
 import com.f2f.entity.product.ProductFeatureGroup;
 import com.f2f.entity.product.ProductFeatureItem;
-import com.f2f.entity.product.ProductFeatureItemDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

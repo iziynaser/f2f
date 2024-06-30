@@ -2,7 +2,6 @@ package com.f2f.persistence.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-//import javax.persistence.Index;
 import javax.persistence.Table;
 
 

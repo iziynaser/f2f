@@ -4,6 +4,7 @@ import com.f2f.entity.inventory.Inventory;
 import com.f2f.entity.product.Product;
 import com.f2f.entity.product.ProductFeatureItem;
 import com.f2f.persistence.entity.BaseEntity;
+
 import javax.persistence.*;
 import java.io.Serializable;
 

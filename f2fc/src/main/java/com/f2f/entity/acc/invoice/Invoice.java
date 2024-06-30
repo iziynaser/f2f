@@ -2,6 +2,7 @@ package com.f2f.entity.acc.invoice;
 
 import com.f2f.entity.common.Person;
 import com.f2f.persistence.entity.BaseEntity;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;

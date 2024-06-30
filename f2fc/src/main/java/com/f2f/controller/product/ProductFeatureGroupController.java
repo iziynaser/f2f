@@ -1,6 +1,9 @@
 package com.f2f.controller.product;
 
-import com.f2f.entity.product.*;
+import com.f2f.entity.product.Product;
+import com.f2f.entity.product.ProductFeatureGroup;
+import com.f2f.entity.product.ProductFeatureItem;
+import com.f2f.entity.product.ProductFeatureItems;
 import com.f2f.service.product.ProductFeatureGroupService;
 import com.f2f.service.product.ProductFeatureItemService;
 import com.f2f.service.product.ProductFeatureItemsService;

@@ -2,7 +2,6 @@ package com.f2f.dao.product;
 
 import com.f2f.entity.product.ProductFeatureGroup;
 import com.f2f.entity.product.ProductFeatureItem;
-import com.f2f.entity.product.ProductFeatureItemDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

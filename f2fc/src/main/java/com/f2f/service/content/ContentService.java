@@ -1,20 +1,13 @@
 package com.f2f.service.content;
 
-import com.f2f.dao.Search.SearchCriteria;
-import com.f2f.dao.Search.SearchOperation;
 import com.f2f.dao.content.ContentDao;
 import com.f2f.dao.content.ContentSearchForm;
-import com.f2f.dao.content.ContentSecification;
+import com.f2f.domain.EntityNotFoundException;
 import com.f2f.entity.content.Content;
 import com.f2f.entity.content.ContentDTO;
-import com.f2f.domain.EntityNotFoundException;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Component;
 

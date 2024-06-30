@@ -1,9 +1,9 @@
 package com.f2f.entity.common;
 
 import com.f2f.persistence.entity.BaseEntity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 

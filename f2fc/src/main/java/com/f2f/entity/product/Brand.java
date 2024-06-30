@@ -1,8 +1,12 @@
 package com.f2f.entity.product;
 
 import com.f2f.entity.common.Category;
-import com.f2f.persistence.entity.BaseEntity;//
-import javax.persistence.*;
+import com.f2f.persistence.entity.BaseEntity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "BRAND")

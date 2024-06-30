@@ -16,8 +16,6 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Column;
-
 @Service
 public class LoginHistoryServiceImpl implements LoginHistoryService {
     @Autowired

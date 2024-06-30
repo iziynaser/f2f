@@ -2,7 +2,6 @@ package com.f2f.dao.product;
 
 import com.f2f.entity.product.Product;
 import com.f2f.entity.product.ProductMeasure;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
