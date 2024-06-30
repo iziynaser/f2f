@@ -1,4 +1,4 @@
-package com.f2f.persistence.entity;
+package com.f2f.dbc.persistence.entity;
 
 import com.vladmihalcea.hibernate.type.array.StringArrayType;
 import org.hibernate.annotations.CreationTimestamp;

@@ -1,7 +1,7 @@
 package com.f2f.sso.server.controller;
 
-import com.f2f.domain.OauthClient;
-import com.f2f.domain.ScopeDefinition;
+import com.f2f.dbc.domain.OauthClient;
+import com.f2f.dbc.domain.ScopeDefinition;
 import com.f2f.sso.server.service.OauthClientService;
 import com.f2f.sso.server.service.ScopeDefinitionService;
 import org.springframework.beans.factory.annotation.Autowired;

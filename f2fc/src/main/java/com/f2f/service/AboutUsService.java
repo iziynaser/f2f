@@ -1,7 +1,7 @@
 package com.f2f.service;
 
 import com.f2f.dao.AboutUsDao;
-import com.f2f.domain.EntityNotFoundException;
+import com.f2f.dbc.domain.EntityNotFoundException;
 import com.f2f.entity.AboutUs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

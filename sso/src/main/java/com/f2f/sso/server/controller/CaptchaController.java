@@ -1,6 +1,6 @@
 package com.f2f.sso.server.controller;
 
-import com.f2f.service.UserAccountDbcService;
+import com.f2f.dbc.service.UserAccountDbcService;
 import com.f2f.sso.server.config.CachesEnum;
 import com.f2f.sso.server.service.CaptchaService;
 import com.revengemission.commons.captcha.core.VerificationCodeUtil;

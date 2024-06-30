@@ -1,7 +1,7 @@
 package com.f2f.sso.server.config;
 
-import com.f2f.persistence.repository.RoleRepository;
-import com.f2f.persistence.repository.ThirdPartyAccountRepository;
+import com.f2f.dbc.persistence.repository.RoleRepository;
+import com.f2f.dbc.persistence.repository.ThirdPartyAccountRepository;
 import com.f2f.sso.server.service.CaptchaService;
 import com.f2f.sso.server.service.impl.ClientDetailsServiceImpl;
 import org.springframework.beans.factory.InitializingBean;

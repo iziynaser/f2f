@@ -1,9 +1,9 @@
 package com.f2f.sso.server.service.impl;
 
-import com.f2f.domain.AlreadyExpiredException;
+import com.f2f.dbc.domain.AlreadyExpiredException;
 import com.f2f.domain.InvalidClientException;
-import com.f2f.persistence.entity.OauthClientEntity;
-import com.f2f.persistence.repository.OauthClientRepository;
+import com.f2f.dbc.persistence.entity.OauthClientEntity;
+import com.f2f.dbc.persistence.repository.OauthClientRepository;
 import com.f2f.sso.server.config.CachesEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
