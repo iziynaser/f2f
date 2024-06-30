@@ -1,6 +1,6 @@
 package com.f2f.controller;
 
-import com.f2f.dbc.service.UserAccountService;
+import com.f2f.domain.EntityNotFoundException;
 import com.f2f.domain.Role;
 import com.f2f.domain.UserAccount;
 import com.f2f.entity.Delivery;
@@ -12,7 +12,7 @@ import com.f2f.persistence.entity.UserAccountEntity;
 import com.f2f.service.DeliveryService;
 import com.f2f.service.OstanService;
 import com.f2f.service.ShahrService;
-import com.f2f.domain.EntityNotFoundException;
+import com.f2f.service.UserAccountDbcService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,9 +25,6 @@ import java.util.List;
 public class DeliveryController {
 
     @Autowired
-    UserAccountService userAccountService;
-
-    @Autowired
     DeliveryService deliveryService;
 
     @Autowired
@@ -36,6 +33,8 @@ public class DeliveryController {
     @Autowired
     ShahrService shahrService;
 
+    @Autowired
+    UserAccountDbcService userAccountService;
 //    @Autowired
 //    Mapper mapper;
 
