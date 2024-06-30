@@ -3,7 +3,7 @@ package com.f2f.service;
 import com.f2f.dao.CategoryDao;
 import com.f2f.dao.ProductCategoriesDao;
 import com.f2f.dao.product.ProductDao;
-import com.f2f.domain.EntityNotFoundException;
+import com.f2f.dbc.domain.EntityNotFoundException;
 import com.f2f.entity.common.Category;
 import com.f2f.entity.product.Product;
 import com.f2f.entity.product.ProductCategories;
