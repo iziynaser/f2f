@@ -1,17 +1,15 @@
 package com.f2f;
 
-import java.util.Date;
-
 public class ErrorDetails {
-    private Date dateTime;
+    private String dateTime;
     private String message ;
     private String details ;
 
-    public Date getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(Date dateTime) {
+    public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
 
@@ -31,7 +29,11 @@ public class ErrorDetails {
         this.details = details;
     }
 
-    public ErrorDetails(Date dateTime, String message, String details) {
+    public ErrorDetails(){
+
+    }
+
+    public ErrorDetails(String dateTime, String message, String details) {
         this.dateTime = dateTime;
         this.message = message;
         this.details = details;
