@@ -1,7 +1,6 @@
 package com.f2f.dao.content;
 
 import com.f2f.entity.content.Content;
-import com.f2f.entity.content.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;

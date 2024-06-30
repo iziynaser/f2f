@@ -1,9 +1,10 @@
-package com.f2f.dbc.service;
+package com.f2f.service;
 
 import com.f2f.domain.AlreadyExistsException;
 import com.f2f.domain.EntityNotFoundException;
 import com.f2f.domain.JsonObjects;
 import com.f2f.domain.NotImplementException;
+
 
 public interface CommonServiceInterface<T> {
 
