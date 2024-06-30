@@ -2,11 +2,11 @@ package com.f2f.controller.comment;
 
 import com.f2f.dao.comment.CommentDTO;
 import com.f2f.dao.comment.CommentDTOS;
-import com.f2f.domain.UserAccount;
+import com.f2f.dbc.domain.UserAccount;
 import com.f2f.entity.common.CommentTarget;
 import com.f2f.entity.common.KeyValues;
 import com.f2f.entity.product.Product;
-import com.f2f.service.UserAccountDbcService;
+import com.f2f.dbc.service.UserAccountDbcService;
 import com.f2f.service.comment.CommentService;
 import com.f2f.service.comment.CommentTargetService;
 import com.f2f.service.product.ProductService;

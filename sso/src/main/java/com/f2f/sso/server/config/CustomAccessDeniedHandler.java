@@ -1,7 +1,7 @@
 package com.f2f.sso.server.config;
 
-import com.f2f.domain.GlobalConstant;
-import com.f2f.domain.ResponseResult;
+import com.f2f.dbc.domain.GlobalConstant;
+import com.f2f.dbc.domain.ResponseResult;
 import com.f2f.sso.server.utils.ClientIpUtil;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonGenerator;

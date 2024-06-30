@@ -1,6 +1,6 @@
 package com.f2f.sso.server.config;
 
-import com.f2f.domain.GlobalConstant;
+import com.f2f.dbc.domain.GlobalConstant;
 import com.f2f.domain.VerificationCodeException;
 import com.f2f.sso.server.service.CaptchaService;
 import org.apache.commons.lang3.StringUtils;

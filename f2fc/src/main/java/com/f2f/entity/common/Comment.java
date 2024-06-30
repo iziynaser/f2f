@@ -1,7 +1,7 @@
 package com.f2f.entity.common;
 
-import com.f2f.persistence.entity.BaseEntity;
-import com.f2f.persistence.entity.UserAccountEntity;
+import com.f2f.dbc.persistence.entity.BaseEntity;
+import com.f2f.dbc.persistence.entity.UserAccountEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;
