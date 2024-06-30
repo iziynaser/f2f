@@ -2,7 +2,7 @@ package com.f2f.service.content;
 
 import com.f2f.dao.content.ContentDao;
 import com.f2f.dao.content.ContentSearchForm;
-import com.f2f.domain.EntityNotFoundException;
+import com.f2f.dbc.domain.EntityNotFoundException;
 import com.f2f.entity.content.Content;
 import com.f2f.entity.content.ContentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
