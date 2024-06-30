@@ -1,7 +1,10 @@
 package com.f2f.entity.asset;
 
 import com.f2f.persistence.entity.BaseEntity;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity

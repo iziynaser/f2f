@@ -1,8 +1,8 @@
 package com.f2f.entity;
 
+import com.f2f.domain.BaseDomain;
 import com.f2f.email.EmailAddressType;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.f2f.domain.BaseDomain;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

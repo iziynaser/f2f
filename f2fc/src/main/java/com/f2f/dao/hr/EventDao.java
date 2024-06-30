@@ -1,6 +1,6 @@
 package com.f2f.dao.hr;
 
-import com.f2f.entity.hr.*;
+import com.f2f.entity.hr.Event;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
