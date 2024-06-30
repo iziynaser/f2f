@@ -2,23 +2,21 @@ package com.f2f.sso.server.controller;
 
 import com.f2f.domain.EntityNotFoundException;
 import com.f2f.domain.JsonObjects;
-import com.f2f.domain.Notes;
+import com.f2f.domain.Note;
 import com.f2f.domain.UserAccount;
+import com.f2f.service.UserAccountDbcService;
 import com.f2f.sso.server.service.NotesService;
-import com.f2f.dbc.service.UserAccountService;
 import com.fasterxml.jackson.annotation.JsonFormat;
-//import com.fasterxml.jackson.annotation.JsonIgnore;
-//import com.revengemission.sso.oauth2.server.domain.*;
-//import com.revengemission.sso.oauth2.server.service.NotesService;
-//import com.revengemission.sso.oauth2.server.service.UserAccountService;
-//import org.apache.commons.text.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
 import java.time.LocalDate;
@@ -33,12 +31,12 @@ public class NotesController {
     NotesService notesService;
 
     @Autowired
-    UserAccountService userAccountService;
+    UserAccountDbcService userAccountService;
 
     @ResponseBody
     @RequestMapping("/f2f/notes")
-    public JsonObjects<Notes> listNotes() {
-        JsonObjects<Notes> result= notesService.list(1,10,"id","asc");
+    public JsonObjects<Note> listNotes() {
+        JsonObjects<Note> result= notesService.list(1,10,"id","asc");
         return result;
     }
 
