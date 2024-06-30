@@ -1,17 +1,18 @@
 package com.f2f.controller;
 
-import com.f2f.entity.EmailAddress;
-import com.f2f.service.EmailAddressService;
 import com.f2f.domain.AlreadyExistsException;
 import com.f2f.domain.GlobalConstant;
 import com.f2f.domain.JsonObjects;
 import com.f2f.domain.ResponseResult;
+import com.f2f.entity.EmailAddress;
+import com.f2f.service.EmailAddressService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 
