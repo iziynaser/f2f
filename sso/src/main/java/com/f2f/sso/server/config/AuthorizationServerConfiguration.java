@@ -45,10 +45,6 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
-//import javax.servlet.FilterChain;
-//import javax.servlet.ServletException;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
 import java.security.KeyPair;
 import java.util.ArrayList;
 import java.util.Arrays;
