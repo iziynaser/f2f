@@ -7,7 +7,6 @@ import com.f2f.domain.OauthClient;
 import com.f2f.persistence.entity.OauthClientEntity;
 import com.f2f.persistence.repository.OauthClientRepository;
 import com.f2f.sso.server.service.OauthClientService;
-import com.github.dozermapper.core.Mapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,8 +16,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Column;
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
