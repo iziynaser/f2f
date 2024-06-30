@@ -3,29 +3,29 @@ package com.f2f.service;
 import com.f2f.controller.CategoryDTO;
 import com.f2f.dao.CategoryDao;
 import com.f2f.dao.CategoryTypeDao;
+import com.f2f.dbc.domain.EntityNotFoundException;
 import com.f2f.entity.common.Category;
 import com.f2f.entity.common.CategoryType;
-
-import com.f2f.domain.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.stereotype.Component;
 
 @Component
 public class CategoryService {
 
-
-    private CategoryDao categoryDao;
+    @Autowired
+     CategoryDao categoryDao;
 
     @Autowired
     CategoryTypeDao categoryTypeDao;
 
-    @Autowired
-    CategoryService(CategoryDao categoryDao){
-        this.categoryDao = categoryDao;
-    }
+//    @Autowired
+//    CategoryService(CategoryDao categoryDao){
+//        this.categoryDao = categoryDao;
+//    }
     public Category save(CategoryDTO categoryDTO){
 
         Optional<Category> optionalCategory = categoryDao.findById(Long.valueOf(categoryDTO.getParentCategory()));
