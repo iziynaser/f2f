@@ -1,6 +1,5 @@
 package com.f2f.sso.server.config;
 
-//import com.revengemission.sso.oauth2.server.domain.UserInfo;
 import com.f2f.domain.UserInfo;
 import org.springframework.security.jwt.Jwt;
 import org.springframework.security.jwt.JwtHelper;
