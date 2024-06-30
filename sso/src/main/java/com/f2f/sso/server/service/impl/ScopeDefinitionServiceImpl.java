@@ -5,7 +5,6 @@ import com.f2f.domain.ScopeDefinition;
 import com.f2f.persistence.entity.ScopeDefinitionEntity;
 import com.f2f.persistence.repository.ScopeDefinitionRepository;
 import com.f2f.sso.server.service.ScopeDefinitionService;
-import com.github.dozermapper.core.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

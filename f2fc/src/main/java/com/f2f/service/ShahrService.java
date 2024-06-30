@@ -2,9 +2,9 @@ package com.f2f.service;
 
 import com.f2f.dao.OstanDao;
 import com.f2f.dao.ShahrDao;
+import com.f2f.domain.EntityNotFoundException;
 import com.f2f.entity.Ostan;
 import com.f2f.entity.Shahr;
-import com.f2f.domain.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

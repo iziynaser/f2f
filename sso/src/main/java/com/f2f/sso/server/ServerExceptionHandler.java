@@ -1,6 +1,7 @@
 package com.f2f.sso.server;
 
 //import com.revengemission.sso.oauth2.server.utils.JsonUtil;
+
 import com.f2f.sso.server.utils.JsonUtil;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -10,8 +11,7 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.NoHandlerFoundException;
-//
+
 import javax.servlet.http.HttpServletRequest;
 import java.security.AccessControlException;
 import java.util.Date;

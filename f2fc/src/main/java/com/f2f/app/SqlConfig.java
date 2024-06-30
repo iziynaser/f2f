@@ -8,7 +8,6 @@ import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.nio.charset.Charset;
 
 @Component
 public class SqlConfig {

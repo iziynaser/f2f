@@ -1,9 +1,7 @@
 package com.f2f.back.service;
 
 import com.f2f.back.dao.SocialSettingDTO;
-import com.f2f.back.dao.SocialSettingDao;
 import com.f2f.back.entity.SocialSetting;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 

@@ -2,11 +2,11 @@ package com.f2f.sso.server.controller;
 
 //import io.micrometer.core.annotation.Timed;
 import com.f2f.domain.*;
+import com.f2f.service.UserAccountDbcService;
 import com.f2f.sso.server.config.CachesEnum;
 import com.f2f.sso.server.service.CaptchaService;
 import com.f2f.sso.server.service.OauthClientService;
 import com.f2f.sso.server.service.RoleService;
-import com.f2f.dbc.service.UserAccountService;
 import com.f2f.sso.server.utils.CheckPasswordStrength;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringEscapeUtils;
@@ -27,7 +27,7 @@ public class SignInAndUpController {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    UserAccountService userAccountService;
+    UserAccountDbcService userAccountService;
 
     @Autowired
     OauthClientService oauthClientService;
