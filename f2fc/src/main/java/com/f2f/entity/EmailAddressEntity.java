@@ -1,7 +1,7 @@
 package com.f2f.entity;
 
 import com.f2f.email.EmailAddressType;
-import com.f2f.persistence.entity.BaseEntity;
+import com.f2f.dbc.persistence.entity.BaseEntity;
 
 import javax.persistence.Entity;
 import java.io.Serializable;

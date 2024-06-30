@@ -1,4 +1,4 @@
-package com.f2f.domain;
+package com.f2f.dbc.domain;
 
 public enum GenderEnum {
 

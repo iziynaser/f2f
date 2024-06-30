@@ -1,9 +1,9 @@
 package com.f2f.controller;
 
-import com.f2f.domain.AlreadyExistsException;
-import com.f2f.domain.GlobalConstant;
-import com.f2f.domain.JsonObjects;
-import com.f2f.domain.ResponseResult;
+import com.f2f.dbc.domain.AlreadyExistsException;
+import com.f2f.dbc.domain.GlobalConstant;
+import com.f2f.dbc.domain.JsonObjects;
+import com.f2f.dbc.domain.ResponseResult;
 import com.f2f.entity.EmailAddress;
 import com.f2f.service.EmailAddressService;
 import org.slf4j.LoggerFactory;
