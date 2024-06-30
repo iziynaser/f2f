@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class ContentStatusService {
 
-    @Autowired
-    private ContentStatusService contentStatusService;
+//    @Autowired
+//    private ContentStatusService contentStatusService;
 }
