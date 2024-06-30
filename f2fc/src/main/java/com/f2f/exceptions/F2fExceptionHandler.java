@@ -1,25 +1,8 @@
 package com.f2f.exceptions;
 
 
-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import org.hibernate.exception.ConstraintViolationException;
-import org.springframework.beans.TypeMismatchException;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.InsufficientAuthenticationException;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
-
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 
 @ControllerAdvice
 public class F2fExceptionHandler extends ResponseEntityExceptionHandler {
