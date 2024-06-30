@@ -1,7 +1,5 @@
 package com.f2f.sso.server.config;
 
-//import com.revengemission.sso.oauth2.server.domain.GlobalConstant;
-
 import com.f2f.dbc.domain.GlobalConstant;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 
