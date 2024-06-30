@@ -3,8 +3,8 @@ package com.f2f.sso.server.config;
 import com.f2f.domain.GlobalConstant;
 import com.f2f.domain.LoginHistory;
 import com.f2f.domain.ResponseResult;
+import com.f2f.service.UserAccountDbcService;
 import com.f2f.sso.server.service.LoginHistoryService;
-import com.f2f.dbc.service.UserAccountService;
 import com.f2f.sso.server.utils.ClientIpUtil;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -29,7 +29,7 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
     private String failureUrl = "/signIn";
 
     @Autowired
-    UserAccountService userAccountService;
+    UserAccountDbcService userAccountService;
 
     @Autowired
     LoginHistoryService loginHistoryService;
