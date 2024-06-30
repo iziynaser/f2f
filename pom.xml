@@ -50,6 +50,7 @@
     </repositories>
 
     <dependencies>
+
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.modulith</groupId>-->
 <!--            <artifactId>spring-modulith-starter-core</artifactId>-->
