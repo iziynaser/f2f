@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class Notes extends BaseDomain {
+public class Note extends BaseDomain {
     private String id ;
     private String title;
     private String description;
