@@ -1,17 +1,5 @@
 package com.f2f.dao.content;
 
-import com.f2f.dao.Search.SearchCriteria;
-import com.f2f.dao.Search.SearchOperation;
-import com.f2f.entity.content.Content;
-import org.springframework.data.jpa.domain.Specification;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import java.util.ArrayList;
-import java.util.List;
-
 public class ContentSecification {}
 //public class ContentSecification implements Specification<Content> {
 //
