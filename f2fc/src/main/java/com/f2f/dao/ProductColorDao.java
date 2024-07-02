@@ -1,4 +1,4 @@
-package com.f2f.front.dao.product;
+package com.f2f.dao;
 
 import com.f2f.entity.common.ProductColorDTO;
 import com.f2f.entity.product.ProductColor;
