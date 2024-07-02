@@ -1,4 +1,4 @@
-package com.f2f.front;
+package com.f2f.controller;
 
 import com.f2f.controller.product.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
