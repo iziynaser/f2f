@@ -7,6 +7,8 @@ import java.io.Serializable;
 
 public class OrderDateType extends BaseEntity implements Serializable {
 
+    public OrderDateType(){}
+
     @Column(name = "ORDER_DATE_TYPE_NAME")
     private String name;
 

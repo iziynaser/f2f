@@ -10,6 +10,6 @@ import java.io.Serializable;
 @Table(name = "ORDER_ITEM")
 public class OrderItem extends BaseEntity implements Serializable {
 
-
+    public OrderItem(){}
 
 }
