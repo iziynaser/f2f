@@ -1,7 +1,5 @@
 package com.f2f.sso.server;
 
-//import com.revengemission.sso.oauth2.server.utils.JsonUtil;
-
 import com.f2f.sso.server.utils.JsonUtil;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
