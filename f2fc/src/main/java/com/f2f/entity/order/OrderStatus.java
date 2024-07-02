@@ -16,4 +16,8 @@ public class OrderStatus extends BaseEntity implements Serializable {
     private int registerDate;
     private int deliveryDate;
 
+    private OrderStatusType orderStatusType;
+
+    public OrderStatus(){}
+
 }

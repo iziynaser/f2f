@@ -16,4 +16,5 @@ public class OrderStatusType extends BaseEntity implements Serializable  {
     @Column(name = "STATUS_NAME")
     private String name;
 
+    public OrderStatusType(){}
 }
