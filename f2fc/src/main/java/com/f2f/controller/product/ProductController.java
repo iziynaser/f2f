@@ -2,6 +2,7 @@ package com.f2f.controller.product;
 
 import com.f2f.entity.product.NameValueDTO;
 import com.f2f.entity.product.Product;
+import com.f2f.entity.product.ProductDTO;
 import com.f2f.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +16,11 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-//    @GetMapping("/list")
-//    public List<ProductDTO> getProducts(){
-//        List<ProductDTO> list = productService.findAllAvailableProducts();
-//        return list;
-//    }
+    @GetMapping("/list")
+    public List<ProductDTO> getProducts(){
+        List<ProductDTO> list = productService.findAllAvailableProducts();
+        return list;
+    }
 
     @ResponseBody
     @PostMapping(value = "/save")
