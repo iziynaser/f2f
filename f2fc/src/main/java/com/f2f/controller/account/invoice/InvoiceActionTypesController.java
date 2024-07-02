@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController("InvoiceActionTypesController")
-@RequestMapping("/InvoiceActionTypes")
+@RequestMapping("/f2f/InvoiceActionTypes")
 public class InvoiceActionTypesController {
 
     @Autowired

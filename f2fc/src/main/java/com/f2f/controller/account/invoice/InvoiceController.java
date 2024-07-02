@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller("InvoiceController")
-@RequestMapping("/Invoice")
+@RequestMapping("/f2f/Invoice")
 public class InvoiceController {
 
     @Autowired
