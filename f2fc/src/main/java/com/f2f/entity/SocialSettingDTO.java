@@ -1,4 +1,4 @@
-package com.f2f.back.dao;
+package com.f2f.entity;
 
 
 public interface SocialSettingDTO {

@@ -1,7 +1,7 @@
-package com.f2f.back.controller;
+package com.f2f.controller;
 
-import com.f2f.back.dao.SocialSettingDTO;
-import com.f2f.back.service.SocialSettingService;
+import com.f2f.entity.SocialSettingDTO;
+import com.f2f.service.SocialSettingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,6 +1,6 @@
-package com.f2f.back.dao;
+package com.f2f.dao;
 
-import com.f2f.back.entity.SocialSetting;
+import com.f2f.entity.SocialSetting;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
