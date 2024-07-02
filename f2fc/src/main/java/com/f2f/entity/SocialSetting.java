@@ -1,4 +1,4 @@
-package com.f2f.back.entity;
+package com.f2f.entity;
 
 import com.f2f.dbc.persistence.entity.BaseEntity;
 
