@@ -22,7 +22,7 @@ public class OtherSellersService {
         OtherSellersDTO l3 = new OtherSellersDTO();
         OtherSellersDTO l4 = new OtherSellersDTO();
 
-        l1.setConditions("ccccccccccccc");
+        l1.setConditions("seller1");
         l1.setId(1);
         l1.setNameOfSeller("a");
         l1.setPromotions("pppppppp");
@@ -30,24 +30,24 @@ public class OtherSellersService {
         l1.setPrice(10);
         list.add(l1);
 
-        l2.setConditions("ccccccccccccc");
-        l2.setId(1);
+        l2.setConditions("seller2");
+        l2.setId(2);
         l2.setNameOfSeller("a");
         l2.setPromotions("pppppppp");
         l2.setImgUrl("\fff.jpg");
         l2.setPrice(10);
         list.add(l2);
 
-        l3.setConditions("ccccccccccccc");
-        l3.setId(1);
+        l3.setConditions("seller3");
+        l3.setId(3);
         l3.setNameOfSeller("a");
         l3.setPromotions("pppppppp");
         l3.setImgUrl("\fff.jpg");
         l3.setPrice(10);
         list.add(l3);
 
-        l4.setConditions("ccccccccccccc");
-        l4.setId(1);
+        l4.setConditions("seller4");
+        l4.setId(4);
         l4.setNameOfSeller("a");
         l4.setPromotions("pppppppp");
         l4.setImgUrl("\fff.jpg");
