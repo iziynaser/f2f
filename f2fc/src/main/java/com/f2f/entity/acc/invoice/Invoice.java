@@ -11,6 +11,9 @@ import java.util.List;
 @Table(name="INVOICE")
 public class Invoice extends BaseEntity implements Serializable {
 
+    @Column(name = "INVOICE_ID")
+    private Long invoiceId;
+
     @Column(name = "INVOICE_DATE")
     private String date ;
 
@@ -46,6 +49,14 @@ public class Invoice extends BaseEntity implements Serializable {
     private InvoiceType invoiceType;
 
     public Invoice() {
+    }
+
+    public Long getInvoiceId() {
+        return invoiceId;
+    }
+
+    public void setInvoiceId(Long invoiceId) {
+        this.invoiceId = invoiceId;
     }
 
     public Invoice(String date, String message, String description, Person creatorPerson, Person fromPerson, Person toPerson, List<InvoiceItem> invoiceItems, List<InvoiceStatus> invoiceStatuses, InvoiceType invoiceType) {
