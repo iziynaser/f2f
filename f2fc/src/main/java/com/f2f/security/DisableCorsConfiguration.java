@@ -12,7 +12,7 @@ public class DisableCorsConfiguration implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedMethods("HEAD","GET","PUT","POST","DELETE","PATCH")
-                .allowedOrigins("http://localhost:8082")
+                .allowedOrigins("http://localhost:8082","http://localhost:8081")
                 .allowCredentials(true)
                 .maxAge(3600);
     }
@@ -20,6 +20,9 @@ public class DisableCorsConfiguration implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/images/**")
+                .addResourceLocations("classpath:/images/logo/")
+                .addResourceLocations("classpath:/images/footer/")
+                .addResourceLocations("classpath:/images/icon/")
                 .addResourceLocations("classpath:/images/")
                 .setCachePeriod(300)
                 .resourceChain(true)
