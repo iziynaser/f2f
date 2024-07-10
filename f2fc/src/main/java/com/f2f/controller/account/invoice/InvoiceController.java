@@ -5,15 +5,12 @@ import com.f2f.service.account.invoice.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller("InvoiceController")
-@RequestMapping("/f2f/Invoice")
+@RequestMapping("/f2f/invoice")
 public class InvoiceController {
 
     @Autowired
@@ -32,9 +29,11 @@ public class InvoiceController {
 //        //invoiceService.save(invoice);
 //    }
 
+    @ResponseBody
     @PostMapping("/save")
-    public void saveInvoice(@RequestBody Invoice invoice) throws Exception{
+    public void saveInvoice(@RequestBody Invoice invoice) {
         System.out.println("save mehthod called");
+        invoiceService.save(invoice);
     }
 
 }

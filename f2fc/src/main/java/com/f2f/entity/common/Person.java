@@ -13,6 +13,9 @@ import java.util.List;
 @Table(name = "PERSON")
 public class Person extends BaseEntity implements Serializable {
 
+    @Column(name = "PERSON_CODE")
+    private long personCode;
+
     @Column(name = "TITLE")
     private Boolean title;
 
@@ -72,7 +75,18 @@ public class Person extends BaseEntity implements Serializable {
     @OneToMany
     private List<Contact> contacts = new ArrayList<Contact>();
 
-    public Person() {
+    public Person(long personCode) {
+        this.personCode = personCode ;
+    }
+
+    public Person(){}
+
+    public long getPersonCode() {
+        return personCode;
+    }
+
+    public void setPersonCode(long personCode) {
+        this.personCode = personCode;
     }
 
     public Boolean getTitle() {
