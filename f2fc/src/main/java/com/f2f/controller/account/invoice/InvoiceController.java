@@ -1,6 +1,7 @@
 package com.f2f.controller.account.invoice;
 
 import com.f2f.entity.acc.invoice.Invoice;
+import com.f2f.entity.acc.invoice.InvoiceDTO;
 import com.f2f.service.account.invoice.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,9 +18,15 @@ public class InvoiceController {
     InvoiceService invoiceService;
 
     @GetMapping("/list")
-    @PreAuthorize("isAnonymous()")
-    public List<Invoice> getInvoiceList(){
-        List<Invoice> list = invoiceService.findAll();
+    public List<InvoiceDTO> getInvoiceList(){
+        List<InvoiceDTO> list = invoiceService.findAllAvailableInvoice();
+        return list;
+    }
+
+    @GetMapping("/lInvoice")
+    @ResponseBody
+    public List<InvoiceDTO> findAllAvailableInvoice(){
+        List<InvoiceDTO> list = invoiceService.findAllAvailableInvoice();
         return list;
     }
 
