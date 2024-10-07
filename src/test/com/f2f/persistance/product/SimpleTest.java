@@ -1,15 +1,4 @@
-package com.revengemission.sso.oauth2.server;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.revengemission.sso.oauth2.server.domain.UserAccount;
-import com.revengemission.sso.oauth2.server.utils.CheckPasswordStrength;
-import com.revengemission.sso.oauth2.server.utils.JsonUtil;
-import org.apache.commons.lang3.StringUtils;
-import org.junit.Ignore;
-import org.junit.Test;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+package src.test.com.f2f.persistance.product;
 
 /**
  * Created by zhang wanchao on 18-9-15.
