@@ -1,29 +1,8 @@
-package com.revengemission.sso.oauth2.server;
+package src.test.com.f2f.persistance.product;
 
-<<<<<<< Updated upstream
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.revengemission.sso.oauth2.server.persistence.entity.UserAccountEntity;
-import com.revengemission.sso.oauth2.server.persistence.repository.UserAccountRepository;
-import com.revengemission.sso.oauth2.server.utils.JsonUtil;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import java.time.LocalDate;
-import java.util.UUID;
-
-@RunWith(SpringRunner.class)
-@SpringBootTest
-=======
 //@RunWith(SpringRunner.class)
 //@SpringBootTest
->>>>>>> Stashed changes
+
 public class ApplicationTests {
 
 

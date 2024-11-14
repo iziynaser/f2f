@@ -14,6 +14,9 @@ public class Invoice extends BaseEntity implements Serializable {
     @Column(name = "INVOICE_ID")
     private Long invoiceId;
 
+    @Column(name = "INVOICE_CODE")
+    private String invoiceCode;
+
     @Column(name = "INVOICE_DATE")
     private String date ;
 
@@ -47,6 +50,20 @@ public class Invoice extends BaseEntity implements Serializable {
     @OneToOne
     @JoinColumn(name = "INVOICE_TYPE_ID")
     private InvoiceType invoiceType;
+
+    @PostPersist
+    private void createInvoiceCodeAutomatically(){
+        String inCode = this.toPerson.getId() +"."+this.fromPerson.getId()+"."+this.getDate()+"."+this.getId();
+        setInvoiceCode(inCode);
+    }
+
+    public String getInvoiceCode() {
+        return invoiceCode;
+    }
+
+    public void setInvoiceCode(String invoiceCode) {
+        this.invoiceCode = invoiceCode;
+    }
 
     public Invoice() {
     }

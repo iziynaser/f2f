@@ -1,28 +1,32 @@
 package com.f2f.controller.account.invoice;
 
 import com.f2f.entity.acc.invoice.Invoice;
+import com.f2f.entity.acc.invoice.InvoiceDTO;
 import com.f2f.service.account.invoice.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller("InvoiceController")
-@RequestMapping("/f2f/Invoice")
+@RequestMapping("/f2f/invoice")
 public class InvoiceController {
 
     @Autowired
     InvoiceService invoiceService;
 
     @GetMapping("/list")
-    @PreAuthorize("isAnonymous()")
-    public List<Invoice> getInvoiceList(){
-        List<Invoice> list = invoiceService.findAll();
+    public List<InvoiceDTO> getInvoiceList(){
+        List<InvoiceDTO> list = invoiceService.findAllAvailableInvoice();
+        return list;
+    }
+
+    @GetMapping("/lInvoice")
+    @ResponseBody
+    public List<InvoiceDTO> findAllAvailableInvoice(){
+        List<InvoiceDTO> list = invoiceService.findAllAvailableInvoice();
         return list;
     }
 
@@ -32,9 +36,11 @@ public class InvoiceController {
 //        //invoiceService.save(invoice);
 //    }
 
+    @ResponseBody
     @PostMapping("/save")
-    public void saveInvoice(@RequestBody Invoice invoice) throws Exception{
+    public void saveInvoice(@RequestBody Invoice invoice) {
         System.out.println("save mehthod called");
+        invoiceService.save(invoice);
     }
 
 }

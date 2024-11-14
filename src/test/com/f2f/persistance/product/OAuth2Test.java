@@ -1,19 +1,4 @@
-package com.revengemission.sso.oauth2.server;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.revengemission.sso.oauth2.server.utils.JsonUtil;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
-
-import java.io.IOException;
-import java.util.Map;
-
+package src.test.com.f2f.persistance.product;
 
 public class OAuth2Test {
 

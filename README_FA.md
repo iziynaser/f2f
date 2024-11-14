@@ -152,3 +152,5 @@ change maven path to e:\repository
 
 ##changes on labtop
 
+##errors
+w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'productId' for method parameter type String is not present]

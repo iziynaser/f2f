@@ -12,14 +12,14 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController("PersonController")
-@RequestMapping("/f2f/")
-@CrossOrigin("*")
+@RequestMapping("/f2f/persons")
+//@CrossOrigin("*")
 public class PersonController {
 
     @Autowired
     PersonService service;
 
-    @GetMapping("/person")
+    @GetMapping("/list")
     public List<Person> getPersons(){
         List<Person> rt = service.findAll();
         return rt;
