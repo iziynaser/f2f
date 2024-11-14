@@ -22,6 +22,7 @@
         <module>dbc</module>
         <module>sso</module>
         <module>f2fc</module>
+        <module>scrips</module>
     </modules>
 
     <properties>
