@@ -15,3 +15,6 @@ target/
 
 #log files
 data/logs/**
+
+#dist ui files == they are made every time we deploy vuejs front app
+front/dist/**
