@@ -8,5 +8,5 @@ import org.springframework.data.repository.query.Param;
 public interface ProductCommentsDao extends CrudRepository<ProductComments,Long> {
 
     @Query("select count(*) from ProductComments pc where pc.product.id = :id")
-    int getCountOfCommentsOnProduct(@Param("id") Long id);
+    Integer getCountOfCommentsOnProduct(@Param("id") Long id);
 }

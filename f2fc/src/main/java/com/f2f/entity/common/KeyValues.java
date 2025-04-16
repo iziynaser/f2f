@@ -3,9 +3,9 @@ package com.f2f.entity.common;
 public class KeyValues {
 
     private String key;
-    private String value;
+    private Object value;
 
-    public KeyValues(String key,String value){
+    public KeyValues(String key,Object value){
         this.key = key;
         this.value = value;
     }
@@ -18,11 +18,11 @@ public class KeyValues {
         this.key = key;
     }
 
-    public String getValue() {
+    public Object getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Object value) {
         this.value = value;
     }
 }

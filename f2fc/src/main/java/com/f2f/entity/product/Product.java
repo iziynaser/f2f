@@ -10,9 +10,20 @@ import java.io.Serializable;
 @Table(name = "PRODUCT")
 public class Product extends BaseEntity implements Serializable {
 
+    @Column(name = "product_id")
+    private Long productId;
+
+    @Column(name = "product_dimension")
+    private String productDimension;
 
     @Column(name = "PRODUCT_CODE")
     private String productCode;
+
+    @Column(name = "category_id")
+    private  int categoryId;
+
+    @Column(name = "product_type_id", insertable=false , updatable=false)
+    private int productTypeId;
 
     @Column(name = "INTERNAL_NAME")
     private String internalName;
@@ -24,9 +35,9 @@ public class Product extends BaseEntity implements Serializable {
     @JoinColumn(name = "COMMENT_TARGET_ID")
     private CommentTarget commentTarget;
 
-//    @OneToOne
-//    @JoinColumn(name = "PRODUCT_TYPE_ID")
-//    private ProductType productType;
+    @OneToOne
+    @JoinColumn(name = "PRODUCT_TYPE_ID")
+    private ProductType productType;
 
     @Column(name = "COMMENT")
     private String comment;
@@ -124,5 +135,45 @@ public class Product extends BaseEntity implements Serializable {
 
     public void setCommentTarget(CommentTarget commentTarget) {
         this.commentTarget = commentTarget;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public ProductType getProductType() {
+        return productType;
+    }
+
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
+    }
+
+    public String getProductDimension() {
+        return productDimension;
+    }
+
+    public void setProductDimension(String productDimension) {
+        this.productDimension = productDimension;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public int getProductTypeId() {
+        return productTypeId;
+    }
+
+    public void setProductTypeId(int productTypeId) {
+        this.productTypeId = productTypeId;
     }
 }

@@ -23,6 +23,8 @@
         <module>sso</module>
         <module>f2fc</module>
         <module>scrips</module>
+        <module>doc</module>
+        <!--        <module>front</module>-->
     </modules>
 
     <properties>

@@ -20,4 +20,6 @@ public interface UserAccountDbcService extends CommonServiceInterface<UserAccoun
     void loginSuccess(String username) throws EntityNotFoundException;
 
     void loginFailure(String username);
+
+    UserAccount createGuestUserAccount();
 }

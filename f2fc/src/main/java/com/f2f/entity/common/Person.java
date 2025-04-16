@@ -13,6 +13,9 @@ import java.util.List;
 @Table(name = "PERSON")
 public class Person extends BaseEntity implements Serializable {
 
+    @Column(name = "PERSON_ID")
+    private int personId;
+
     @Column(name = "PERSON_CODE")
     private long personCode;
 

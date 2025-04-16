@@ -231,4 +231,9 @@ public class UserAccountServiceImpl implements UserAccountDbcService {
             userAccountRepository.save(userAccountEntity);
         }
     }
+
+    @Override
+    public UserAccount createGuestUserAccount() {
+        return null;
+    }
 }

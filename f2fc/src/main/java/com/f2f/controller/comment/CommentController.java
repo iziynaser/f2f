@@ -2,6 +2,7 @@ package com.f2f.controller.comment;
 
 import com.f2f.dao.comment.CommentDTO;
 import com.f2f.dao.comment.CommentDTOS;
+import com.f2f.dbc.domain.EntityNotFoundException;
 import com.f2f.dbc.domain.UserAccount;
 import com.f2f.entity.common.CommentTarget;
 import com.f2f.entity.common.KeyValues;
@@ -26,7 +27,6 @@ public class CommentController {
     @Autowired
     ProductService productService;
 
-
     @Autowired
     CommentTargetService commentTargetService;
 
@@ -38,7 +38,13 @@ public class CommentController {
     public CommentDTO createComment(Principal principal, @RequestBody CommentDTOS commentDTO){
 
         CommentTarget commentTarget ;
-        UserAccount userAccount = userAccountService.findByUsername(principal.getName());
+        UserAccount userAccount = null;
+        try {
+             userAccount = userAccountService.findByUsername(principal.getName());
+        }catch (EntityNotFoundException e){
+            //userAccountService.
+            e.printStackTrace();
+        }
         Product p = productService.findProductById(Long.valueOf(commentDTO.getProductId()));
 
         commentTarget=p.getCommentTarget();
@@ -56,6 +62,7 @@ public class CommentController {
         List<CommentDTO> commentList = commentService.getListOfCommentsForProductId(productId);
         return commentList;
     }
+
     @RequestMapping("/count")
     public KeyValues getCommentCount(){
         KeyValues kv = new KeyValues("result","10");

@@ -52,3 +52,6 @@ the resources I used in this app are listed below as far as i can remember:
     Required String parameter 'productId' is not present]
     {production mode : ignore log the err}
     {development mode : log the error}
+
+##properties
+storage.properties ??

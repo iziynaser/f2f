@@ -12,6 +12,9 @@ import java.io.Serializable;
 @Table(name = "PRODUCT_TYPE")
 public class ProductType extends BaseEntity implements Serializable {
 
+    @Column(name = "product_type_id")
+    private Long productTypeId;
+
     @Column(name = "NAME")
     private String name;
 

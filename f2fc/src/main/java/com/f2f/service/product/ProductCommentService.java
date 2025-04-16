@@ -21,10 +21,14 @@ public class ProductCommentService {
     ProductDao productDao ;
 
     public int getNumberOfCommentsOnProduct(Long productId){
-        int count = 0;
+        Integer count = 0;
         Optional<Product> optionalProduct = productDao.findById(productId);
         Product p= optionalProduct.orElseThrow(EntityNotFoundException::new);
+        try{
         count = productCommentsDao.getCountOfCommentsOnProduct(p.getId());
+        }catch (Exception e){
+            //log number of comments is zero
+        }
         return count;
     }
 }
