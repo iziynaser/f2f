@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>front</artifactId>
+    <description>front application</description>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
