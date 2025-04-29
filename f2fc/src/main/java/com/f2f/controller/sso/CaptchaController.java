@@ -1,4 +1,4 @@
-package com.f2f.sso.server.controller;
+package com.f2f.controller.sso;
 
 import com.f2f.dbc.service.UserAccountDbcService;
 import com.f2f.sso.server.config.CachesEnum;

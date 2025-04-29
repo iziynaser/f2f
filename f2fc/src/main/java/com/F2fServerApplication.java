@@ -6,23 +6,23 @@ import com.f2f.security.DisableCorsConfiguration;
 import com.f2f.security.DisableSecurityConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+@EnableCaching
 @EnableScheduling
 @ComponentScan(
         basePackageClasses={StorageProperties.class ,UserAccountDbcService.class, DisableCorsConfiguration.class, DisableSecurityConfiguration.class}
         ,
-        basePackages= {"com.f2f.dbc.persistence.entity","com.f2f.entity","com.f2f.dao","com.f2f.dbc.service","com.f2f.service","com.f2f.controller"}
+        basePackages= {"com.f2f.dbc.persistence.entity","com.f2f.entity","com.f2f.dao","com.f2f.dbc.service","com.f2f.service","com.f2f.controller","com.f2f.sso"}
         )
 @SpringBootApplication(
         scanBasePackageClasses = {UserAccountDbcService.class}
         ,
-        scanBasePackages = {"com.f2f.dbc.service","com.f2f.dbc.persistence.entity","com.f2f.service","com.f2f.controller"}
+        scanBasePackages = {"com.f2f.dbc.service","com.f2f.dbc.persistence.entity","com.f2f.service","com.f2f.controller","com.f2f.sso"}
 
         )
 @PropertySources({
@@ -30,10 +30,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
         @PropertySource(value = "classpath:postgresFile.properties"),
         @PropertySource(value = "classpath:storage.properties")
 })
-public class F2fServerApplication {
+public class F2fServerApplication{
 
     public static void main(String[] args) {
         System.out.println("start f2f server application!");
         SpringApplication.run(F2fServerApplication.class, args);
     }
+
 }
