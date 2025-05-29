@@ -1,4 +1,4 @@
-package com.f2f.entity.product;
+package com.f2f.dto;
 
 public class ProductFeatureItemDTO {
 
