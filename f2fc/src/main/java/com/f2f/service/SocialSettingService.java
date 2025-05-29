@@ -2,11 +2,11 @@ package com.f2f.service;
 
 import com.f2f.entity.SocialSettingDTO;
 import com.f2f.entity.SocialSetting;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
 @Component
-@PreAuthorize("isAuthenticated()")
+//@PreAuthorize("isAuthenticated()")
 public class SocialSettingService {
 
 //    @Autowired

@@ -5,13 +5,30 @@ import com.f2f.dbc.persistence.entity.BaseEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "PRODUCT")
 public class Product extends BaseEntity implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(name = "product_id")
     private Long productId;
+
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+    private Set<ProductItem> items = new HashSet<>();
+
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @JoinTable(
+            name = "product_keywords",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "keyword_id")
+    )
+    private Set<ProductKeyword> keywords = new HashSet<>();
 
     @Column(name = "product_dimension")
     private String productDimension;
@@ -54,8 +71,29 @@ public class Product extends BaseEntity implements Serializable {
     @Column(name = "DISCONTINUED_DATE")
     private String disContinuedDate;
 
-    @Column(name = "BRAND")
-    private String brand;
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public Set<ProductItem> getItems() {
+        return items;
+    }
+
+    public void setItems(Set<ProductItem> items) {
+        this.items = items;
+    }
+
+    public String getProductDimension() {
+        return productDimension;
+    }
+
+    public void setProductDimension(String productDimension) {
+        this.productDimension = productDimension;
+    }
 
     public String getProductCode() {
         return productCode;
@@ -63,6 +101,22 @@ public class Product extends BaseEntity implements Serializable {
 
     public void setProductCode(String productCode) {
         this.productCode = productCode;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public int getProductTypeId() {
+        return productTypeId;
+    }
+
+    public void setProductTypeId(int productTypeId) {
+        this.productTypeId = productTypeId;
     }
 
     public String getInternalName() {
@@ -79,6 +133,22 @@ public class Product extends BaseEntity implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public CommentTarget getCommentTarget() {
+        return commentTarget;
+    }
+
+    public void setCommentTarget(CommentTarget commentTarget) {
+        this.commentTarget = commentTarget;
+    }
+
+    public ProductType getProductType() {
+        return productType;
+    }
+
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
     }
 
     public String getComment() {
@@ -121,59 +191,21 @@ public class Product extends BaseEntity implements Serializable {
         this.disContinuedDate = disContinuedDate;
     }
 
-    public String getBrand() {
-        return brand;
+    @Override
+    public Long getId() {
+        return id;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    @Override
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public CommentTarget getCommentTarget() {
-        return commentTarget;
+    public Set<ProductKeyword> getKeywords() {
+        return keywords;
     }
 
-    public void setCommentTarget(CommentTarget commentTarget) {
-        this.commentTarget = commentTarget;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public ProductType getProductType() {
-        return productType;
-    }
-
-    public void setProductType(ProductType productType) {
-        this.productType = productType;
-    }
-
-    public String getProductDimension() {
-        return productDimension;
-    }
-
-    public void setProductDimension(String productDimension) {
-        this.productDimension = productDimension;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public int getProductTypeId() {
-        return productTypeId;
-    }
-
-    public void setProductTypeId(int productTypeId) {
-        this.productTypeId = productTypeId;
+    public void setKeywords(Set<ProductKeyword> keywords) {
+        this.keywords = keywords;
     }
 }

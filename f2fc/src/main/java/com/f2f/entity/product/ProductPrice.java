@@ -8,6 +8,10 @@ import javax.persistence.*;
 @Table(name = "PRODUCT_PRICE")
 public class ProductPrice extends BaseEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     @Column(name = "FROM_DATE")
     private String fromDate ;
 
@@ -27,8 +31,8 @@ public class ProductPrice extends BaseEntity {
     @JoinColumn(name = "PRODUCT_PRICE_TYPE_ID")
     private ProductPriceType productPriceType;
 
-    @ManyToOne
-    private Product product;
+//    @ManyToOne
+//    private Product product;
 
     public String getFromDate() {
         return fromDate;
@@ -78,11 +82,5 @@ public class ProductPrice extends BaseEntity {
         this.productPriceType = productPriceType;
     }
 
-    public Product getProduct() {
-        return product;
-    }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 }

@@ -2,7 +2,7 @@ package com.f2f.controller.product;
 
 import com.f2f.entity.product.Product;
 import com.f2f.entity.product.ProductKeyword;
-import com.f2f.entity.product.ProductKeywordDTO;
+import com.f2f.dto.ProductKeywordDTO;
 import com.f2f.service.product.ProductKeywordService;
 import com.f2f.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +31,10 @@ public class ProductKeywordController {
     public ProductKeyword createProductKeyword(@RequestBody ProductKeywordDTO dto){
 
         Product product = productService.findProductById(dto.getProduct());
-        ProductKeyword productKeyword = new ProductKeyword(product,dto.getKeyName(),dto.getKeyWeight(),dto.getKeyStatus());
-        ProductKeyword pKeyword = productKeywordService.save(productKeyword);
+        //ProductKeyword productKeyword = new ProductKeyword(product,dto.getKeyName(),dto.getKeyWeight(),dto.getKeyStatus());
+        //ProductKeyword pKeyword = productKeywordService.save(productKeyword);
 
-        return pKeyword;
+        //return pKeyword;
+        return null;
     }
 }

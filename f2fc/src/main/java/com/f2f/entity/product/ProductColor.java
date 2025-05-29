@@ -2,15 +2,16 @@ package com.f2f.entity.product;
 
 import com.f2f.dbc.persistence.entity.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "PRODUCT_COLOR")
 public class ProductColor extends BaseEntity implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "COLOR_NAME")
     private String name ;
@@ -18,8 +19,15 @@ public class ProductColor extends BaseEntity implements Serializable {
     @Column(name = "COLOR_VALUE")
     private String value ;
 
-    @ManyToOne
-    private Product product;
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -35,13 +43,5 @@ public class ProductColor extends BaseEntity implements Serializable {
 
     public void setValue(String value) {
         this.value = value;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
     }
 }

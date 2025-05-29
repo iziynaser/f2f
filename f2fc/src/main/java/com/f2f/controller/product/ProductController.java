@@ -1,6 +1,6 @@
 package com.f2f.controller.product;
 
-import com.f2f.entity.product.NameValueDTO;
+import com.f2f.dto.NameValueDTO;
 import com.f2f.entity.product.Product;
 import com.f2f.entity.product.ProductDTO;
 import com.f2f.service.product.ProductService;

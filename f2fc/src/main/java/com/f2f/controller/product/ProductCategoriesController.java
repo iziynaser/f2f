@@ -2,7 +2,7 @@ package com.f2f.controller.product;
 
 import com.f2f.entity.common.Category;
 import com.f2f.entity.product.ProductCategories;
-import com.f2f.entity.product.ProductCategoriesDTO;
+import com.f2f.dto.ProductCategoriesDTO;
 import com.f2f.service.ProductCategoriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

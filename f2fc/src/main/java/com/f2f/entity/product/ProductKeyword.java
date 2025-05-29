@@ -2,18 +2,18 @@ package com.f2f.entity.product;
 
 import com.f2f.dbc.persistence.entity.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "PRODUCT_KEYWORD")
 public class ProductKeyword extends BaseEntity implements Serializable {
 
-    @ManyToOne
-    private Product product;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "KEY_NAME")
     private String keyName ;
@@ -24,12 +24,17 @@ public class ProductKeyword extends BaseEntity implements Serializable {
     @Column(name = "KEY_STATUS")
     private String keyStatus;
 
-    public Product getProduct() {
-        return product;
+    @ManyToMany(mappedBy = "keywords")
+    private Set<Product> products = new HashSet<Product>();
+
+    @Override
+    public Long getId() {
+        return id;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    @Override
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getKeyName() {
@@ -54,17 +59,5 @@ public class ProductKeyword extends BaseEntity implements Serializable {
 
     public void setKeyStatus(String keyStatus) {
         this.keyStatus = keyStatus;
-    }
-
-    public ProductKeyword(){
-        super();
-    }
-
-    public ProductKeyword(Product product,String keyName,String keyWeight,String keyStatus){
-        super();
-        this.product = product;
-        this.keyStatus = keyStatus;
-        this.keyWeight = keyWeight;
-        this.keyName = keyName;
     }
 }

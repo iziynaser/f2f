@@ -1,6 +1,6 @@
 package com.f2f.controller.product;
 
-import com.f2f.entity.product.RelatedProductsDTO;
+import com.f2f.dto.RelatedProductsDTO;
 import com.f2f.service.RelatedProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

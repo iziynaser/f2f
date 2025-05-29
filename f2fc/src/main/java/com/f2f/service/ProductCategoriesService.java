@@ -7,7 +7,7 @@ import com.f2f.dbc.domain.EntityNotFoundException;
 import com.f2f.entity.common.Category;
 import com.f2f.entity.product.Product;
 import com.f2f.entity.product.ProductCategories;
-import com.f2f.entity.product.ProductCategoriesDTO;
+import com.f2f.dto.ProductCategoriesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

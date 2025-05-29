@@ -1,6 +1,6 @@
 package com.f2f.dao.product;
 
-import com.f2f.entity.product.NameValueDTO;
+import com.f2f.dto.NameValueDTO;
 import com.f2f.entity.product.Product;
 import com.f2f.entity.product.ProductDTO;
 import org.springframework.data.jpa.repository.Query;

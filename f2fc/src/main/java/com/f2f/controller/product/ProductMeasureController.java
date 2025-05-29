@@ -4,7 +4,7 @@ package com.f2f.controller.product;
 import com.f2f.entity.acc.MeasureUnit;
 import com.f2f.entity.product.Product;
 import com.f2f.entity.product.ProductMeasure;
-import com.f2f.entity.product.ProductMeasureDTO;
+import com.f2f.dto.ProductMeasureDTO;
 import com.f2f.service.account.MeasureUnitService;
 import com.f2f.service.product.ProductMeasureService;
 import com.f2f.service.product.ProductService;

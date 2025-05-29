@@ -3,7 +3,7 @@ package com.f2f.dao;
 import com.f2f.entity.common.Category;
 import com.f2f.entity.product.Product;
 import com.f2f.entity.product.ProductCategories;
-import com.f2f.entity.product.ProductCategoriesDTO;
+import com.f2f.dto.ProductCategoriesDTO;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

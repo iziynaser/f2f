@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface ProductKeywordDao extends JpaRepository<ProductKeyword,Long> {
 
-    List<ProductKeyword> findAllByProduct(Product product);
+    List<ProductKeyword> findAllByProducts(Product product);
 }

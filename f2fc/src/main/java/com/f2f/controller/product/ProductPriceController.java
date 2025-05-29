@@ -2,7 +2,7 @@ package com.f2f.controller.product;
 
 import com.f2f.entity.product.Product;
 import com.f2f.entity.product.ProductPrice;
-import com.f2f.entity.product.ProductPriceDTO;
+import com.f2f.dto.ProductPriceDTO;
 import com.f2f.exceptions.F2fNotFoundException;
 import com.f2f.service.product.ProductPriceService;
 import com.f2f.service.product.ProductService;
@@ -32,7 +32,7 @@ public class ProductPriceController {
         Product product = productService.findProductById(productId);
 
         ProductPrice productPrice = new ProductPrice();
-        productPrice.setProduct(product);
+        //productPrice.setProduct(product);
         productPrice.setFromDate(productPriceDTO.getFromDate());
         productPrice.setToDate(productPriceDTO.getToDate());
         productPrice.setCurrency(productPriceDTO.getCurrency());
@@ -53,7 +53,7 @@ public class ProductPriceController {
             return list;
         }else{
             //todo: better handling with errcode,translation
-            throw new F2fNotFoundException("record not found!s");
+            throw new F2fNotFoundException("record.not.found!s",null);
         }
     }
 
