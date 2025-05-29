@@ -2,7 +2,7 @@ package com.f2f.controller.product;
 
 import com.f2f.entity.common.Category;
 import com.f2f.entity.product.Brand;
-import com.f2f.entity.product.BrandDTO;
+import com.f2f.dto.BrandDTO;
 import com.f2f.exceptions.F2fNotFoundException;
 import com.f2f.service.CategoryService;
 import com.f2f.service.product.BrandService;
