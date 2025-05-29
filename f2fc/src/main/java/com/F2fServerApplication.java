@@ -17,7 +17,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ComponentScan(
         basePackageClasses={StorageProperties.class ,UserAccountDbcService.class, DisableCorsConfiguration.class, DisableSecurityConfiguration.class}
         ,
-        basePackages= {"com.f2f.dbc.persistence.entity","com.f2f.entity","com.f2f.dao","com.f2f.dbc.service","com.f2f.service","com.f2f.controller","com.f2f.sso"}
+        basePackages= {"com.f2f.dbc.persistence.entity","com.f2f.entity","com.f2f.dao","com.f2f.mapper",
+                       "com.f2f.dbc.service","com.f2f.service","com.f2f.controller","com.f2f.sso"}
         )
 @SpringBootApplication(
         scanBasePackageClasses = {UserAccountDbcService.class}
