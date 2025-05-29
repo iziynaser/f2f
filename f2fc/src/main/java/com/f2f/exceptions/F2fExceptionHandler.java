@@ -1,11 +1,29 @@
 package com.f2f.exceptions;
 
 
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-@ControllerAdvice
-public class F2fExceptionHandler extends ResponseEntityExceptionHandler {
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.Locale;
+
+@RestControllerAdvice
+public class F2fExceptionHandler  {
+
+    private final MessageSource messageSource;
+
+    public F2fExceptionHandler(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
+
 //
 //    @ExceptionHandler(value = Exception.class)
 //    public ResponseEntity<F2fErrorResponse> f2fException(Exception ex, HttpHeaders headers, HttpStatus status, WebRequest request){
@@ -68,8 +86,8 @@ public class F2fExceptionHandler extends ResponseEntityExceptionHandler {
 //            .build();
 //        return new ResponseEntity<>(response,HttpStatus.NOT_ACCEPTABLE);
 //    }
-
-//    private ResponseEntity<Object> handleInvalidFormatException(InvalidFormatException ex,HttpStatus status){
+//
+//    private ResponseEntity<Object> handleInvalidFormatException(InvalidFormatException ex, HttpStatus status){
 //        F2fErrorResponse response = new F2fErrorResponse.F2fErrorBuilder()
 //            .withErrorCode("206")
 //            .withMessage("invalid input")
@@ -77,19 +95,23 @@ public class F2fExceptionHandler extends ResponseEntityExceptionHandler {
 //            .withDetail(ex.toString())
 //            .atTime(LocalDateTime.now(ZoneOffset.UTC))
 //            .build();
-//        return new ResponseEntity<>(response,HttpStatus.NOT_ACCEPTABLE);
+//        return new ResponseEntity<>(response, HttpStatus.NOT_ACCEPTABLE);
 //    }
 //
-//    @ExceptionHandler(value = F2fNotFoundException.class)
-//    public ResponseEntity<F2fErrorResponse> handleF2fNotFoundException(F2fNotFoundException ex){
-//        F2fErrorResponse response = new F2fErrorResponse.F2fErrorBuilder()
-//            .withErrorCode("506")
-//            .withMessage("entity not found exception")
-//            .withStatus(HttpStatus.NOT_FOUND)
-//            .atTime(LocalDateTime.now(ZoneOffset.UTC))
-//            .build();
-//        return new ResponseEntity<F2fErrorResponse>(response,HttpStatus.NOT_FOUND);
-//    }
+
+    @ExceptionHandler(value = F2fNotFoundException.class)
+    public ResponseEntity<F2fErrorResponse> handleF2fNotFoundException(F2fNotFoundException ex){
+        Locale locale = LocaleContextHolder.getLocale();
+        String localizedMessage = messageSource.getMessage(ex.getMessageKey(),ex.getArgs(),locale);
+
+        F2fErrorResponse response = new F2fErrorResponse.F2fErrorBuilder()
+            .withErrorCode("506")
+            .withMessage(localizedMessage)
+            .withStatus(HttpStatus.NOT_FOUND)
+            .atTime(LocalDateTime.now(ZoneOffset.UTC))
+            .build();
+        return new ResponseEntity<F2fErrorResponse>(response,HttpStatus.NOT_FOUND);
+    }
 //
 //    @Override
 //    protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
