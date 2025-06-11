@@ -4,14 +4,14 @@ import com.f2f.dao.qa.QaDTO;
 import com.f2f.dao.qa.QaDao;
 import com.f2f.entity.qa.Qa;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@PreAuthorize("isAuthenticated()")
+//@PreAuthorize("isAuthenticated()")
 public class QaService {
     @Autowired
     QaDao qaDao ;

@@ -1,7 +1,7 @@
 package com.f2f.controller;
 
 import com.f2f.entity.common.KeyValues;
-import com.f2f.entity.product.OtherSellersDTO;
+import com.f2f.dto.OtherSellersDTO;
 import com.f2f.service.OtherSellersService;
 import com.f2f.service.product.PricingService;
 import org.springframework.beans.factory.annotation.Autowired;
