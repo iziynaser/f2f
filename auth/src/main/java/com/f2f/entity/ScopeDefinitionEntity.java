@@ -1,9 +1,15 @@
-package com.f2f.dbc.persistence.entity;
+package com.f2f.entity;
+
+import com.f2f.dbc.entity.BaseEntity;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+@Getter
+@Setter
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"scope"}))
 public class ScopeDefinitionEntity extends BaseEntity {

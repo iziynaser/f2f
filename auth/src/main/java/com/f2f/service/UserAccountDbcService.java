@@ -1,19 +1,20 @@
-package com.f2f.dbc.service;
+package com.f2f.service;
 
 import com.f2f.dbc.domain.EntityNotFoundException;
 import com.f2f.dbc.domain.JsonObjects;
-import com.f2f.dbc.domain.UserAccount;
+import com.f2f.dto.UserAccountDTO;
+import com.f2f.dbc.service.CommonServiceInterface;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface UserAccountDbcService extends CommonServiceInterface<UserAccount> {
-    JsonObjects<UserAccount> listByUsername(String username,
+public interface UserAccountDbcService extends CommonServiceInterface<UserAccountDTO> {
+    JsonObjects<UserAccountDTO> listByUsername(String username,
                                             int pageNum,
                                             int pageSize,
                                             String sortField,
                                             String sortOrder);
 
-    UserAccount findByUsername(String username) throws EntityNotFoundException;
+    UserAccountDTO findByUsername(String username) throws EntityNotFoundException;
 
     boolean existsByUsername(String username);
 
@@ -21,5 +22,5 @@ public interface UserAccountDbcService extends CommonServiceInterface<UserAccoun
 
     void loginFailure(String username);
 
-    UserAccount createGuestUserAccount();
+    UserAccountDTO createGuestUserAccount();
 }
