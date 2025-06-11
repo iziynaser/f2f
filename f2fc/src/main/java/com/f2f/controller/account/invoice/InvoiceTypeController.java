@@ -25,7 +25,7 @@ public class InvoiceTypeController {
 
     @RequestMapping(method = RequestMethod.PUT,produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.OK)
-    public void update(@RequestBody InvoiceType invoiceType){
+    public void update(@RequestBody String invoiceType){
         invoiceTypeService.update(invoiceType);
     }
 

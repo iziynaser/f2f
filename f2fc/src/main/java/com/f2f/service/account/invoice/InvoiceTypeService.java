@@ -18,8 +18,8 @@ public class InvoiceTypeService {
         return (List<InvoiceType>) invoiceTypeDao.findAll();
     }
 
-    public void update(InvoiceType invoiceType){
-        invoiceTypeDao.save(invoiceType);
+    public void update(String invoiceType){
+        //invoiceTypeDao.save(invoiceType);
     }
 
     public Optional<InvoiceType> getById(Long id){
