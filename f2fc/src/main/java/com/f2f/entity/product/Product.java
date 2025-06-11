@@ -1,7 +1,7 @@
 package com.f2f.entity.product;
 
 import com.f2f.entity.common.CommentTarget;
-import com.f2f.dbc.persistence.entity.BaseEntity;
+import com.f2f.dbc.entity.BaseEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -71,6 +71,35 @@ public class Product extends BaseEntity implements Serializable {
     @Column(name = "DISCONTINUED_DATE")
     private String disContinuedDate;
 
+    @Column(name = "DESCRIPTION")
+    private String description;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<ProductImage> images;
+
+
+    //bl
+    public Long getMinPrice(){
+        if(items==null || items.isEmpty()){
+            return null;
+        }
+        return items.stream()
+                .filter(item -> item.getDefaultPrice() !=null)
+                .mapToLong(ProductItem::getDefaultPrice)
+                .min()
+                .orElse(0);
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Long getProductId() {
         return productId;
     }
@@ -85,6 +114,14 @@ public class Product extends BaseEntity implements Serializable {
 
     public void setItems(Set<ProductItem> items) {
         this.items = items;
+    }
+
+    public Set<ProductKeyword> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(Set<ProductKeyword> keywords) {
+        this.keywords = keywords;
     }
 
     public String getProductDimension() {
@@ -191,21 +228,19 @@ public class Product extends BaseEntity implements Serializable {
         this.disContinuedDate = disContinuedDate;
     }
 
-    @Override
-    public Long getId() {
-        return id;
+    public String getDescription() {
+        return description;
     }
 
-    @Override
-    public void setId(Long id) {
-        this.id = id;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Set<ProductKeyword> getKeywords() {
-        return keywords;
+    public Set<ProductImage> getImages() {
+        return images;
     }
 
-    public void setKeywords(Set<ProductKeyword> keywords) {
-        this.keywords = keywords;
+    public void setImages(Set<ProductImage> images) {
+        this.images = images;
     }
 }

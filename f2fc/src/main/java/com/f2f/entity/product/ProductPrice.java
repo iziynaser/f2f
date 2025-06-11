@@ -1,6 +1,6 @@
 package com.f2f.entity.product;
 
-import com.f2f.dbc.persistence.entity.BaseEntity;
+import com.f2f.dbc.entity.BaseEntity;
 
 import javax.persistence.*;
 
@@ -10,7 +10,7 @@ public class ProductPrice extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "FROM_DATE")
     private String fromDate ;
@@ -19,13 +19,13 @@ public class ProductPrice extends BaseEntity {
     private String toDate ;
 
     @Column(name = "currency")
-    private int currency ;
+    private String currency ;
 
     @Column(name = "tax")
     private int tax;
 
     @Column(name = "PRICE")
-    private String price;
+    private String value;
 
     @OneToOne
     @JoinColumn(name = "PRODUCT_PRICE_TYPE_ID")
@@ -33,6 +33,17 @@ public class ProductPrice extends BaseEntity {
 
 //    @ManyToOne
 //    private Product product;
+
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFromDate() {
         return fromDate;
@@ -50,11 +61,11 @@ public class ProductPrice extends BaseEntity {
         this.toDate = toDate;
     }
 
-    public int getCurrency() {
+    public String getCurrency() {
         return currency;
     }
 
-    public void setCurrency(int currency) {
+    public void setCurrency(String currency) {
         this.currency = currency;
     }
 
@@ -66,12 +77,12 @@ public class ProductPrice extends BaseEntity {
         this.tax = tax;
     }
 
-    public String getPrice() {
-        return price;
+    public String getValue() {
+        return value;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setValue(String value) {
+        this.value = value;
     }
 
     public ProductPriceType getProductPriceType() {
@@ -81,6 +92,4 @@ public class ProductPrice extends BaseEntity {
     public void setProductPriceType(ProductPriceType productPriceType) {
         this.productPriceType = productPriceType;
     }
-
-
 }

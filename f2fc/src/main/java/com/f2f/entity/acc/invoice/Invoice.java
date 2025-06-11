@@ -1,170 +1,112 @@
 package com.f2f.entity.acc.invoice;
 
-import com.f2f.entity.common.Person;
-import com.f2f.dbc.persistence.entity.BaseEntity;
+import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.entity.PersonEntity;
+import com.f2f.entity.order.Order;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+@Getter
+@Setter
 @Entity
+@RequiredArgsConstructor
 @Table(name="INVOICE")
 public class Invoice extends BaseEntity implements Serializable {
 
-    @Column(name = "INVOICE_ID")
-    private Long invoiceId;
+    @Column(name = "invoice_number", unique = true, nullable = false)
+    private String invoiceNumber;
 
     @Column(name = "INVOICE_CODE")
     private String invoiceCode;
 
-    @Column(name = "INVOICE_DATE")
-    private String date ;
+    @Column(name = "invoice_date")
+    private LocalDateTime invoiceDate;
 
     @Column(name = "TITLE")
     private String title;
 
     @Column(name = "MESSAGE")
-    private String message ;
+    private String message;
 
     @Column(name = "DESCRIPTION")
     private String description;
 
+    @Column(name = "payment_method")
+    private String paymentMethod;  // مثلا: کارت اعتباری، نقد، انتقال بانکی و ...
+
+    @Column(name = "payment_status")
+    private String paymentStatus;  // مثلا: پرداخت شده، در انتظار پرداخت و ...
+
+    @Column(name = "payment_date")
+    private LocalDateTime paymentDate;
+
+    @Column(name = "due_date")
+    private LocalDateTime dueDate;
+
+    @Column(name = "total_amount")
+    private Long totalAmount;
+
+    @Column(name = "paid_amount")
+    private Long paidAmount;
+
+    @Column(name = "remarks")
+    private String remarks;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reference_invoice_id")
+    private Invoice referenceInvoice;
+
     @OneToOne
     @JoinColumn(name = "CREATOR_PERSON_ID")
-    private Person creatorPerson;
+    private PersonEntity creatorPerson;
 
     @OneToOne
     @JoinColumn(name = "FROM_PERSON_ID")
-    private Person fromPerson;
+    private PersonEntity fromPerson;
 
     @OneToOne
     @JoinColumn(name = "TO_PERSON_ID")
-    private Person toPerson;
+    private PersonEntity toPerson;
 
-    @OneToMany(mappedBy = "invoice")
-    private List<InvoiceItem> invoiceItems;
+    // ایتم‌های فاکتور
+    @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<InvoiceItem> items = new HashSet<>();
 
     @OneToMany(mappedBy = "invoice")
     private List<InvoiceStatus> invoiceStatuses;
 
-    @OneToOne
-    @JoinColumn(name = "INVOICE_TYPE_ID")
-    private InvoiceType invoiceType;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "invoice_type")
+    private InvoiceType invoiceType;// مثلا: PURCHASE, SALES, RETURN, PROFORMA و ...
 
-    @PostPersist
-    private void createInvoiceCodeAutomatically(){
-        String inCode = this.toPerson.getId() +"."+this.fromPerson.getId()+"."+this.getDate()+"."+this.getId();
-        setInvoiceCode(inCode);
-    }
+    // ارتباط با سفارش (اختیاری)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Order order;
 
-    public String getInvoiceCode() {
-        return invoiceCode;
-    }
+//    @PostPersist
+//    private void createInvoiceCodeAutomatically() {
+//        String inCode = this.toPerson.getId() + "." + this.fromPerson.getId() + "." + this.getDate() + "." + this.getId();
+//        setInvoiceCode(inCode);
+//    }
 
-    public void setInvoiceCode(String invoiceCode) {
-        this.invoiceCode = invoiceCode;
-    }
-
-    public Invoice() {
-    }
-
-    public Long getInvoiceId() {
-        return invoiceId;
-    }
-
-    public void setInvoiceId(Long invoiceId) {
-        this.invoiceId = invoiceId;
-    }
-
-    public Invoice(String date, String message, String description, Person creatorPerson, Person fromPerson, Person toPerson, List<InvoiceItem> invoiceItems, List<InvoiceStatus> invoiceStatuses, InvoiceType invoiceType) {
-        this.date = date;
-        this.message = message;
-        this.description = description;
-        this.creatorPerson = creatorPerson;
-        this.fromPerson = fromPerson;
-        this.toPerson = toPerson;
-        this.invoiceItems = invoiceItems;
-        this.invoiceStatuses = invoiceStatuses;
-        this.invoiceType = invoiceType;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Person getCreatorPerson() {
-        return creatorPerson;
-    }
-
-    public void setCreatorPerson(Person creatorPerson) {
-        this.creatorPerson = creatorPerson;
-    }
-
-    public Person getFromPerson() {
-        return fromPerson;
-    }
-
-    public void setFromPerson(Person fromPerson) {
-        this.fromPerson = fromPerson;
-    }
-
-    public Person getToPerson() {
-        return toPerson;
-    }
-
-    public void setToPerson(Person toPerson) {
-        this.toPerson = toPerson;
-    }
-
-    public List<InvoiceItem> getInvoiceItems() {
-        return invoiceItems;
-    }
-
-    public void setInvoiceItems(List<InvoiceItem> invoiceItems) {
-        this.invoiceItems = invoiceItems;
-    }
-
-    public List<InvoiceStatus> getInvoiceStatuses() {
-        return invoiceStatuses;
-    }
-
-    public void setInvoiceStatuses(List<InvoiceStatus> invoiceStatuses) {
-        this.invoiceStatuses = invoiceStatuses;
-    }
-
-    public InvoiceType getInvoiceType() {
-        return invoiceType;
-    }
-
-    public void setInvoiceType(InvoiceType invoiceType) {
-        this.invoiceType = invoiceType;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
+//    public Invoice( String message, String description, PersonEntity creatorPerson, Person fromPerson, Person toPerson, List<InvoiceStatus> invoiceStatuses, String invoiceType) {
+//
+//        this.message = message;
+//        this.description = description;
+//        this.creatorPerson = creatorPerson;
+//        this.fromPerson = fromPerson;
+//        this.toPerson = toPerson;
+//        //this.invoiceItems = invoiceItems;
+//        this.invoiceStatuses = invoiceStatuses;
+//        this.invoiceType = invoiceType;
+//    }
 }

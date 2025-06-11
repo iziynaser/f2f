@@ -2,22 +2,20 @@ package com.f2f.service;
 
 
 import com.f2f.dao.CatalogRepository;
+import com.f2f.dao.ProductItemRepository;
 import com.f2f.dao.ProductRepository;
 import com.f2f.dto.CatalogDto;
-import com.f2f.entity.common.Person;
+import com.f2f.dto.ProductPriceDTO;
+import com.f2f.dto.ProductPriceStats;
 import com.f2f.entity.product.Catalog;
 import com.f2f.entity.product.Product;
 import com.f2f.entity.product.ProductDTO;
-import com.f2f.mapper.CatalogMapper;
 import com.f2f.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,6 +27,8 @@ public class CatalogService {
     private ProductRepository productRepository;
 
     @Autowired
+    private ProductItemRepository productItemRepository;
+
     private final ProductMapper productMapper ;
 
     public CatalogService(CatalogRepository catalogRepository,
@@ -113,10 +113,34 @@ public class CatalogService {
         //if(!c.isPresent())
         //    return null;
 
+        Random random = new Random();
+
         List<Product> products = productRepository.findByCatalogId(catalogId);
-        return products.stream()
+        for(Product product : products) {
+            System.out.println(product.getDescription());
+        }
+        List<ProductDTO>  result = products.stream()
                 .map(productMapper::toDTO)
                 .collect(Collectors.toList());
+
+        for(ProductDTO p : result ){
+            ProductPriceStats s = productItemRepository.findMinPriceStatsByProductId(Long.valueOf(p.getId()));
+            ProductPriceDTO pp = new ProductPriceDTO();
+            //p.setPrice(new ProductPriceDTO());
+            //p.setP
+            //s.getMaxPrice()
+            if(s!=null)
+                pp.setPrice(s.getMaxPrice().toString());
+            else
+                pp.setPrice(random.nextInt(100)+"");
+            pp.setCurrency("USD");
+            p.setPrice(pp);
+            p.setType(random.nextInt(5)+"");
+        }
+
+
+
+        return result;
     }
 
 }

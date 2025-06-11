@@ -1,11 +1,15 @@
 package com.f2f.entity.acc.invoice;
 
-import com.f2f.entity.common.Person;
-import com.f2f.dbc.persistence.entity.BaseEntity;
+import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.entity.PersonEntity;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "INVOICE_STATUS")
 public class InvoiceStatus extends BaseEntity implements Serializable {
@@ -15,7 +19,7 @@ public class InvoiceStatus extends BaseEntity implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "PERSON_ID")
-    private Person person;
+    private PersonEntity person;
 
     @ManyToOne
     @JoinColumn(name = "INVOICE_ACTION_TYPE_ID")
@@ -24,46 +28,4 @@ public class InvoiceStatus extends BaseEntity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "INVOICE_ID")
     private Invoice invoice;
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-    public InvoiceActionTypes getInvoiceActionTypes() {
-        return invoiceActionTypes;
-    }
-
-    public void setInvoiceActionTypes(InvoiceActionTypes invoiceActionTypes) {
-        this.invoiceActionTypes = invoiceActionTypes;
-    }
-
-    public Invoice getInvoice() {
-        return invoice;
-    }
-
-    public void setInvoice(Invoice invoice) {
-        this.invoice = invoice;
-    }
-
-    public InvoiceStatus() {
-    }
-
-    public InvoiceStatus(String date, Person person, InvoiceActionTypes invoiceActionTypes, Invoice invoice) {
-        this.date = date;
-        this.person = person;
-        this.invoiceActionTypes = invoiceActionTypes;
-        this.invoice = invoice;
-    }
 }

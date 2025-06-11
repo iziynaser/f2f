@@ -1,13 +1,18 @@
 package com.f2f.entity.common;
 
+import com.f2f.entity.PersonEntity;
 import com.f2f.entity.product.Product;
-import com.f2f.dbc.persistence.entity.BaseEntity;
+import com.f2f.dbc.entity.BaseEntity;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "PURCHAESE")
 public class Purchase extends BaseEntity implements Serializable {
@@ -18,7 +23,7 @@ public class Purchase extends BaseEntity implements Serializable {
     private Integer purchaseDate ;
 
     @Column(name = "SUPPLIER_PERSON")
-    private Person supplierPerson;
+    private PersonEntity supplierPerson;
 
     @Column(name = "PURCHASE_STATUS")
     private String purchaseStatus ;
@@ -26,42 +31,10 @@ public class Purchase extends BaseEntity implements Serializable {
     public Purchase() {
     }
 
-    public Purchase(Product product, Integer purchaseDate, Person supplierPerson, String purchaseStatus) {
+    public Purchase(Product product, Integer purchaseDate, PersonEntity supplierPerson, String purchaseStatus) {
         this.product = product;
         this.purchaseDate = purchaseDate;
         this.supplierPerson = supplierPerson;
-        this.purchaseStatus = purchaseStatus;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public Integer getPurchaseDate() {
-        return purchaseDate;
-    }
-
-    public void setPurchaseDate(Integer purchaseDate) {
-        this.purchaseDate = purchaseDate;
-    }
-
-    public Person getSupplierPerson() {
-        return supplierPerson;
-    }
-
-    public void setSupplierPerson(Person supplierPerson) {
-        this.supplierPerson = supplierPerson;
-    }
-
-    public String getPurchaseStatus() {
-        return purchaseStatus;
-    }
-
-    public void setPurchaseStatus(String purchaseStatus) {
         this.purchaseStatus = purchaseStatus;
     }
 }

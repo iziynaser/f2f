@@ -1,6 +1,6 @@
 package com.revengemission.sso.oauth2.server.f2f.domain.common;
 
-import com.f2f.dbc.persistence.entity.BaseEntity;
+import com.f2f.dbc.entity.BaseEntity;
 
 import java.io.Serializable;
 

@@ -1,17 +1,13 @@
 package com.f2f.entity.product;
 
-import com.f2f.entity.shopping.Pricing;
+import com.f2f.dbc.entity.BaseEntity;
 
 import javax.persistence.*;
-import java.util.List;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "PRODUCT_ITEM")
-public class ProductItem {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+public class ProductItem  extends BaseEntity implements Serializable {
 
     @ManyToOne
     private Product product;
@@ -39,17 +35,12 @@ public class ProductItem {
     @ManyToOne
     private ProductPrice productPrice;
 
+    public ProductItem(Long productItemId) {
+        super();
+    }
+
 //    @OneToMany(mappedBy = "productItem",cascade = CascadeType.ALL)
 //    private List<StockBatches> stockBatches;
-
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public Product getProduct() {
         return product;

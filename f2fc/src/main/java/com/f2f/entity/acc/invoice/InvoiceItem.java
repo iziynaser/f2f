@@ -1,9 +1,9 @@
 package com.f2f.entity.acc.invoice;
 
 import com.f2f.entity.inventory.Inventory;
-import com.f2f.entity.product.Product;
 import com.f2f.entity.product.ProductFeatureItem;
-import com.f2f.dbc.persistence.entity.BaseEntity;
+import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.entity.product.ProductItem;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,6 +11,10 @@ import java.io.Serializable;
 @Entity
 @Table(name = "INVOICE_ITEM")
 public class InvoiceItem extends BaseEntity implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "SEQ_ID")
     private Integer sequenceId;
@@ -21,19 +25,26 @@ public class InvoiceItem extends BaseEntity implements Serializable {
     @Column(name = "QUANTITY")
     private Integer quantity;
 
+    @Column(name = "unit_price")
+    private Long unitPrice;
+
+    @Column(name = "total_price")
+    private Long totalPrice;
+
+
     @Column(name = "AMOUNT")
     private Integer amount ;
 
     @Column(name = "DESCRIPTION")
     private String description ;
 
-    @ManyToOne
-    @JoinColumn(name = "INVOICE_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "invoice_id", nullable = false)
     private Invoice invoice;
 
-    @OneToOne
-    @JoinColumn(name = "PRODUCT_ID")
-    private Product product;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_item_id", nullable = false)
+    private ProductItem productItem;
 
     @OneToOne
     @JoinColumn(name="INVENTORY_ID")
@@ -49,27 +60,27 @@ public class InvoiceItem extends BaseEntity implements Serializable {
     public InvoiceItem() {
     }
 
-    public InvoiceItem(Integer sequenceId, Boolean isTaxable, Integer quantity, Integer amount, String description, Invoice invoice, Product product, Inventory inventory, ProductFeatureItem productFeatureItem, String invoiceItemType) {
+    public InvoiceItem(Integer sequenceId, Boolean isTaxable, Integer quantity, Integer amount, String description, Invoice invoice, Inventory inventory, ProductFeatureItem productFeatureItem, String invoiceItemType) {
         this.sequenceId = sequenceId;
         this.isTaxable = isTaxable;
         this.quantity = quantity;
         this.amount = amount;
         this.description = description;
         this.invoice = invoice;
-        this.product = product;
         this.inventory = inventory;
         this.productFeatureItem = productFeatureItem;
         this.invoiceItemType = invoiceItemType;
     }
 
-//    public Integer getId() {
-//        return id;
-//    }
-//
-//    public void setId(Integer id) {
-//        this.id = id;
-//    }
+    @Override
+    public Long getId() {
+        return id;
+    }
 
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Integer getSequenceId() {
         return sequenceId;
@@ -93,6 +104,22 @@ public class InvoiceItem extends BaseEntity implements Serializable {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Long getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(Long unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public Long getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Long totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Integer getAmount() {
@@ -119,12 +146,12 @@ public class InvoiceItem extends BaseEntity implements Serializable {
         this.invoice = invoice;
     }
 
-    public Product getProduct() {
-        return product;
+    public ProductItem getProductItem() {
+        return productItem;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductItem(ProductItem productItem) {
+        this.productItem = productItem;
     }
 
     public Inventory getInventory() {

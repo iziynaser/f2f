@@ -1,17 +1,20 @@
 package com.f2f.entity;
 
-import com.f2f.dbc.persistence.entity.BaseEntity;
-import com.f2f.dbc.persistence.entity.UserAccountEntity;
+import com.f2f.dbc.entity.BaseEntity;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "DELIVERY")
 public class Delivery extends BaseEntity implements Serializable {
 
-    @ManyToOne
-    private UserAccountEntity userAccountEntity;
+//    @ManyToOne
+    private Long userAccountId;
 
     @OneToOne
     //@Column(name = "OSTAN_ID")
@@ -56,115 +59,4 @@ public class Delivery extends BaseEntity implements Serializable {
     @Column(name = "GEO_CODE")
     private String geoCode;
 
-    public Ostan getOstan() {
-        return ostan;
-    }
-
-    public void setOstan(Ostan ostan) {
-        this.ostan = ostan;
-    }
-
-    public Shahr getShahr() {
-        return shahr;
-    }
-
-    public void setShahr(Shahr shahr) {
-        this.shahr = shahr;
-    }
-
-    public String getPostalAdress() {
-        return postalAdress;
-    }
-
-    public void setPostalAdress(String postalAdress) {
-        this.postalAdress = postalAdress;
-    }
-
-    public String getPelak() {
-        return pelak;
-    }
-
-    public void setPelak(String pelak) {
-        this.pelak = pelak;
-    }
-
-    public String getUnit() {
-        return unit;
-    }
-
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public String getDeliverName() {
-        return deliverName;
-    }
-
-    public void setDeliverName(String deliverName) {
-        this.deliverName = deliverName;
-    }
-
-    public String getDeliverFamily() {
-        return deliverFamily;
-    }
-
-    public void setDeliverFamily(String deliverFamily) {
-        this.deliverFamily = deliverFamily;
-    }
-
-    public String getNationalCode() {
-        return nationalCode;
-    }
-
-    public void setNationalCode(String nationalCode) {
-        this.nationalCode = nationalCode;
-    }
-
-    public String getMobileNo1() {
-        return mobileNo1;
-    }
-
-    public void setMobileNo1(String mobileNo1) {
-        this.mobileNo1 = mobileNo1;
-    }
-
-    public String getMobileNo2() {
-        return mobileNo2;
-    }
-
-    public void setMobileNo2(String mobileNo2) {
-        this.mobileNo2 = mobileNo2;
-    }
-
-    public String getWhoisGetter() {
-        return whoisGetter;
-    }
-
-    public void setWhoisGetter(String whoisGetter) {
-        this.whoisGetter = whoisGetter;
-    }
-
-    public String getGeoCode() {
-        return geoCode;
-    }
-
-    public void setGeoCode(String geoCode) {
-        this.geoCode = geoCode;
-    }
-
-    public UserAccountEntity getUserAccountEntity() {
-        return userAccountEntity;
-    }
-
-    public void setUserAccountEntity(UserAccountEntity userAccountEntity) {
-        this.userAccountEntity = userAccountEntity;
-    }
 }

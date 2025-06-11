@@ -1,34 +1,95 @@
 package com.f2f.entity.order;
 
-import com.f2f.entity.Delivery;
-import com.f2f.entity.acc.PaymentType;
-import com.f2f.dbc.persistence.entity.BaseEntity;
+import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.entity.PersonEntity;
+import com.f2f.entity.acc.invoice.Invoice;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Order extends BaseEntity implements Serializable {
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+@Table(name = "ORDERS")
+public class Order  extends BaseEntity implements Serializable {
 
-    public Order() {
+    @ManyToOne
+    @JoinColumn(name = "CREATOR_PERSON_ID")
+    private PersonEntity customer;
+
+    @Column(name = "order_date")
+    private LocalDateTime orderDate;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<OrderItem> orderItems = new HashSet<>();
+
+    @Column(name = "current_status")
+    private String currentStatus;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private Set<OrderStatus> statusHistory = new HashSet<>();
+
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Invoice invoice;
+
+    public PersonEntity getCustomer() {
+        return customer;
     }
 
-    @Column(name = "IDENTIFIER")
-    private String identifier;
+    public void setCustomer(PersonEntity customer) {
+        this.customer = customer;
+    }
 
-    @Column(name = "AMOUNT")
-    private Long amount ;
+    public LocalDateTime getOrderDate() {
+        return orderDate;
+    }
 
-    @OneToOne
-    private Delivery delivery;
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
+    }
 
-    //transaction????
+    public Set<OrderItem> getOrderItems() {
+        return orderItems;
+    }
 
-    //deliveryInfo from company???
+    public void setOrderItems(Set<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
 
-    //list of status..????
+    public String getCurrentStatus() {
+        return currentStatus;
+    }
 
-    @OneToOne
-    private PaymentType paymentType;
+    public void setCurrentStatus(String currentStatus) {
+        this.currentStatus = currentStatus;
+    }
+
+    public Set<OrderStatus> getStatusHistory() {
+        return statusHistory;
+    }
+
+    public void setStatusHistory(Set<OrderStatus> statusHistory) {
+        this.statusHistory = statusHistory;
+    }
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
+
+    public Order(Long id){
+        super(id);
+    }
 
 }
+

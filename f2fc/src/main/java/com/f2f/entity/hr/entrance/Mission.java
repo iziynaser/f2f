@@ -1,7 +1,7 @@
 package com.f2f.entity.hr.entrance;
 
-import com.f2f.entity.common.Person;
-import com.f2f.dbc.persistence.entity.BaseEntity;
+import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.entity.PersonEntity;
 
 import javax.persistence.*;
 
@@ -30,6 +30,6 @@ public class Mission extends BaseEntity {
     private String registerDate ;
 
     @Column(name = "REQUESTER")
-    private Person requester ;
+    private PersonEntity requester ;
 
 }

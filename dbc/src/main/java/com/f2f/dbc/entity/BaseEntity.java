@@ -1,6 +1,9 @@
-package com.f2f.dbc.persistence.entity;
+package com.f2f.dbc.entity;
 
 import com.vladmihalcea.hibernate.type.array.StringArrayType;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
@@ -10,7 +13,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-
 @TypeDefs({
         @TypeDef(
                 name = "string-array",
@@ -18,9 +20,13 @@ import java.time.LocalDateTime;
         ),
 })
 @MappedSuperclass
+@Setter
+@Getter
+@RequiredArgsConstructor
 public abstract class BaseEntity implements Serializable {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -100,6 +106,10 @@ public abstract class BaseEntity implements Serializable {
 
     public void setLastModified(LocalDateTime lastModified) {
         this.lastModified = lastModified;
+    }
+
+    public BaseEntity(Long id) {
+        this.id = id;
     }
 
     @PreUpdate

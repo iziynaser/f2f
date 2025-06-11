@@ -1,7 +1,7 @@
 package com.f2f.entity.product;
 
 import com.f2f.entity.common.Comment;
-import com.f2f.dbc.persistence.entity.BaseEntity;
+import com.f2f.dbc.entity.BaseEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;

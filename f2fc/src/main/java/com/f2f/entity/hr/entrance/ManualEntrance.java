@@ -1,10 +1,14 @@
 package com.f2f.entity.hr.entrance;
 
-import com.f2f.entity.common.Person;
-import com.f2f.dbc.persistence.entity.BaseEntity;
+import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.entity.PersonEntity;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name="MANUAL_ENTRANCE")
 public class ManualEntrance extends BaseEntity {
@@ -12,10 +16,10 @@ public class ManualEntrance extends BaseEntity {
     @Id
     @GeneratedValue
     @Column(name = "MANUAL_ENTRANCE_ID")
-    private Integer id;
+    private Integer manualId;
 
     @Column(name = "REQUESTER")
-    private Person Requester;
+    private PersonEntity Requester;
 
     @Column(name = "ENTRY_TIME")
     private String entryTime ;
