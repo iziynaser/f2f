@@ -37,7 +37,7 @@ public class ProductPriceController {
         productPrice.setToDate(productPriceDTO.getToDate());
         productPrice.setCurrency(productPriceDTO.getCurrency());
         productPrice.setTax(productPriceDTO.getTax());
-        productPrice.setPrice(productPriceDTO.getPrice());
+        //productPrice.setPrice(productPriceDTO.getPrice());
 
         //private ProductPriceType productPriceType;
         ProductPrice pp = productPriceService.save(productPrice);
@@ -57,5 +57,9 @@ public class ProductPriceController {
         }
     }
 
+//    @GetMapping("/products/{id}/prices")
+//    public List<ProductPriceDTO> getProductPrices(@PathVariable Long id) {
+//        // قیمت‌ها
+//    }
 
 }

@@ -1,5 +1,10 @@
 package com.f2f.entity.product;
 
+import com.f2f.dto.ProductImageDTO;
+import com.f2f.dto.ProductPriceDTO;
+
+import java.util.List;
+
 public class ProductDTO implements java.io.Serializable {
      private String name;
      private String id;
@@ -10,6 +15,95 @@ public class ProductDTO implements java.io.Serializable {
      private String introDate;
      private String internalName;
      private String disContinuedDate;
+     private String description;
+
+     private ProductPriceDTO price;
+
+     private Long minPrice;
+     private Long maxPrice;
+     private Double avgPrice;
+     //private Long price ;
+
+     private String type;
+
+
+     private List<String> brands;
+     private List<String> colors;
+
+
+     public String getType() {
+          return type;
+     }
+
+     public void setType(String type) {
+          this.type = type;
+     }
+
+     public Long getMinPrice() {
+          return minPrice;
+     }
+
+     public void setMinPrice(Long minPrice) {
+          this.minPrice = minPrice;
+     }
+
+     public Long getMaxPrice() {
+          return maxPrice;
+     }
+
+     public void setMaxPrice(Long maxPrice) {
+          this.maxPrice = maxPrice;
+     }
+
+     public Double getAvgPrice() {
+          return avgPrice;
+     }
+
+     public void setAvgPrice(Double avgPrice) {
+          this.avgPrice = avgPrice;
+     }
+
+     public List<String> getBrands() {
+          return brands;
+     }
+
+     public void setBrands(List<String> brands) {
+          this.brands = brands;
+     }
+
+     public List<String> getColors() {
+          return colors;
+     }
+
+     public void setColors(List<String> colors) {
+          this.colors = colors;
+     }
+
+     public ProductPriceDTO getPrice() {
+          return price;
+     }
+
+     public void setPrice(ProductPriceDTO price) {
+          this.price = price;
+     }
+
+     private List<ProductImageDTO> images;
+
+     public List<ProductImageDTO> getImages() {
+          return images;
+     }
+
+     public void setImages(List<ProductImageDTO> images) {
+          this.images = images;
+     }
+
+     public String getDescription() {
+          return description;
+     }
+
+     public void setDescription(String description) {
+          this.description = description;
+     }
 
      public String getName() {
           return name;

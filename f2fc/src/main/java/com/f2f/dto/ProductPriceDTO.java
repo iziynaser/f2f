@@ -8,7 +8,7 @@ public class ProductPriceDTO implements Serializable {
 
     private String toDate ;
 
-    private int currency ;
+    private String currency ;
 
     private int tax;
 
@@ -34,11 +34,11 @@ public class ProductPriceDTO implements Serializable {
         this.toDate = toDate;
     }
 
-    public int getCurrency() {
+    public String getCurrency() {
         return currency;
     }
 
-    public void setCurrency(int currency) {
+    public void setCurrency(String currency) {
         this.currency = currency;
     }
 

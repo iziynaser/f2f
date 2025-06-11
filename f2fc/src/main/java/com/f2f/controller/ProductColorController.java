@@ -1,6 +1,6 @@
 package com.f2f.controller;
 
-import com.f2f.entity.common.ProductColorDTO;
+import com.f2f.dto.ProductColorDTO;
 import com.f2f.service.ProductColorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +22,9 @@ public class ProductColorController {
        return  productColorList;
    }
 
-
+//    @GetMapping("/products/{id}/colors")
+//    public List<ProductColorDTO> getProductColors(@PathVariable Long id) {
+//        // رنگ‌های محصول
+//    }
 
 }
