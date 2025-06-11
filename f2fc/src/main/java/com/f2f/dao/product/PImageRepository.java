@@ -1,6 +1,6 @@
 package com.f2f.dao.product;
 
-import com.f2f.entity.product.PImage;
+import com.f2f.entity.product.ProductImage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,7 +8,7 @@ import java.util.Optional;
 
 //@Repository("PImageRepository")
 @Repository
-public interface PImageRepository extends JpaRepository<PImage,Long> {
+public interface PImageRepository extends JpaRepository<ProductImage,Long> {
 
-    public Optional<PImage> findByName(String name);
+    public Optional<ProductImage> findByName(String name);
 }

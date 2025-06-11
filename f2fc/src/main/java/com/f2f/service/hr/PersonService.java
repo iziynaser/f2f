@@ -1,7 +1,7 @@
 package com.f2f.service.hr;
 
 import com.f2f.dao.person.PersonDao;
-import com.f2f.entity.common.Person;
+import com.f2f.entity.PersonEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,12 +14,12 @@ public class PersonService {
     @Autowired
     PersonDao dao;
 
-    public List<Person> findAll(){
-        List<Person> r = (List<Person>)dao.findAll();
+    public List<PersonEntity> findAll(){
+        List<PersonEntity> r = (List<PersonEntity>)dao.findAll();
         return r;
     }
 
-    public Person save(Person p) {
+    public PersonEntity save(PersonEntity p) {
         return dao.save(p);
     }
 
@@ -27,8 +27,8 @@ public class PersonService {
         return dao.findById(id);
     }
 
-    public void delete(Person b,int id) {
-        dao.delete(b);
-    }
+//    public void delete(PersonDTO b, int id) {
+//        dao.delete(b);
+//    }
 
 }

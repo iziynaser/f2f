@@ -1,4 +1,4 @@
-package com.f2f.dbc.persistence.entity;
+package com.f2f.dbc.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

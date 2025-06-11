@@ -21,8 +21,7 @@ public class MeasureUnitService {
 
     public MeasureUnit findById(Long id)  throws F2fNotFoundException {
         Optional<MeasureUnit> measureUnitOptional = measureUnitDao.findById(id);
-        MeasureUnit measureUnit = measureUnitOptional.orElseThrow(F2fNotFoundException::new);
-        return measureUnit;
+        return measureUnitOptional.orElseThrow(() -> new F2fNotFoundException("f2f.not.found"));
     }
 
 }
