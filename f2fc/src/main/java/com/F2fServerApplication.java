@@ -1,7 +1,7 @@
 package com;
 
 import com.f2f.config.StorageProperties;
-import com.f2f.dbc.service.UserAccountDbcService;
+//import com.f2f.dbc.service.UserAccountDbcService;
 import com.f2f.security.DisableCorsConfiguration;
 import com.f2f.security.DisableSecurityConfiguration;
 import org.springframework.boot.SpringApplication;
@@ -15,15 +15,15 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableCaching
 @EnableScheduling
 @ComponentScan(
-        basePackageClasses={StorageProperties.class ,UserAccountDbcService.class, DisableCorsConfiguration.class, DisableSecurityConfiguration.class}
+        basePackageClasses={StorageProperties.class , DisableCorsConfiguration.class, DisableSecurityConfiguration.class}
         ,
         basePackages= {"com.f2f.dbc.persistence.entity","com.f2f.entity","com.f2f.dao","com.f2f.mapper",
-                       "com.f2f.dbc.service","com.f2f.service","com.f2f.controller","com.f2f.sso"}
+                       "com.f2f.controller","com.f2f.controller","com.f2f","com.f2f.service"}
         )
 @SpringBootApplication(
-        scanBasePackageClasses = {UserAccountDbcService.class}
+        scanBasePackageClasses = {}
         ,
-        scanBasePackages = {"com.f2f.dbc.service","com.f2f.dbc.persistence.entity","com.f2f.service","com.f2f.controller","com.f2f.sso"}
+        scanBasePackages = {"com.f2f.dbc.persistence.entity","com.f2f.service","com.f2f.controller","com.f2f"}
 
         )
 @PropertySources({

@@ -1,13 +1,17 @@
 package com.f2f.entity.hr;
 
-import com.f2f.entity.common.Person;
-import com.f2f.dbc.persistence.entity.BaseEntity;
+import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.entity.PersonEntity;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "POSITION")
 public class Position extends BaseEntity implements Serializable {
@@ -37,7 +41,7 @@ public class Position extends BaseEntity implements Serializable {
     private List<Responsibility> responsibilities = new ArrayList<Responsibility>();
 
     @ManyToOne
-    private Person person;
+    private PersonEntity person;
 
     public Position() {
     }
@@ -50,77 +54,5 @@ public class Position extends BaseEntity implements Serializable {
         TemporaryFlag = temporaryFlag;
         this.actualFromDate = actualFromDate;
         this.actualToDate = actualToDate;
-    }
-
-    public Integer getEstimatedFromDate() {
-        return estimatedFromDate;
-    }
-
-    public void setEstimatedFromDate(Integer estimatedFromDate) {
-        this.estimatedFromDate = estimatedFromDate;
-    }
-
-    public Integer getEstimatedToDate() {
-        return estimatedToDate;
-    }
-
-    public void setEstimatedToDate(Integer estimatedToDate) {
-        this.estimatedToDate = estimatedToDate;
-    }
-
-    public Boolean getSalaryFlag() {
-        return salaryFlag;
-    }
-
-    public void setSalaryFlag(Boolean salaryFlag) {
-        this.salaryFlag = salaryFlag;
-    }
-
-    public Boolean getFullTimeFlag() {
-        return fullTimeFlag;
-    }
-
-    public void setFullTimeFlag(Boolean fullTimeFlag) {
-        this.fullTimeFlag = fullTimeFlag;
-    }
-
-    public Boolean getTemporaryFlag() {
-        return TemporaryFlag;
-    }
-
-    public void setTemporaryFlag(Boolean temporaryFlag) {
-        TemporaryFlag = temporaryFlag;
-    }
-
-    public Integer getActualFromDate() {
-        return actualFromDate;
-    }
-
-    public void setActualFromDate(Integer actualFromDate) {
-        this.actualFromDate = actualFromDate;
-    }
-
-    public Integer getActualToDate() {
-        return actualToDate;
-    }
-
-    public void setActualToDate(Integer actualToDate) {
-        this.actualToDate = actualToDate;
-    }
-
-    public List<Responsibility> getResponsibilities() {
-        return responsibilities;
-    }
-
-    public void setResponsibilities(List<Responsibility> responsibilities) {
-        this.responsibilities = responsibilities;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
     }
 }
