@@ -55,12 +55,12 @@ public interface CommentTargetDao extends JpaRepository<CommentTarget,Long> {
 //    List<CommentDTO> getListOfCommentsByCommentTargetId(@Param("commentTargetId") Long  commentTargetId);
 
 
-    @Query(" select c.subject as subject,c.body as content,uae.nickName as nickName,cl.numberOfLikes as numberOfLikes,cl.numberOfDisLikes as numberOfDisLikes " +
-            " ,cb.name as benefits,cu.name as disadvatages " +
-            " from CommentTarget as t inner join Comment as c on t.id = c.commentTarget " +
-            " inner join CommentBenefits as cb on cb.comment=c.id " +
-            " inner join CommentUpsets as cu on cu.comment = c.id " +
-            " inner join UserAccountEntity  as uae on uae.id = c.userAccountEntity left join CommentLikes as cl on c.id = cl.comment where t.id=:commentTargetId")
-    List<CommentDTO> getListOfCommentsByCommentTargetId(@Param("commentTargetId") Long  commentTargetId);
+//    @Query(" select c.subject as subject,c.body as content,uae.nickName as nickName,cl.numberOfLikes as numberOfLikes,cl.numberOfDisLikes as numberOfDisLikes " +
+//            " ,cb.name as benefits,cu.name as disadvatages " +
+//            " from CommentTarget as t inner join Comment as c on t.id = c.commentTarget " +
+//            " inner join CommentBenefits as cb on cb.comment=c.id " +
+//            " inner join CommentUpsets as cu on cu.comment = c.id " +
+//            " inner join UserAccountEntity  as uae on uae.id = c.userAccountEntity left join CommentLikes as cl on c.id = cl.comment where t.id=:commentTargetId")
+//    List<CommentDTO> getListOfCommentsByCommentTargetId(@Param("commentTargetId") Long  commentTargetId);
 
 }

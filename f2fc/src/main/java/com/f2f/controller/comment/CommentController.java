@@ -7,7 +7,6 @@ import com.f2f.dbc.domain.UserAccount;
 import com.f2f.entity.common.CommentTarget;
 import com.f2f.entity.common.KeyValues;
 import com.f2f.entity.product.Product;
-import com.f2f.dbc.service.UserAccountDbcService;
 import com.f2f.service.comment.CommentService;
 import com.f2f.service.comment.CommentTargetService;
 import com.f2f.service.product.ProductService;
@@ -30,31 +29,32 @@ public class CommentController {
     @Autowired
     CommentTargetService commentTargetService;
 
-    @Autowired
-    UserAccountDbcService userAccountService;
+    //@Autowired
+    //UserAccountDbcService userAccountService;
+    //UserAccountProvider
 
-    @ResponseBody
-    @PostMapping(value = "/save")
-    public CommentDTO createComment(Principal principal, @RequestBody CommentDTOS commentDTO){
-
-        CommentTarget commentTarget ;
-        UserAccount userAccount = null;
-        try {
-             userAccount = userAccountService.findByUsername(principal.getName());
-        }catch (EntityNotFoundException e){
-            //userAccountService.
-            e.printStackTrace();
-        }
-        Product p = productService.findProductById(Long.valueOf(commentDTO.getProductId()));
-
-        commentTarget=p.getCommentTarget();
-        if(commentTarget==null){
-            commentTarget=commentTargetService.returnNewCommentTarget();
-            productService.saveCommenttargetForThisProduct(p,commentTarget);
-        }
-         commentService.createComment(commentDTO,commentTarget,userAccount);
-        return null;
-    }
+//    @ResponseBody
+//    @PostMapping(value = "/save")
+//    public CommentDTO createComment(Principal principal, @RequestBody CommentDTOS commentDTO){
+//
+//        CommentTarget commentTarget ;
+//        UserAccount userAccount = null;
+//        try {
+//             userAccount =new UserAccount(); //userAccountService.findByUsername(principal.getName());
+//        }catch (EntityNotFoundException e){
+//            //userAccountService.
+//            e.printStackTrace();
+//        }
+//        Product p = productService.findProductById(Long.valueOf(commentDTO.getProductId()));
+//
+//        commentTarget=p.getCommentTarget();
+//        if(commentTarget==null){
+//            commentTarget=commentTargetService.returnNewCommentTarget();
+//            productService.saveCommenttargetForThisProduct(p,commentTarget);
+//        }
+//         commentService.createComment(commentDTO,commentTarget,userAccount);
+//        return null;
+//    }
 
     @ResponseBody
     @RequestMapping("/list")

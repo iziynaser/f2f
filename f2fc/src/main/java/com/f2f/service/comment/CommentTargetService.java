@@ -6,6 +6,7 @@ import com.f2f.entity.common.CommentTarget;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -22,7 +23,7 @@ public class CommentTargetService {
     public List<CommentDTO> getListOfCommentsForTargetId(Long commentTargetId){
         //List<Comment> commentList = commentTargetDao.getOne(commentTargetId).getComments();
         //return commentList;
-        List<CommentDTO> commentList = commentTargetDao.getListOfCommentsByCommentTargetId(commentTargetId);
+        List<CommentDTO> commentList = new ArrayList<>();//commentTargetDao.getListOfCommentsByCommentTargetId(commentTargetId);
         return commentList;
     }
 
