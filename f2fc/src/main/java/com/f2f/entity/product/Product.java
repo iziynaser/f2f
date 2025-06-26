@@ -12,10 +12,6 @@ import java.util.Set;
 @Table(name = "PRODUCT")
 public class Product extends BaseEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(name = "product_id")
     private Long productId;
 
@@ -88,16 +84,6 @@ public class Product extends BaseEntity implements Serializable {
                 .mapToLong(ProductItem::getDefaultPrice)
                 .min()
                 .orElse(0);
-    }
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Long getProductId() {

@@ -18,6 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Tuple;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,17 +40,38 @@ public class ProductService {
     private final ProductItemRepository productItemRepository ;
     private final ProductMapper productMapper ;
 
-    //@PreAuthorize("hasRole('FIND_PRODUCT')")
     public List<String> findAllByNameContains(String name) {
        return (List<String>) productDao.findAllByNameContains(name);
     }
 
-    //@PreAuthorize("hasRole('FIND_PRODUCT')")
     public List<ProductDTO> findAllAvailableProducts() {
-        return  productDao.findAllAvailableProducts();
+        List<Tuple>  allAvailableProducts =  productDao.findAllAvailableProducts();
+        System.out.println(allAvailableProducts);
+        List<ProductDTO> productDTOList = new ArrayList<ProductDTO>();
+        allAvailableProducts.forEach(product -> {
+            String name =  product.get("name").toString();
+            //String comment =  product.get("comment").toString();
+//            String isVirtual =  product.get("isVirtual").toString();
+//            String releaseDate =  product.get("releaseDate").toString();
+//            String productCode =  product.get("productCode").toString();
+//            String introDate =  product.get("introDate").toString();
+//            String internalName =  product.get("internalName").toString();
+//            String disContinuedDate =  product.get("disContinuedDate").toString();
+
+            ProductDTO productDTO = new ProductDTO();
+            productDTO.setName(name);
+            //productDTO.setComment(comment);
+//            productDTO.setIsVirtual(isVirtual);
+//            productDTO.setReleaseDate(releaseDate);
+//            productDTO.setProductCode(productCode);
+//            productDTO.setIntroDate(introDate);
+//            productDTO.setInternalName(internalName);
+//            productDTO.setDisContinuedDate(disContinuedDate);
+            productDTOList.add(productDTO);
+        });
+        return productDTOList;
     }
 
-   // @PreAuthorize("hasRole('SAVE_PRODUCT')")
     public Product save(Product product) {
         if(product.getId()==0){
             CommentTarget commentTarget= commentTargetService.returnNewCommentTarget();

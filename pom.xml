@@ -20,15 +20,13 @@
 
     <modules>
         <module>dbc</module>
-<!--        <module>sso</module>-->
+        <module>sso</module>
         <module>f2fc</module>
         <module>scrips</module>
         <module>doc</module>
         <module>front</module>
         <module>frontb</module>
         <module>frontf</module>
-        <module>auth</module>
-        <module>res</module>
     </modules>
 
     <properties>
@@ -38,6 +36,8 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <jakarta-servlet.version>5.0.0</jakarta-servlet.version>
+        <mapstruct.version>1.5.3.Final</mapstruct.version>
+        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
     </properties>
 
     <repositories>
@@ -57,6 +57,20 @@
     </repositories>
 
     <dependencies>
+
+        <!-- MapStruct -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${mapstruct.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${mapstruct.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
 
         <!--        <dependency>-->
 <!--            <groupId>org.springframework.modulith</groupId>-->
@@ -173,6 +187,29 @@
             </resource>
         </resources>
         <plugins>
+            <!-- Compiler plugin with annotation processing for MapStruct and Lombok -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${mapstruct.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>

@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.Tuple;
 import java.util.List;
 
 //@Repository("ProductDao")
@@ -20,10 +21,10 @@ public interface ProductDao extends CrudRepository<Product,Long> {
 //    @Override
 //    Optional<Product> findById(Long id);
 
-    @Query("select p.name as name,p.id as id,p.comment as comment," +
+    @Query("select p.name as name,p.comment as comment," +
             "p.isVirtual as isVirtual,p.releaseDate as releaseDate,p.productCode as productCode," +
             "p.introDate as introDate,p.internalName as internalName,p.disContinuedDate as disContinuedDate from Product as p ")
-    List<ProductDTO> findAllAvailableProducts();
+    List<Tuple> findAllAvailableProducts();
 
     @Query("select p.id as id ,p.name as name from Product  p")
     List<NameValueDTO> getNameValuesOfProducts();

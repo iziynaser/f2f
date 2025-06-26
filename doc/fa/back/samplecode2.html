@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+@Configuration
+@Order(2) // اولویت پایین‌تر، چون مدیریت اولویت بالاتری داره
+public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
+
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+http
+.antMatcher("/api/user/**")   // فقط مسیرهای user
+.authorizeRequests()
+.antMatchers("/api/user/public/**").permitAll() // مثلا صفحه کالاها باز است
+.antMatchers("/api/user/**").hasRole("USER")
+.and()
+.formLogin()
+.loginPage("/login-user")
+.defaultSuccessUrl("/user/home")
+.permitAll()
+.and()
+.logout()
+.logoutUrl("/logout-user")
+.logoutSuccessUrl("/login-user?logout")
+.and()
+.csrf().disable(); // یا فعال بر اساس نیاز
+}
+
+@Override
+protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+// تعریف احراز هویت و کاربران (مثلا در دیتابیس)
+auth.inMemoryAuthentication()
+.withUser("user").password("{noop}password").roles("USER");
+}
+}
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+@Configuration
+@Order(1) // اولویت بالاتر، چون ادمین حساس‌تر است
+public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
+
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+http
+.antMatcher("/api/admin/**")  // فقط مسیرهای admin
+.authorizeRequests()
+.antMatchers("/api/admin/login").permitAll()
+.antMatchers("/api/admin/**").hasRole("ADMIN")
+.and()
+.formLogin()
+.loginPage("/login-admin")
+.defaultSuccessUrl("/admin/dashboard")
+.permitAll()
+.and()
+.logout()
+.logoutUrl("/logout-admin")
+.logoutSuccessUrl("/login-admin?logout")
+.and()
+.csrf().disable();
+}
+
+@Override
+protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+auth.inMemoryAuthentication()
+.withUser("admin").password("{noop}adminpass").roles("ADMIN");
+}
+}
+
+</body>
+</html>
