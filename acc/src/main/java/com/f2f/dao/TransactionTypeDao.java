@@ -1,0 +1,11 @@
+package com.f2f.dao;
+
+import com.f2f.entity.TransactionType;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+//@Repository("TransactionTypeDao")
+@Repository
+public interface TransactionTypeDao extends CrudRepository<TransactionType,Long>{
+
+}
