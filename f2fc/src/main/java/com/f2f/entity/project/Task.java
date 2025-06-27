@@ -2,10 +2,7 @@ package com.f2f.entity.project;
 
 import com.f2f.dbc.entity.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "TASK")

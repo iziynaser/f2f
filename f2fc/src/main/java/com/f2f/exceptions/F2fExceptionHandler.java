@@ -1,6 +1,7 @@
 package com.f2f.exceptions;
 
 
+import com.f2f.exception.F2fNotFoundException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;

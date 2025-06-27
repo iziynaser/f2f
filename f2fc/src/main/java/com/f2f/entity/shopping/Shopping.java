@@ -1,8 +1,11 @@
 package com.f2f.entity.shopping;
 
-import com.f2f.entity.product.Product;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Shopping {
-    private Product product;
+    private Long productId;
     private int number;
 }

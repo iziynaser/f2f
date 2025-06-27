@@ -1,7 +1,7 @@
 package com.f2f.service;
 
 import com.f2f.dbc.service.CommonServiceInterface;
-import com.f2f.entity.EmailTypeEntity;
+import com.f2f.entity.other.EmailTypeEntity;
 
 
 public interface EmailTypeService extends CommonServiceInterface<EmailTypeEntity> {

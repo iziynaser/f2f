@@ -1,21 +1,19 @@
 package com.f2f.service;
 
-import com.f2f.dao.person.PersonRepository;
-import com.f2f.entity.PersonEntity;
+import com.f2f.dao.PersonDao;
 import com.f2f.dto.PersonDTO;
 import com.f2f.mapper.PersonMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class PersonServiceImpl implements PersonService {
 
-    private final PersonRepository personRepository;
+    private final PersonDao personRepository;
     private final PersonMapper personMapper;
 
-    public PersonServiceImpl(PersonRepository personRepository, PersonMapper personMapper) {
+    public PersonServiceImpl(PersonDao personRepository, PersonMapper personMapper) {
         this.personRepository = personRepository;
         this.personMapper = personMapper;
     }

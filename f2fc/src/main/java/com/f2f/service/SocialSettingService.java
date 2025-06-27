@@ -1,7 +1,7 @@
 package com.f2f.service;
 
-import com.f2f.entity.SocialSettingDTO;
-import com.f2f.entity.SocialSetting;
+import com.f2f.entity.other.SocialSettingDTO;
+import com.f2f.entity.other.SocialSetting;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 

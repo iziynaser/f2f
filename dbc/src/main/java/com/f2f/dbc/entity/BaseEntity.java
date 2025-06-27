@@ -1,24 +1,18 @@
 package com.f2f.dbc.entity;
 
 import com.vladmihalcea.hibernate.type.array.StringArrayType;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.TypeDef;
-import org.hibernate.annotations.TypeDefs;
+
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@TypeDefs({
-        @TypeDef(
-                name = "string-array",
-                typeClass = StringArrayType.class
-        ),
-})
 @MappedSuperclass
 @Setter
 @Getter

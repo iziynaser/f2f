@@ -1,12 +1,10 @@
 package com.f2f.entity.shopping;
 
-import com.f2f.entity.PersonEntity;
-import com.f2f.entity.product.Product;
 import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.entity.PersonEntity;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.persistence.*;
 
 @Getter
 @Setter
@@ -14,9 +12,9 @@ import javax.persistence.*;
 @Table(name = "PRICING")
 public class Pricing extends BaseEntity {
 
-    @OneToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+//    @OneToOne
+//    @JoinColumn(name = "product_id")
+    private Long productId;
 
     @OneToOne
     @JoinColumn(name = "person_id")

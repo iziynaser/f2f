@@ -1,6 +1,6 @@
 package com.f2f.controller;
 
-import com.f2f.entity.Ostan;
+import com.f2f.entity.other.Ostan;
 import com.f2f.service.OstanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

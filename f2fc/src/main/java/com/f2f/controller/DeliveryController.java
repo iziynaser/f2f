@@ -1,21 +1,10 @@
 package com.f2f.controller;
 
-import com.f2f.dbc.domain.EntityNotFoundException;
-import com.f2f.dbc.domain.Role;
-import com.f2f.dbc.domain.UserAccount;
-import com.f2f.entity.Delivery;
-import com.f2f.entity.DeliveryDTO;
-import com.f2f.entity.Ostan;
-import com.f2f.entity.Shahr;
 import com.f2f.service.DeliveryService;
 import com.f2f.service.OstanService;
 import com.f2f.service.ShahrService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/f2f/Delivery")

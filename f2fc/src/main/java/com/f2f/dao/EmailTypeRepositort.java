@@ -1,6 +1,6 @@
 package com.f2f.dao;
 
-import com.f2f.entity.EmailTypeEntity;
+import com.f2f.entity.other.EmailTypeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

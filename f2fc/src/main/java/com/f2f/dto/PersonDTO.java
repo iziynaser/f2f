@@ -30,5 +30,5 @@ public class PersonDTO {
     private List<Long> workSheetIds;
     private List<Long> positionIds;
     private List<Long> contactIds;
-    private Set<OrderDTO> orders;
+    private Set<Long> ordersId;
 }

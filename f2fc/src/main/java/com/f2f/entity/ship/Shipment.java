@@ -2,9 +2,7 @@ package com.f2f.entity.ship;
 
 import com.f2f.dbc.entity.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
