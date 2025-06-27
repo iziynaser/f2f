@@ -1,0 +1,17 @@
+package com.f2f.repository;
+
+import com.f2f.entity.invoice.Invoice;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
+
+    List<Invoice> findByInvoiceType(String invoiceType);
+
+//    List<Invoice> findByPartyId(Long partyId);
+
+    List<Invoice> findByOrderId(Long orderId);
+}
