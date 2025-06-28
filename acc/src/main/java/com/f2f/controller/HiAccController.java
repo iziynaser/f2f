@@ -10,7 +10,7 @@ public class HiAccController {
 
     @GetMapping("/hi")
     public String getAccountList(){
-        return "hi acc";
+        return "hi acc version ";
     }
 
 }
