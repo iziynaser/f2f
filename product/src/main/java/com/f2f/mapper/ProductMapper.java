@@ -1,7 +1,7 @@
 package com.f2f.mapper;
 
+import com.f2f.dto.ProductDTO;
 import com.f2f.entity.Product;
-import com.f2f.entity.ProductDTO;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring", uses = {ProductImageMapper.class})

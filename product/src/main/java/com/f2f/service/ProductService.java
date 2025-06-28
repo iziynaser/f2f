@@ -3,10 +3,11 @@ package com.f2f.service;
 import com.f2f.dao.*;
 import com.f2f.dbc.domain.EntityNotFoundException;
 import com.f2f.dbc.dto.NameValueDTO;
+import com.f2f.dto.ProductDTO;
+import com.f2f.dto.ProductInfo;
 import com.f2f.dto.ProductPriceDTO;
 import com.f2f.dto.ProductPriceStats;
 import com.f2f.entity.Product;
-import com.f2f.entity.ProductDTO;
 import com.f2f.mapper.ProductMapper;
 import jakarta.persistence.Tuple;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,29 +40,21 @@ public class ProductService {
     }
 
     public List<ProductDTO> findAllAvailableProducts() {
-        List<Tuple>  allAvailableProducts =  productDao.findAllAvailableProducts();
-        System.out.println(allAvailableProducts);
-        List<ProductDTO> productDTOList = new ArrayList<ProductDTO>();
-        allAvailableProducts.forEach(product -> {
-            String name =  product.get("name").toString();
-            //String comment =  product.get("comment").toString();
-//            String isVirtual =  product.get("isVirtual").toString();
-//            String releaseDate =  product.get("releaseDate").toString();
-//            String productCode =  product.get("productCode").toString();
-//            String introDate =  product.get("introDate").toString();
-//            String internalName =  product.get("internalName").toString();
-//            String disContinuedDate =  product.get("disContinuedDate").toString();
+        List<ProductInfo> allAvailableProducts = productDao.findAllAvailableProducts();
 
-            ProductDTO productDTO = new ProductDTO();
-            productDTO.setName(name);
-            //productDTO.setComment(comment);
-//            productDTO.setIsVirtual(isVirtual);
-//            productDTO.setReleaseDate(releaseDate);
-//            productDTO.setProductCode(productCode);
-//            productDTO.setIntroDate(introDate);
-//            productDTO.setInternalName(internalName);
-//            productDTO.setDisContinuedDate(disContinuedDate);
-            productDTOList.add(productDTO);
+        List<ProductDTO> productDTOList = new ArrayList<>();
+        allAvailableProducts.forEach(product -> {
+            ProductDTO dto = new ProductDTO();
+            dto.setId(product.getId().toString());
+            dto.setName(product.getName());
+            dto.setComment(product.getComment());
+            dto.setIsVirtual(product.getIsVirtual());
+            dto.setReleaseDate(product.getReleaseDate());
+            dto.setProductCode(product.getProductCode());
+            dto.setIntroDate(product.getIntroDate());
+            dto.setInternalName(product.getInternalName());
+            dto.setDisContinuedDate(product.getDisContinuedDate());
+            productDTOList.add(dto);
         });
         return productDTOList;
     }

@@ -1,7 +1,7 @@
 package com.f2f.controller;
 
+import com.f2f.dto.ProductDTO;
 import com.f2f.entity.Catalog;
-import com.f2f.entity.ProductDTO;
 import com.f2f.mapper.ProductMapper;
 import com.f2f.service.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
