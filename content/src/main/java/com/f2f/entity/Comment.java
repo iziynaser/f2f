@@ -24,11 +24,9 @@ public class Comment extends BaseEntity implements Serializable {
     @Column(name = "SUBJECT")
     private String subject ;
 
-    //@ElementCollection
     @OneToMany(mappedBy = "comment")
     private List<CommentBenefits> benefits=new ArrayList<>();
 
-    //@ElementCollection
     @OneToMany(mappedBy = "comment")
     private List<CommentUpsets> upsets=new ArrayList<>();
 
@@ -38,8 +36,6 @@ public class Comment extends BaseEntity implements Serializable {
     @Column(name = "STATUS")
     private String status;
 
-//    @OneToOne
-//    @JoinColumn(name = "USER_ACCOUNT")
     private Long userAccountId;
 
     @OneToOne(mappedBy = "comment",cascade = CascadeType.ALL)

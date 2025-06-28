@@ -1,6 +1,5 @@
 package com.f2f.entity;
 
-//import com.f2f.entity.common.CommentTarget;
 import com.f2f.dbc.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -48,8 +47,6 @@ public class Product extends BaseEntity implements Serializable {
     @Column(name = "NAME")
     private String name;
 
-//    @OneToOne
-//    @JoinColumn(name = "COMMENT_TARGET_ID")
     private Long commentTargetId;
 
     @OneToOne

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-//@Repository("ProductFeatureGroupDao")
 @Repository
 public interface ProductFeatureGroupDao extends JpaRepository<ProductFeatureGroup,Long> {
 
@@ -18,8 +17,8 @@ public interface ProductFeatureGroupDao extends JpaRepository<ProductFeatureGrou
     @Query("select g.id as groupId,g.name as groupName,i.id as itemId,i.name as itemName,s.id as itemsId,s.name as itemsName " +
             " from ProductFeatureGroup as g " +
             " left join ProductFeatureItem as i " +
-            " on g.id = i.featureGroup " +
-            " left join ProductFeatureItems as s on i.id = s.featureItem " +
+            " on g = i.featureGroup " +
+            " left join ProductFeatureItems as s on i = s.featureItem " +
             " where g.product.id=:id" +
             " order by g.orders,i.orders,s.orders")
     List<FeaturesDTO> getListOfFeatures(@Param("id") Long id);

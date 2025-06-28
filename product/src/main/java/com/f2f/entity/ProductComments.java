@@ -14,13 +14,10 @@ import java.io.Serializable;
         uniqueConstraints = @UniqueConstraint(columnNames = {"PRODUCT_ID", "COMMENT_ID"}))
 public class ProductComments extends BaseEntity implements Serializable {
 
-    @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID")
-    private Product product;
+    @Column(name = "PRODUCT_ID")
+    private Long productId;
 
-//    @ManyToOne
-//    @JoinColumn(name = "COMMENT_ID")
+    @Column(name = "COMMENT_ID")
     private Long commentId;
-
 
 }

@@ -2,9 +2,13 @@ package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
+@Getter
+@Setter
 @Entity
 @Table(
     name = "PR_FEATURE_ITEMS",
@@ -13,7 +17,6 @@ import java.io.Serializable;
 )
 public class ProductFeatureItems extends BaseEntity implements Serializable {
 
-    //@Column(name = "name",unique = true)
     @Column(name = "FEATURE_ITEMS_NAME")
     private String name;
 
@@ -27,35 +30,4 @@ public class ProductFeatureItems extends BaseEntity implements Serializable {
     @JoinColumn(name="FEATURE_ITEM_ID")
     private ProductFeatureItem featureItem;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getOrders() {
-        return orders;
-    }
-
-    public String getFeatureValue() {
-        return featureValue;
-    }
-
-    public void setFeatureValue(String featureValue) {
-        this.featureValue = featureValue;
-    }
-
-    public void setOrders(int orders) {
-        this.orders = orders;
-    }
-
-    public ProductFeatureItem getFeatureItem() {
-        return featureItem;
-    }
-
-    public void setFeatureItem(ProductFeatureItem featureItem) {
-        this.featureItem = featureItem;
-    }
 }
