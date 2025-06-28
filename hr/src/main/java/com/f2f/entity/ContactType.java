@@ -1,14 +1,11 @@
 package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-
 
 @Getter
 @Setter
@@ -22,15 +19,8 @@ public class ContactType extends BaseEntity implements Serializable {
     @Column(name = "DESCRIPTION")
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "CONTACT_ID")
     private Contact contact;
-
-    public ContactType() {
-    }
-
-    public ContactType(String name, String description) {
-        this.name = name;
-        //this.version = version;
-        this.description = description;
-    }
 
 }

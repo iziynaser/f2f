@@ -9,11 +9,6 @@ import jakarta.persistence.*;
 @Table(name = "MISSION")
 public class Mission extends BaseEntity {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "MISSION_ID")
-    private Integer id;
-
     @Column(name = "FROM_HOUR")
     private String fromHour ;
 

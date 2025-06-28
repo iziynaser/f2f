@@ -22,13 +22,6 @@ public class Resume extends BaseEntity implements Serializable {
     @Column(name = "RESUME_DATE")
     private String resumeDate ;
 
-    private PersonEntity person;
+    private Long personId;
 
-    public Resume() {
-    }
-
-    public Resume(String contentFile, String resumeDate) {
-        this.contentFile = contentFile;
-        this.resumeDate = resumeDate;
-    }
 }

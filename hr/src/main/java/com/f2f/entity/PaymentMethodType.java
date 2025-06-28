@@ -21,9 +21,4 @@ public class PaymentMethodType extends BaseEntity implements Serializable {
 
     @Column(name = "DESCRIPTON")
     private String description ;
-
-    public PaymentMethodType(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
 }

@@ -19,11 +19,4 @@ public class TerminationType extends BaseEntity {
     @Column(name = "DESCRIPTON")
     private String description ;
 
-    public TerminationType(){
-
-    }
-    public TerminationType(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
 }

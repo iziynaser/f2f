@@ -39,19 +39,6 @@ public class Position extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "position",cascade = CascadeType.ALL)
     private List<Responsibility> responsibilities = new ArrayList<Responsibility>();
 
-    @ManyToOne
-    private PersonEntity person;
+    private Long personId;
 
-    public Position() {
-    }
-
-    public Position(Integer estimatedFromDate, Integer estimatedToDate, Boolean salaryFlag, Boolean fullTimeFlag, Boolean temporaryFlag, Integer actualFromDate, Integer actualToDate) {
-        this.estimatedFromDate = estimatedFromDate;
-        this.estimatedToDate = estimatedToDate;
-        this.salaryFlag = salaryFlag;
-        this.fullTimeFlag = fullTimeFlag;
-        TemporaryFlag = temporaryFlag;
-        this.actualFromDate = actualFromDate;
-        this.actualToDate = actualToDate;
-    }
 }

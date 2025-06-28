@@ -21,7 +21,7 @@ public class PersonDTO {
     private String dateOfBirth;
     private String address;
     private String description;
-    // برای ساده سازی فقط شناسه های مرتبط یا فقط رشته‌های ساده را می‌آوریم
+
     private List<Long> connectionIds;
     private Long loginId;
     private List<Long> groupIds;

@@ -61,14 +61,11 @@ public class PersonEntity extends BaseEntity implements Serializable {
 //    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Long> ordersId = new HashSet<>();
 
-
     /*
-
     //@OneToMany(targetEntity = Connection.class,mappedBy = "person")
     //@Column(name = "CONNECTION_ID")
 //    @OneToMany
 //    private Collection<Connection> additionalConnection;
-
 
     //@JsonIgnore
     //@OneToMany(mappedBy = "person",cascade = CascadeType.ALL)

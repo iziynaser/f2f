@@ -1,9 +1,7 @@
 package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,5 +18,9 @@ public class WorkSheetItem extends BaseEntity implements Serializable {
 
     @Column(name = "LEAVE_TIME")
     private String leaveTime;
+
+    @ManyToOne
+    @JoinColumn(name = "WORK_SHEET_ID")
+    private WorkSheet workSheet;
 
 }

@@ -18,18 +18,13 @@ public class PersonType extends BaseEntity implements Serializable {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "VERSION")
-    private Integer version;
+//    @Column(name = "VERSION")
+//    private Integer version;
 
     @Column(name = "DESCRIPTION")
     private String description;
 
     public PersonType() {
-    }
-
-    public PersonType(Integer version, String description) {
-        this.version = version;
-        this.description = description;
     }
 
 }

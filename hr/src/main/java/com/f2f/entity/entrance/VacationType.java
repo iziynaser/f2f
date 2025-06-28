@@ -9,11 +9,6 @@ import java.io.Serializable;
 @Table(name = "VACATION_TYPE")
 public class VacationType extends BaseEntity implements Serializable {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "VACATION_TYPE_ID")
-    private Integer id;
-
     @Column(name = "NAME")
     private String name;
 }

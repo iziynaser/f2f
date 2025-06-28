@@ -27,12 +27,4 @@ public class Connection extends BaseEntity implements Serializable {
 
     public Connection() {
     }
-
-//    public Connection(ConnectionType connectionType, Person person, String connectionValue, Boolean available) {
-//        this.connectionType = connectionType;
-//        this.person = person;
-//        this.connectionValue = connectionValue;
-//        this.available = available;
-//    }
-
  }

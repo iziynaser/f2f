@@ -13,11 +13,6 @@ import lombok.Setter;
 @Table(name="MANUAL_ENTRANCE")
 public class ManualEntrance extends BaseEntity {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "MANUAL_ENTRANCE_ID")
-    private Integer manualId;
-
     @Column(name = "REQUESTER")
     private PersonEntity Requester;
 
