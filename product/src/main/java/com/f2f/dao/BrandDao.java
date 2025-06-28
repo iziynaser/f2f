@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-//@Repository("BrandDao")
 @Repository
 public interface BrandDao extends CrudRepository<Brand,Long> {
 
