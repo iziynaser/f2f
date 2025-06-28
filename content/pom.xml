@@ -9,6 +9,7 @@
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
+
     <artifactId>content</artifactId>
     <packaging>jar</packaging> <!-- چون معمولاً ماژول‌های داخلی jar هستند -->
 
