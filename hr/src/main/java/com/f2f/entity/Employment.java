@@ -4,9 +4,13 @@ import com.f2f.dbc.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "EMPLOYMENT")
 public class Employment extends BaseEntity implements Serializable {
@@ -19,28 +23,4 @@ public class Employment extends BaseEntity implements Serializable {
 
     @Column(name = "END_EMPLOYMENT_DATE")
     private String endEmploymentDate;
-
-    public String getEmploymentType() {
-        return employmentType;
-    }
-
-    public void setEmploymentType(String employmentType) {
-        this.employmentType = employmentType;
-    }
-
-    public String getStartEmploymentDate() {
-        return startEmploymentDate;
-    }
-
-    public void setStartEmploymentDate(String startEmploymentDate) {
-        this.startEmploymentDate = startEmploymentDate;
-    }
-
-    public String getEndEmploymentDate() {
-        return endEmploymentDate;
-    }
-
-    public void setEndEmploymentDate(String endEmploymentDate) {
-        this.endEmploymentDate = endEmploymentDate;
-    }
 }
