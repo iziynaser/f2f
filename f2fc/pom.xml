@@ -73,12 +73,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.f2f</groupId>
-            <artifactId>dbc</artifactId>
-            <version>1.0</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
@@ -86,12 +80,44 @@
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.f2f</groupId>
             <artifactId>dbc</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- include other web modules -->
+        <dependency>
+            <groupId>com.f2f</groupId>
+            <artifactId>order</artifactId>
+            <version>0.0.3-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.f2f</groupId>
+            <artifactId>acc</artifactId>
+            <version>0.0.3-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.f2f</groupId>
+            <artifactId>content</artifactId>
+            <version>0.0.3-SNAPSHOT</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>com.f2f</groupId>-->
+<!--            <artifactId>product</artifactId>-->
+<!--            <version>0.0.3-SNAPSHOT</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>com.f2f</groupId>-->
+<!--            <artifactId>hr</artifactId>-->
+<!--            <version>0.0.3-SNAPSHOT</version>-->
+<!--        </dependency>-->
 
     </dependencies>
 

@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
 
-    List<Invoice> findByInvoiceType(String invoiceType);
+    //List<Invoice> findByInvoiceType(String invoiceType);
 
 //    List<Invoice> findByPartyId(Long partyId);
 

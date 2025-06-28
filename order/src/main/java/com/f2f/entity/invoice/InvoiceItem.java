@@ -39,16 +39,10 @@ public class InvoiceItem extends BaseEntity implements Serializable {
     @JoinColumn(name = "invoice_id", nullable = false)
     private Invoice invoice;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "product_item_id", nullable = false)
     private Long productItemId;
 
-//    @OneToOne
-//    @JoinColumn(name="INVENTORY_ID")
     private Long inventoryId;
-
-//    @OneToOne
-//    @JoinColumn(name = "PRODUCT_FEATURE_ID")
+    
     private Long productFeatureItemId;
 
     @Column(name = "INVOICE_ITEM_TYPE" )

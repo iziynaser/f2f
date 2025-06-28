@@ -1,12 +1,12 @@
 package com.f2f.dto;
 
 public class InvoiceItemDTO {
-
     private Long id;
     private Long productItemId;
     private Integer quantity;
     private Long unitPrice;
     private Long totalPrice;
+
 
     public Long getId() {
         return id;

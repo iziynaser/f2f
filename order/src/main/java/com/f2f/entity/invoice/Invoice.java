@@ -2,6 +2,8 @@ package com.f2f.entity.invoice;
 
 import com.f2f.dbc.entity.BaseEntity;
 import com.f2f.entity.InvoiceType;
+import com.f2f.entity.Order;
+import com.f2f.entity.PersonEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -64,17 +66,17 @@ public class Invoice extends BaseEntity implements Serializable {
     @JoinColumn(name = "reference_invoice_id")
     private Invoice referenceInvoice;
 
-//    @OneToOne
-//    @JoinColumn(name = "CREATOR_PERSON_ID")
-    private Long creatorPersonId;
+    @OneToOne
+    @JoinColumn(name = "CREATOR_PERSON_ID")
+    private PersonEntity creatorPerson;
 
-//    @OneToOne
-//    @JoinColumn(name = "FROM_PERSON_ID")
-    private Long fromPersonId;
+    @OneToOne
+    @JoinColumn(name = "FROM_PERSON_ID")
+    private PersonEntity fromPerson;
 
-//    @OneToOne
-//    @JoinColumn(name = "TO_PERSON_ID")
-    private Long toPersonId;
+    @OneToOne
+    @JoinColumn(name = "TO_PERSON_ID")
+    private PersonEntity toPerson;
 
     // ایتم‌های فاکتور
     @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -87,26 +89,8 @@ public class Invoice extends BaseEntity implements Serializable {
     @JoinColumn(name = "invoice_type")
     private InvoiceType invoiceType;// مثلا: PURCHASE, SALES, RETURN, PROFORMA و ...
 
-//    // ارتباط با سفارش (اختیاری)
-//    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    private Long orderId;
+    private Order order;
 
-//    @PostPersist
-//    private void createInvoiceCodeAutomatically() {
-//        String inCode = this.toPerson.getId() + "." + this.fromPerson.getId() + "." + this.getDate() + "." + this.getId();
-//        setInvoiceCode(inCode);
-//    }
-
-//    public Invoice( String message, String description, PersonEntity creatorPerson, Person fromPerson, Person toPerson, List<InvoiceStatus> invoiceStatuses, String invoiceType) {
-//
-//        this.message = message;
-//        this.description = description;
-//        this.creatorPerson = creatorPerson;
-//        this.fromPerson = fromPerson;
-//        this.toPerson = toPerson;
-//        //this.invoiceItems = invoiceItems;
-//        this.invoiceStatuses = invoiceStatuses;
-//        this.invoiceType = invoiceType;
-//    }
 }

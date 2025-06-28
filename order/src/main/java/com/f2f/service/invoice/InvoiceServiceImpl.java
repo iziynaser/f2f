@@ -47,8 +47,9 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     public List<InvoiceDTO> getInvoicesByType(String invoiceType) {
-        List<Invoice> invoices = invoiceRepository.findByInvoiceType(invoiceType);
-        return invoices.stream().map(invoiceMapper::toDto).collect(Collectors.toList());
+        //List<Invoice> invoices = invoiceRepository.findByInvoiceType(invoiceType);
+        //return invoices.stream().map(invoiceMapper::toDto).collect(Collectors.toList());
+        return null;
     }
 
 //    @Override
@@ -75,8 +76,9 @@ public class InvoiceServiceImpl implements InvoiceService {
             // تبدیل رشته invoiceType به InvoiceType
             if (dto.getInvoiceType() != null) {
                 // فرض می‌کنیم dto.getInvoiceType() شناسه (id) هست، اگر نام هست باید تغییر کند
-                Integer invoiceTypeId = Integer.valueOf(dto.getInvoiceType());
-                Optional<InvoiceType> invoiceTypeOpt = invoiceTypeRepository.findById(invoiceTypeId);
+                //Integer invoiceTypeId = Integer.valueOf(dto.getInvoiceType());
+                String invoiceName = dto.getInvoiceType().getName();
+                Optional<InvoiceType> invoiceTypeOpt = invoiceTypeRepository.findByName(invoiceName);
                 invoiceTypeOpt.ifPresent(existing::setInvoiceType);
             } else {
                 existing.setInvoiceType(null);
@@ -98,11 +100,11 @@ public class InvoiceServiceImpl implements InvoiceService {
                 Invoice finalExisting = existing;
                 dto.getItems().forEach(itemDto -> {
                     InvoiceItem item = new InvoiceItem();
-                    item.setId(itemDto.getId());
+                    //item.setId(itemDto.getId());
                     //item.setProductItem(new ProductItem(itemDto.getProductItemId()));
-                    item.setQuantity(itemDto.getQuantity());
-                    item.setUnitPrice(itemDto.getUnitPrice());
-                    item.setTotalPrice(itemDto.getTotalPrice());
+                    //item.setQuantity(itemDto.getQuantity());
+                    //item.setUnitPrice(itemDto.getUnitPrice());
+                    //item.setTotalPrice(itemDto.getTotalPrice());
                     item.setInvoice(finalExisting);
                     finalExisting.getItems().add(item);
                 });

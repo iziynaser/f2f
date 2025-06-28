@@ -12,10 +12,13 @@ public class EntityScanner {
     @Bean
     public CommandLineRunner showEntities(EntityManagerFactory emf) {
         return args -> {
+            int c = 0;
             System.out.println("✅ Detected JPA Entities:");
             for (EntityType<?> entity : emf.getMetamodel().getEntities()) {
                 System.out.println(" - " + entity.getJavaType().getName());
+                c++;
             }
+            System.out.println("entity count: - " + c);
         };
     }
 }

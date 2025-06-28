@@ -39,57 +39,5 @@ public class Order  extends BaseEntity implements Serializable {
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Invoice invoice;
 
-    public PersonEntity getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(PersonEntity customer) {
-        this.customer = customer;
-    }
-
-    public LocalDateTime getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(LocalDateTime orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public Set<OrderItem> getOrderItems() {
-        return orderItems;
-    }
-
-    public void setOrderItems(Set<OrderItem> orderItems) {
-        this.orderItems = orderItems;
-    }
-
-    public String getCurrentStatus() {
-        return currentStatus;
-    }
-
-    public void setCurrentStatus(String currentStatus) {
-        this.currentStatus = currentStatus;
-    }
-
-    public Set<OrderStatus> getStatusHistory() {
-        return statusHistory;
-    }
-
-    public void setStatusHistory(Set<OrderStatus> statusHistory) {
-        this.statusHistory = statusHistory;
-    }
-
-    public Invoice getInvoice() {
-        return invoice;
-    }
-
-    public void setInvoice(Invoice invoice) {
-        this.invoice = invoice;
-    }
-
-    public Order(Long id){
-        super(id);
-    }
-
 }
 
