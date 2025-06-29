@@ -20,7 +20,6 @@
 
     <modules>
         <module>dbc</module>
-        <module>scrips</module>
         <module>doc</module>
         <module>frontb</module>
         <module>frontf</module>
@@ -35,7 +34,8 @@
         <module>asset</module>
         <module>budget</module>
         <module>delivery</module>
-        <module>f2f-i18n</module>
+        <module>f-i18n</module>
+        <module>skript</module>
 
     </modules>
 

@@ -3,7 +3,11 @@ package com.f2f.dbc.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table
 public class NotesEntity extends BaseEntity{
@@ -14,19 +18,4 @@ public class NotesEntity extends BaseEntity{
 
     private String noteDescription;
 
-    public String getNoteTitle() {
-        return noteTitle;
-    }
-
-    public void setNoteTitle(String noteTitle) {
-        this.noteTitle = noteTitle;
-    }
-
-    public String getNoteDescription() {
-        return noteDescription;
-    }
-
-    public void setNoteDescription(String noteDescription) {
-        this.noteDescription = noteDescription;
-    }
 }
