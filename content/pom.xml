@@ -30,6 +30,12 @@
             <version>1.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.f2f</groupId>
+            <artifactId>f2f-i18n</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
         <!-- Spring Boot Web با Jetty به جای Tomcat -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

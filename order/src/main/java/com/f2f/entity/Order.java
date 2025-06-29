@@ -20,6 +20,9 @@ import java.util.Set;
 @Table(name = "ORDERS")
 public class Order  extends BaseEntity implements Serializable {
 
+    @Column(name = "order_code")
+    private String orderCode ;
+
     @ManyToOne
     @JoinColumn(name = "CREATOR_PERSON_ID")
     private PersonEntity customer;

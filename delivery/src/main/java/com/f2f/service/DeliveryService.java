@@ -1,7 +1,7 @@
 package com.f2f.service;
 
 import com.f2f.dao.DeliveryDao;
-import com.f2f.entity.other.Delivery;
+import com.f2f.entity.Delivery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

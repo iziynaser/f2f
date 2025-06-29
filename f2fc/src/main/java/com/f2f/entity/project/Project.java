@@ -3,7 +3,11 @@ package com.f2f.entity.project;
 import com.f2f.dbc.entity.BaseEntity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "PROJECT")
 public class Project extends BaseEntity {

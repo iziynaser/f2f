@@ -1,7 +1,7 @@
 package com.f2f.dao;
 
-import com.f2f.entity.other.Ostan;
-import com.f2f.entity.other.Shahr;
+import com.f2f.entity.Ostan;
+import com.f2f.entity.Shahr;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

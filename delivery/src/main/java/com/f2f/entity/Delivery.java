@@ -1,4 +1,4 @@
-package com.f2f.entity.other;
+package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
 import jakarta.persistence.Column;
@@ -62,4 +62,15 @@ public class Delivery extends BaseEntity implements Serializable {
     @Column(name = "GEO_CODE")
     private String geoCode;
 
+    @Column(name = "DELIVERY_STATUS")
+    private int deliveryStatus;
+
+    @Column(name = "DELIVERY_TIME")
+    private int deliveryTime;
+
+    @Column(name = "DELIVERY_DATE")
+    private int deliveryDate ;
+
+    @Column(name = "is_active")
+    private boolean isActive;
 }

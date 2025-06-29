@@ -1,6 +1,6 @@
 package com.f2f.controller;
 
-import com.f2f.entity.other.Shahr;
+import com.f2f.entity.Shahr;
 import com.f2f.service.ShahrService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

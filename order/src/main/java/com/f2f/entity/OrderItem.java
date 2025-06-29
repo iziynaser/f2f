@@ -13,10 +13,6 @@ import lombok.Setter;
 @Table(name = "ORDER_ITEM")
 public class OrderItem extends BaseEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
@@ -33,16 +29,6 @@ public class OrderItem extends BaseEntity implements Serializable {
 
     @Column(name = "total_price")
     private Long totalPrice;
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
 
 }
 

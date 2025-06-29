@@ -1,6 +1,6 @@
 package com.f2f.dao;
 
-import com.f2f.entity.other.Delivery;
+import com.f2f.entity.Delivery;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

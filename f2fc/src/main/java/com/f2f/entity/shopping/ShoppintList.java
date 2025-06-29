@@ -1,13 +1,12 @@
 package com.f2f.entity.shopping;
 
-
-
-
 import com.f2f.dbc.entity.BaseEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
- 
-
+@Getter
+@Setter
 @Entity
 @Table(name = "SHOPPING_LIST")
 public class ShoppintList extends BaseEntity {

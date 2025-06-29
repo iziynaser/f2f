@@ -28,7 +28,6 @@ public class InvoiceItem extends BaseEntity implements Serializable {
     @Column(name = "total_price")
     private Long totalPrice;
 
-
     @Column(name = "AMOUNT")
     private Integer amount ;
 
