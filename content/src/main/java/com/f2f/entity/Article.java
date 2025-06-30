@@ -8,8 +8,15 @@ import java.io.Serializable;
 import java.util.List;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "ARTICLE")
 public class Article extends BaseEntity implements Serializable {
@@ -41,9 +48,6 @@ public class Article extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "article")
     private List<Page> pages;
 
-    public Article() {
-    }
-
     public Article(String name, String title, List<String> keywords, Category category, String author, String description, String dateCreated, String dateModified, List<Page> pages) {
         this.name = name;
         this.title = title;
@@ -56,69 +60,6 @@ public class Article extends BaseEntity implements Serializable {
         this.pages = pages;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public List<String> getKeywords() {
-        return keywords;
-    }
-
-    public void setKeywords(List<String> keywords) {
-        this.keywords = keywords;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getDateModified() {
-        return dateModified;
-    }
-
-    public void setDateModified(String dateModified) {
-        this.dateModified = dateModified;
-    }
-
-    public List<Page> getPages() {
-        return pages;
-    }
-
-    public void setPages(List<Page> pages) {
-        this.pages = pages;
-    }
 
     public String toString(){
         StringBuffer sb = new StringBuffer();

@@ -34,7 +34,7 @@
         <module>asset</module>
         <module>budget</module>
         <module>delivery</module>
-        <module>f-i18n</module>
+        <module>f2f-i18n</module>
         <module>skript</module>
 
     </modules>

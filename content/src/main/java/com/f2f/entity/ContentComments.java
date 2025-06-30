@@ -6,7 +6,11 @@ import com.f2f.dbc.entity.BaseEntity;
 import java.io.Serializable;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(
         name = "CONTENT_COMMENTS",
@@ -21,19 +25,4 @@ public class ContentComments extends BaseEntity implements Serializable {
     @JoinColumn(name = "COMMENT_ID")
     private Comment comment;
 
-    public Content getContent() {
-        return content;
-    }
-
-    public void setContent(Content content) {
-        this.content = content;
-    }
-
-    public Comment getComment() {
-        return comment;
-    }
-
-    public void setComment(Comment comment) {
-        this.comment = comment;
-    }
 }

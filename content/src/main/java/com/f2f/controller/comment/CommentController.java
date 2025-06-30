@@ -1,6 +1,6 @@
 package com.f2f.controller.comment;
 
-import com.f2f.dao.comment.CommentDTO;
+import com.f2f.dto.CommentDTO;
 import com.f2f.service.comment.CommentService;
 import com.f2f.service.comment.CommentTargetService;
 import org.springframework.beans.factory.annotation.Autowired;

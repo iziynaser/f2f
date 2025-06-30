@@ -4,10 +4,14 @@ import com.f2f.dbc.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 
 import java.io.Serializable;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "ABOUTUS")
 public class AboutUs extends BaseEntity implements Serializable {
@@ -53,116 +57,4 @@ public class AboutUs extends BaseEntity implements Serializable {
 
     @Column(name = "TWITT_ENABLE")
     private boolean isTwittEnable=false;
-
-    public boolean isLinkedInEnable() {
-        return isLinkedInEnable;
-    }
-
-    public void setLinkedInEnable(boolean linkedInEnable) {
-        isLinkedInEnable = linkedInEnable;
-    }
-
-    public boolean isAparatEnable() {
-        return isAparatEnable;
-    }
-
-    public void setAparatEnable(boolean aparatEnable) {
-        isAparatEnable = aparatEnable;
-    }
-
-    public boolean isInstaEnable() {
-        return isInstaEnable;
-    }
-
-    public void setInstaEnable(boolean instaEnable) {
-        isInstaEnable = instaEnable;
-    }
-
-    public boolean isTwittEnable() {
-        return isTwittEnable;
-    }
-
-    public void setTwittEnable(boolean twittEnable) {
-        isTwittEnable = twittEnable;
-    }
-
-    public String getLinkedInAddress() {
-        return linkedInAddress;
-    }
-
-    public void setLinkedInAddress(String linkedInAddress) {
-        this.linkedInAddress = linkedInAddress;
-    }
-
-    public String getAparatAddress() {
-        return aparatAddress;
-    }
-
-    public void setAparatAddress(String aparatAddress) {
-        this.aparatAddress = aparatAddress;
-    }
-
-    public String getInstaAddress() {
-        return instaAddress;
-    }
-
-    public void setInstaAddress(String instaAddress) {
-        this.instaAddress = instaAddress;
-    }
-
-    public String getTwitterAddress() {
-        return twitterAddress;
-    }
-
-    public void setTwitterAddress(String twitterAddress) {
-        this.twitterAddress = twitterAddress;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFax() {
-        return fax;
-    }
-
-    public void setFax(String fax) {
-        this.fax = fax;
-    }
-
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
 }

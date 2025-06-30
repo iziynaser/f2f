@@ -1,5 +1,6 @@
 package com.f2f.dao;
 
+import com.f2f.dto.FeaturesDTO;
 import com.f2f.entity.Product;
 import com.f2f.entity.ProductFeatureGroup;
 import org.springframework.data.jpa.repository.JpaRepository;

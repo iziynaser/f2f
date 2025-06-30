@@ -7,7 +7,11 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "PAGE")
 public class Page extends BaseEntity implements Serializable {
@@ -56,21 +60,6 @@ public class Page extends BaseEntity implements Serializable {
 //        this.commentTarget = commentTarget;
 //    }
 
-    public Article getArticle() {
-        return article;
-    }
-
-    public void setArticle(Article article) {
-        this.article = article;
-    }
-
-    public Short getPageNumber() {
-        return pageNumber;
-    }
-
-    public void setPageNumber(Short pageNumber) {
-        this.pageNumber = pageNumber;
-    }
 
 //    public String getTitle() {
 //        return title;
@@ -88,11 +77,4 @@ public class Page extends BaseEntity implements Serializable {
 //        this.body = body;
 //    }
 
-    public String getDateModified() {
-        return dateModified;
-    }
-
-    public void setDateModified(String dateModified) {
-        this.dateModified = dateModified;
-    }
 }

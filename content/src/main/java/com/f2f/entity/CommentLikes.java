@@ -2,10 +2,18 @@ package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 import java.io.Serializable;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "COMMENT_LIKES")
 public class CommentLikes extends BaseEntity implements Serializable {
@@ -20,27 +28,4 @@ public class CommentLikes extends BaseEntity implements Serializable {
     @JoinColumn(name = "COMMENT_ID")
     private Comment comment;
 
-    public int getNumberOfLikes() {
-        return numberOfLikes;
-    }
-
-    public void setNumberOfLikes(int numberOfLikes) {
-        this.numberOfLikes = numberOfLikes;
-    }
-
-    public int getNumberOfDisLikes() {
-        return numberOfDisLikes;
-    }
-
-    public void setNumberOfDisLikes(int numberOfDisLikes) {
-        this.numberOfDisLikes = numberOfDisLikes;
-    }
-
-    public Comment getComment() {
-        return comment;
-    }
-
-    public void setComment(Comment comment) {
-        this.comment = comment;
-    }
 }

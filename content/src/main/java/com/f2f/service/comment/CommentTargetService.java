@@ -1,7 +1,7 @@
 package com.f2f.service.comment;
 
-import com.f2f.dao.comment.CommentDTO;
 import com.f2f.dao.comment.CommentTargetDao;
+import com.f2f.dto.CommentDTO;
 import com.f2f.entity.CommentTarget;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
