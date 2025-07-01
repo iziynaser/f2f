@@ -1,5 +1,7 @@
 package com.f2f.dto;
 
+import com.f2f.entity.Content;
+import com.f2f.entity.Tag;
 import lombok.Getter;
 import lombok.Setter;
 

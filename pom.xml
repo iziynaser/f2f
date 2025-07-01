@@ -36,6 +36,7 @@
         <module>delivery</module>
         <module>f2f-i18n</module>
         <module>skript</module>
+        <module>logging</module>
 
     </modules>
 

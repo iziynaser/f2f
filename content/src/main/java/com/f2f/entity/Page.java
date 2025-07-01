@@ -29,8 +29,8 @@ public class Page extends BaseEntity implements Serializable {
 //    @Column(name = "BODY")
 //    private String body ;
 
-    @Column(name = "DATE_CREATED")
-    private String dateCreated;
+//    @Column(name = "DATE_CREATED")
+//    private String dateCreated;
 
     @Column(name = "DATE_MODIFIED")
     private String dateModified ;
@@ -47,7 +47,7 @@ public class Page extends BaseEntity implements Serializable {
         this.pageNumber = pageNumber;
         //this.title = title;
         //this.body = body;
-        this.dateCreated = dateCreated;
+        //this.dateCreated = dateCreated;
         this.dateModified = dateModified;
 //        this.commentTarget = commentTarget;
     }

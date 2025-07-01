@@ -39,27 +39,14 @@ public class Article extends BaseEntity implements Serializable {
     @Column(name = "DESCRIPTION")
     private String description ;
 
-    @Column(name = "DATE_CREATED")
-    private String dateCreated ;
+//    @Column(name = "DATE_CREATED")
+//    private String dateCreated ;
 
     @Column(name = "DATE_MODIFIED")
     private String dateModified ;
 
     @OneToMany(mappedBy = "article")
     private List<Page> pages;
-
-    public Article(String name, String title, List<String> keywords, Category category, String author, String description, String dateCreated, String dateModified, List<Page> pages) {
-        this.name = name;
-        this.title = title;
-        this.keywords = keywords;
-        this.category = category;
-        this.author = author;
-        this.description = description;
-        this.dateCreated = dateCreated;
-        this.dateModified = dateModified;
-        this.pages = pages;
-    }
-
 
     public String toString(){
         StringBuffer sb = new StringBuffer();
@@ -70,7 +57,7 @@ public class Article extends BaseEntity implements Serializable {
         sb.append("category: "+ category +",");
         sb.append("author: "+ author +",");
         sb.append("description: "+ description +",");
-        sb.append("dateCreated: "+ dateCreated +",");
+        //sb.append("dateCreated: "+ dateCreated +",");
         sb.append("dateModified: "+ dateModified +",");
 
         return sb.toString();
