@@ -10,7 +10,7 @@ import org.springframework.web.filter.CorsFilter;
 /**
  * some interfaces require cross-entity support
  */
-@Profile("develop")
+@Profile("dev")
 @Configuration
 public class CustomCorsConfiguration {
 

@@ -1,5 +1,6 @@
 package com.f2f.model;
 
+import com.google.gson.Gson;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +15,7 @@ public class LoggingModel {
 
     @Override
     public String toString() {
-        return Gson().toJson(this);
+        return new Gson().toJson(this);
     }
 
 }

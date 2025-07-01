@@ -3,13 +3,14 @@ package com.f2f.service;
 import com.f2f.model.LoggingModel;
 import org.springframework.stereotype.Service;
 
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
 public class LoggingService {
-    private static final Logger logger = Logger.getLogger(LoggingService.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(LoggingService.class);
 
     public void log(LoggingModel model){
-        logger.info("{}");
+        logger.info("{}",model);
     }
 }

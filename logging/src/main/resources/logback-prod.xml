@@ -1,0 +1,23 @@
+<configuration scan="true">
+    <property name="LOG_DIR" value="logs"/>
+    <property name="MAX_HISTORY" value="30"/>
+
+    <appender name="JSON_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>{$LOG_DIR}/app-log.json</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DOR}/app-log.%d{yyyy-MM-dd}.json</fileNamePattern>
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+    </appender>
+
+    <logger name="com.f2f" level="INFO"/>
+
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.hibernate" level="WARN"/>
+
+    <root level="INFO">
+        <appender-ref ref="JSON_FILE"/>
+    </root>
+
+</configuration>

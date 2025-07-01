@@ -17,8 +17,8 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- اگر در parent داری، لازم نیست -->
-        <mapstruct.version>1.5.3.Final</mapstruct.version>
-        <lombok.version>1.18.24</lombok.version>
+<!--        <mapstruct.version>1.5.3.Final</mapstruct.version>-->
+<!--        <lombok.version>1.18.24</lombok.version>-->
     </properties>
 
     <dependencies>
@@ -27,6 +27,11 @@
             <groupId>com.f2f</groupId>
             <artifactId>dbc</artifactId>
             <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.f2f</groupId>
+            <artifactId>logging</artifactId>
+            <version>0.0.3-SNAPSHOT</version>
         </dependency>
 
         <!-- Spring Boot Web با Jetty به جای Tomcat -->
