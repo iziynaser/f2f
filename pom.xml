@@ -37,6 +37,7 @@
         <module>f2f-i18n</module>
         <module>skript</module>
         <module>logging</module>
+        <module>images</module>
 
     </modules>
 
