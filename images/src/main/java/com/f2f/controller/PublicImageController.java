@@ -29,10 +29,13 @@ public class PublicImageController {
         this.uploadDir = Paths.get(uploadDir).toAbsolutePath().normalize();
     }
 
-    @GetMapping("/{filepath:.+}")
-    public ResponseEntity<Resource> serveImage(@PathVariable String filepath) {
+    @GetMapping("/**")
+    public ResponseEntity<Resource> serveImage(HttpServletRequest request) {
+        String restOfThePath = (String)request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
+        String bestMatchingPattern = (String)request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE);
+        String relativePath = new AntPathMatcher().extractPathWithinPattern(bestMatchingPattern, restOfThePath);
         try {
-            Path file = uploadDir.resolve(filepath).normalize();
+            Path file = uploadDir.resolve(relativePath).normalize();
 
             if(!file.startsWith(uploadDir)) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
