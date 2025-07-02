@@ -20,7 +20,6 @@
 
     <modules>
         <module>dbc</module>
-        <module>doc</module>
         <module>frontb</module>
         <module>frontf</module>
         <module>auth</module>
@@ -38,6 +37,7 @@
         <module>skript</module>
         <module>logging</module>
         <module>images</module>
+        <module>docs</module>
 
     </modules>
 

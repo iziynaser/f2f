@@ -1,14 +1,18 @@
 package com.f2f.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.HandlerMapping;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,12 +22,22 @@ import java.nio.file.Paths;
 @RestController
 @RequestMapping("/images")
 public class PublicImageController {
-    private final String uploadDir = System.getProperty("storage.location") + "/upload/public/images/";
 
-    @GetMapping("/{filename:.+}")
-    public ResponseEntity<Resource> serveImage(@PathVariable String filename) {
+    private final Path uploadDir;
+
+    public PublicImageController(@Value("${public.image.dir}") String uploadDir) {
+        this.uploadDir = Paths.get(uploadDir).toAbsolutePath().normalize();
+    }
+
+    @GetMapping("/{filepath:.+}")
+    public ResponseEntity<Resource> serveImage(@PathVariable String filepath) {
         try {
-            Path file = Paths.get(uploadDir).resolve(filename).normalize();
+            Path file = uploadDir.resolve(filepath).normalize();
+
+            if(!file.startsWith(uploadDir)) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            }
+
             Resource resource = new UrlResource(file.toUri());
 
             if (resource.exists() || resource.isReadable()) {
@@ -32,6 +46,7 @@ public class PublicImageController {
                         .contentType(MediaType.parseMediaType(contentType != null ? contentType : "application/octet-stream"))
                         .body(resource);
             } else {
+                System.out.println("not found!!");
                 return ResponseEntity.notFound().build();
             }
 
