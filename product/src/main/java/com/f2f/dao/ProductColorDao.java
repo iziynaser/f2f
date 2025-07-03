@@ -9,13 +9,12 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-//@Repository("ProductColorDao")
 @Repository
-public interface ProductColorDao extends JpaRepository<ProductColor,Long> {
+public interface ProductColorDao extends JpaRepository<ProductColor, Long> {
 
-    @Query(nativeQuery = true,value="select pc.color_name as name, pc.color_value as value from Product_Color as pc where pc.product_id = :id")
-    List<ProductColorDTO> getListOfProductColors(@Param("id") Long id);
-
-    //@Override
-    //List<ProductColor> findAllById(Iterable<Long> iterable);
+    @Query("select distinct new com.f2f.dto.ProductColorDTO(c.name, c.value) " +
+            "from ProductItem pi " +
+            "join pi.color c " +
+            "where pi.product.id = :productId")
+    List<ProductColorDTO> getListOfProductColors(@Param("productId") Long productId);
 }

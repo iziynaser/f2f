@@ -23,15 +23,10 @@ public class ProductDTO implements java.io.Serializable {
      private String cardImageUrl;
      private ProductPriceDTO price;
 
-     private Long minPrice;
-     private Long maxPrice;
-     private Double avgPrice;
-     //private Long price ;
-
      private String type;
 
      private List<String> brands;
-     private List<String> colors;
+     private List<ProductColorDTO> colors;
 
      @Override
      public String toString() {

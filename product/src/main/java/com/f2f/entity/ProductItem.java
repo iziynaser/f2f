@@ -1,14 +1,13 @@
 package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -42,8 +41,8 @@ public class ProductItem  extends BaseEntity implements Serializable {
 
     private boolean available;
 
-    @ManyToOne
-    private ProductPrice productPrice;
+    @OneToMany(mappedBy = "productItem",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<ProductPrice> productPrices = new ArrayList<>();
 
     public ProductItem(Long productItemId) {
         super();

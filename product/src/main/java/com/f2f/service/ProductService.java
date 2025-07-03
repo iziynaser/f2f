@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 //@PreAuthorize("isAuthenticated()")
@@ -27,6 +28,8 @@ public class ProductService {
 
     private final ImageAccessService imageAccessService ;
 
+    private final ProductColorService productColorService ;
+
     @Autowired
     ProductFeatureGroupDao productFeatureGroupDao ;
 
@@ -36,11 +39,13 @@ public class ProductService {
 
     public ProductService(ProductRepository productRepository,
                           ProductItemRepository productItemRepository,
-                          ProductMapper productMapper,ImageAccessService imageAccessService) {
+                          ProductMapper productMapper,ImageAccessService imageAccessService,
+                          ProductColorService productColorService) {
         this.productRepository = productRepository;
         this.productItemRepository = productItemRepository;
         this.productMapper = productMapper;
         this.imageAccessService = imageAccessService;
+        this.productColorService = productColorService;
     }
 
 
@@ -50,8 +55,8 @@ public class ProductService {
 
     public List<ProductDTO> findAllAvailableProducts() {
         List<ProductInfo> allAvailableProducts = productDao.findAllAvailableProducts();
-
         List<ProductDTO> productDTOList = new ArrayList<>();
+
         allAvailableProducts.forEach(product -> {
             ProductDTO dto = new ProductDTO();
             dto.setId(product.getId().toString());
@@ -67,10 +72,39 @@ public class ProductService {
                             .orElse("/images/default-card.jpg")
             );
             dto.setDisContinuedDate(product.getDisContinuedDate());
+
+            // ایمن کردن بخش رنگ‌ها
+            try {
+                List<ProductColorDTO> colorList = productColorService.getListOfProductColors(product.getId());
+                if (colorList != null && !colorList.isEmpty()) {
+                    List<ProductColorDTO> uniqueColors = colorList.stream()
+                            .filter(c -> c.getCode() != null && !c.getCode().isBlank())
+                            .collect(Collectors.collectingAndThen(
+                                    Collectors.toMap(ProductColorDTO::getCode, c -> c, (c1, c2) -> c1),
+                                    map -> new ArrayList<>(map.values())
+                            ));
+                    dto.setColors(uniqueColors);
+                } else {
+                    // افزودن رنگ پیش‌فرض در صورت نبود رنگ
+                    ProductColorDTO defaultColor = new ProductColorDTO();
+                    defaultColor.setName("پیش‌فرض");
+                    defaultColor.setCode("#CCCCCC");
+                    dto.setColors(List.of(defaultColor));
+                }
+            } catch (Exception e) {
+                // هندل خطا و افزودن رنگ پیش‌فرض
+                ProductColorDTO defaultColor = new ProductColorDTO();
+                defaultColor.setName("پیش‌فرض");
+                defaultColor.setCode("#CCCCCC");
+                dto.setColors(List.of(defaultColor));
+            }
+
             productDTOList.add(dto);
         });
+
         return productDTOList;
     }
+
 
     public Product save(Product product) {
         if(product.getId()==0){
@@ -136,17 +170,17 @@ public class ProductService {
         ProductDTO dto = productMapper.toDTO(product);
 
         if (priceStats != null) {
-            dto.setMinPrice(priceStats.getMinPrice());
+            //dto.setMinPrice(priceStats.getMinPrice());
             //dto.setMaxPrice(priceStats.getMaxPrice());
             //dto.setAvgPrice(priceStats.getAvgPrice());
         }
 
         ProductPriceDTO ppriceDTO = new ProductPriceDTO();
-        ppriceDTO.setPrice(dto.getMinPrice().toString());
+        //ppriceDTO.setPrice(dto.getMinPrice().toString());
         dto.setPrice(ppriceDTO);
 
         dto.setBrands(brands);
-        dto.setColors(colors);
+        //dto.setColors(colors);
 
         return dto;
     }
