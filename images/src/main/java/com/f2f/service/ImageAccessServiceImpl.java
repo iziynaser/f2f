@@ -22,7 +22,7 @@ public class ImageAccessServiceImpl implements ImageAccessService {
         Path folder = uploadDir.resolve(productId.toString()).resolve("stf").resolve("card");
         try (Stream<Path> stream = Files.list(folder)) {
             return stream.filter(Files::isRegularFile)
-                    .map(p -> "/img/" + productId + "/stf/card/" + p.getFileName().toString())
+                    .map(p -> "/images/" + productId + "/stf/card/" + p.getFileName().toString())
                     .findFirst();
         } catch (IOException e) {
             return Optional.empty();

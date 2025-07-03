@@ -37,7 +37,7 @@
         <module>logging</module>
         <module>images</module>
         <module>docs</module>
-<!--        <module>shopping</module>-->
+        <module>shopping</module>
     </modules>
 
     <properties>

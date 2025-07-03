@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.Instant;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,16 +39,6 @@ public class ImagePathController {
     private Path secureResolve(Path folder){
         Path normalized = folder.normalize();
         if(!normalized.startsWith(uploadDir)){
-
-//            LoggingModel loggingModel = new LoggingModel();
-//            loggingModel.setTimeStamp(Instant.now().toString());
-//            loggingModel.setClassName(this.getClass().getName());
-//            loggingModel.setMethodName(this.getClass().getName());
-//            loggingModel.setExecutionTime(0);
-//            loggingModel.setLevel("WARN");
-//
-//            loggingService.log(loggingModel);
-
             throw new ResponseStatusException(HttpStatus.FORBIDDEN,"access denied");
         }
         return normalized;
@@ -76,7 +65,7 @@ public class ImagePathController {
     @GetMapping("/{productId}/stf/card/")
     public List<String> getStaffImageCards(@PathVariable("productId") String productId) {
         Path path = uploadDir.resolve(productId).resolve("stf").resolve("card");
-        return getRelativeImagePaths(path, "/img/"+ productId + "/stf/card/");
+        return getRelativeImagePaths(path, "/images/"+ productId + "/stf/card/");
     }
 
     /*
@@ -85,7 +74,7 @@ public class ImagePathController {
     @GetMapping("/{productId}/stf/detail/")
     public List<String> getStaffProductDetailImages(@PathVariable("productId") String productId) {
         Path folderPath = uploadDir.resolve(productId).resolve("stf").resolve("detail");
-        return getRelativeImagePaths(folderPath, "/img/" + productId + "/stf/detail");
+        return getRelativeImagePaths(folderPath, "/images/" + productId + "/stf/detail");
     }
 
     /*
@@ -95,7 +84,7 @@ public class ImagePathController {
     public List<String> getUserProductImages(@PathVariable("productId") String productId,
                                            @PathVariable("userId") String userId) {
         Path folderPath = uploadDir.resolve(productId).resolve("user").resolve(userId).resolve("medium");
-        return getRelativeImagePaths(folderPath, "/img/" + productId + "/user/" + userId + "/medium");
+        return getRelativeImagePaths(folderPath, "/images/" + productId + "/user/" + userId + "/medium");
     }
 
     /*
@@ -106,7 +95,7 @@ public class ImagePathController {
                                            @PathVariable("typeImg") String typeImg) {
 
         Path folderPath = uploadDir.resolve(productId).resolve("stf").resolve(typeImg);
-        return getRelativeImagePaths(folderPath, "/img/" + productId + "/stf/" + typeImg);
+        return getRelativeImagePaths(folderPath, "/images/" + productId + "/stf/" + typeImg);
 
     }
 
