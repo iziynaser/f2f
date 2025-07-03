@@ -19,7 +19,6 @@ public class RelatedProductsService {
         List<RelatedProductsDTO> relatedProductsDTOList = new ArrayList<>();
 
         RelatedProductsDTO r1 = new RelatedProductsDTO();
-        r1.setId(1);
         r1.setName("aaaaaa");
         r1.setAmazingDesc("bbbbbbbbbbbb");
         r1.setPrice("12345");
@@ -28,7 +27,6 @@ public class RelatedProductsService {
         relatedProductsDTOList.add(r1);
 
         RelatedProductsDTO r2 = new RelatedProductsDTO();
-        r2.setId(2);
         r2.setName("aaaaaa");
         r2.setAmazingDesc("bbbbbbbbbbbb");
         r2.setPrice("12345");
@@ -37,7 +35,6 @@ public class RelatedProductsService {
         relatedProductsDTOList.add(r2);
 
         RelatedProductsDTO r3 = new RelatedProductsDTO();
-        r3.setId(3);
         r3.setName("aaaaaa");
         r3.setAmazingDesc("bbbbbbbbbbbb");
         r3.setPrice("12345");
@@ -46,7 +43,6 @@ public class RelatedProductsService {
         relatedProductsDTOList.add(r3);
 
         RelatedProductsDTO r4 = new RelatedProductsDTO();
-        r4.setId(4);
         r4.setName("aaaaaa");
         r4.setAmazingDesc("bbbbbbbbbbbb");
         r4.setPrice("12345");

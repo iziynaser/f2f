@@ -25,12 +25,24 @@ public class ProductService {
 //    @Autowired
 //    CommentTargetService commentTargetService;
 
+    private final ImageAccessService imageAccessService ;
+
     @Autowired
     ProductFeatureGroupDao productFeatureGroupDao ;
 
     private final ProductRepository productRepository ;
     private final ProductItemRepository productItemRepository ;
     private final ProductMapper productMapper ;
+
+    public ProductService(ProductRepository productRepository,
+                          ProductItemRepository productItemRepository,
+                          ProductMapper productMapper,ImageAccessService imageAccessService) {
+        this.productRepository = productRepository;
+        this.productItemRepository = productItemRepository;
+        this.productMapper = productMapper;
+        this.imageAccessService = imageAccessService;
+    }
+
 
     public List<String> findAllByNameContains(String name) {
        return (List<String>) productDao.findAllByNameContains(name);
@@ -50,6 +62,10 @@ public class ProductService {
             dto.setProductCode(product.getProductCode());
             dto.setIntroDate(product.getIntroDate());
             dto.setInternalName(product.getInternalName());
+            dto.setCardImageUrl(
+                    imageAccessService.getCardImageUrlForProduct(product.getId())
+                            .orElse("/images/default-card.jpg")
+            );
             dto.setDisContinuedDate(product.getDisContinuedDate());
             productDTOList.add(dto);
         });
@@ -106,13 +122,6 @@ public class ProductService {
         return result;
     }
 
-    public ProductService(ProductRepository productRepository,
-                          ProductItemRepository productItemRepository,
-                          ProductMapper productMapper) {
-        this.productRepository = productRepository;
-        this.productItemRepository = productItemRepository;
-        this.productMapper = productMapper;
-    }
 
     public ProductDTO getProductById(Long productId) {
         Product product = productRepository.findById(productId)

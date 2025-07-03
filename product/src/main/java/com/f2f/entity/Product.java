@@ -74,7 +74,6 @@ public class Product extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<ProductImage> images;
 
-
     //bl
     public Long getMinPrice(){
         if(items==null || items.isEmpty()){

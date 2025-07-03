@@ -1,7 +1,12 @@
 package com.f2f.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 
+@Getter
+@Setter
 public class SupplierProduct implements Serializable {
 
     private String availableFromDate;
@@ -12,15 +17,4 @@ public class SupplierProduct implements Serializable {
         return availableFromDate;
     }
 
-    public void setAvailableFromDate(String availableFromDate) {
-        this.availableFromDate = availableFromDate;
-    }
-
-    public String gPricingTypeetAvailableThruDate() {
-        return availableThruDate;
-    }
-
-    public void setAvailableThruDate(String availableThruDate) {
-        this.availableThruDate = availableThruDate;
-    }
 }

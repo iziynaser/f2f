@@ -17,16 +17,6 @@ public interface ProductDao extends JpaRepository<Product,Long> {
 
     List<String> findAllByNameContains(String productName);
 
-    //Product findProductById(Long id);
-
-//    @Override
-//    Optional<Product> findById(Long id);
-
-//    @Query("select p.id,p.name as name,p.comment as comment," +
-//            "p.isVirtual as isVirtual,p.releaseDate as releaseDate,p.productCode as productCode," +
-//            "p.introDate as introDate,p.internalName as internalName,p.disContinuedDate as disContinuedDate from Product as p ")
-//    List<Tuple> findAllAvailableProducts();
-
     @Query("select p.id as id, p.name as name, p.comment as comment, p.isVirtual as isVirtual, p.releaseDate as releaseDate, p.productCode as productCode, p.introDate as introDate, p.internalName as internalName, p.disContinuedDate as disContinuedDate from Product p")
     List<ProductInfo> findAllAvailableProducts();
 

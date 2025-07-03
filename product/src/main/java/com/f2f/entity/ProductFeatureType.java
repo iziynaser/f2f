@@ -3,7 +3,11 @@ package com.f2f.entity;
 import com.f2f.dbc.entity.BaseEntity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "PRODUCT_FEATURE_TYPE")
 public class ProductFeatureType extends BaseEntity {
@@ -22,19 +26,4 @@ public class ProductFeatureType extends BaseEntity {
     @Column(name = "VALUE")
     private String value;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
 }

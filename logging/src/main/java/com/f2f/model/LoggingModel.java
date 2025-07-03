@@ -12,6 +12,8 @@ public class LoggingModel {
     private String methodName ;
     private long executionTime ;
     private String level ;
+    private String message ;
+    private String extendedInformation ;
 
     @Override
     public String toString() {

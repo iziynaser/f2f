@@ -27,7 +27,7 @@ public class OtherSellersService {
         l1.setNameOfSeller("a");
         l1.setPromotions("pppppppp");
         l1.setImgUrl("\fff.jpg");
-        l1.setPrice(10);
+        l1.setPrice(String.valueOf(10));
         list.add(l1);
 
         l2.setConditions("seller2");
@@ -35,7 +35,7 @@ public class OtherSellersService {
         l2.setNameOfSeller("a");
         l2.setPromotions("pppppppp");
         l2.setImgUrl("\fff.jpg");
-        l2.setPrice(10);
+        l2.setPrice(String.valueOf(10));
         list.add(l2);
 
         l3.setConditions("seller3");
@@ -43,7 +43,7 @@ public class OtherSellersService {
         l3.setNameOfSeller("a");
         l3.setPromotions("pppppppp");
         l3.setImgUrl("\fff.jpg");
-        l3.setPrice(10);
+        l3.setPrice(String.valueOf(10));
         list.add(l3);
 
         l4.setConditions("seller4");
@@ -51,7 +51,7 @@ public class OtherSellersService {
         l4.setNameOfSeller("a");
         l4.setPromotions("pppppppp");
         l4.setImgUrl("\fff.jpg");
-        l4.setPrice(10);
+        l4.setPrice(String.valueOf(10));
         list.add(l4);
 
         return list;

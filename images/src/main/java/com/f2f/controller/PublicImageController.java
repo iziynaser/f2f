@@ -22,7 +22,8 @@ import java.nio.file.Paths;
 @RestController
 @RequestMapping("/images")
 public class PublicImageController {
-
+    //userId/type : small,medium,large,detail,original,additional,detail,card
+    //stm/type : small,medium,large,detail,original,additional,detail,card
     private final Path uploadDir;
 
     public PublicImageController(@Value("${public.image.dir}") String uploadDir) {

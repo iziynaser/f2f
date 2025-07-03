@@ -2,18 +2,18 @@ package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "PRODUCT_KEYWORD")
 public class ProductKeyword extends BaseEntity implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @Column(name = "KEY_NAME")
     private String keyName ;
@@ -27,37 +27,4 @@ public class ProductKeyword extends BaseEntity implements Serializable {
     @ManyToMany(mappedBy = "keywords")
     private Set<Product> products = new HashSet<Product>();
 
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getKeyName() {
-        return keyName;
-    }
-
-    public void setKeyName(String keyName) {
-        this.keyName = keyName;
-    }
-
-    public String getKeyWeight() {
-        return keyWeight;
-    }
-
-    public void setKeyWeight(String keyWeight) {
-        this.keyWeight = keyWeight;
-    }
-
-    public String getKeyStatus() {
-        return keyStatus;
-    }
-
-    public void setKeyStatus(String keyStatus) {
-        this.keyStatus = keyStatus;
-    }
 }

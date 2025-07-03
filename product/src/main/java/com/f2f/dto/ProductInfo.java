@@ -10,4 +10,5 @@ public interface ProductInfo {
     String getIntroDate();
     String getInternalName();
     String getDisContinuedDate();
+    String getCardImageUrl();
 }

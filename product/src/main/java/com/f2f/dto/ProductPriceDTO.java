@@ -1,7 +1,12 @@
 package com.f2f.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 
+@Getter
+@Setter
 public class ProductPriceDTO implements Serializable {
 
     private String fromDate ;
@@ -18,59 +23,4 @@ public class ProductPriceDTO implements Serializable {
 
     private Long product;
 
-    public String getFromDate() {
-        return fromDate;
-    }
-
-    public void setFromDate(String fromDate) {
-        this.fromDate = fromDate;
-    }
-
-    public String getToDate() {
-        return toDate;
-    }
-
-    public void setToDate(String toDate) {
-        this.toDate = toDate;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    public int getTax() {
-        return tax;
-    }
-
-    public void setTax(int tax) {
-        this.tax = tax;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public Long getProductPriceType() {
-        return productPriceType;
-    }
-
-    public void setProductPriceType(Long productPriceType) {
-        this.productPriceType = productPriceType;
-    }
-
-    public Long getProduct() {
-        return product;
-    }
-
-    public void setProduct(Long product) {
-        this.product = product;
-    }
 }

@@ -2,15 +2,14 @@ package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
-
+@Getter
+@Setter
 @Entity
 @Table(name = "PRODUCT_PRICE")
 public class ProductPrice extends BaseEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @Column(name = "FROM_DATE")
     private String fromDate ;
@@ -34,62 +33,4 @@ public class ProductPrice extends BaseEntity {
 //    @ManyToOne
 //    private Product product;
 
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFromDate() {
-        return fromDate;
-    }
-
-    public void setFromDate(String fromDate) {
-        this.fromDate = fromDate;
-    }
-
-    public String getToDate() {
-        return toDate;
-    }
-
-    public void setToDate(String toDate) {
-        this.toDate = toDate;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    public int getTax() {
-        return tax;
-    }
-
-    public void setTax(int tax) {
-        this.tax = tax;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public ProductPriceType getProductPriceType() {
-        return productPriceType;
-    }
-
-    public void setProductPriceType(ProductPriceType productPriceType) {
-        this.productPriceType = productPriceType;
-    }
 }

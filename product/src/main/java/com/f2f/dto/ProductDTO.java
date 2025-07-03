@@ -20,7 +20,7 @@ public class ProductDTO implements java.io.Serializable {
      private String internalName;
      private String disContinuedDate;
      private String description;
-
+     private String cardImageUrl;
      private ProductPriceDTO price;
 
      private Long minPrice;

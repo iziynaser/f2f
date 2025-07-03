@@ -11,16 +11,11 @@ import lombok.Setter;
 @Table(name="PRODUCT_IMAGE")
 public class ProductImage extends BaseEntity {
 
-    @Id
-    @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(name="name")
     private String name ;
 
     @Column(name = "type")
-    private String type;
+    private String type;//small,medium,large,detail,original,additional,detail,card
 
     @Column(name = "picByte",length = 2000)
     private byte [] picByte ;
