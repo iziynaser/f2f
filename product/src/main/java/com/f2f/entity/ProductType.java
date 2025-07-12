@@ -28,6 +28,6 @@ public class ProductType extends BaseEntity implements Serializable {
     private String description ;
 
     @Column(name = "ORDERS")
-    private int orders;
+    private Integer orders;
 
 }

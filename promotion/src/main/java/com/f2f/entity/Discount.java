@@ -32,8 +32,8 @@ public class Discount   extends BaseEntity implements Serializable {
     private Long categoryId;//category
     private Long brandId ;//brand
 
-    private int minQuantity;
-    private int maxQuantity;
+    private Integer minQuantity;
+    private Integer maxQuantity;
 
     private Long minTotalAmount;
     private Long maxTotalAmount;
@@ -50,6 +50,6 @@ public class Discount   extends BaseEntity implements Serializable {
     @Enumerated(EnumType.STRING)
     private DiscountApplyLevel applyTo;
 
-    private int usageLimit ;// تعداد دفعات قابل استفاده از تخفیف
+    private Integer usageLimit ;// تعداد دفعات قابل استفاده از تخفیف
 
 }

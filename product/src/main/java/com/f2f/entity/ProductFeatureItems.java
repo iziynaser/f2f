@@ -24,7 +24,7 @@ public class ProductFeatureItems extends BaseEntity implements Serializable {
     private String featureValue;
 
     @Column(name = "ORDERS")
-    private int orders;
+    private Integer orders;
 
     @ManyToOne
     @JoinColumn(name="FEATURE_ITEM_ID")

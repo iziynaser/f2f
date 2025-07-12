@@ -24,7 +24,7 @@ public class ProductFeatureGroup extends BaseEntity implements Serializable {
     private Product product;
 
     @Column(name = "ORDERS")
-    private int orders;
+    private Integer orders;
 
     @OneToMany(mappedBy = "featureGroup")
     private List<ProductFeatureItem> features;

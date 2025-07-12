@@ -2,9 +2,14 @@ package com.f2f.entity;
 import jakarta.persistence.*;
 
 import com.f2f.dbc.entity.BaseEntity;
+import lombok.Getter;
+import lombok.Setter;
 
- 
+
 import java.io.Serializable;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "PRODUCT_CATEGORY")
 public class ProductCategory extends BaseEntity implements Serializable {
@@ -29,38 +34,6 @@ public class ProductCategory extends BaseEntity implements Serializable {
         this.name = name;
         this.parentProductCategory = parentProductCategory;
         this.fromDate = fromDate;
-        this.toDate = toDate;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public ProductCategory getParentProductCategory() {
-        return parentProductCategory;
-    }
-
-    public void setParentProductCategory(ProductCategory parentProductCategory) {
-        this.parentProductCategory = parentProductCategory;
-    }
-
-    public String getFromDate() {
-        return fromDate;
-    }
-
-    public void setFromDate(String fromDate) {
-        this.fromDate = fromDate;
-    }
-
-    public String getToDate() {
-        return toDate;
-    }
-
-    public void setToDate(String toDate) {
         this.toDate = toDate;
     }
 

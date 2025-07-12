@@ -56,7 +56,7 @@ public class DiscountEngine {
 
     private boolean isRuleApplicable(DiscountRule rule, Context context) {
         LocalDate now = context.getRequestDate();
-        if (!rule.isActive()) return false;
+        if (!Boolean.TRUE.equals(rule.getActive())) return false;
         if (rule.getStartDate() != null && now.isBefore(rule.getStartDate())) return false;
         if (rule.getEndDate() != null && now.isAfter(rule.getEndDate())) return false;
 

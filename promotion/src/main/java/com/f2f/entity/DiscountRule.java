@@ -30,7 +30,7 @@ public class DiscountRule extends BaseEntity {
     private Long discountValue;
 
     @Column(name = "ACTIVE")
-    private boolean active;
+    private Boolean active;
 
     @Column(name = "START_DATE")
     private LocalDate startDate;

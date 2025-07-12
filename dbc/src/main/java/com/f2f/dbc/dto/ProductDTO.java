@@ -21,6 +21,9 @@ public class ProductDTO implements java.io.Serializable {
      private String cardImageUrl;
      private ProductPriceDTO price;
 
+     private Integer quantity;
+     private Boolean available;
+
      private String type;
 
      private Integer totalLikes;

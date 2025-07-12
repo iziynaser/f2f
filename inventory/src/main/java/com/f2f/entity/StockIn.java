@@ -21,7 +21,7 @@ public class StockIn extends BaseEntity {
     @ManyToOne
     private Warehouse warehouse;
 
-    private int quantity;// تعداد
+    private Integer quantity;// تعداد
 
     private BigDecimal purchasePrice;// قیمت واحد خرید
 
@@ -29,7 +29,7 @@ public class StockIn extends BaseEntity {
 
     private LocalDateTime stockInDate ;
 
-    private int supplierId ;
+    private Integer supplierId ;
 
     private String referenceNumber ; // faktor ya resid
 

@@ -20,7 +20,7 @@ public class StockOut  extends BaseEntity {
     @ManyToOne
     private Warehouse warehouse;
 
-    private int quantity;
+    private Integer quantity;
 
     private LocalDateTime stockDate;
 

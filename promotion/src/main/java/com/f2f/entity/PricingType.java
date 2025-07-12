@@ -14,7 +14,7 @@ import lombok.Setter;
 public class PricingType extends BaseEntity {
 
     @Column(name = "price_type_id")
-    private int pricingTypeId ;
+    private Integer pricingTypeId ;
 
     @Column(name = "name")
     private String name;

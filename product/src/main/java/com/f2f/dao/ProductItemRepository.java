@@ -14,8 +14,7 @@ public interface ProductItemRepository extends JpaRepository<ProductItem, Long> 
     @Query("SELECT pi FROM ProductItem pi " +
             "WHERE pi.product.name LIKE %:productName% " +
             "AND pi.color.name = :colorName " +
-            "AND pi.defaultPrice BETWEEN :minPrice AND :maxPrice " +
-            "AND pi.available = true")
+            "AND pi.defaultPrice BETWEEN :minPrice AND :maxPrice ")
     List<ProductItem> findAvailableItemsByProductNameAndColorAndPriceRange(
             @Param("productName") String productName,
             @Param("colorName") String colorName,
@@ -39,5 +38,13 @@ public interface ProductItemRepository extends JpaRepository<ProductItem, Long> 
     @Query("SELECT DISTINCT c.name FROM ProductItem pi JOIN pi.color c WHERE pi.product.id = :productId")
     List<String> findDistinctColorsByProductId(Long productId);
 
-    Optional<Object> findFirstByProductIdOrderByIdAsc(Long productId);
+    Optional<ProductItem> findFirstByProductIdOrderByIdAsc(Long productId);
+
+    //
+//    @Query("SELECT pi FROM ProductItem pi WHERE pi.product.id = :productId AND pi.defaultPrice IS NOT NULL ORDER BY pi.id ASC")
+//    Optional<ProductItem> findFirstItemWithPriceByProductId(@Param("productId") Long productId);
+
+    @Query("SELECT p FROM ProductItem p WHERE p.product.id = :productId ORDER BY p.id ASC")
+    List<ProductItem> findProductItemsByProductIdSorted(@Param("productId") Long productId);
+
 }

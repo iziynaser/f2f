@@ -26,7 +26,7 @@ public class Inventory extends BaseEntity {
     private Warehouse warehouse;
 
     @Column(name = "QUANTITY")
-    private int quantity ;
+    private Integer quantity ;
 
     public Inventory() {
     }

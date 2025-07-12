@@ -36,19 +36,17 @@ public class ProductItem  extends BaseEntity implements Serializable {
     @Column(name = "salesCount")
     private Integer salesCount;
 
-    @Column(name = "remainCount")
-    private Integer remainingCount ;
-
-    private boolean available;
-
-//    @OneToMany(mappedBy = "productItem",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-//    private List<ProductPrice> productPrices = new ArrayList<>();
+//    @Column(name = "remainCount")
+//    private Integer remainingCount ;
+//
+//    private boolean available;
 
     public ProductItem(Long productItemId) {
         super();
     }
 
-//    @OneToMany(mappedBy = "productItem",cascade = CascadeType.ALL)
-//    private List<StockBatches> stockBatches;
+    public ProductItem() {
+        super();
+    }
 
 }

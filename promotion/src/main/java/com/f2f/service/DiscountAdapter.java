@@ -43,7 +43,7 @@ public class DiscountAdapter implements DiscountPort {
     }
 
     private boolean isApplicable(DiscountRule rule, Context context) {
-        if (!rule.isActive()) return false;
+        if (!Boolean.TRUE.equals(rule.getActive())) return false;
 
         if (rule.getStartDate() != null && context.getRequestDate().isBefore(rule.getStartDate())) return false;
         if (rule.getEndDate() != null && context.getRequestDate().isAfter(rule.getEndDate())) return false;

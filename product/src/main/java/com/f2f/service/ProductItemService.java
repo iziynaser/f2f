@@ -3,12 +3,13 @@ package com.f2f.service;
 import com.f2f.dao.ProductItemRepository;
 import com.f2f.entity.ProductItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
-//@PreAuthorize("isAuthenticated()")
 public class ProductItemService {
 
     @Autowired
@@ -16,6 +17,11 @@ public class ProductItemService {
 
     List<ProductItem> findProductItemByProductId(Long productId){
         return repository.findProductItemByProductId(productId);
+    }
+
+    public Optional<ProductItem> findMainItemForProduct(Long productId) {
+        List<ProductItem> items = repository.findProductItemsByProductIdSorted(productId);
+        return items.stream().findFirst();
     }
 
 }

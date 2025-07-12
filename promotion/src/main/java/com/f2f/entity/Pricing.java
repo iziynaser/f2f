@@ -37,10 +37,10 @@ public class Pricing extends BaseEntity {
     private LocalDateTime throughDate ;
 
     @Column(name = "product_count")
-    private int productCount ;
+    private Integer productCount ;
 
     @Column(name = "price_amount")
-    private long priceAmount ;
+    private Long priceAmount ;
 
     @Column(name = "geo_location")
     private String geo_location;

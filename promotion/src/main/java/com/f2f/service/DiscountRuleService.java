@@ -56,7 +56,7 @@ public class DiscountRuleService {
         rule.setStartDate(updatedRule.getStartDate());
         rule.setEndDate(updatedRule.getEndDate());
         rule.setUsageLimit(updatedRule.getUsageLimit());
-        rule.setActive(updatedRule.isActive());
+        rule.setActive(updatedRule.getActive());
 
         // حذف شرط‌های قدیمی و ذخیره جدید
         ruleConditionRepository.deleteAll(rule.getConditions());

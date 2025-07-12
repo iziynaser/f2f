@@ -36,13 +36,13 @@ public class Product extends BaseEntity implements Serializable {
     private String productCode;
 
     @Column(name = "category_id")
-    private  int categoryId;
+    private  Integer categoryId;
 
     @Column(name = "product_type_id", insertable=false , updatable=false)
-    private int productTypeId;// masrafi,faallah,packaging
+    private Integer productTypeId;// masrafi,faallah,packaging
 
     @Column(name = "divisible")
-    private boolean divisible;
+    private Boolean divisible;
 
     @Column(name = "INTERNAL_NAME")
     private String internalName;

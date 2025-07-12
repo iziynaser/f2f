@@ -3,6 +3,7 @@ package com.f2f.gateway;
 import com.f2f.config.ZarinpalProperties;
 import com.f2f.dto.PaymentInitResponseDTO;
 import com.f2f.dto.PaymentVerifyResponseDTO;
+import com.f2f.dto.zarinpal.ZarinpalInitResponse;
 import com.f2f.dto.zarinpal.ZarinpalVerifyResponse;
 import com.f2f.entity.PaymentRequest;
 import com.f2f.port.PaymentGatewayPort;

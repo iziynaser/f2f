@@ -19,7 +19,7 @@ public class InventoryAudit   extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Warehouse warehouse ;
 
-    private int quantityChanged ;
+    private Integer quantityChanged ;
 
     private String operationType ;// in,out,adjustment,transfer
 
