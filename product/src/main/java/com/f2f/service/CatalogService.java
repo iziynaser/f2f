@@ -20,20 +20,20 @@ import java.util.stream.Collectors;
 
 @Service
 public class CatalogService {
-    @Autowired
-    private CatalogRepository catalogRepository;
 
-    @Autowired
-    private ProductRepository productRepository;
+    private final CatalogRepository catalogRepository;
 
-    @Autowired
-    private ProductItemRepository productItemRepository;
+    private final ProductRepository productRepository;
+
+    private final ProductItemRepository productItemRepository;
 
     private final ProductMapper productMapper ;
 
-    public CatalogService(CatalogRepository catalogRepository,
+    public CatalogService(CatalogRepository catalogRepository, ProductRepository productRepository, ProductItemRepository productItemRepository,
                           ProductMapper productMapper) {
         this.catalogRepository = catalogRepository;
+        this.productRepository = productRepository;
+        this.productItemRepository = productItemRepository;
         this.productMapper = productMapper;
     }
 

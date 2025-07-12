@@ -14,15 +14,10 @@ import java.util.List;
 @RequestMapping("/api/catalog")
 public class CatalogController {
 
-    @Autowired
-    private CatalogService catalogService;
-
-    @Autowired
-    private final ProductMapper productMapper;
+    private final CatalogService catalogService;
 
     public CatalogController(CatalogService catalogService, ProductMapper productMapper) {
         this.catalogService = catalogService;
-        this.productMapper = productMapper;
     }
 
     @PostMapping

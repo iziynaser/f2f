@@ -71,4 +71,11 @@ public class BrandController {
         return response;
     }
 
+    @GetMapping("/brandName/byProductItem/{id}")
+    public String getBrandNameByProductItemId(@PathVariable("id") Long productItemId){
+        return brandService.getBrandNameByProductItemId(productItemId);
+    }
+
+
+
 }

@@ -3,9 +3,13 @@ package com.f2f.entity;
 import com.f2f.dbc.entity.BaseEntity;
 import com.f2f.dbc.entity.CategoryType;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "CATEGORY")
 public class Category extends BaseEntity implements Serializable {
@@ -46,79 +50,6 @@ public class Category extends BaseEntity implements Serializable {
     public Category(String name, Category parentCategory) {
         this.name = name;
         this.parentCategory = parentCategory;
-    }
-
-    public String getCategoryCode() {
-        return categoryCode;
-    }
-
-    public void setCategoryCode(String categoryCode) {
-        this.categoryCode = categoryCode;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Category getParentCategory() {
-        return parentCategory;
-    }
-
-    public void setParentCategory(Category parentCategory) {
-        this.parentCategory = parentCategory;
-    }
-
-    public CategoryType getCategoryType() {
-        return categoryType;
-    }
-
-    public void setCategoryType(CategoryType categoryType) {
-        this.categoryType = categoryType;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public String getDetailImageUrl() {
-        return detailImageUrl;
-    }
-
-    public void setDetailImageUrl(String detailImageUrl) {
-        this.detailImageUrl = detailImageUrl;
-    }
-
-
-    public String getFromDate() {
-        return fromDate;
-    }
-
-    public void setFromDate(String fromDate) {
-        this.fromDate = fromDate;
-    }
-
-    public String getToDate() {
-        return toDate;
-    }
-
-    public void setToDate(String toDate) {
-        this.toDate = toDate;
     }
 }
 
