@@ -41,8 +41,8 @@ public class ProductItem  extends BaseEntity implements Serializable {
 
     private boolean available;
 
-    @OneToMany(mappedBy = "productItem",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<ProductPrice> productPrices = new ArrayList<>();
+//    @OneToMany(mappedBy = "productItem",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+//    private List<ProductPrice> productPrices = new ArrayList<>();
 
     public ProductItem(Long productItemId) {
         super();

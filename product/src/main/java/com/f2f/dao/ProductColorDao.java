@@ -1,5 +1,6 @@
 package com.f2f.dao;
 
+
 import com.f2f.dto.ProductColorDTO;
 import com.f2f.entity.ProductColor;
 import org.springframework.data.jpa.repository.JpaRepository;

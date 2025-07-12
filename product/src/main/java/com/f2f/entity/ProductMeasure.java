@@ -18,28 +18,28 @@ public class ProductMeasure extends BaseEntity {
     @JoinColumn(name ="PRODUCT_ID")
     private Product product;
 
-    private float width;
+    private float width;//عرض
 
     @OneToOne
     @JoinColumn(name = "WIDTH_MEASURE_ID")
-    private MeasureUnit widthType;
+    private MeasureUnit widthType;//نوع عرض
 
-    private float height ;
+    private float height ;//ارتفاع
 
     @OneToOne
     @JoinColumn(name = "HEIGHT_MEASURE_ID")
-    private MeasureUnit heightType;
+    private MeasureUnit heightType;//نوع ارتفاع
 
-    private float weight ;
+    private float weight ;// وزن
 
     @OneToOne
     @JoinColumn(name = "WEIGHT_MEASURE_ID")
-    private MeasureUnit weightType;
+    private MeasureUnit weightType;//نوع وزن
 
-    private float depth ;
+    private float depth ;//عمق
 
     @OneToOne
     @JoinColumn(name = "DEPTH_MEASURE_ID")
-    private MeasureUnit depthType;
+    private MeasureUnit depthType;//نوع عمق
 
 }

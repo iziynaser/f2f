@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductItemRepository extends JpaRepository<ProductItem, Long> {
 
@@ -37,4 +38,6 @@ public interface ProductItemRepository extends JpaRepository<ProductItem, Long> 
 
     @Query("SELECT DISTINCT c.name FROM ProductItem pi JOIN pi.color c WHERE pi.product.id = :productId")
     List<String> findDistinctColorsByProductId(Long productId);
+
+    Optional<Object> findFirstByProductIdOrderByIdAsc(Long productId);
 }

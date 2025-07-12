@@ -3,6 +3,7 @@ package com.f2f.controller;
 import com.f2f.dbc.dto.NameValueDTO;
 import com.f2f.dto.ProductDTO;
 import com.f2f.entity.Product;
+import com.f2f.service.CommentLikeSummaryService;
 import com.f2f.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +14,14 @@ import java.util.List;
 @RequestMapping("/f2f/products")
 public class ProductController {
 
-    @Autowired
-    ProductService productService;
+    private final ProductService productService;
+
+    private final CommentLikeSummaryService commentLikeSummaryService;
+
+    public ProductController(ProductService productService, CommentLikeSummaryService commentLikeSummaryService) {
+        this.productService = productService;
+        this.commentLikeSummaryService = commentLikeSummaryService;
+    }
 
     @GetMapping("/list")
     public List<ProductDTO> getProducts(){
