@@ -31,6 +31,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
         @PropertySource(value = "classpath:postgresFile.properties"),
         @PropertySource(value = "classpath:storage.properties")
 })
+
 public class F2fServerApplication{
 
     public static void main(String[] args) {

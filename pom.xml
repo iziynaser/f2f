@@ -26,7 +26,6 @@
         <module>f2fc</module>
         <module>content</module>
         <module>acc</module>
-        <module>product</module>
         <module>hr</module>
         <module>order</module>
         <module>asset</module>
@@ -38,6 +37,11 @@
         <module>images</module>
         <module>docs</module>
         <module>shopping</module>
+        <module>product</module>
+        <module>promotion</module>
+        <module>inventory</module>
+        <module>payment</module>
+
     </modules>
 
     <properties>
