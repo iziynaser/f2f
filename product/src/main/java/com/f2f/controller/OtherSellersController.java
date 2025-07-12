@@ -2,8 +2,6 @@ package com.f2f.controller;
 
 import com.f2f.dto.OtherSellersDTO;
 import com.f2f.service.OtherSellersService;
-import com.f2f.service.PricingService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,11 +10,11 @@ import java.util.List;
 @RequestMapping("/f2f/otherSellers")
 public class OtherSellersController {
 
-    @Autowired
-    OtherSellersService otherSellersService;
+    private final OtherSellersService otherSellersService;
 
-    @Autowired
-    PricingService pricingService ;
+    public OtherSellersController(OtherSellersService otherSellersService) {
+        this.otherSellersService = otherSellersService;
+    }
 
     @ResponseBody
     @GetMapping("/list")
@@ -30,7 +28,7 @@ public class OtherSellersController {
     public Object getOtherSellersCount(@RequestParam("productId") String productId){
         Integer count = 0;
         Long id = Long.valueOf(productId);
-        count = pricingService.getCountOfOtherSellersOnProduct(id);
+        //count = pricingService.getCountOfOtherSellersOnProduct(id);
         //KeyValues kv = new KeyValues("result",count);
         //return  kv;
         return null;
