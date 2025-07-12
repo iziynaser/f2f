@@ -1,9 +1,12 @@
 package com.f2f.controller.comment;
 
 import com.f2f.dto.CommentDTO;
+import com.f2f.dto.CommentResponseDTO;
+import com.f2f.eums.CommentSortType;
 import com.f2f.service.comment.CommentService;
 import com.f2f.service.comment.CommentTargetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -49,6 +52,14 @@ public class CommentController {
 //         commentService.createComment(commentDTO,commentTarget,userAccount);
 //        return null;
 //    }
+
+
+    @GetMapping("/sorted")
+    public ResponseEntity<List<CommentResponseDTO>> getSortedComments(
+            @RequestParam(name = "sortBy", defaultValue = "CREATED_ORDER") CommentSortType sortType) {
+        return ResponseEntity.ok(commentService.getComments(sortType));
+    }
+
 
     @ResponseBody
     @RequestMapping("/list")

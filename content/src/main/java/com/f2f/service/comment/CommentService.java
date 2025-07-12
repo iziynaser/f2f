@@ -2,6 +2,10 @@ package com.f2f.service.comment;
 
 import com.f2f.dao.comment.CommentDao;
 import com.f2f.dto.CommentDTO;
+import com.f2f.dto.CommentResponseDTO;
+import com.f2f.entity.Comment;
+import com.f2f.eums.CommentSortType;
+import com.f2f.mapper.CommentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
@@ -10,56 +14,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-//@PreAuthorize("isAuthenticated()")
 public class CommentService {
 
-    @Autowired
-    private CommentDao commentDao;
+    private final CommentMapper commentMapper ;
 
-    //todo: chage
-//    @Autowired
-//    private ProductService productService;
+    private final CommentDao commentDao;
 
-    @Autowired
-    private CommentTargetService commentTargetService;
+    private final CommentTargetService commentTargetService;
 
-    @Autowired
-    private CommentBenefitsService commentBenefitsService;
+    private final CommentBenefitsService commentBenefitsService;
 
-    @Autowired
-    private CommentUpsetsService commentUpsetsService;
+    private final CommentUpsetsService commentUpsetsService;
 
-//    @Autowired
-//    Mapper mapper;
+    public CommentService(CommentUpsetsService commentUpsetsService,
+                          CommentBenefitsService commentBenefitsService,
+                          CommentTargetService commentTargetService,
+                          CommentDao commentDao,CommentMapper commentMapper) {
+        this.commentUpsetsService = commentUpsetsService;
+        this.commentBenefitsService = commentBenefitsService;
+        this.commentTargetService = commentTargetService;
+        this.commentDao = commentDao;
+        this.commentMapper = commentMapper;
+    }
 
+    public List<CommentResponseDTO> getComments(CommentSortType sortType) {
+        List<Comment> comments;
 
-//    public  UserAccountEntity copy(UserAccount userAccount){
-//        UserAccountEntity userAccountEntity = new UserAccountEntity();
-//        userAccountEntity.setUsername(userAccount.getUsername());
-//        userAccountEntity.setPassword(userAccount.getPassword());
-//        userAccountEntity.setAccountOpenCode(userAccount.getAccountOpenCode());
-//        userAccountEntity.setNickName(userAccount.getNickName());
-//        userAccountEntity.setAvatarUrl(userAccount.getAvatarUrl());
-//        userAccountEntity.setEmail(userAccount.getEmail());
-//        userAccountEntity.setMobile(userAccount.getMobile());
-//        userAccountEntity.setProvince(userAccount.getProvince());
-//        userAccountEntity.setCity(userAccount.getCity());
-//        userAccountEntity.setAddress(userAccount.getAddress());
-//        userAccountEntity.setBirthday(userAccount.getBirthday());
-//        userAccountEntity.setGender(userAccount.getGender());
-//        userAccountEntity.setFailureTime(userAccount.getFailureTime());
-//        userAccountEntity.setFailureCount(userAccount.getFailureCount());
-//        userAccountEntity.setRoles(copyRoles(userAccount.getRoles()));
-//        return userAccountEntity;
-//    }
+        switch (sortType) {
+            case CREATED_ORDER -> comments = commentDao.findAllCreatedOrder();
+            case MOST_BENEFIT -> comments = commentDao.findAllOrderByBenefitCountDesc();
+            case MOST_UPSET -> comments = commentDao.findAllOrderByUpsetCountDesc();
+            case NEWEST -> comments = commentDao.findAllOrderByNewest();
+            case OLDEST -> comments = commentDao.findAllOrderByOldest();
+            default -> comments = commentDao.findAll();
+        }
 
-//    public List<RoleEntity> copyRoles(List<Role> list){
-//        List<RoleEntity> roles = new ArrayList<RoleEntity>();
-//        for(int i=0;i<roles.size();i++){
-//            roles.add(new RoleEntity(roles.get(i).getRoleName()));
-//        }
-//        return roles;
-//    }
+        return commentMapper.toDtoList(comments);
+    }
+
 
 //
 //    public CommentDTOS createComment(CommentDTOS commentDTO, CommentTarget commentTarget, UserAccount userAccount) {
@@ -94,11 +86,6 @@ public class CommentService {
 
 
     public List<CommentDTO> getListOfCommentsForProductId(Long productId){
-//todo: change
-//        Long commentTargetId=productService.findCommentTargetNo(productId);
-//        List<CommentDTO> commentList = commentTargetService.getListOfCommentsForTargetId(commentTargetId);
-//        return commentList;
-
         return null;
     }
 }

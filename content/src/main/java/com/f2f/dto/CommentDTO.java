@@ -2,6 +2,7 @@ package com.f2f.dto;
 
 
 
+
 public interface CommentDTO {
 
     public String getSubject() ;
