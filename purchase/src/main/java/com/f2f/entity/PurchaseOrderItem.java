@@ -5,34 +5,24 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Getter
 @Setter
-@NoArgsConstructor
+@Getter
 @Entity
 @Table(name = "PURCHASE_ORDER_ITEM")
 public class PurchaseOrderItem extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PURCHASE_ORDER_ID")
     private PurchaseOrder purchaseOrder;
 
-    @Column(name = "PRODUCT_ITEM_ID", nullable = false)
     private Long productItemId;
 
-    @Column(name = "QUANTITY")
     private Integer quantity;
 
-    @Column(name = "UNIT_PRICE")
-    private Long unitPrice;
+    private BigDecimal unitPrice;
 
-    @Column(name = "TOTAL_PRICE")
-    private Long totalPrice;
-
-    @Column(name = "EXPECTED_RECEIVE_DATE")
-    private LocalDate expectedReceiveDate;
-
-    @Column(name = "NOTE")
-    private String note;
+    private BigDecimal totalPrice;
 }

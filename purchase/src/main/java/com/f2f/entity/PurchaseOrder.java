@@ -1,38 +1,34 @@
 package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.enums.PurchaseOrderStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@Entity
-@Table(name = "PURCHASE_ORDER")
 public class PurchaseOrder extends BaseEntity {
 
-    @Column(name = "ORDER_CODE", unique = true)
-    private String orderCode;
+    private String orderNumber;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "SUPPLIER_ID")
     private PersonEntity supplier;
 
-    @Column(name = "ORDER_DATE")
     private LocalDate orderDate;
 
-    @Column(name = "STATUS")
-    private String status; // NEW, SENT, RECEIVED, CANCELLED
+    @Enumerated(EnumType.STRING)
+    private PurchaseOrderStatus status;
 
-    @Column(name = "NOTES")
-    private String notes;
+    private BigDecimal totalAmount;
 
     @OneToMany(mappedBy = "purchaseOrder", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PurchaseOrderItem> items = new ArrayList<>();
+    private List<PurchaseOrderItem> items;
 }

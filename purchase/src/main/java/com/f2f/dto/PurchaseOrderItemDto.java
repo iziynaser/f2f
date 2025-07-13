@@ -4,11 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class PurchaseOrderItemDto {
+    private Long id;
     private Long productItemId;
     private Integer quantity;
-    private Long unitPrice;
+    private BigDecimal unitPrice;
+    private BigDecimal totalPrice;
 }
