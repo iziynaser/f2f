@@ -44,6 +44,7 @@
         <module>reporting</module>
         <module>purchase</module>
         <module>sales</module>
+        <module>invoice</module>
 
     </modules>
 

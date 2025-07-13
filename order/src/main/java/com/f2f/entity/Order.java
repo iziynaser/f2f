@@ -2,7 +2,6 @@ package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
 
-import com.f2f.entity.invoice.Invoice;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,8 +38,9 @@ public class Order  extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private Set<OrderStatus> statusHistory = new HashSet<>();
 
-    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Invoice invoice;
+    // فقط ذخیره‌ی شناسه‌ی فاکتور، بدون وابستگی به کلاس Invoice
+    @Column(name = "invoice_id")
+    private Long invoiceId;
 
 }
 
