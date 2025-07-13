@@ -41,6 +41,9 @@
         <module>promotion</module>
         <module>inventory</module>
         <module>payment</module>
+        <module>reporting</module>
+        <module>purchase</module>
+        <module>sales</module>
 
     </modules>
 
