@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface StockInRepository extends JpaRepository<StockIn,Integer> {
+public interface StockInRepository extends JpaRepository<StockIn,Long> {
 
     List<StockIn> findByProductItemId(Long productItemId);
     List<StockIn> findByWarehouseId(Long warehouseId);
