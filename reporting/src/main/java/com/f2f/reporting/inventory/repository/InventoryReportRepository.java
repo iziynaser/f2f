@@ -1,0 +1,41 @@
+package com.f2f.reporting.inventory.repository;
+
+import com.f2f.entity.Inventory;
+import com.f2f.reporting.inventory.dto.InventoryReportDTO;
+import com.f2f.reporting.inventory.dto.InventoryStockReportDTO;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
+
+public interface InventoryReportRepository extends JpaRepository<Inventory, Long> {
+
+    @Query("""
+    SELECT new com.f2f.dto.InventoryReportDTO(
+        i.productItemId,
+        pi.name,
+        i.totalStock,
+        i.availableStock,
+        w.name
+    )
+    FROM Inventory i
+    JOIN ProductItem pi ON pi.id = i.productItemId
+    JOIN Warehouse w ON w.id = i.warehouse.id
+    """)
+    List<InventoryReportDTO> getInventoryReport();
+
+    @Query("""
+        SELECT new com.f2f.dto.report.InventoryStockReportDTO(
+            i.productItem.id,
+            i.productItem.name,
+            i.warehouse.id,
+            i.warehouse.name,
+            i.quantity,
+            i.reservedQuantity,
+            (i.quantity - i.reservedQuantity)
+        )
+        FROM Inventory i
+        WHERE (:warehouseId IS NULL OR i.warehouse.id = :warehouseId)
+    """)
+    List<InventoryStockReportDTO> findInventoryStockReport(Long warehouseId);
+}

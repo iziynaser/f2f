@@ -10,10 +10,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "DISCOUNT_RULE")
 @Getter
 @Setter
+@Entity
+@Table(name = "DISCOUNT_RULE")
 public class DiscountRule extends BaseEntity {
 
     @Column(name = "NAME")

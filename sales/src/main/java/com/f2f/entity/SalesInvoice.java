@@ -5,6 +5,7 @@ import com.f2f.enums.SalesStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
+@Table(name = "SALES_INVOICE")
 public class SalesInvoice extends BaseEntity {
     private String invoiceNumber;
     private Long customerId;

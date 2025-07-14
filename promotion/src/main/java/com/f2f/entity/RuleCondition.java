@@ -5,10 +5,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-@Table(name = "RULE_CONDITION")
 @Getter
 @Setter
+@Entity
+@Table(name = "RULE_CONDITION")
 public class RuleCondition extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)

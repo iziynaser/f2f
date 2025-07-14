@@ -2,8 +2,8 @@ package com.f2f.controller;
 
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/sales")
+//@RestController
+//@RequestMapping("/sales")
 public class SalesInvoiceController {
 //
 //    private final SalesInvoiceService salesInvoiceService;

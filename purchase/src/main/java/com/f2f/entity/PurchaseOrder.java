@@ -15,6 +15,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Table(name = "PURCHASE_ORDER")
 public class PurchaseOrder extends BaseEntity {
 
     private String orderNumber;

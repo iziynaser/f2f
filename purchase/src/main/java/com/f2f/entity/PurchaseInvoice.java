@@ -11,10 +11,10 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "PURCHASE_INVOICE")
 @Getter
 @Setter
+@Entity
+@Table(name = "PURCHASE_INVOICE")
 public class PurchaseInvoice extends BaseEntity {
 
     private String invoiceNumber;

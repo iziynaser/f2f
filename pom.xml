@@ -23,7 +23,6 @@
         <module>frontb</module>
         <module>frontf</module>
         <module>auth</module>
-        <module>f2fc</module>
         <module>content</module>
         <module>acc</module>
         <module>hr</module>
@@ -45,7 +44,7 @@
         <module>purchase</module>
         <module>sales</module>
         <module>invoice</module>
-
+        <module>f2fc</module>
     </modules>
 
     <properties>
@@ -55,9 +54,9 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <jakarta-servlet.version>5.0.0</jakarta-servlet.version>
-        <mapstruct.version>1.5.3.Final</mapstruct.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-        <lombok.version>1.18.28</lombok.version>
+        <lombok.version>1.18.30</lombok.version>
     </properties>
 
     <repositories>
