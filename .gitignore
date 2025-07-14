@@ -18,3 +18,33 @@ data/logs/**
 
 #dist ui files == they are made every time we deploy vuejs front app
 front/dist/**
+frontb/dist/**
+frontf/dist/**
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# OS X
+__MACOSX/
+
+# Lombok delombok
+delombok/
+
+# Test output
+test-output/
+
+# Node modules
+**/node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
