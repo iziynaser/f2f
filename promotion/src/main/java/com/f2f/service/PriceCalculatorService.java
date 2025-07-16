@@ -4,6 +4,7 @@ import com.f2f.dto.Context;
 import com.f2f.dto.FinalPriceDTO;
 import com.f2f.dto.PricingDTO;
 import com.f2f.entity.DiscountRule;
+import com.f2f.enums.BenefitType;
 import com.f2f.port.DiscountPort;
 import com.f2f.port.InventoryPort;
 import com.f2f.port.PricingPort;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PriceCalculatorService {
@@ -59,6 +61,14 @@ public class PriceCalculatorService {
         dto.setDiscountValue(bestRule != null ? bestRule.getDiscountValue() : null);
         dto.setHasLowStock(inventoryCount != null && inventoryCount < 5);
         dto.setStockQuantity(inventoryCount != null ? inventoryCount : 0);
+
+        List<String> nonMonetaryBenefits = applicableRules.stream()
+                .filter(rule -> rule.getBenefitType() == BenefitType.NON_MONETARY)
+                .map(rule -> rule.getBenefitAction().name())
+                .collect(Collectors.toList());
+
+        dto.setBenefits(nonMonetaryBenefits);
+
 
         return dto;
     }

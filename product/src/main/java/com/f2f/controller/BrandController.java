@@ -53,7 +53,7 @@ public class BrandController {
         Brand brand=new Brand();
         brand.setName(brandDTO.getName());
         brand.setValue(brandDTO.getValue());
-        brand.setCategoryId(category);
+        brand.setCategory(category);
 
         Brand b = brandService.save(brand);
         return b;

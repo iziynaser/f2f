@@ -36,11 +36,6 @@ public class ProductItem  extends BaseEntity implements Serializable {
     @Column(name = "salesCount")
     private Integer salesCount;
 
-//    @Column(name = "remainCount")
-//    private Integer remainingCount ;
-//
-//    private boolean available;
-
     public ProductItem(Long productItemId) {
         super();
     }

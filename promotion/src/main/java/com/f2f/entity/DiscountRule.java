@@ -1,6 +1,8 @@
 package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.enums.BenefitAction;
+import com.f2f.enums.BenefitType;
 import com.f2f.enums.DiscountType;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -23,8 +25,14 @@ public class DiscountRule extends BaseEntity {
     private String description;
 
     @Enumerated(EnumType.STRING)
+    private BenefitType benefitType; // NEW
+
+    @Enumerated(EnumType.STRING)
+    private BenefitAction benefitAction; // NEW
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "DISCOUNT_TYPE")
-    private DiscountType discountType;
+    private DiscountType discountType; //???
 
     @Column(name = "DISCOUNT_VALUE")
     private Long discountValue;

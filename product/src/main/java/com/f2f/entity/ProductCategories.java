@@ -7,6 +7,7 @@ import lombok.Setter;
 
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -33,5 +34,11 @@ public class ProductCategories extends BaseEntity implements Serializable {
 
     @Column(name = "DESCRIPTION")
     private String description;
+
+    @Column(name = "IS_PRIMARY")
+    private Boolean isPrimary = false;
+
+    @Column(name = "CREATED_AT")
+    private LocalDateTime createdAt;
 
 }

@@ -45,6 +45,7 @@
         <module>sales</module>
         <module>invoice</module>
         <module>f2fc</module>
+        <module>catalog</module>
     </modules>
 
     <properties>

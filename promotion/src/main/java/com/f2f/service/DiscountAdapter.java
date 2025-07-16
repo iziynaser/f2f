@@ -25,6 +25,18 @@ public class DiscountAdapter implements DiscountPort {
         context.setPersonId(personId);
         context.setRequestDate(now.toLocalDate());
 
+        // اگر لازم است فیلدهای اضافی Context را اینجا مقداردهی کنید:
+        // context.setBrandId(...)
+        // context.setCategoryId(...)
+        // context.setGeoLocation(...)
+        // context.setQuantity(...)
+        // context.setTotalAmount(...)
+        // context.setDeliveryTime(...)
+        // context.setUserType(...)
+        // context.setIsFirstOrder(...)
+        // context.setIsFromMobileApp(...)
+        // context.setDayOfWeek(...)
+
         // تخفیف‌های فعال را از دیتابیس بگیر
         List<DiscountRule> rules = discountRuleRepository.findActiveRulesWithConditions(now.toLocalDate());
 
@@ -33,7 +45,7 @@ public class DiscountAdapter implements DiscountPort {
                 .filter(rule -> isApplicable(rule, context))
                 .map(rule -> {
                     DiscountDTO dto = new DiscountDTO();
-                    //dto.setId(rule.getId());
+                    // dto.setId(rule.getId());
                     dto.setDiscountName(rule.getName());
                     dto.setDiscountType(rule.getDiscountType());
                     dto.setDiscountValue(rule.getDiscountValue());
@@ -67,6 +79,11 @@ public class DiscountAdapter implements DiscountPort {
             case "quantity" -> context.getQuantity();
             case "totalAmount" -> context.getTotalAmount();
             case "requestDate" -> context.getRequestDate();
+            case "deliveryTime" -> context.getDeliveryTime();
+            case "userType" -> context.getUserType();
+            case "isFirstOrder" -> context.getIsFirstOrder();
+            case "isFromMobileApp" -> context.getIsFromMobileApp();
+            case "dayOfWeek" -> context.getDayOfWeek();
             default -> null;
         };
     }

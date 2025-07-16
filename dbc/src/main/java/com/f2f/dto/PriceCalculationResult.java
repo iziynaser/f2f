@@ -1,13 +1,20 @@
 package com.f2f.dto;
 
+import com.f2f.enums.DiscountType;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+import java.util.List;
+
+@Data
 public class PriceCalculationResult {
 
-    private long basePrice;         // قیمت اولیه قبل از تخفیف
-    private long finalPrice;        // قیمت نهایی پس از اعمال تخفیف
-    private String appliedRuleName; // نام قانون تخفیف (در صورت وجود)
+    private long basePrice;
+    private long finalPrice;
+    private Long discountValue;
+    private DiscountType discountType;
+    private String appliedRuleName;
+    private List<String> nonFinancialDiscounts; // 👈 جدید
+
 }

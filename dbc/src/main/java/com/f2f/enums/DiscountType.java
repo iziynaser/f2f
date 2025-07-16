@@ -1,5 +1,9 @@
 package com.f2f.enums;
 
 public enum DiscountType {
-    PERCENTAGE, FIXED, NONE
+
+    // 💰 تخفیف‌های مالی
+    FIXED,              // مبلغ ثابت (e.g. 20000 تومان تخفیف)
+    PERCENTAGE,         // درصدی (e.g. 10%)
+    NON_FINANCIAL,
 }

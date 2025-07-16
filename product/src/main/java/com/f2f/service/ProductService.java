@@ -10,11 +10,13 @@ import com.f2f.entity.ProductItem;
 import com.f2f.mapper.ProductMapper;
 import com.f2f.port.InventoryPort;
 import com.f2f.port.PriceCalculationPort;
+import com.f2f.port.DiscountPort;
 import jakarta.persistence.Tuple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +38,7 @@ public class ProductService {
     private final ProductMapper productMapper;
     private final PriceCalculationPort priceCalculationPort;
     private final InventoryPort inventoryPort;
+    private final DiscountPort discountPort;
 
     public ProductService(ProductRepository productRepository,
                           ProductItemRepository productItemRepository,
@@ -46,7 +49,8 @@ public class ProductService {
                           ProductItemService productItemService,
                           ProductFeatureGroupDao productFeatureGroupDao,
                           PriceCalculationPort priceCalculationPort,
-                          InventoryPort inventoryPort) {
+                          InventoryPort inventoryPort,
+                          DiscountPort discountPort) {
         this.productRepository = productRepository;
         this.productItemRepository = productItemRepository;
         this.productMapper = productMapper;
@@ -57,6 +61,7 @@ public class ProductService {
         this.productFeatureGroupDao = productFeatureGroupDao;
         this.priceCalculationPort = priceCalculationPort;
         this.inventoryPort = inventoryPort;
+        this.discountPort = discountPort;
     }
 
     public List<String> findAllByNameContains(String name) {
@@ -129,7 +134,7 @@ public class ProductService {
                         context.setGeoLocation("TEHRAN");
                         context.setQuantity(1);
                         context.setRequestDate(LocalDate.now());
-                        //context.setCategoryId(product.getCategoryId());
+                        //context.//put("productId", productItem.getProduct().getId());
                         context.setProductItemId(mainItem.getId());
 
                         PriceCalculationResult result = priceCalculationPort.calculateFinalPriceWithDetail(basePrice, context);
@@ -138,11 +143,15 @@ public class ProductService {
                         dto.setFinalPrice(result.getFinalPrice());
                         dto.setDiscountAmount(basePrice - result.getFinalPrice());
                         dto.setAppliedRuleName(result.getAppliedRuleName());
+
+                        if (result.getNonFinancialDiscounts() != null) {
+                            dto.setNonFinancialBenefits(result.getNonFinancialDiscounts());
+                        }
                     }
 
                     int remainCount = inventoryPort.getRemainingCountByProductItemId(mainItem.getId());
                     dto.setAvailable(remainCount > 0);
-                    dto.setQuantity(remainCount > 0 && remainCount <= 5 ? remainCount : null);
+                    dto.setQuantity(remainCount);
                 }
             } catch (Exception e) {
                 System.out.println("Price calculation error for product ID " + product.getId() + ": " + e.getMessage());
@@ -200,7 +209,7 @@ public class ProductService {
     }
 
     public ProductItem findMainItemForProduct(Long productId) {
-       Optional<ProductItem> p =  productItemRepository.findFirstByProductIdOrderByIdAsc(productId);//.orElse(null);
+        Optional<ProductItem> p = productItemRepository.findFirstByProductIdOrderByIdAsc(productId);
         return p.get();
     }
 }

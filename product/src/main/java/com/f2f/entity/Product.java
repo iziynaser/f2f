@@ -36,7 +36,7 @@ public class Product extends BaseEntity implements Serializable {
     private String productCode;
 
     @Column(name = "category_id")
-    private  Integer categoryId;
+    private  Integer mainCategoryId;
 
     @Column(name = "product_type_id", insertable=false , updatable=false)
     private Integer productTypeId;// masrafi,faallah,packaging

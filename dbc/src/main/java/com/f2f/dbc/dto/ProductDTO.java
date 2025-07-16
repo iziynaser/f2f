@@ -37,6 +37,8 @@ public class ProductDTO implements java.io.Serializable {
      private Long discountAmount;
      private String appliedRuleName; // Optional
 
+     private List<String> nonFinancialBenefits;
+
      @Override
      public String toString() {
           return "ProductDTO{" +

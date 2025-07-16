@@ -27,7 +27,13 @@ public class Discount   extends BaseEntity implements Serializable {
 
     private boolean active;
 
+    @Column(name = "PRODUCT_ID")
+    private Long productId;
+
+    @Column(name = "PRODUCT_ITEM_ID")
     private Long productItemId;
+
+
     private Long personId;// person
     private Long categoryId;//category
     private Long brandId ;//brand

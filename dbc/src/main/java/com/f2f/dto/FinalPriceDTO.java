@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 public class FinalPriceDTO {
@@ -17,4 +18,5 @@ public class FinalPriceDTO {
     private boolean hasLowStock;
     private int stockQuantity;
     private LocalDate requestDate;
+    private List<String> benefits;
 }

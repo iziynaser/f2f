@@ -12,9 +12,6 @@ import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 
-import static com.f2f.enums.DiscountType.FIXED;
-import static com.f2f.enums.DiscountType.PERCENTAGE;
-
 @Service
 public class DiscountEngine {
 
@@ -24,12 +21,11 @@ public class DiscountEngine {
         this.discountRuleRepository = discountRuleRepository;
     }
 
+    /**
+     * پیدا کردن تمام قوانین قابل اعمال بر اساس کانتکست
+     */
     public List<DiscountRule> findApplicableRules(Context context) {
-        LocalDate now = context.getRequestDate();
-        if (now == null) {
-            now = LocalDate.now();
-        }
-        // فرض بر این است که این متد موجود است و قوانین فعال به همراه شرایطش را برمی‌گرداند
+        LocalDate now = context.getRequestDate() != null ? context.getRequestDate() : LocalDate.now();
         List<DiscountRule> rules = discountRuleRepository.findActiveRulesWithConditions(now);
 
         return rules.stream()
@@ -37,12 +33,19 @@ public class DiscountEngine {
                 .toList();
     }
 
+    /**
+     * پیدا کردن بهترین تخفیف مالی (فقط از نوع PERCENTAGE یا FIXED)
+     */
     public DiscountRule selectBestDiscount(List<DiscountRule> rules) {
         return rules.stream()
+                .filter(rule -> isFinancial(rule.getDiscountType()))
                 .max(Comparator.comparingLong(DiscountRule::getDiscountValue))
                 .orElse(null);
     }
 
+    /**
+     * اعمال تخفیف بر قیمت پایه
+     */
     public long applyDiscount(long basePrice, DiscountRule rule) {
         if (rule == null) return basePrice;
 
@@ -50,10 +53,13 @@ public class DiscountEngine {
         return switch (type) {
             case PERCENTAGE -> basePrice - ((basePrice * rule.getDiscountValue()) / 100);
             case FIXED -> Math.max(0, basePrice - rule.getDiscountValue());
-            default -> basePrice;  // اگر enum های بیشتری دارید یا حالت پیش‌فرض
+            default -> basePrice; // تخفیف‌های غیرمالی قیمت را تغییر نمی‌دهند
         };
     }
 
+    /**
+     * بررسی اینکه یک Rule قابل اعمال بر Context هست یا نه
+     */
     private boolean isRuleApplicable(DiscountRule rule, Context context) {
         LocalDate now = context.getRequestDate();
         if (!Boolean.TRUE.equals(rule.getActive())) return false;
@@ -61,18 +67,18 @@ public class DiscountEngine {
         if (rule.getEndDate() != null && now.isAfter(rule.getEndDate())) return false;
 
         for (RuleCondition condition : rule.getConditions()) {
-            if (!evaluateCondition(condition, context)) {
+            Object contextValue = getContextValue(condition.getField(), context);
+            if (!RuleEvaluatorFactory.evaluate(condition, contextValue)) {
                 return false;
             }
         }
+
         return true;
     }
 
-    private boolean evaluateCondition(RuleCondition condition, Context context) {
-        Object contextValue = getContextValue(condition.getField(), context);
-        return RuleEvaluatorFactory.evaluate(condition, contextValue);
-    }
-
+    /**
+     * نگاشت فیلدهای کانتکست به RuleCondition برای ارزیابی
+     */
     private Object getContextValue(String field, Context context) {
         return switch (field) {
             case "productItemId" -> context.getProductItemId();
@@ -83,7 +89,15 @@ public class DiscountEngine {
             case "quantity" -> context.getQuantity();
             case "totalAmount" -> context.getTotalAmount();
             case "requestDate" -> context.getRequestDate();
+            case "deliveryTime" -> context.getDeliveryTime(); // در صورت استفاده
             default -> null;
         };
+    }
+
+    /**
+     * بررسی اینکه نوع تخفیف مالی است یا نه
+     */
+    private boolean isFinancial(DiscountType type) {
+        return type == DiscountType.FIXED || type == DiscountType.PERCENTAGE;
     }
 }

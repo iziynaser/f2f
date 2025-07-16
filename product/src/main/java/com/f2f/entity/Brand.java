@@ -20,6 +20,6 @@ public class Brand extends BaseEntity {
     private String value;
 
     @ManyToOne
-    private Category categoryId;
+    private Category category;
 
 }
