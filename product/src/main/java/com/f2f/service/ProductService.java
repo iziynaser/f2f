@@ -130,7 +130,8 @@ public class ProductService {
                         long basePrice = mainItem.getDefaultPrice();
 
                         Context context = new Context();
-                        context.setBrandId(mainItem.getBrand() != null ? mainItem.getBrand().getId() : null);
+                        //context.setBrandId(mainItem.getBrand() != null ? mainItem.getBrand().getId() : null);
+                        context.setBrandId(mainItem.getBrandId());
                         context.setGeoLocation("TEHRAN");
                         context.setQuantity(1);
                         context.setRequestDate(LocalDate.now());
@@ -190,22 +191,6 @@ public class ProductService {
 
     public List<NameValueDTO> getNameValuesOfProducts() {
         return productDao.getNameValuesOfProducts();
-    }
-
-    public ProductDTO getProductById(Long productId) {
-        Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new RuntimeException("Product not found"));
-
-        ProductPriceStats priceStats = productItemRepository.findMinPriceStatsByProductId(productId);
-        List<String> brands = productItemRepository.findDistinctBrandsByProductId(productId);
-        List<String> colors = productItemRepository.findDistinctColorsByProductId(productId);
-
-        ProductDTO dto = productMapper.toDTO(product);
-        ProductPriceDTO ppriceDTO = new ProductPriceDTO();
-        dto.setPrice(ppriceDTO);
-        dto.setBrands(brands);
-
-        return dto;
     }
 
     public ProductItem findMainItemForProduct(Long productId) {

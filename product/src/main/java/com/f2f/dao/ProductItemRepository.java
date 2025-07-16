@@ -32,17 +32,10 @@ public interface ProductItemRepository extends JpaRepository<ProductItem, Long> 
     @Query(" SELECT pi.product.id as productId, AVG(pi.defaultPrice) as avgPrice FROM ProductItem pi WHERE pi.product.id = :productId GROUP BY pi.product.id")
     ProductPriceStats findAvgPriceStatsByProductId(Long productId);
 
-    @Query("SELECT DISTINCT b.name FROM ProductItem pi JOIN pi.brand b WHERE pi.product.id = :productId")
-    List<String> findDistinctBrandsByProductId(Long productId);
-
     @Query("SELECT DISTINCT c.name FROM ProductItem pi JOIN pi.color c WHERE pi.product.id = :productId")
     List<String> findDistinctColorsByProductId(Long productId);
 
     Optional<ProductItem> findFirstByProductIdOrderByIdAsc(Long productId);
-
-    //
-//    @Query("SELECT pi FROM ProductItem pi WHERE pi.product.id = :productId AND pi.defaultPrice IS NOT NULL ORDER BY pi.id ASC")
-//    Optional<ProductItem> findFirstItemWithPriceByProductId(@Param("productId") Long productId);
 
     @Query("SELECT p FROM ProductItem p WHERE p.product.id = :productId ORDER BY p.id ASC")
     List<ProductItem> findProductItemsByProductIdSorted(@Param("productId") Long productId);

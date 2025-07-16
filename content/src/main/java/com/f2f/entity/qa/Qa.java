@@ -2,10 +2,8 @@ package com.f2f.entity.qa;
 
 import com.f2f.dbc.entity.BaseEntity;
 
- 
 import java.io.Serializable;
 
-import com.f2f.entity.Category;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -45,7 +43,7 @@ public class Qa extends BaseEntity implements Serializable {
     private String answeredBy ;
 
     @Column(name = "CATEGORY_ID")
-    private Category category ;
+    private Long categoryId ;
 
 //    @OneToOne
 //    @JoinColumn(name = "PRODUCT_ID")

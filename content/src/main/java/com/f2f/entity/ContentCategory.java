@@ -17,7 +17,7 @@ public class ContentCategory extends BaseEntity implements Serializable {
     @ManyToOne
     private Content content;
 
-    @ManyToOne
-    private Category category ;
+    //@ManyToOne
+    private Long categoryId ;
 
 }

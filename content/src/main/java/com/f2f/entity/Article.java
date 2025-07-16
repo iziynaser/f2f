@@ -30,8 +30,8 @@ public class Article extends BaseEntity implements Serializable {
     @ElementCollection
     private List<String> keywords ;
 
-    @Column(name = "CATEGORY")
-    private Category category;
+    //@Column(name = "CATEGORY")
+    private Long categoryId;
 
     @Column(name = "AUTHOR")
     private String author ;
@@ -54,7 +54,7 @@ public class Article extends BaseEntity implements Serializable {
         sb.append("name: "+ name +",");
         sb.append("title: "+ title +",");
         sb.append("keywords: "+ keywords +",");
-        sb.append("category: "+ category +",");
+        sb.append("category: "+ categoryId +",");
         sb.append("author: "+ author +",");
         sb.append("description: "+ description +",");
         //sb.append("dateCreated: "+ dateCreated +",");

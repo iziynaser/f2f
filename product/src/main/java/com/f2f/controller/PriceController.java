@@ -39,7 +39,8 @@ public class PriceController {
         long basePrice = item.getDefaultPrice();
 
         Context ctx = new Context();
-        ctx.setBrandId(item.getBrand() != null ? item.getBrand().getId() : null);
+        //ctx.setBrandId(item.getBrand() != null ? item.getBrand().getId() : null);
+        ctx.setBrandId(item.getBrandId());
         ctx.setPersonId(personId);
         ctx.setGeoLocation(geoLocation);
         ctx.setQuantity(quantity);

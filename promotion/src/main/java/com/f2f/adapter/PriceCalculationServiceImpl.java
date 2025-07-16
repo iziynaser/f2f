@@ -1,10 +1,11 @@
-package com.f2f.service;
+package com.f2f.adapter;
 
 import com.f2f.dto.Context;
 import com.f2f.dto.PriceCalculationResult;
 import com.f2f.entity.DiscountRule;
 import com.f2f.enums.DiscountType;
 import com.f2f.port.PriceCalculationPort;
+import com.f2f.service.DiscountEngine;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

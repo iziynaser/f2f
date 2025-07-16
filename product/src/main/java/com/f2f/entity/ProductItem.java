@@ -21,8 +21,8 @@ public class ProductItem  extends BaseEntity implements Serializable {
     @ManyToOne
     private Product product;
 
-   @ManyToOne
-    private Brand brand;
+   //@ManyToOne
+    private Long brandId;
 
    @ManyToOne
     private ProductColor color;

@@ -1,4 +1,4 @@
-package com.f2f.service;
+package com.f2f.adapter;
 
 import com.f2f.dao.InventoryRepository;
 import com.f2f.dao.StockBatchesRepository;
