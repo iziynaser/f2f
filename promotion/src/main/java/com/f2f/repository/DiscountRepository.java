@@ -10,6 +10,13 @@ import java.util.List;
 
 public interface DiscountRepository  extends JpaRepository<Discount, Long> {
 
+    @Query("SELECT DISTINCT d.productItemId FROM Discount d " +
+            "WHERE d.active = true " +
+            "AND d.startDate <= :now " +
+            "AND d.endDate >= :now")
+    List<Long> findDiscountedProductIds(@Param("now") LocalDate now);
+
+
     @Query("SELECT d FROM Discount d WHERE d.productItemId = :productItemId " +
             "AND (d.personId = :personId OR d.personId IS NULL) " +
             "AND d.startDate <= :now AND d.endDate >= :now " +

@@ -8,9 +8,7 @@ import com.f2f.dto.ProductDTO;
 import com.f2f.entity.Product;
 import com.f2f.entity.ProductItem;
 import com.f2f.mapper.ProductMapper;
-import com.f2f.port.InventoryPort;
-import com.f2f.port.PriceCalculationPort;
-import com.f2f.port.DiscountPort;
+import com.f2f.port.*;
 import jakarta.persistence.Tuple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,9 +23,7 @@ import java.util.stream.Collectors;
 @Component
 public class ProductService {
 
-    @Autowired
-    ProductDao productDao;
-
+    private final ProductDao productDao;
     private final CommentLikeSummaryService likesSummaryService;
     private final ImageAccessService imageAccessService;
     private final ProductColorService productColorService;
@@ -40,7 +36,10 @@ public class ProductService {
     private final InventoryPort inventoryPort;
     private final DiscountPort discountPort;
 
-    public ProductService(ProductRepository productRepository,
+    private final BrandPort brandPort;
+    private final ProductCategoriesPort productCategoriesPort;
+
+    public ProductService(ProductDao productDao, ProductRepository productRepository,
                           ProductItemRepository productItemRepository,
                           ProductMapper productMapper,
                           ImageAccessService imageAccessService,
@@ -50,7 +49,10 @@ public class ProductService {
                           ProductFeatureGroupDao productFeatureGroupDao,
                           PriceCalculationPort priceCalculationPort,
                           InventoryPort inventoryPort,
-                          DiscountPort discountPort) {
+                          DiscountPort discountPort,
+                          BrandPort brandPort,
+                          ProductCategoriesPort productCategoriesPort) {
+        this.productDao = productDao;
         this.productRepository = productRepository;
         this.productItemRepository = productItemRepository;
         this.productMapper = productMapper;
@@ -62,6 +64,8 @@ public class ProductService {
         this.priceCalculationPort = priceCalculationPort;
         this.inventoryPort = inventoryPort;
         this.discountPort = discountPort;
+        this.brandPort = brandPort;
+        this.productCategoriesPort = productCategoriesPort;
     }
 
     public List<String> findAllByNameContains(String name) {
@@ -153,6 +157,30 @@ public class ProductService {
                     int remainCount = inventoryPort.getRemainingCountByProductItemId(mainItem.getId());
                     dto.setAvailable(remainCount > 0);
                     dto.setQuantity(remainCount);
+
+                    //brand
+                    if (mainItem.getBrandId() != null) {
+                        brandPort.findById(mainItem.getBrandId())
+                                .ifPresent(dto::setBrand);
+                    }
+
+
+//                    // دسته‌بندی اصلی (از ProductCategories)
+//                    ProductCategories primaryCategory = productCategoriesService.getPrimaryCategoryForProduct(product.getId());
+//                    if (primaryCategory != null && primaryCategory.getCategory() != null) {
+//                        Category category = primaryCategory.getCategory();
+//                        CategoryDTO categoryDTO = new CategoryDTO();
+//                        categoryDTO.setName(category.getName());
+//                        categoryDTO.setCategoryCode(category.getCategoryCode());
+//                        categoryDTO.setDescription(category.getDescription());
+//                        if (category.getParentCategory() != null) {
+//                            categoryDTO.setParentCategory(category.getParentCategory().getName());
+//                        }
+//                        if (category.getCategoryType() != null) {
+//                            categoryDTO.setCategoryType(category.getCategoryType().getName());
+//                        }
+//                        dto.setCategory(categoryDTO);
+//                    }
                 }
             } catch (Exception e) {
                 System.out.println("Price calculation error for product ID " + product.getId() + ": " + e.getMessage());

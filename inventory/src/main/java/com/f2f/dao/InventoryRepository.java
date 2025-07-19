@@ -20,5 +20,8 @@ public interface InventoryRepository extends JpaRepository<Inventory, Long> {
     @Query("SELECT SUM(i.quantity) FROM Inventory i WHERE i.productItemId = :productItemId")
     Integer sumAvailableInventory(@Param("productItemId") Long productItemId);
 
+    @Query("SELECT CASE WHEN SUM(i.quantity) > 0 THEN true ELSE false END " +
+            "FROM Inventory i WHERE i.productItemId = :productItemId")
+    boolean isInStock(@Param("productItemId") Long productItemId);
 
 }

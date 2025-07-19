@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface DiscountPort {
     List<DiscountDTO> findActiveDiscounts(Long productItemId, Long personId, LocalDateTime now);
-    //List<Long> findDiscountedProductIds(boolean onlyActive, int limit);
 }

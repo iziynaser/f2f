@@ -25,4 +25,6 @@ public interface ProductCategoriesRepository extends JpaRepository<ProductCatego
 
     void deleteAllByCategory(Category category);
 
+    ProductCategories getFirstByProductIdAndIsPrimaryTrue(Long productId);
+
 }

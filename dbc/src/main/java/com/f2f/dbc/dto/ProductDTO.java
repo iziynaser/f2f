@@ -29,7 +29,7 @@ public class ProductDTO implements java.io.Serializable {
      private Integer totalLikes;
      private Integer totalDislikes;
 
-     private List<String> brands;
+    // private List<String> brands;
      private List<ProductColorDTO> colors;
 
      private Long basePrice;
@@ -39,7 +39,10 @@ public class ProductDTO implements java.io.Serializable {
 
      private List<String> nonFinancialBenefits;
 
-     @Override
+    private BrandDTO brand;
+    private CategoryDTO category;
+
+    @Override
      public String toString() {
           return "ProductDTO{" +
                   "name='" + name + '\'' +
