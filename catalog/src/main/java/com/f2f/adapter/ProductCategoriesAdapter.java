@@ -22,8 +22,13 @@ public class ProductCategoriesAdapter implements ProductCategoriesPort {
 
     @Override
     public Optional<ProductCategoriesDTO> getPrimaryCategoryForProduct(Long productId) {
-        ProductCategories entity = productCategoriesRepository.getFirstByProductIdAndIsPrimaryTrue(productId);
-        return Optional.ofNullable(entity)
-                .map(productCategoriesMapper::toDTO);
+        return productCategoriesRepository.findPrimaryCategory(productId)
+                .map(productCategoriesMapper::toDTO)
+                .or(() -> productCategoriesRepository.findByProductId(productId).stream()
+                        .findFirst()
+                        .map(productCategoriesMapper::toDTO));
     }
+
+
+
 }

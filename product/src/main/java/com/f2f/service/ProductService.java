@@ -164,23 +164,15 @@ public class ProductService {
                                 .ifPresent(dto::setBrand);
                     }
 
-
-//                    // دسته‌بندی اصلی (از ProductCategories)
-//                    ProductCategories primaryCategory = productCategoriesService.getPrimaryCategoryForProduct(product.getId());
-//                    if (primaryCategory != null && primaryCategory.getCategory() != null) {
-//                        Category category = primaryCategory.getCategory();
-//                        CategoryDTO categoryDTO = new CategoryDTO();
-//                        categoryDTO.setName(category.getName());
-//                        categoryDTO.setCategoryCode(category.getCategoryCode());
-//                        categoryDTO.setDescription(category.getDescription());
-//                        if (category.getParentCategory() != null) {
-//                            categoryDTO.setParentCategory(category.getParentCategory().getName());
-//                        }
-//                        if (category.getCategoryType() != null) {
-//                            categoryDTO.setCategoryType(category.getCategoryType().getName());
-//                        }
-//                        dto.setCategory(categoryDTO);
-//                    }
+                    // دسته‌بندی اصلی (از ProductCategories)
+                    Optional<ProductCategoriesDTO> primaryCategory = productCategoriesPort.getPrimaryCategoryForProduct(product.getId());
+                    if(primaryCategory.isPresent()){
+                        ProductCategoriesDTO primaryCategoryDTO = primaryCategory.get();
+                        CategoryDTO categoryDTO = new CategoryDTO();
+                        categoryDTO.setName(primaryCategoryDTO.getCategoryName());
+                        categoryDTO.setCategoryCode(String.valueOf(primaryCategoryDTO.getCategoryId()));
+                        dto.setCategory(categoryDTO);
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("Price calculation error for product ID " + product.getId() + ": " + e.getMessage());

@@ -5,12 +5,14 @@ import com.f2f.dto.ProductCategoriesDTO;
 import com.f2f.dto.ProductDTO;
 import com.f2f.entity.Category;
 import com.f2f.entity.ProductCategories;
+import com.f2f.mapper.ProductCategoriesMapper;
 import com.f2f.port.ProductPort;
 import com.f2f.repository.CategoryRepository;
 import com.f2f.repository.ProductCategoriesRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductCategoriesService {
@@ -18,13 +20,15 @@ public class ProductCategoriesService {
     private final ProductCategoriesRepository productCategoriesRepository;
     private final CategoryRepository categoryRepository;
     private final ProductPort productPort;
+    private final ProductCategoriesMapper productCategoriesMapper;
 
     public ProductCategoriesService(ProductCategoriesRepository productCategoriesRepository,
                                     CategoryRepository categoryRepository,
-                                    ProductPort productPort) {
+                                    ProductPort productPort, ProductCategoriesMapper productCategoriesMapper) {
         this.productCategoriesRepository = productCategoriesRepository;
         this.categoryRepository = categoryRepository;
         this.productPort = productPort;
+        this.productCategoriesMapper = productCategoriesMapper;
     }
 
     public ProductCategories save(Long categoryId, Long productId) {
@@ -69,6 +73,16 @@ public class ProductCategoriesService {
             productCategoriesRepository.delete(productCategories);
         }
     }
+
+    public Optional<ProductCategoriesDTO> getPrimaryCategoryForProduct(Long productId) {
+        return productCategoriesRepository.findPrimaryCategory(productId)
+                .map(productCategoriesMapper::toDTO)
+                .or(() -> productCategoriesRepository.findByProductId(productId).stream()
+                        .findFirst()
+                        .map(productCategoriesMapper::toDTO));
+    }
+
+
 
     public void deleteAllProductsByCategoryId(String categoryId) {
         // قابل پیاده‌سازی در صورت وجود نیاز

@@ -7,6 +7,8 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface BrandMapper {
+
+    @Mapping(source = "id", target = "id")
     @Mapping(source = "category.id", target = "categoryId")
     BrandDTO toDto(Brand brand);
 }

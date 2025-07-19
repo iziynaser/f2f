@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductCategoriesRepository extends JpaRepository<ProductCategories, Long> {
 
@@ -25,6 +26,10 @@ public interface ProductCategoriesRepository extends JpaRepository<ProductCatego
 
     void deleteAllByCategory(Category category);
 
-    ProductCategories getFirstByProductIdAndIsPrimaryTrue(Long productId);
+    @Query("SELECT pc FROM ProductCategories pc WHERE pc.productId = :productId AND pc.isPrimary = true")
+    Optional<ProductCategories> findPrimaryCategory(@Param("productId") Long productId);
+
+    @Query("SELECT pc FROM ProductCategories pc WHERE pc.productId = :productId")
+    List<ProductCategories> findByProductId(@Param("productId") Long productId);
 
 }
