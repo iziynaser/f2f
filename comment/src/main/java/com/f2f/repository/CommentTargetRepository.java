@@ -19,4 +19,7 @@ public interface CommentTargetRepository extends JpaRepository<CommentTarget, Lo
 
     Optional<CommentTarget> findByTargetTypeAndTargetId(CommentTargetType targetType, Long targetId);
 
+    @Query("SELECT COUNT(c.id) FROM Comment c WHERE c.commentTarget.targetType = :type AND c.commentTarget.targetId = :targetId AND c.status = 'APPROVED'")
+    Long countApprovedCommentsByTarget(@Param("type") CommentTargetType type, @Param("targetId") Long targetId);
+
 }

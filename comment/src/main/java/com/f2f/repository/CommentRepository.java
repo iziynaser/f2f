@@ -2,6 +2,7 @@ package com.f2f.repository;
 
 import com.f2f.entity.Comment;
 import com.f2f.eums.CommentStatus;
+import com.f2f.eums.CommentTargetType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -54,5 +55,9 @@ public interface CommentRepository extends JpaRepository<Comment,Long> {
         GROUP BY cr.comment.id, cr.reactionType
     """)
     List<Object[]> countReactionsGroupedByCommentAndType(@Param("targetId") Long targetId);
+
+    @Query("SELECT COUNT(c.id) FROM Comment c WHERE c.commentTarget.targetType = :type AND c.commentTarget.targetId = :targetId AND c.status = 'APPROVED'")
+    Long countApprovedCommentsByTarget(@Param("type") CommentTargetType type, @Param("targetId") Long targetId);
+
 
 }

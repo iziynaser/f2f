@@ -3,6 +3,7 @@ package com.f2f.controller;
 import com.f2f.dto.CommentDTO;
 import com.f2f.dto.CommentResponseDTO;
 import com.f2f.eums.CommentSortType;
+import com.f2f.service.CommentAnalysisService;
 import com.f2f.service.CommentService;
 import com.f2f.service.CommentTargetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,18 @@ import java.util.List;
 @RequestMapping("/f2f/comments")
 public class CommentController {
 
-    @Autowired
-    CommentService commentService;
+    private final CommentAnalysisService commentAnalysisService;
 
-    @Autowired
-    CommentTargetService commentTargetService;
+    private final CommentService commentService;
+
+    private final CommentTargetService commentTargetService;
+
+    public CommentController(CommentAnalysisService commentAnalysisService, CommentService commentService, CommentTargetService commentTargetService) {
+        this.commentAnalysisService = commentAnalysisService;
+        this.commentService = commentService;
+        this.commentTargetService = commentTargetService;
+    }
+
 
     @GetMapping("/sorted")
     public ResponseEntity<List<CommentResponseDTO>> getSortedComments(
@@ -35,10 +43,14 @@ public class CommentController {
         return commentList;
     }
 
-    @RequestMapping("/count")
-    public Object getCommentCount(){
-        //KeyValues kv = new KeyValues("result","10");
-        //return  kv;
-        return new Long("0");
+    @GetMapping("/product/{productId}/count")
+    public ResponseEntity<Long> getCommentCount(@PathVariable Long productId) {
+        return ResponseEntity.ok(commentAnalysisService.countCommentsForProduct(productId));
     }
+
+    @GetMapping("/product/{productId}/rating")
+    public ResponseEntity<Double> getProductRating(@PathVariable Long productId) {
+        return ResponseEntity.ok(commentAnalysisService.calculateRatingForProduct(productId));
+    }
+
 }
