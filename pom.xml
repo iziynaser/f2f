@@ -46,6 +46,7 @@
         <module>invoice</module>
         <module>f2fc</module>
         <module>catalog</module>
+        <module>comment</module>
     </modules>
 
     <properties>

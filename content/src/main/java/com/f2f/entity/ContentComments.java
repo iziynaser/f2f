@@ -21,8 +21,9 @@ public class ContentComments extends BaseEntity implements Serializable {
     @JoinColumn(name = "CONTENT_ID")
     private Content content;
 
-    @ManyToOne
-    @JoinColumn(name = "COMMENT_ID")
-    private Comment comment;
+//    @ManyToOne
+//    @JoinColumn(name = "COMMENT_ID")
+    @Column(name = "COMMENT_ID")
+    private Long commentId;
 
 }

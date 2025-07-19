@@ -1,6 +1,7 @@
 package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.eums.CommentTargetType;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -22,6 +23,10 @@ public class CommentTarget extends BaseEntity implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true,mappedBy = "commentTarget")
     private List<Comment> comments;
+
+    @Column(name = "TARGET_TYPE")
+    @Enumerated(EnumType.STRING)
+    private CommentTargetType targetType;
 
         public CommentTarget() {
             this.comments = new ArrayList<>();

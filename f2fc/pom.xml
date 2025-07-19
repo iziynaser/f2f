@@ -159,6 +159,12 @@
             <version>0.0.3-SNAPSHOT</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.f2f</groupId>
+            <artifactId>comment</artifactId>
+            <version>0.0.3-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <build>

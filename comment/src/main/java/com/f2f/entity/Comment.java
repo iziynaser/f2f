@@ -1,6 +1,7 @@
 package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.eums.CommentStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,12 +35,13 @@ public class Comment extends BaseEntity implements Serializable {
     private String body ;
 
     @Column(name = "STATUS")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private CommentStatus status;
 
     private Long userAccountId;
 
-    @OneToOne(mappedBy = "comment",cascade = CascadeType.ALL)
-    private CommentLikes commentLikes;
+    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CommentReaction> reactions = new ArrayList<>();
 
     public Comment() {
     }

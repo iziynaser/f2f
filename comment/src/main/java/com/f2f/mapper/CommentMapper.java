@@ -13,8 +13,6 @@ import java.util.stream.Collectors;
 @Mapper(componentModel = "spring")
 public interface CommentMapper {
 
-    @Mapping(source = "commentLikes.numberOfLikes", target = "numberOfLikes")
-    @Mapping(source = "commentLikes.numberOfDisLikes", target = "numberOfDisLikes")
     @Mapping(target = "benefits", expression = "java(mapBenefits(comment))")
     @Mapping(target = "upsets", expression = "java(mapUpsets(comment))")
     CommentResponseDTO toDto(Comment comment);

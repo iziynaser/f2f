@@ -2,7 +2,6 @@ package com.f2f.service.comment;
 
 import com.f2f.dao.comment.CommentTargetDao;
 import com.f2f.entity.Comment;
-import com.f2f.entity.CommentLikes;
 import com.f2f.entity.CommentTarget;
 import com.f2f.dto.CommentLikeSummaryDTO;
 import com.f2f.service.CommentLikeSummaryService;
@@ -23,11 +22,11 @@ public class CommentLikeSummaryServiceImpl  implements CommentLikeSummaryService
         int totalDislikes = 0;
 
         for (Comment comment : commentTarget.getComments()) {
-            CommentLikes likes = comment.getCommentLikes();
-            if (likes != null) {
-                totalLikes += likes.getNumberOfLikes();
-                totalDislikes += likes.getNumberOfDisLikes();
-            }
+//            CommentLikes likes = comment.getCommentLikes();
+//            if (likes != null) {
+//                totalLikes += likes.getNumberOfLikes();
+//                totalDislikes += likes.getNumberOfDisLikes();
+//            }
         }
 
         return new CommentLikeSummaryDTO(totalLikes, totalDislikes);

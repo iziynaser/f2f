@@ -42,7 +42,7 @@ public class Page extends BaseEntity implements Serializable {
     public Page() {
     }
 
-    public Page(Article article, Short pageNumber, String title, String body, String dateCreated, String dateModified, CommentTarget commentTarget) {
+    public Page(Article article, Short pageNumber, String title, String body, String dateCreated, String dateModified) {
         this.article = article;
         this.pageNumber = pageNumber;
         //this.title = title;
