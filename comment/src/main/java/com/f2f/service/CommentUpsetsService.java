@@ -5,8 +5,9 @@ import com.f2f.entity.CommentUpsets;
 import com.f2f.repository.CommentUpsetsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class CommentUpsetsService {
 
     @Autowired

@@ -18,7 +18,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @Entity
-@Table(name = "COMMENT_TARGET")
+@Table(
+        name = "COMMENT_TARGET",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = {"TARGET_TYPE", "TARGET_ID"})
+        }
+)
 public class CommentTarget extends BaseEntity implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true,mappedBy = "commentTarget")
@@ -28,7 +33,10 @@ public class CommentTarget extends BaseEntity implements Serializable {
     @Enumerated(EnumType.STRING)
     private CommentTargetType targetType;
 
-        public CommentTarget() {
+    @Column(name = "TARGET_ID", nullable = false)
+    private Long targetId;
+
+    public CommentTarget() {
             this.comments = new ArrayList<>();
         }
 }

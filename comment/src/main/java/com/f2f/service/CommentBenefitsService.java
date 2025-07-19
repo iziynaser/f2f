@@ -5,8 +5,9 @@ import com.f2f.entity.CommentBenefits;
 import com.f2f.repository.CommentBenefitsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class CommentBenefitsService {
 
     @Autowired

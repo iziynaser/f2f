@@ -10,9 +10,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CommentTargetRepository extends JpaRepository<CommentTarget, Long> {
 
     @Query("SELECT ct FROM CommentTarget ct WHERE ct.targetType = :type")
     List<CommentTarget> findAllByTargetType(@Param("type") CommentTargetType type);
+
+    Optional<CommentTarget> findByTargetTypeAndTargetId(CommentTargetType targetType, Long targetId);
+
 }

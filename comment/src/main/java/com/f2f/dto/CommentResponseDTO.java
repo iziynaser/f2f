@@ -1,21 +1,23 @@
 package com.f2f.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.List;
 
-@Getter
-@Setter
+import lombok.Data;
+
+@Data
 public class CommentResponseDTO {
+
+    private Long id;
     private String subject;
     private String body;
     private String status;
     private Long userAccountId;
 
-    private int numberOfLikes;
-    private int numberOfDisLikes;
-
     private List<String> benefits;
     private List<String> upsets;
+
+    // واکنش‌ها به صورت تعداد کلی بر اساس نوع
+    private Double rating; // مثل 4.8
+    private int totalReactions;
+    private List<ReactionCountDTO> reactionSummary;
 }

@@ -19,40 +19,8 @@ public class CommentController {
     @Autowired
     CommentService commentService;
 
-    //todo: change
-//    @Autowired
-//    ProductService productService;
-
     @Autowired
     CommentTargetService commentTargetService;
-
-    //@Autowired
-    //UserAccountDbcService userAccountService;
-    //UserAccountProvider
-
-//    @ResponseBody
-//    @PostMapping(value = "/save")
-//    public CommentDTO createComment(Principal principal, @RequestBody CommentDTOS commentDTO){
-//
-//        CommentTarget commentTarget ;
-//        UserAccount userAccount = null;
-//        try {
-//             userAccount =new UserAccount(); //userAccountService.findByUsername(principal.getName());
-//        }catch (EntityNotFoundException e){
-//            //userAccountService.
-//            e.printStackTrace();
-//        }
-//        Product p = productService.findProductById(Long.valueOf(commentDTO.getProductId()));
-//
-//        commentTarget=p.getCommentTarget();
-//        if(commentTarget==null){
-//            commentTarget=commentTargetService.returnNewCommentTarget();
-//            productService.saveCommenttargetForThisProduct(p,commentTarget);
-//        }
-//         commentService.createComment(commentDTO,commentTarget,userAccount);
-//        return null;
-//    }
-
 
     @GetMapping("/sorted")
     public ResponseEntity<List<CommentResponseDTO>> getSortedComments(
@@ -60,11 +28,10 @@ public class CommentController {
         return ResponseEntity.ok(commentService.getComments(sortType));
     }
 
-
     @ResponseBody
     @RequestMapping("/list")
-    public List<CommentDTO> getListOfCommentsForProductId(Long productId){
-        List<CommentDTO> commentList = commentService.getListOfCommentsForProductId(productId);
+    public List<CommentResponseDTO> getListOfCommentsForProductId(Long productId){
+        List<CommentResponseDTO> commentList = commentService.getListOfCommentsForProductId(productId);
         return commentList;
     }
 
