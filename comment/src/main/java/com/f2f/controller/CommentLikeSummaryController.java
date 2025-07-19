@@ -1,7 +1,7 @@
-package com.f2f.controller.comment;
+package com.f2f.controller;
 
 import com.f2f.dto.CommentLikeSummaryDTO;
-import com.f2f.service.comment.CommentLikeSummaryServiceImpl;
+import com.f2f.service.CommentLikeSummaryServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

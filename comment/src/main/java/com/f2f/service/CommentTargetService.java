@@ -1,8 +1,8 @@
-package com.f2f.service.comment;
+package com.f2f.service;
 
-import com.f2f.dao.comment.CommentTargetDao;
 import com.f2f.dto.CommentDTO;
 import com.f2f.entity.CommentTarget;
+import com.f2f.repository.CommentTargetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,10 +13,10 @@ import java.util.List;
 public class CommentTargetService {
 
     @Autowired
-    private CommentTargetDao commentTargetDao;
+    private CommentTargetRepository commentTargetRepository;
 
     public CommentTarget returnNewCommentTarget(){
-        CommentTarget commentTarget = commentTargetDao.save(new CommentTarget());
+        CommentTarget commentTarget = commentTargetRepository.save(new CommentTarget());
         return commentTarget;
     }
 

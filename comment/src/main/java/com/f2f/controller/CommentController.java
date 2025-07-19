@@ -1,10 +1,10 @@
-package com.f2f.controller.comment;
+package com.f2f.controller;
 
 import com.f2f.dto.CommentDTO;
 import com.f2f.dto.CommentResponseDTO;
 import com.f2f.eums.CommentSortType;
-import com.f2f.service.comment.CommentService;
-import com.f2f.service.comment.CommentTargetService;
+import com.f2f.service.CommentService;
+import com.f2f.service.CommentTargetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

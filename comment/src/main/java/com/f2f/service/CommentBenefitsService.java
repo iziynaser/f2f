@@ -1,8 +1,8 @@
-package com.f2f.service.comment;
+package com.f2f.service;
 
-import com.f2f.dao.comment.CommentBenefitsDao;
 import com.f2f.entity.Comment;
 import com.f2f.entity.CommentBenefits;
+import com.f2f.repository.CommentBenefitsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 public class CommentBenefitsService {
 
     @Autowired
-    CommentBenefitsDao commentBenefitsDao;
+    CommentBenefitsRepository commentBenefitsRepository;
 
     public void save(Comment comment, String ben) {
         CommentBenefits commentBenefits = new CommentBenefits(comment,ben);
-        commentBenefitsDao.save(commentBenefits);
+        commentBenefitsRepository.save(commentBenefits);
     }
 }

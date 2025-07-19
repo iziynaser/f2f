@@ -1,9 +1,9 @@
-package com.f2f.service.comment;
+package com.f2f.service;
 
-import com.f2f.dao.comment.CommentTargetDao;
 import com.f2f.entity.Comment;
 import com.f2f.entity.CommentTarget;
 import com.f2f.dto.CommentLikeSummaryDTO;
+import com.f2f.repository.CommentTargetRepository;
 import com.f2f.service.CommentLikeSummaryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CommentLikeSummaryServiceImpl  implements CommentLikeSummaryService {
 
-    private final CommentTargetDao commentTargetRepository;
+    private final CommentTargetRepository commentTargetRepository;
 
     public CommentLikeSummaryDTO getLikeSummaryByTargetId(Long targetId) {
         CommentTarget commentTarget = commentTargetRepository.findById(targetId)
