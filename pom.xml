@@ -47,6 +47,7 @@
         <module>f2fc</module>
         <module>catalog</module>
         <module>comment</module>
+        <module>Qa</module>
     </modules>
 
     <properties>
