@@ -23,21 +23,20 @@ public class Page extends BaseEntity implements Serializable {
     @Column(name = "PAGE_NUMBER")
     private Short pageNumber ;
 
-//    @Column(name = "TITLE")
-//    private String title ;
+    @Column(name = "TITLE")
+    private String title ;
 
-//    @Column(name = "BODY")
-//    private String body ;
+    @Column(name = "BODY")
+    private String body ;
 
-//    @Column(name = "DATE_CREATED")
-//    private String dateCreated;
+    @Column(name = "LANGUAGE")
+    private String language;
 
-    @Column(name = "DATE_MODIFIED")
-    private String dateModified ;
+    @Column(name = "SLUG", unique = true)
+    private String slug;
 
-//    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
-//    @JoinColumn(name = "comment_target_id")
-//    private CommentTarget commentTarget;
+    private Long commentTargetId;
+
 
     public Page() {
     }
@@ -45,36 +44,6 @@ public class Page extends BaseEntity implements Serializable {
     public Page(Article article, Short pageNumber, String title, String body, String dateCreated, String dateModified) {
         this.article = article;
         this.pageNumber = pageNumber;
-        //this.title = title;
-        //this.body = body;
-        //this.dateCreated = dateCreated;
-        this.dateModified = dateModified;
-//        this.commentTarget = commentTarget;
     }
-
-//    public CommentTarget getCommentTarget() {
-//        return commentTarget;
-//    }
-//
-//    public void setCommentTarget(CommentTarget commentTarget) {
-//        this.commentTarget = commentTarget;
-//    }
-
-
-//    public String getTitle() {
-//        return title;
-//    }
-//
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
-
-//    public String getBody() {
-//        return body;
-//    }
-//
-//    public void setBody(String body) {
-//        this.body = body;
-//    }
 
 }

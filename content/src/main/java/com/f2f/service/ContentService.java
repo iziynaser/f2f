@@ -1,37 +1,57 @@
 package com.f2f.service;
 
-import com.f2f.dao.ContentDao;
-import com.f2f.dao.ContentSearchForm;
+import com.f2f.dto.ContentSearchForm;
 import com.f2f.dbc.domain.EntityNotFoundException;
 import com.f2f.dto.ContentDTO;
 import com.f2f.entity.Content;
+import com.f2f.entity.Tag;
+import com.f2f.mapper.ContentMapper;
+import com.f2f.repository.ContentRepository;
+import com.f2f.repository.TagRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
+@RequiredArgsConstructor
 public class ContentService {
 
-    @Autowired
-    private ContentDao contentDao;
+    private final ContentRepository contentRepository;
+    private final TagRepository tagRepository;
+    private final ContentMapper contentMapper;
+
+    public Content create(ContentDTO dto) {
+        Content content = contentMapper.toEntity(dto);
+
+        if (dto.getTags() != null) {
+            List<Tag> tags = tagRepository.findByNameIn(dto.getTags());
+            content.setTags(tags);
+        }
+
+        return contentRepository.save(content);
+    }
+
 
     public Content save(ContentDTO contentDTO) {
         Content c = new Content();
-        c.setBody(contentDTO.getBody());
-        c.setCode(contentDTO.getCode());
-        c.setDate(contentDTO.getDate());
-        c.setLanguage(contentDTO.getLanguage());
+        //c.setBody(contentDTO.getBody());
+        //c.setCode(contentDTO.getCode());
+        //c.setDate(contentDTO.getDate());
+        //c.setLanguage(contentDTO.getLanguage());
         //c.setStatus(contentDTO.getStatus());
-        contentDao.save(c);
+        contentRepository.save(c);
         return c;
     }
 
     public Content getContentByCodeAndLangauge(String code, String language) {
-        Optional<Content> optionalContent = contentDao.getContentByCodeAndLanguage(code,language);
+        Optional<Content> optionalContent = contentRepository.getContentByCodeAndLanguage(code,language);
         Content c= optionalContent.orElseThrow(EntityNotFoundException::new);
         return c;
     }

@@ -2,45 +2,26 @@ package com.f2f.dto;
 
 import com.f2f.entity.Content;
 import com.f2f.entity.Tag;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ContentDTO {
-
-    private String Body ;
-
-    private String code ;
-
-    private String date;
-
-    private String language ;
-
-    private String status ;
-
-    private String title ;
-
+    private Long id;
     private String name;
-
-    private String description;
-
-    private Short seq ;
-
-    private Short ispublic;
-
-    private int ContentType;
-
-    private int purposeType;
-
-    private String fromDate;
-
-    private String toDate;
-
-    private List<Tag> tags = new ArrayList<>();
-
-    private List<Content> relatedContents = new ArrayList<>();
+    private String slug;
+    private String title;
+    private String summary;
+    private String language;
+    private String meta;
+    private String canonicalUrl;
+    private List<String> tags;
+    private String author;
+    private LocalDateTime publishDate;
 }

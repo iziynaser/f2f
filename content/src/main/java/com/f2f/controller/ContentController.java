@@ -1,6 +1,6 @@
 package com.f2f.controller;
 
-import com.f2f.dao.ContentSearchForm;
+import com.f2f.dto.ContentSearchForm;
 import com.f2f.dto.ContentDTO;
 import com.f2f.entity.Content;
 import com.f2f.service.ContentService;

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -39,14 +40,14 @@ public class Article extends BaseEntity implements Serializable {
     @Column(name = "DESCRIPTION")
     private String description ;
 
-//    @Column(name = "DATE_CREATED")
-//    private String dateCreated ;
-
-    @Column(name = "DATE_MODIFIED")
-    private String dateModified ;
+    @Column(name = "SLUG", unique = true)
+    private String slug;
 
     @OneToMany(mappedBy = "article")
     private List<Page> pages;
+
+    @Column(name = "PUBLISH_DATE")
+    private LocalDateTime publishDate;
 
     public String toString(){
         StringBuffer sb = new StringBuffer();
@@ -58,7 +59,7 @@ public class Article extends BaseEntity implements Serializable {
         sb.append("author: "+ author +",");
         sb.append("description: "+ description +",");
         //sb.append("dateCreated: "+ dateCreated +",");
-        sb.append("dateModified: "+ dateModified +",");
+        //sb.append("dateModified: "+ dateModified +",");
 
         return sb.toString();
     }

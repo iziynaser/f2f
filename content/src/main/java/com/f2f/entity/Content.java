@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,13 +19,13 @@ public class Content extends BaseEntity implements Serializable {
 
     @Lob
     @Column(name = "BODY")
-    private String Body ;
+    private String body ;
 
     @Column(name = "CODE")
     private String code ;
 
     @Column(name = "DATE")
-    private String date;
+    private LocalDateTime date;
 
     @Column(name = "LANGUAGE")
     private String language ;
@@ -35,14 +36,14 @@ public class Content extends BaseEntity implements Serializable {
     @Column(name = "TITLE")
     private String title ;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "SLUG", unique = true)
+    private String slug;
 
     @Column(name = "seq",columnDefinition = "int default 0")
     private short seq;
 
-    @OneToOne
-    @JoinColumn(name = "ID")
+    @ManyToOne
+    @JoinColumn(name = "CONTENT_TYPE_ID") // بهتر از ID خالیه
     private ContentType contentType;
 
     @ManyToMany(

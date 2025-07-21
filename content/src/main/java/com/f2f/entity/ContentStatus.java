@@ -1,11 +1,14 @@
 package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.eums.ContentStatusType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -14,14 +17,15 @@ import java.io.Serializable;
 public class ContentStatus extends BaseEntity implements Serializable {
 
     @Column(name = "STATUS")
-    private String status ;
+    private ContentStatusType status ;
 
     @ManyToOne
     @JoinColumn(name = "CONTENT_ID")
     private Content content ;
 
     @Column(name = "MODIFY_DATE")
-    private String modifyDate;
+    @UpdateTimestamp
+    private LocalDateTime modifyDate;
 
 //    @OneToOne
 //    @JoinColumn(name="USER_ACCOUNT_ID")
