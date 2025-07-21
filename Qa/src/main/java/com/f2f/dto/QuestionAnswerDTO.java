@@ -17,4 +17,5 @@ public class QuestionAnswerDTO {
     private List<QuestionAnswerDTO> children; // پاسخ‌ها (ساختار درختی)
     private long likeCount;
     private long dislikeCount;
+    private long answerCount;
 }

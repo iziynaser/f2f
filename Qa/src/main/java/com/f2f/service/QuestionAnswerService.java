@@ -15,9 +15,9 @@ import java.util.List;
 
 public interface QuestionAnswerService {
 
-    Page<QuestionAnswerDTO> getQuestionsLatest(Pageable pageable);
+    public Page<QuestionAnswerDTO> getQuestionsLatestByTarget(String targetType, Long targetId, Pageable pageable);
 
-    Page<QuestionAnswerDTO> getQuestionsByMostAnswers(Pageable pageable);
+    public Page<QuestionAnswerDTO> getQuestionsByMostAnswersByTarget(String targetType, Long targetId, Pageable pageable);
 
     List<QuestionAnswerDTO> getAnswersByQuestionId(Long questionId);
 

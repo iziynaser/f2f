@@ -7,35 +7,42 @@ import com.f2f.service.QuestionAnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/qas")
+@RequestMapping("/f2f/qas")
 public class QuestionAnswerController {
 
     @Autowired
     private QuestionAnswerService questionAnswerService;
 
-    // گرفتن پرسش‌ها جدیدترین صفحه‌ای
-    @GetMapping("/questions/latest")
+    @GetMapping("/questions/latest/{targetType}/{targetId}")
     public ResponseEntity<Page<QuestionAnswerDTO>> getLatestQuestions(
+            @PathVariable String targetType,
+            @PathVariable Long targetId,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
 
-        Page<QuestionAnswerDTO> questions = questionAnswerService.getQuestionsLatest(PageRequest.of(page, size));
+        Pageable pageable = PageRequest.of(page, size);
+        Page<QuestionAnswerDTO> questions = questionAnswerService.getQuestionsLatestByTarget(targetType, targetId, pageable);
+
         return ResponseEntity.ok(questions);
     }
 
-    // گرفتن پرسش‌ها بر اساس بیشترین پاسخ
-    @GetMapping("/questions/most-answers")
+    @GetMapping("/questions/most-answers/{targetType}/{targetId}")
     public ResponseEntity<Page<QuestionAnswerDTO>> getQuestionsByMostAnswers(
+            @PathVariable String targetType,
+            @PathVariable Long targetId,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
 
-        Page<QuestionAnswerDTO> questions = questionAnswerService.getQuestionsByMostAnswers(PageRequest.of(page, size));
+        Pageable pageable = PageRequest.of(page, size);
+        Page<QuestionAnswerDTO> questions = questionAnswerService.getQuestionsByMostAnswersByTarget(targetType, targetId, pageable);
+
         return ResponseEntity.ok(questions);
     }
 
