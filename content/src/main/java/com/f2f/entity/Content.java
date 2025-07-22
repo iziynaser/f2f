@@ -1,6 +1,7 @@
 package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.eums.ContentTargetType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -46,6 +47,13 @@ public class Content extends BaseEntity implements Serializable {
     @JoinColumn(name = "CONTENT_TYPE_ID") // بهتر از ID خالیه
     private ContentType contentType;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "TARGET_TYPE")
+    private ContentTargetType targetType;
+
+    @Column(name = "TARGET_ID")
+    private Long targetId;
+
     @ManyToMany(
             cascade = {
                     CascadeType.PERSIST,
@@ -69,5 +77,10 @@ public class Content extends BaseEntity implements Serializable {
 
     @OneToMany(mappedBy = "content")
     private List<ContentStatus> contentStatuses;
+
+    public Content(Long id) {
+        this.setId(id);
+    }
+
 
 }

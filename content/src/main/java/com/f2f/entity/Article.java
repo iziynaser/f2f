@@ -49,6 +49,10 @@ public class Article extends BaseEntity implements Serializable {
     @Column(name = "PUBLISH_DATE")
     private LocalDateTime publishDate;
 
+    @Column(name = "CONTENT_ID")
+    private Long contentId;  // اختیاری
+
+
     public String toString(){
         StringBuffer sb = new StringBuffer();
         //sb.append("id "+ id +",");

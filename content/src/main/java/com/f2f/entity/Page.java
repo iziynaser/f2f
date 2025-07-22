@@ -35,6 +35,10 @@ public class Page extends BaseEntity implements Serializable {
     @Column(name = "SLUG", unique = true)
     private String slug;
 
+    @Column(name = "CONTENT_ID")
+    private Long contentId;  // اختیاری
+
+
     private Long commentTargetId;
 
 

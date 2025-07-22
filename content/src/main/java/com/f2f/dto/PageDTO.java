@@ -27,4 +27,6 @@ public class PageDTO {
     private String content;
     private String header;
     private String footer;
+    private Long commentTargetId;
+
 }
