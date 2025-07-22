@@ -14,14 +14,29 @@ public class LocaleConfig {
     @Bean
     public LocaleResolver localeResolver() {
         AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver();
-        localeResolver.setDefaultLocale(Locale.ENGLISH);
+        localeResolver.setDefaultLocale(Locale.ENGLISH);  // زبان پیش‌فرض
         return localeResolver;
     }
 
     @Bean
     public ResourceBundleMessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename("messages");
+
+        // آدرس فایل‌ها بدون پسوند .properties
+        messageSource.setBasenames(
+                "en/messages",
+                "en/messages_sales",
+                "en/messages_order",
+                "en/messages_content",
+
+                // other lang
+
+                "fa/messages",
+                "fa/messages_sales",
+                "fa/messages_order",
+                "fa/messages_content"
+        );
+
         messageSource.setDefaultEncoding("UTF-8");
         messageSource.setUseCodeAsDefaultMessage(true);
         return messageSource;
