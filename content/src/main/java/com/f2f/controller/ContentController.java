@@ -5,6 +5,8 @@ import com.f2f.dto.ContentDTO;
 import com.f2f.dto.ContentStatusDTO;
 import com.f2f.entity.Content;
 import com.f2f.eums.ContentStatusType;
+import com.f2f.exception.ResourceNotFoundException;
+import com.f2f.response.ApiSuccessResponse;
 import com.f2f.service.ContentService;
 import com.f2f.service.ContentServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -88,14 +90,21 @@ public class ContentController {
     }
 
     @GetMapping("/by-target")
-    public ResponseEntity<ContentDTO> getContentByTarget(
+    public ResponseEntity<ApiSuccessResponse<ContentDTO>> getContentByTarget(
             @RequestParam("targetId") Long targetId,
             @RequestParam("targetType") String targetType,
             @RequestParam(value = "language", defaultValue = "fa") String language
     ) {
-        return contentService.getContentByTarget(targetId, targetType, language)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        ContentDTO content = contentService.getContentByTarget(targetId, targetType, language)
+                .orElseThrow(() -> new ResourceNotFoundException("content.not.found", new Object[]{targetId, targetType}));
+
+        ApiSuccessResponse<ContentDTO> response = ApiSuccessResponse.<ContentDTO>builder()
+                .message("محتوا با موفقیت یافت شد")
+                .detail("داده برای targetId و targetType ارسال شد")
+                .body(content)
+                .build();
+
+        return ResponseEntity.ok(response);
     }
 
 

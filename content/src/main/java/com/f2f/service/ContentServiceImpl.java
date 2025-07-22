@@ -10,6 +10,7 @@ import com.f2f.entity.ContentCategory;
 import com.f2f.entity.ContentStatus;
 import com.f2f.entity.Tag;
 import com.f2f.eums.ContentStatusType;
+import com.f2f.eums.ContentTargetType;
 import com.f2f.mapper.ContentMapper;
 import com.f2f.mapper.ContentStatusMapper;
 import com.f2f.repository.ContentCategoryRepository;
@@ -153,14 +154,18 @@ public class ContentServiceImpl  implements ContentService {
         return c;
     }
 
-    @Loggable(logError = true)
     @Override
     public Optional<ContentDTO> getContentByTarget(Long targetId, String targetType, String language) {
+        ContentTargetType typeEnum;
+        try {
+            typeEnum = ContentTargetType.valueOf(targetType.toUpperCase());
+        } catch (IllegalArgumentException | NullPointerException e) {
+            typeEnum = ContentTargetType.OTHER;
+        }
+
         return contentRepository
-                .findByTargetIdAndTargetTypeAndLanguage(targetId, targetType, language)
+                .findByTargetIdAndTargetTypeAndLanguage(targetId, typeEnum, language)
                 .map(contentMapper::toDto);
     }
-
-
 
 }

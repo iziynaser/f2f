@@ -1,6 +1,7 @@
 package com.f2f.repository;
 
 import com.f2f.entity.Content;
+import com.f2f.eums.ContentTargetType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -20,6 +21,6 @@ public interface ContentRepository extends JpaRepository<Content, Long> {
 
     Optional<Content> getContentByCodeAndLanguage(String code , String language);
 
-    Optional<Content> findByTargetIdAndTargetTypeAndLanguage(Long targetId, String targetType, String language);
+    Optional<Content> findByTargetIdAndTargetTypeAndLanguage(Long targetId, ContentTargetType targetType, String language);
 
 }
