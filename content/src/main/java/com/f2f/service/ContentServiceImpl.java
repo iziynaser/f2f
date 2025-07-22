@@ -1,5 +1,6 @@
 package com.f2f.service;
 
+import com.f2f.Loggable;
 import com.f2f.dto.ContentSearchForm;
 import com.f2f.dbc.domain.EntityNotFoundException;
 import com.f2f.dto.ContentDTO;
@@ -151,5 +152,15 @@ public class ContentServiceImpl  implements ContentService {
         Content c= optionalContent.orElseThrow(EntityNotFoundException::new);
         return c;
     }
+
+    @Loggable(logError = true)
+    @Override
+    public Optional<ContentDTO> getContentByTarget(Long targetId, String targetType, String language) {
+        return contentRepository
+                .findByTargetIdAndTargetTypeAndLanguage(targetId, targetType, language)
+                .map(contentMapper::toDto);
+    }
+
+
 
 }

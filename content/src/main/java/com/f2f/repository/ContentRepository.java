@@ -20,4 +20,6 @@ public interface ContentRepository extends JpaRepository<Content, Long> {
 
     Optional<Content> getContentByCodeAndLanguage(String code , String language);
 
+    Optional<Content> findByTargetIdAndTargetTypeAndLanguage(Long targetId, String targetType, String language);
+
 }

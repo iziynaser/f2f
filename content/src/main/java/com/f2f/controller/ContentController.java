@@ -86,4 +86,17 @@ public class ContentController {
         contentService.deleteContent(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/by-target")
+    public ResponseEntity<ContentDTO> getContentByTarget(
+            @RequestParam("targetId") Long targetId,
+            @RequestParam("targetType") String targetType,
+            @RequestParam(value = "language", defaultValue = "fa") String language
+    ) {
+        return contentService.getContentByTarget(targetId, targetType, language)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+
 }

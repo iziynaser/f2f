@@ -29,4 +29,8 @@ public interface ContentService {
 
     // در صورت نیاز متدهای حذف و سایر جستجوها هم اضافه می‌شود
     void deleteContent(Long id);
+
+    Optional<ContentDTO> getContentByTarget(Long targetId, String targetType, String language);
+
+
 }
