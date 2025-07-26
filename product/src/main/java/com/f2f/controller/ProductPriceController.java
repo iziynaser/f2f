@@ -1,14 +1,9 @@
 package com.f2f.controller;
 
 import com.f2f.dto.ProductPriceDTO;
-import com.f2f.entity.Product;
 import com.f2f.entity.ProductPrice;
-import com.f2f.exception.F2fNotFoundException;
-import com.f2f.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController("ProductPriceController")
