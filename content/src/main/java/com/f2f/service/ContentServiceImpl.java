@@ -1,7 +1,5 @@
 package com.f2f.service;
 
-import com.f2f.Loggable;
-import com.f2f.dto.ContentSearchForm;
 import com.f2f.dbc.domain.EntityNotFoundException;
 import com.f2f.dto.ContentDTO;
 import com.f2f.dto.ContentStatusDTO;
@@ -17,21 +15,23 @@ import com.f2f.repository.ContentCategoryRepository;
 import com.f2f.repository.ContentRepository;
 import com.f2f.repository.ContentStatusRepository;
 import com.f2f.repository.TagRepository;
+import com.f2f.util.SlugUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Safelist;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class ContentServiceImpl  implements ContentService {
+public class ContentServiceImpl implements ContentService {
 
     private final ContentRepository contentRepository;
     private final TagRepository tagRepository;
@@ -43,7 +43,24 @@ public class ContentServiceImpl  implements ContentService {
     @Override
     public ContentDTO createContent(ContentDTO dto) {
         Content entity = contentMapper.toEntity(dto);
-        // مدیریت تگ‌ها و سایر موارد اگر نیاز هست اینجا انجام شود
+
+        // ضد XSS با Jsoup
+        entity.setBody(Jsoup.clean(dto.getBody(), Safelist.basicWithImages()));
+
+        // تگ‌ها
+        if (dto.getTags() != null && !dto.getTags().isEmpty()) {
+            List<Tag> tags = tagRepository.findByNameIn(dto.getTags());
+            entity.setTags(tags);
+        }
+
+        entity.setDate(LocalDateTime.now());
+
+        // تولید slug یکتا
+        String baseSlug = (dto.getSlug() != null && !dto.getSlug().trim().isEmpty())
+                ? SlugUtil.toSlug(dto.getSlug())
+                : SlugUtil.toSlug(dto.getTitle());
+        entity.setSlug(generateUniqueSlug(baseSlug));
+
         Content saved = contentRepository.save(entity);
         return contentMapper.toDto(saved);
     }
@@ -53,13 +70,28 @@ public class ContentServiceImpl  implements ContentService {
         Content entity = contentRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Content not found with id: " + id));
 
-        // آپدیت فیلدهای مورد نظر
+        // ضد XSS
+        entity.setBody(Jsoup.clean(dto.getBody(), Safelist.basicWithImages()));
+
+        // به‌روزرسانی فیلدها
         entity.setTitle(dto.getTitle());
-        entity.setSlug(dto.getSlug());
         entity.setLanguage(dto.getLanguage());
-        entity.setDescription(dto.getSummary());
+        entity.setDescription(dto.getDescription());
         entity.setDate(dto.getPublishDate());
-        // مدیریت تگ‌ها و ... در صورت نیاز
+
+        // تگ‌ها
+        if (dto.getTags() != null) {
+            List<Tag> tags = tagRepository.findByNameIn(dto.getTags());
+            entity.setTags(tags);
+        }
+
+        // تولید slug جدید اگر تغییر کرده باشد
+        String newSlug = (dto.getSlug() != null && !dto.getSlug().trim().isEmpty())
+                ? SlugUtil.toSlug(dto.getSlug())
+                : SlugUtil.toSlug(dto.getTitle());
+        if (!newSlug.equals(entity.getSlug())) {
+            entity.setSlug(generateUniqueSlug(newSlug));
+        }
 
         Content updated = contentRepository.save(entity);
         return contentMapper.toDto(updated);
@@ -77,7 +109,6 @@ public class ContentServiceImpl  implements ContentService {
 
     @Override
     public List<ContentDTO> getContentsByCategoryId(Long categoryId) {
-        // دسته بندی محتوا در جدول ContentCategory است
         List<ContentCategory> contentCategories = contentCategoryRepository.findByCategoryId(categoryId);
         List<Long> contentIds = contentCategories.stream()
                 .map(cc -> cc.getContent().getId())
@@ -98,7 +129,6 @@ public class ContentServiceImpl  implements ContentService {
         Content content = contentRepository.findById(contentId)
                 .orElseThrow(() -> new EntityNotFoundException("Content not found"));
 
-        // بررسی اگر قبلا این رابطه وجود داشته باشد
         List<ContentCategory> existing = contentCategoryRepository.findByContent(content);
         boolean exists = existing.stream()
                 .anyMatch(cc -> cc.getCategoryId().equals(categoryId));
@@ -120,6 +150,7 @@ public class ContentServiceImpl  implements ContentService {
         contentStatus.setContent(content);
         contentStatus.setStatus(status);
         contentStatus.setUserAccountId(userId);
+
         contentStatusRepository.save(contentStatus);
     }
 
@@ -127,6 +158,7 @@ public class ContentServiceImpl  implements ContentService {
     public List<ContentStatusDTO> getContentStatuses(Long contentId) {
         Content content = contentRepository.findById(contentId)
                 .orElseThrow(() -> new EntityNotFoundException("Content not found"));
+
         List<ContentStatus> statuses = contentStatusRepository.findByContent(content);
         return contentStatusMapper.toDtoList(statuses);
     }
@@ -134,24 +166,6 @@ public class ContentServiceImpl  implements ContentService {
     @Override
     public void deleteContent(Long id) {
         contentRepository.deleteById(id);
-    }
-
-
-    public Content create(ContentDTO dto) {
-        Content content = contentMapper.toEntity(dto);
-
-        if (dto.getTags() != null) {
-            List<Tag> tags = tagRepository.findByNameIn(dto.getTags());
-            content.setTags(tags);
-        }
-
-        return contentRepository.save(content);
-    }
-
-    public Content getContentByCodeAndLangauge(String code, String language) {
-        Optional<Content> optionalContent = contentRepository.getContentByCodeAndLanguage(code,language);
-        Content c= optionalContent.orElseThrow(EntityNotFoundException::new);
-        return c;
     }
 
     @Override
@@ -168,4 +182,14 @@ public class ContentServiceImpl  implements ContentService {
                 .map(contentMapper::toDto);
     }
 
+    // متد کمکی برای تولید slug یکتا
+    private String generateUniqueSlug(String baseSlug) {
+        String slug = baseSlug;
+        int count = 0;
+        while (contentRepository.existsBySlug(slug)) {
+            count++;
+            slug = baseSlug + "-" + count;
+        }
+        return slug;
+    }
 }

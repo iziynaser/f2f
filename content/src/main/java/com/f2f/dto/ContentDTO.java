@@ -2,6 +2,8 @@ package com.f2f.dto;
 
 import com.f2f.entity.Content;
 import com.f2f.entity.Tag;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -24,4 +26,10 @@ public class ContentDTO {
     private List<String> tags;
     private String author;
     private LocalDateTime publishDate;
+    private String description;
+
+    @NotBlank(message = "body must not empty")
+    @Size(max = 10000,message = "body must not be empty")
+    private String body;
+
 }

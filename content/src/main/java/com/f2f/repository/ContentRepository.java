@@ -11,6 +11,8 @@ import java.util.Optional;
 @Repository
 public interface ContentRepository extends JpaRepository<Content, Long> {
 
+    boolean existsBySlug(String slug);
+
     Optional<Content> findBySlug(String slug);
 
     List<Content> findByLanguage(String language);

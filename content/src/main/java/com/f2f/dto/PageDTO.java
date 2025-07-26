@@ -29,4 +29,8 @@ public class PageDTO {
     private String footer;
     private Long commentTargetId;
 
+    private Short pageNumber ;
+    private Long articleId;
+    private Long contentId;
+
 }

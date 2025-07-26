@@ -12,7 +12,12 @@ public interface PageRepository extends JpaRepository<Page, Long> {
 
     Optional<Page> findBySlug(String slug);
 
+    boolean existsBySlug(String slug);
+
     List<Page> findByTitleContainingIgnoreCase(String keyword);
 
     List<Page> findByLanguage(String language);
+
+    Optional<Page> findByContentIdAndLanguage(Long contentId, String language);
+
 }

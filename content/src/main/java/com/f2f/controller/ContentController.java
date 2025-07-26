@@ -3,12 +3,15 @@ package com.f2f.controller;
 import com.f2f.dto.ContentSearchForm;
 import com.f2f.dto.ContentDTO;
 import com.f2f.dto.ContentStatusDTO;
+import com.f2f.dto.PageDTO;
 import com.f2f.entity.Content;
 import com.f2f.eums.ContentStatusType;
 import com.f2f.exception.ResourceNotFoundException;
 import com.f2f.response.ApiSuccessResponse;
 import com.f2f.service.ContentService;
 import com.f2f.service.ContentServiceImpl;
+import com.f2f.service.PageService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,13 +30,13 @@ public class ContentController {
     private final ContentService contentService;
 
     @PostMapping
-    public ResponseEntity<ContentDTO> createContent(@RequestBody ContentDTO dto) {
+    public ResponseEntity<ContentDTO> createContent(@RequestBody @Valid ContentDTO dto) {
         ContentDTO created = contentService.createContent(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ContentDTO> updateContent(@PathVariable Long id, @RequestBody ContentDTO dto) {
+    public ResponseEntity<ContentDTO> updateContent(@PathVariable Long id, @RequestBody @Valid ContentDTO dto) {
         ContentDTO updated = contentService.updateContent(id, dto);
         return ResponseEntity.ok(updated);
     }
@@ -41,13 +44,6 @@ public class ContentController {
     @GetMapping("/{id}")
     public ResponseEntity<ContentDTO> getContentById(@PathVariable Long id) {
         return contentService.getContentById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
-
-    @GetMapping("/slug/{slug}")
-    public ResponseEntity<ContentDTO> getContentBySlug(@PathVariable String slug) {
-        return contentService.getContentBySlug(slug)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -106,6 +102,5 @@ public class ContentController {
 
         return ResponseEntity.ok(response);
     }
-
 
 }

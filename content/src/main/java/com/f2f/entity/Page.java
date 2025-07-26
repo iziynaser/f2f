@@ -38,9 +38,7 @@ public class Page extends BaseEntity implements Serializable {
     @Column(name = "CONTENT_ID")
     private Long contentId;  // اختیاری
 
-
     private Long commentTargetId;
-
 
     public Page() {
     }
