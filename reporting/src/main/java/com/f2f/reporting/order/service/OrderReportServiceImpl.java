@@ -1,16 +1,11 @@
 package com.f2f.reporting.order.service;
 
-import com.f2f.dao.OrderRepository;
-import com.f2f.dao.OrderStatusRepository;
 import com.f2f.dao.PersonDao;
 import com.f2f.dto.OrderDTO;
-import com.f2f.dto.OrderStatusDTO;
-import com.f2f.entity.Order;
-import com.f2f.entity.OrderItem;
-import com.f2f.entity.OrderStatus;
-import com.f2f.entity.PersonEntity;
 import com.f2f.mapper.OrderMapper;
 import com.f2f.reporting.order.dto.CustomerOrderCountReportDTO;
+import com.f2f.repository.OrderRepository;
+import com.f2f.repository.OrderStatusRepository;
 import com.f2f.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

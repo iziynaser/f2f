@@ -2,6 +2,7 @@ package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
 
+import com.f2f.enums.OrderStatusEnum;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,7 @@ import java.util.Set;
 @Table(name = "ORDERS")
 public class Order  extends BaseEntity implements Serializable {
 
-    @Column(name = "order_code")
+    @Column(name = "order_code",unique = true)
     private String orderCode ;
 
     @ManyToOne
@@ -32,13 +33,13 @@ public class Order  extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<OrderItem> orderItems = new HashSet<>();
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "current_status")
-    private String currentStatus;
+    private OrderStatusEnum currentStatus;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private Set<OrderStatus> statusHistory = new HashSet<>();
 
-    // فقط ذخیره‌ی شناسه‌ی فاکتور، بدون وابستگی به کلاس Invoice
     @Column(name = "invoice_id")
     private Long invoiceId;
 

@@ -1,6 +1,7 @@
 package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.enums.OrderStatusEnum;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,8 +19,9 @@ public class OrderStatus extends BaseEntity implements Serializable {
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private String status;
+    private OrderStatusEnum status;
 
     @Column(name = "status_date")
     private LocalDateTime statusDate;
@@ -28,16 +30,16 @@ public class OrderStatus extends BaseEntity implements Serializable {
     private String comment;
 
     @Column(name = "startDate")
-    private Integer startDate;
+    private LocalDateTime  startDate;
 
     @Column(name = "endDate")
-    private Integer endDate;
+    private LocalDateTime  endDate;
 
     @Column(name = "registerDate")
-    private Integer registerDate;
+    private LocalDateTime  registerDate;
 
     @Column(name = "deliveryDate")
-    private Integer deliveryDate;
+    private LocalDateTime  deliveryDate;
 
 }
 

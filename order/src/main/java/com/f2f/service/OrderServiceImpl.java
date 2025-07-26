@@ -1,96 +1,85 @@
 package com.f2f.service;
 
-import com.f2f.dao.OrderRepository;
-import com.f2f.dao.OrderStatusRepository;
 import com.f2f.dao.PersonDao;
+import com.f2f.dbc.domain.EntityNotFoundException;
 import com.f2f.dto.OrderDTO;
 import com.f2f.dto.OrderItemDTO;
 import com.f2f.dto.OrderStatusDTO;
+import com.f2f.dto.ProductItemDTO;
 import com.f2f.entity.Order;
 import com.f2f.entity.OrderItem;
 import com.f2f.entity.OrderStatus;
 import com.f2f.entity.PersonEntity;
+import com.f2f.enums.OrderStatusEnum;
 import com.f2f.mapper.OrderMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.f2f.port.ImageAccessPort;
+import com.f2f.port.ProductItemPort;
+import com.f2f.repository.OrderRepository;
+import com.f2f.repository.OrderStatusRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
+@Transactional
 public class OrderServiceImpl implements OrderService {
 
-    OrderMapper orderMapper;
+    private final OrderMapper orderMapper;
+    private final OrderRepository orderRepository;
+    private final OrderStatusRepository orderStatusRepository;
+    private final PersonDao personRepository;
+    private final ImageAccessPort imageAccessService;
 
-    @Autowired
-    private OrderRepository orderRepository;
+    private final ProductItemPort productItemPort;
 
-//todo: change
-//    @Autowired
-//    private ProductItemRepository productItemRepository;
-
-    @Autowired
-    private OrderStatusRepository orderStatusRepository;
-
-    @Autowired
-    private PersonDao personRepository;
-
-    // ثبت سفارش جدید
-    @Transactional
-    public Order createOrder(OrderDTO orderDTO) {
-        Order order = new Order();
-        //order.setCustomerId(orderDTO.getCustomerId());
-        return order;
-//todo: change
-//        Long customerId = orderDTO.getCustomerId();
-//        if (customerId != null) {
-//            PersonEntity customer = personRepository.findById(customerId)
-//                    .orElseThrow(() -> new RuntimeException("Person not found with id: " + customerId));
-//            order.setCustomer(customer);
-//        }
-//
-//        order.setOrderDate(LocalDateTime.now());
-//
-//        Set<OrderItem> orderItems = new HashSet<>();
-//        for (OrderItemDTO itemDTO : orderDTO.getItems()) {
-//            ProductItem productItem = productItemRepository.findById(itemDTO.getProductItemId())
-//                    .orElseThrow(() -> new RuntimeException("ProductItem not found"));
-//
-//            OrderItem orderItem = new OrderItem();
-//            orderItem.setOrder(order);
-//            orderItem.setProductItem(productItem);
-//            orderItem.setQuantity(itemDTO.getQuantity());
-//            orderItem.setUnitPrice(productItem.getDefaultPrice());
-//            orderItem.setTotalPrice(productItem.getDefaultPrice() * itemDTO.getQuantity());
-//
-//            orderItems.add(orderItem);
-//        }
-
-//        order.setOrderItems(orderItems);
-//        order.setCurrentStatus("CREATED");
-//
-//        order = orderRepository.save(order);
-//
-//        // وضعیت اولیه سفارش
-//        OrderStatus initialStatus = new OrderStatus();
-//        initialStatus.setOrder(order);
-//        initialStatus.setStatus("CREATED");
-//        initialStatus.setStatusDate(LocalDateTime.now());
-//        initialStatus.setComment("Order created");
-//        orderStatusRepository.save(initialStatus);
-
-//        return order;
+    public OrderServiceImpl(OrderMapper orderMapper, OrderRepository orderRepository,
+                            OrderStatusRepository orderStatusRepository, PersonDao personRepository, ImageAccessPort imageAccessService, ProductItemPort productItemPort) {
+        this.orderMapper = orderMapper;
+        this.orderRepository = orderRepository;
+        this.orderStatusRepository = orderStatusRepository;
+        this.personRepository = personRepository;
+        this.imageAccessService = imageAccessService;
+        this.productItemPort = productItemPort;
     }
 
-    // تغییر وضعیت سفارش
-    @Transactional
+    @Override
+    public OrderDTO createOrder(OrderDTO orderDTO) {
+        Order order = orderMapper.toEntity(orderDTO);
+
+        if (orderDTO.getCustomerId() != null) {
+            PersonEntity customer = personRepository.findById(orderDTO.getCustomerId())
+                    .orElseThrow(() -> new EntityNotFoundException("Person not found with id: " + orderDTO.getCustomerId()));
+            order.setCustomer(customer);
+        }
+
+        if (order.getCurrentStatus() == null) {
+            order.setCurrentStatus(OrderStatusEnum.CREATED);
+        }
+
+        final Order finalOrder = order;
+        if (order.getOrderItems() != null) {
+            order.getOrderItems().forEach(item -> item.setOrder(finalOrder));
+        }
+
+        order.setOrderDate(order.getOrderDate() != null ? order.getOrderDate() : LocalDateTime.now());
+
+        order = orderRepository.save(order);
+
+        OrderStatus initialStatus = new OrderStatus();
+        initialStatus.setOrder(order);
+        initialStatus.setStatus(OrderStatusEnum.CREATED);
+        initialStatus.setStatusDate(LocalDateTime.now());
+        orderStatusRepository.save(initialStatus);
+
+        return orderMapper.toDto(order);
+    }
+
+    @Override
     public void updateOrderStatus(Long orderId, OrderStatusDTO statusDTO) {
         Order order = orderRepository.findById(orderId)
-                .orElseThrow(() -> new RuntimeException("Order not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Order not found with id: " + orderId));
 
         order.setCurrentStatus(statusDTO.getStatus());
         orderRepository.save(order);
@@ -107,51 +96,32 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional(readOnly = true)
     public Optional<OrderDTO> getOrderById(Long id) {
-
         return orderRepository.findById(id).map(orderMapper::toDto);
     }
 
     @Override
     public OrderDTO updateOrder(Long orderId, OrderDTO orderDTO) {
-        Optional<Order> existingOrderOpt = orderRepository.findById(orderId);
-        if (existingOrderOpt.isPresent()) {
-            Order existingOrder = existingOrderOpt.get();
+        Order existingOrder = orderRepository.findById(orderId)
+                .orElseThrow(() -> new EntityNotFoundException("Order not found with id: " + orderId));
 
-            Long customerId = orderDTO.getCustomerId();
-            if (customerId != null) {
-                PersonEntity customer = personRepository.findById(customerId)
-                        .orElseThrow(() -> new RuntimeException("Person not found with id: " + customerId));
-                existingOrder.setCustomer(customer);
-            }
-
-            existingOrder.setOrderDate(orderDTO.getOrderDate());
-            existingOrder.setCurrentStatus(orderDTO.getCurrentStatus());
-
-            existingOrder.getOrderItems().clear();
-
-            Set<OrderItem> newOrderItems = orderMapper.toEntity(orderDTO).getOrderItems();
-            for (OrderItem item : newOrderItems) {
-                item.setOrder(existingOrder); // تنظیم رابطه دو طرفه
-            }
-            existingOrder.getOrderItems().addAll(newOrderItems);
-
-            existingOrder = orderRepository.save(existingOrder);
-
-            return orderMapper.toDto(existingOrder);
+        Long customerId = orderDTO.getCustomerId();
+        if (customerId != null) {
+            PersonEntity customer = personRepository.findById(customerId)
+                    .orElseThrow(() -> new EntityNotFoundException("Person not found with id: " + customerId));
+            existingOrder.setCustomer(customer);
         }
-        return null;
+
+        existingOrder.setOrderDate(orderDTO.getOrderDate());
+        existingOrder.setCurrentStatus(orderDTO.getCurrentStatus());
+
+        existingOrder.getOrderItems().clear();
+        Set<OrderItem> newItems = convertOrderItems(existingOrder, orderDTO.getItems());
+        existingOrder.getOrderItems().addAll(newItems);
+
+        existingOrder = orderRepository.save(existingOrder);
+
+        return orderMapper.toDto(existingOrder);
     }
-
-
-
-//    Optional<OrderDTO> getOrderById(Long id){ return null;}
-//    @Override
-//    @Transactional(readOnly = true)
-//    public List<OrderDTO> getAllOrders() {
-//        return orderRepository.findAll().stream()
-//                .map(orderMapper::toDto)
-//                .collect(Collectors.toList());
-//    }
 
     @Override
     public void deleteOrder(Long id) {
@@ -159,8 +129,61 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<OrderDTO> getAllOrders() {
-        return List.of();
+        List<Order> orders = orderRepository.findAll();
+        return orderMapper.toDtoList(orders);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<OrderDTO> getOrdersByCustomerAndStatus(Long customerId, OrderStatusEnum status) {
+        List<Order> orders;
+        if (status != null) {
+            orders = orderRepository.findByCustomerIdAndCurrentStatus(customerId, status);
+        } else {
+            orders = orderRepository.findByCustomerId(customerId);
+        }
+        return orderMapper.toDtoList(orders);
+    }
+
+    private Set<OrderItem> convertOrderItems(Order order, List<OrderItemDTO> itemDTOs) {
+        if (itemDTOs == null) return Collections.emptySet();
+
+        Set<OrderItem> items = new HashSet<>();
+        for (OrderItemDTO dto : itemDTOs) {
+            OrderItem item = new OrderItem();
+            item.setProductItemId(dto.getProductItemId());
+            item.setQuantity(dto.getQuantity());
+            item.setOrder(order);
+            // در صورت داشتن unitPrice و totalPrice در DTO، مقداردهی کن
+            items.add(item);
+        }
+        return items;
+    }
+
+    @Override
+    public List<OrderItemDTO> getOrderItemsByOrderCode(String orderCode) {
+        Order order = orderRepository.findByOrderCode(orderCode)
+                .orElseThrow(()-> new EntityNotFoundException("Order not found with code: " + orderCode));
+
+        List<OrderItemDTO> dtoList = new ArrayList<>();
+
+        for(OrderItem item : order.getOrderItems()) {
+            ProductItemDTO productItemDTO = productItemPort.findById(item.getProductItemId())
+            .orElse(null);
+
+            String imageUrl= imageAccessService.getCardImageUrlForProduct(item.getProductItemId())
+                    .orElse("");
+
+            OrderItemDTO dto = new OrderItemDTO();
+            dto.setProductItemId(item.getProductItemId());
+            //dto.setProductTitle();
+            dto.setCardImageUrl(imageUrl);
+            dto.setQuantity(item.getQuantity());
+            dtoList.add(dto);
+        }
+        return dtoList;
+
+    }
 }

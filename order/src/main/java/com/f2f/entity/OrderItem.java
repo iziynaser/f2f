@@ -17,8 +17,6 @@ public class OrderItem extends BaseEntity implements Serializable {
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "product_item_id", nullable = false)
     private Long productItemId;
 
     @Column(name = "quantity")

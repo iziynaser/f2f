@@ -1,5 +1,6 @@
 package com.f2f.dto;
 
+import com.f2f.enums.OrderStatusEnum;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,9 +13,14 @@ import java.util.List;
 @NoArgsConstructor
 public class OrderDTO {
 
+    private Long id; // شناسه سفارش
+    private String orderCode; // کد سفارش برای نمایش
     private Long customerId;
-    private List<OrderItemDTO> items;
-    private String currentStatus;
-    private LocalDateTime orderDate ;
+    private LocalDateTime orderDate;
 
+    private OrderStatusEnum currentStatus; // بهتر از String
+    private Long totalAmount; // جمع کل سفارش، اگر نیاز به محاسبه هست
+
+    private List<OrderItemDTO> items;
+    private List<OrderStatusDTO> statusHistory; // اختیاری برای نمایش کامل
 }

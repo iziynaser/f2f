@@ -10,8 +10,6 @@ public interface OrderStatusService {
 
     OrderStatusDTO createStatus(OrderStatusDTO orderStatusDTO);
 
-    DoubleStream getStatusById(Long id);
-
     List<OrderStatusDTO> getStatusesByOrderId(Long orderId);
 
     OrderStatusDTO updateStatus(Long id, OrderStatusDTO orderStatusDTO);

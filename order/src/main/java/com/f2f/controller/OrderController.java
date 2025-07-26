@@ -1,5 +1,9 @@
 package com.f2f.controller;
 
+import com.f2f.dbc.domain.EntityNotFoundException;
+import com.f2f.dto.OrderItemDTO;
+import com.f2f.enums.OrderStatusEnum;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/orders")
+@RequestMapping("/f2f/orders")
 public class OrderController {
 
     private final OrderService orderService;
@@ -22,18 +26,18 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<OrderDTO> createOrder(@RequestBody OrderDTO orderDTO) {
-//        OrderDTO createdOrder = orderService.createOrder(orderDTO);
-//        return ResponseEntity.ok(createdOrder);
-        return null;
+        OrderDTO createdOrder = orderService.createOrder(orderDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdOrder);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<OrderDTO> updateOrder(@PathVariable Long id, @RequestBody OrderDTO orderDTO) {
-        OrderDTO updatedOrder = orderService.updateOrder(id, orderDTO);
-        if (updatedOrder == null) {
+        try {
+            OrderDTO updatedOrder = orderService.updateOrder(id, orderDTO);
+            return ResponseEntity.ok(updatedOrder);
+        } catch (EntityNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(updatedOrder);
     }
 
     @GetMapping("/{id}")
@@ -48,9 +52,23 @@ public class OrderController {
         return ResponseEntity.ok(orderService.getAllOrders());
     }
 
+    @GetMapping("/customer/{customerId}/{status}")
+    public ResponseEntity<List<OrderDTO>> getOrdersByCustomerAndStatus(
+            @PathVariable Long customerId,
+            @PathVariable OrderStatusEnum status) {
+        List<OrderDTO> orders = orderService.getOrdersByCustomerAndStatus(customerId, status);
+        return ResponseEntity.ok(orders);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
         orderService.deleteOrder(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{orderCode}/items")
+    public ResponseEntity<List<OrderItemDTO>> getOrderItems(@PathVariable String orderCode) {
+        List<OrderItemDTO> items = orderService.getOrderItemsByOrderCode(orderCode);
+        return ResponseEntity.ok(items);
     }
 }

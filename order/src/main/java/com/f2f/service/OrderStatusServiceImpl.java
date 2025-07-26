@@ -1,20 +1,19 @@
 package com.f2f.service;
 
-import com.f2f.dao.OrderStatusRepository;
 import com.f2f.dto.OrderStatusDTO;
 import com.f2f.entity.OrderStatus;
 import com.f2f.mapper.OrderStatusMapper;
+import com.f2f.repository.OrderStatusRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
 
 @Service
 @Transactional
-public class OrderStatusServiceImpl  implements OrderStatusService {
+public class OrderStatusServiceImpl implements OrderStatusService {
 
     private final OrderStatusRepository orderStatusRepository;
     private final OrderStatusMapper orderStatusMapper;
@@ -29,17 +28,6 @@ public class OrderStatusServiceImpl  implements OrderStatusService {
         entity = orderStatusRepository.save(entity);
         return orderStatusMapper.toDto(entity);
     }
-
-    @Override
-    public DoubleStream getStatusById(Long id) {
-        return DoubleStream.empty();
-    }
-
-//    @Transactional(readOnly = true)
-//    public Optional<OrderStatusDTO> getStatusById(Long id) {
-//        return orderStatusRepository.findById(id)
-//                .map(orderStatusMapper::toDto);
-//    }
 
     @Transactional(readOnly = true)
     public List<OrderStatusDTO> getStatusesByOrderId(Long orderId) {
@@ -60,12 +48,14 @@ public class OrderStatusServiceImpl  implements OrderStatusService {
             existing.setStatus(orderStatusDTO.getStatus());
             existing.setStatusDate(orderStatusDTO.getStatusDate());
             existing.setComment(orderStatusDTO.getComment());
+            existing.setStartDate(orderStatusDTO.getStartDate());
+            existing.setEndDate(orderStatusDTO.getEndDate());
+            existing.setRegisterDate(orderStatusDTO.getRegisterDate());
+            existing.setDeliveryDate(orderStatusDTO.getDeliveryDate());
+
             existing = orderStatusRepository.save(existing);
             return orderStatusMapper.toDto(existing);
         }
-        return null;
+        throw new RuntimeException("OrderStatus not found with id: " + id);
     }
-
-
-
 }
