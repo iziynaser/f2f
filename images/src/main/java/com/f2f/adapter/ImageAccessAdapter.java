@@ -1,5 +1,6 @@
-package com.f2f.service;
+package com.f2f.adapter;
 
+import com.f2f.port.ImageAccessPort;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -9,11 +10,11 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 @Service
-public class ImageAccessServiceImpl implements ImageAccessService {
+public class ImageAccessAdapter implements ImageAccessPort {
 
     private final Path uploadDir;
 
-    public ImageAccessServiceImpl(@Value("${public.image.dir}") String uploadDir) {
+    public ImageAccessAdapter(@Value("${public.image.dir}") String uploadDir) {
         this.uploadDir = Paths.get(uploadDir).toAbsolutePath().normalize();
     }
 

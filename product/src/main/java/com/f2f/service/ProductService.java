@@ -25,7 +25,7 @@ public class ProductService {
 
     private final ProductDao productDao;
     private final CommentLikeSummaryService likesSummaryService;
-    private final ImageAccessService imageAccessService;
+    private final ImageAccessPort imageAccessService;
     private final ProductColorService productColorService;
     private final ProductItemService productItemService;
     private final ProductFeatureGroupDao productFeatureGroupDao;
@@ -42,7 +42,7 @@ public class ProductService {
     public ProductService(ProductDao productDao, ProductRepository productRepository,
                           ProductItemRepository productItemRepository,
                           ProductMapper productMapper,
-                          ImageAccessService imageAccessService,
+                          ImageAccessPort imageAccessService,
                           ProductColorService productColorService,
                           CommentLikeSummaryService likesSummaryService,
                           ProductItemService productItemService,
