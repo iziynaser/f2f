@@ -1,131 +1,64 @@
 package com.f2f.controller;
 
+import com.f2f.entity.other.DeliveryDTO;
 import com.f2f.service.DeliveryService;
 import com.f2f.service.OstanService;
 import com.f2f.service.ShahrService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/f2f/Delivery")
+@RequestMapping("/f2f/delivery")
+@RequiredArgsConstructor
 public class DeliveryController {
 
-    private DeliveryService deliveryService;
-    private OstanService ostanService;
-    private ShahrService shahrService;
-    //private UserAccountDbcService userAccountService;
-    //private  UserAccountProvider
+    private final DeliveryService deliveryService;
+    private final OstanService ostanService;
+    private final ShahrService shahrService;
 
-//    @Autowired
-//    Mapper mapper;
-    @Autowired
-    DeliveryController(DeliveryService deliveryService,ShahrService shahrService,OstanService ostanService){
-        this.deliveryService = deliveryService ;
-        this.ostanService = ostanService ;
-        this.shahrService = shahrService;
-       // this.userAccountService = userAccountService;
+    @PostMapping
+    public ResponseEntity<DeliveryDTO> createDelivery(@RequestBody DeliveryDTO dto) {
+        DeliveryDTO created = deliveryService.createDelivery(dto);
+        return ResponseEntity.ok(created);
     }
 
-//    @Autowired
-//    DeliveryController(DeliveryService deliveryService,UserAccountDbcService userAccountService,ShahrService shahrService,OstanService ostanService){
-//        this.deliveryService = deliveryService ;
-//        this.ostanService = ostanService ;
-//        this.shahrService = shahrService;
-//        this.userAccountService = userAccountService;
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<DeliveryDTO> updateDelivery(@PathVariable Long id,
+                                                      @RequestBody DeliveryDTO dto) {
+        DeliveryDTO updated = deliveryService.updateDelivery(id, dto);
+        return ResponseEntity.ok(updated);
+    }
 
-//    public UserAccountEntity copy(UserAccount ua){
-//        UserAccountEntity uae = new UserAccountEntity();
-//        uae.setUsername(ua.getUsername());
-//        uae.setPassword(ua.getPassword());
-//        uae.setAccountOpenCode(ua.getAccountOpenCode());
-//        uae.setNickName(ua.getNickName());
-//        uae.setAvatarUrl(ua.getAvatarUrl());
-//        uae.setEmail(ua.getEmail());
-//        uae.setMobile(ua.getMobile());
-//        uae.setProvince(ua.getProvince());
-//        uae.setCity(ua.getCity());
-//        uae.setAddress(ua.getAddress());
-//        uae.setBirthday(ua.getBirthday());
-//        uae.setGender(ua.getGender());
-//        uae.setFailureTime(ua.getFailureTime());
-//        uae.setFailureCount(ua.getFailureCount());
-//        uae.setRoles(copyRoles(ua.getRoles()));
-//        return uae;
-//    }
+    @DeleteMapping("/{id}/user/{userId}")
+    public ResponseEntity<Void> deleteDelivery(@PathVariable Long id,
+                                               @PathVariable Long userId) {
+        deliveryService.deleteDelivery(id, userId);
+        return ResponseEntity.noContent().build();
+    }
 
-//    public List<RoleEntity> copyRoles(List<Role> list){
-//        List<RoleEntity> roles = new ArrayList<RoleEntity>();
-//        for(int i=0;i<roles.size();i++){
-//            roles.add(new RoleEntity(roles.get(i).getRoleName()));
-//        }
-//        return roles;
-//    }
+    @GetMapping("/{id}/user/{userId}")
+    public ResponseEntity<DeliveryDTO> getDelivery(@PathVariable Long id,
+                                                   @PathVariable Long userId) {
+        DeliveryDTO dto = deliveryService.getDeliveryById(id, userId);
+        return ResponseEntity.ok(dto);
+    }
 
-//    @GetMapping("/list")
-//    public List<Delivery> getDeliveriesForUser(Principal principal){
-//        UserAccount userAccount = userAccountService.findByUsername(principal.getName());
-//        List<Delivery> deliveryList = deliveryService.findAllByUserAccount(userAccount);
-//        return deliveryList;
-//    }
 
-//    @GetMapping("/defaultDelivery")
-//    public Delivery getDefaultDelivery(Principal principal){
-//
-//        UserAccount userAccount = userAccountService.findByUsername(principal.getName());
-//        Delivery delivery = deliveryService.findFirstDeliveryByUserAccount(userAccount);
-//        return delivery;
-//
-//    }
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<DeliveryDTO>> getAllDeliveries(@PathVariable Long userId) {
+        List<DeliveryDTO> deliveries = deliveryService.getAllDeliveriesForUser(userId);
+        return ResponseEntity.ok(deliveries);
+    }
 
-//    @ResponseBody
-//    @DeleteMapping("/delete")
-//    public String deleteDeliveryAddress(Principal principal,@RequestBody DeliveryDTO deliveryDto){
-//        UserAccount userAccount = userAccountService.findByUsername(principal.getName());
-//        //UserAccountEntity userAccountEntity = mapper.map(userAccount,UserAccountEntity.class);
-//        UserAccountEntity userAccountEntity = copy(userAccount);
-//
-//        Delivery delivery = deliveryService.findFirstById(deliveryDto.getId());
-//        if(!delivery.getUserAccountEntity().getUsername().equals(userAccount.getUsername()))
-//            throw new SecurityException("you not allowed delete this delivery service");
-//
-//        deliveryService.deleteDeliveryById(deliveryDto.getId());
-//        return deliveryDto.getId().toString();
-//    }
+    @PostMapping("/{id}/default/user/{userId}")
+    public ResponseEntity<Void> setDefaultDelivery(@PathVariable Long id,
+                                                   @PathVariable Long userId) {
+        deliveryService.setDefaultDelivery(id, userId);
+        return ResponseEntity.ok().build();
+    }
 
-//    @ResponseBody
-//    @PostMapping("/save")
-//    public DeliveryDTO createDeliveryAddress(Principal principal,@RequestBody DeliveryDTO deliveryDto){
-//
-//        UserAccount userAccount = userAccountService.findByUsername(principal.getName());
-//        //UserAccountEntity userAccountEntity = mapper.map(userAccount, UserAccountEntity.class);
-//        UserAccountEntity userAccountEntity = copy(userAccount);
-//
-//        Ostan ostan = ostanService.getOne(deliveryDto.getOstanId());
-//        if(ostan==null)
-//            throw new EntityNotFoundException("selected Ostan is not valid");
-//
-//        Shahr shahr = shahrService.getOne(deliveryDto.getShahrId());
-//        if(shahr==null)
-//            throw new EntityNotFoundException("selected shahr is not valid");
-//
-//        Delivery delivery = new Delivery();
-//        delivery.setOstan(ostan);
-//        delivery.setShahr(shahr);
-//        delivery.setDeliverFamily(deliveryDto.getDeliverFamily());
-//        delivery.setDeliverName(deliveryDto.getDeliverName());
-//        delivery.setMobileNo1(deliveryDto.getMobileNo1());
-//        delivery.setMobileNo2(deliveryDto.getMobileNo2());
-//        delivery.setNationalCode(deliveryDto.getNationalCode());
-//        delivery.setPostalAdress(deliveryDto.getPostalAdress());
-//        delivery.setPelak(deliveryDto.getPelak());
-//        delivery.setPostalCode(deliveryDto.getPostalCode());
-//        delivery.setUnit(deliveryDto.getUnit());
-//        delivery.setWhoisGetter(deliveryDto.getWhoisGetter());
-//        delivery.setUserAccountEntity(userAccountEntity);
-//
-//        deliveryService.save(delivery);
-//
-//        return deliveryDto;
-//    }
 }

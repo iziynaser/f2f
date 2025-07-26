@@ -1,48 +1,21 @@
 package com.f2f.service;
 
-import com.f2f.dao.DeliveryDao;
-import com.f2f.entity.Delivery;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
-public class DeliveryService {
+import com.f2f.entity.other.DeliveryDTO;
 
-    @Autowired
-    DeliveryDao deliveryDao;
+import java.util.List;
 
-    //@Autowired
-   // UserAccountRepository userAccountRepository;
+public interface DeliveryService {
 
-//    public List<Delivery> findAllByUserAccount(UserAccount userAccount){
-//
-//       // UserAccountEntity userAccountEntity = userAccountRepository.findByUsername(userAccount.getUsername());
-//       // UserAccountProvider
-//
-//        ArrayList<Delivery> deliveryArrayList= new ArrayList<Delivery>();
-//
-//        Iterable<Delivery> deliveries = deliveryDao.findAllByUserAccountEntity(userAccountEntity);
-//        deliveries.forEach(delivery -> deliveryArrayList.add(delivery));
-//        return deliveryArrayList;
-//    }
+    DeliveryDTO createDelivery(DeliveryDTO dto);
 
-    public Delivery save(Delivery delivery){
-        Delivery result = deliveryDao.save(delivery);
-        return result;
-    }
+    DeliveryDTO updateDelivery(Long id, DeliveryDTO dto);
 
-//    public Delivery findFirstDeliveryByUserAccount(UserAccount userAccount){
-//        UserAccountEntity userAccountEntity = userAccountRepository.findByUsername(userAccount.getUsername());
-//        Delivery delivery = deliveryDao.findFirstByUserAccountEntityOrderByDateCreated(userAccountEntity);
-//        return delivery;
-//    }
+    void deleteDelivery(Long id, Long userAccountId);
 
-    public void deleteDeliveryById(Long id) {
-        deliveryDao.deleteById(id);
-    }
+    DeliveryDTO getDeliveryById(Long id, Long userAccountId);
 
-    public Delivery findFirstById(Long id) {
-        Delivery delivery = deliveryDao.findFirstById(id);
-        return delivery;
-    }
+    List<DeliveryDTO> getAllDeliveriesForUser(Long userAccountId);
+
+    void setDefaultDelivery(Long id, Long userAccountId);
 }

@@ -1,14 +1,14 @@
 package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import com.f2f.enums.DeliveryStatus;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -16,21 +16,16 @@ import java.io.Serializable;
 @Table(name = "DELIVERY")
 public class Delivery extends BaseEntity implements Serializable {
 
-//    @ManyToOne
     private Long userAccountId;
 
-    @OneToOne
-    //@Column(name = "OSTAN_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Ostan ostan;
 
-    @OneToOne
-    //@Column(name = "SHAHR_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Shahr shahr;
 
-    //private Bakhsh bakhsh;
-
     @Column(name = "POSTAL_ADDRESS")
-    private String postalAdress;
+    private String postalAddress ;
 
     @Column(name = "PELAK")
     private String pelak;
@@ -59,18 +54,26 @@ public class Delivery extends BaseEntity implements Serializable {
     @Column(name = "WHO_IS_GETTER")
     private String whoisGetter;
 
-    @Column(name = "GEO_CODE")
-    private String geoCode;
+    @Column(name = "latitude")
+    private String latitude ;
 
+    @Column(name = "longitude")
+    private String longitude  ;
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "DELIVERY_STATUS")
-    private int deliveryStatus;
+    private DeliveryStatus deliveryStatus;
 
     @Column(name = "DELIVERY_TIME")
-    private int deliveryTime;
+    private LocalDateTime deliveryTime;
 
     @Column(name = "DELIVERY_DATE")
-    private int deliveryDate ;
+    private LocalDate deliveryDate ;
 
     @Column(name = "is_active")
     private boolean isActive;
+
+    @Column(name = "is_default")
+    private boolean isDefault;
+
 }
