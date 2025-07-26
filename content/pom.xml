@@ -87,6 +87,14 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- sanity of content -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.17.2</version> <!-- نسخه جدید -->
+        </dependency>
+
+
     </dependencies>
 
     <build>
