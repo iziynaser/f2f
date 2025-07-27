@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Getter
@@ -17,6 +19,9 @@ public class OrderDTO {
     private String orderCode; // کد سفارش برای نمایش
     private Long customerId;
     private LocalDateTime orderDate;
+
+    private LocalDate deliveryDate;
+    private LocalTime deliveryTime;
 
     private OrderStatusEnum currentStatus; // بهتر از String
     private Long totalAmount; // جمع کل سفارش، اگر نیاز به محاسبه هست

@@ -1,7 +1,7 @@
 package com.f2f.mapper;
 
+import com.f2f.dto.DeliveryDTO;
 import com.f2f.entity.Delivery;
-import com.f2f.entity.other.DeliveryDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

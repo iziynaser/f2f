@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/*
+ فقط برای مدیریت سفارش های ثبت شده استفاده می شود
+ */
 public interface OrderService {
 
     OrderDTO createOrder(OrderDTO orderDTO);

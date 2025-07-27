@@ -1,7 +1,7 @@
 package com.f2f.service;
 
+import com.f2f.dto.DeliveryDTO;
 import com.f2f.entity.Delivery;
-import com.f2f.entity.other.DeliveryDTO;
 import com.f2f.enums.DeliveryStatus;
 import com.f2f.mapper.DeliveryMapper;
 import com.f2f.repository.DeliveryRepository;

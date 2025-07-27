@@ -1,6 +1,6 @@
 package com.f2f.controller;
 
-import com.f2f.entity.other.DeliveryDTO;
+import com.f2f.dto.DeliveryDTO;
 import com.f2f.service.DeliveryService;
 import com.f2f.service.OstanService;
 import com.f2f.service.ShahrService;

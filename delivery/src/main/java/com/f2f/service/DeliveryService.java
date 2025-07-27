@@ -1,7 +1,7 @@
 package com.f2f.service;
 
 
-import com.f2f.entity.other.DeliveryDTO;
+import com.f2f.dto.DeliveryDTO;
 
 import java.util.List;
 
