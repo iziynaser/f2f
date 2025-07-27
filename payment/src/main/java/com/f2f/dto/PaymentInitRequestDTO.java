@@ -1,5 +1,6 @@
 package com.f2f.dto;
 
+import com.f2f.enums.PaymentGatewayType;
 import com.f2f.gateway.PaymentGateway;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +10,6 @@ import lombok.Setter;
 public class PaymentInitRequestDTO {
     private Long orderId;
     private Long amount;
-    private PaymentGateway gateway;
+    private PaymentGatewayType gateway;
     private String callbackUrl;
 }

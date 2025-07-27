@@ -3,6 +3,7 @@ package com.f2f.entity;
 import com.f2f.dbc.entity.BaseEntity;
 import com.f2f.enums.PaymentGatewayType;
 import com.f2f.enums.PaymentStatus;
+import com.f2f.enums.PaymentType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

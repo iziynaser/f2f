@@ -1,8 +1,8 @@
 package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.enums.PaymentGatewayType;
 import com.f2f.enums.PaymentStatus;
-import com.f2f.gateway.PaymentGateway;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -21,7 +21,7 @@ public class PaymentRequest extends BaseEntity {
     private Long orderId; // یا referenceId از سیستم سفارش
 
     @Enumerated(EnumType.STRING)
-    private PaymentGateway gateway;
+    private PaymentGatewayType gateway;
 
     @Enumerated(EnumType.STRING)
     private PaymentStatus status;

@@ -1,7 +1,7 @@
 package com.f2f.dto;
 
-import com.f2f.entity.PaymentType;
 import com.f2f.enums.PaymentGatewayType;
+import com.f2f.enums.PaymentType;
 import lombok.Getter;
 import lombok.Setter;
 
