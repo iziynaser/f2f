@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -78,7 +79,27 @@
         </repository>
     </repositories>
 
+    <!-- مدیریت مرکزی نسخه‌ها -->
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>org.hibernate.orm</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>6.4.1.Final</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vladmihalcea</groupId>
+                <artifactId>hibernate-types-60</artifactId>
+                <version>2.21.1</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
+        <!-- فقط وابستگی‌هایی که روت به آن‌ها نیاز دارد اینجا ذکر شود -->
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -98,7 +119,6 @@
             <artifactId>captcha</artifactId>
             <version>0.7</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -115,11 +135,13 @@
                 <artifactId>maven-install-plugin</artifactId>
                 <version>3.1.1</version>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>3.1.1</version>
             </plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -132,6 +154,7 @@
                     </excludes>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
