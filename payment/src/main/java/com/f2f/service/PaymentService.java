@@ -1,74 +1,124 @@
 package com.f2f.service;
 
-import com.f2f.dto.*;
+
+import com.f2f.dto.PaymentInitRequestDTO;
+import com.f2f.dto.PaymentInitResponseDTO;
+import com.f2f.dto.PaymentVerifyRequestDTO;
+import com.f2f.dto.PaymentVerifyResponseDTO;
 import com.f2f.entity.PaymentRequest;
-import com.f2f.entity.PaymentTransaction;
+import com.f2f.enums.PaymentGatewayType;
 import com.f2f.enums.PaymentStatus;
-import com.f2f.gateway.PaymentGateway;
 import com.f2f.port.PaymentGatewayPort;
 import com.f2f.repository.PaymentRequestRepository;
-import com.f2f.repository.PaymentTransactionRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class PaymentService {
 
     private final PaymentRequestRepository repository;
-    private final Map<PaymentGateway, PaymentGatewayPort> gatewayMap;
+    private final Map<PaymentGatewayType, PaymentGatewayPort> gatewayMap;
     private final PaymentTransactionService transactionService;
 
+    private static final int AUTHORITY_EXPIRATION_MINUTES = 30;
+
+    /**
+     * شروع پرداخت (initiate)
+     * @param dto داده‌های درخواست پرداخت
+     * @param userId شناسه کاربر درخواست‌کننده
+     * @return پاسخ شروع پرداخت شامل redirectUrl و authority
+     */
     @Transactional
-    public PaymentInitResponseDTO initiatePayment(PaymentInitRequestDTO dto) {
-        // ایجاد PaymentRequest
+    public PaymentInitResponseDTO initiatePayment(PaymentInitRequestDTO dto, Long userId) {
+        String securityToken = UUID.randomUUID().toString();
+
         PaymentRequest req = new PaymentRequest();
         req.setAmount(dto.getAmount());
         req.setOrderId(dto.getOrderId());
         req.setGateway(dto.getGateway());
-        req.setCallbackUrl(dto.getCallbackUrl());
         req.setStatus(PaymentStatus.INITIATED);
         req.setRequestTime(LocalDateTime.now());
+        req.setSecurityToken(securityToken);
+        req.setUserId(userId);
+
+        String secureCallbackUrl = appendTokenToCallbackUrl(dto.getCallbackUrl(), securityToken);
+        req.setCallbackUrl(secureCallbackUrl);
 
         repository.save(req);
 
-        // فراخوانی درگاه پرداخت و گرفتن Authority + Redirect URL
         PaymentInitResponseDTO response = gatewayMap.get(dto.getGateway()).initiate(req);
 
-        // ذخیره authorityCode دریافتی از درگاه در PaymentRequest
         req.setAuthorityCode(response.getAuthority());
         repository.save(req);
 
         return response;
     }
 
+    /**
+     * تایید پرداخت (verify)
+     * @param dto داده‌های درخواست تایید (authority و callbackUrl)
+     * @param userId شناسه کاربر تاییدکننده
+     * @return نتیجه تایید پرداخت
+     */
     @Transactional
-    public PaymentVerifyResponseDTO verifyPayment(PaymentVerifyRequestDTO dto) {
-        // یافتن PaymentRequest بر اساس authorityCode
+    public PaymentVerifyResponseDTO verifyPayment(PaymentVerifyRequestDTO dto, Long userId) {
         PaymentRequest req = repository.findByAuthorityCode(dto.getAuthority())
-                .orElseThrow(() -> new RuntimeException("Payment not found"));
+                .filter(r -> r.getStatus() == PaymentStatus.INITIATED || r.getStatus() == PaymentStatus.CREATED)
+                .filter(r -> r.getRequestTime().isAfter(LocalDateTime.now().minusMinutes(AUTHORITY_EXPIRATION_MINUTES)))
+                .orElseThrow(() -> new RuntimeException("Invalid or expired authority code"));
 
-        // فراخوانی verify از درگاه مربوطه
-        PaymentVerifyResponseDTO result = gatewayMap.get(dto.getGateway())
+        if (!req.getUserId().equals(userId)) {
+            throw new SecurityException("User does not own this payment request");
+        }
+
+        String callbackToken = extractTokenFromUrl(dto.getCallbackUrl());
+        if (!req.getSecurityToken().equals(callbackToken)) {
+            throw new SecurityException("Invalid callback token – possible forgery.");
+        }
+
+        PaymentVerifyResponseDTO result = gatewayMap.get(req.getGateway())
                 .verify(dto.getAuthority(), req.getAmount());
 
-        // بروزرسانی وضعیت PaymentRequest
         req.setStatus(result.isSuccess() ? PaymentStatus.SUCCESS : PaymentStatus.FAILED);
         req.setTrackingCode(result.getTrackingCode());
         req.setPaymentTime(LocalDateTime.now());
         repository.save(req);
 
-        // ایجاد PaymentTransaction جدید
-        PaymentTransaction tx = transactionService.createTransaction(req, result);
+        transactionService.createTransaction(req, result);
 
-        // ممکن است بخواهی در نتیجه نیز اطلاعات تراکنش را برگردانی (اختیاری)
         return result;
+    }
+
+    // متدهای کمکی:
+
+    private String appendTokenToCallbackUrl(String callbackUrl, String token) {
+        if (callbackUrl.contains("?")) {
+            return callbackUrl + "&token=" + token;
+        } else {
+            return callbackUrl + "?token=" + token;
+        }
+    }
+
+    private String extractTokenFromUrl(String callbackUrl) {
+        try {
+            String[] parts = callbackUrl.split("\\?");
+            if (parts.length < 2) return null;
+            String[] params = parts[1].split("&");
+            for (String param : params) {
+                String[] keyValue = param.split("=");
+                if (keyValue.length == 2 && keyValue[0].equals("token")) {
+                    return keyValue[1];
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to extract token from callback URL", e);
+        }
+        return null;
     }
 }

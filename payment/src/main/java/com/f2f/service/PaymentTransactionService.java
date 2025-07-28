@@ -1,19 +1,19 @@
 package com.f2f.service;
 
-import com.f2f.dto.PaymentVerifyResponseDTO;
+import com.f2f.dto.*;
 import com.f2f.entity.PaymentRequest;
 import com.f2f.entity.PaymentTransaction;
+import com.f2f.enums.PaymentGatewayType;
 import com.f2f.enums.PaymentStatus;
 import com.f2f.enums.PaymentType;
 import com.f2f.repository.PaymentTransactionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,8 +29,8 @@ public class PaymentTransactionService {
         PaymentTransaction tx = new PaymentTransaction();
         tx.setOrderId(req.getOrderId());
         tx.setAmount(req.getAmount());
-        tx.setCurrency("IRR"); // می‌توانید configurable کنید
-        tx.setPaymentType(PaymentType.ONLINE); // اگر لازم بود از req بیاید
+        tx.setCurrency("IRR"); // قابل کانفیگ کردن
+        tx.setPaymentType(PaymentType.ONLINE); // در صورت نیاز از req تغییر بده
         tx.setGatewayType(req.getGateway());
         tx.setStatus(dto.isSuccess() ? PaymentStatus.SUCCESS : PaymentStatus.FAILED);
         tx.setTransactionId(dto.getTrackingCode());
@@ -43,10 +43,9 @@ public class PaymentTransactionService {
      * دریافت تراکنش‌های یک سفارش.
      */
     public List<PaymentTransaction> findByOrderId(Long orderId) {
-        return transactionRepository.findAll()
-                .stream()
-                .filter(t -> t.getOrderId().equals(orderId))
-                .toList();
+        return transactionRepository.findAll().stream()
+                .filter(t -> Objects.equals(t.getOrderId(), orderId))
+                .collect(Collectors.toList());
     }
 
     /**
@@ -55,13 +54,13 @@ public class PaymentTransactionService {
     public BigDecimal calculateRevenue(LocalDateTime from, LocalDateTime to) {
         return transactionRepository.findAll().stream()
                 .filter(t -> t.getStatus() == PaymentStatus.SUCCESS)
-                .filter(t -> t.getCreatedAt().isAfter(from) && t.getCreatedAt().isBefore(to))
+                .filter(t -> !t.getCreatedAt().isBefore(from) && !t.getCreatedAt().isAfter(to))
                 .map(t -> BigDecimal.valueOf(t.getAmount()))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     /**
-     * گزارش آماری: تعداد و مجموع تراکنش‌های موفق، ناموفق و ...
+     * گزارش آماری: تعداد تراکنش‌ها بر اساس وضعیت.
      */
     public Map<PaymentStatus, Long> countByStatus() {
         return transactionRepository.findAll().stream()
@@ -69,12 +68,15 @@ public class PaymentTransactionService {
     }
 
     /**
-     * دریافت همه تراکنش‌ها (برای گزارش کامل یا مدیریت).
+     * دریافت همه تراکنش‌ها.
      */
     public List<PaymentTransaction> getAllTransactions() {
         return transactionRepository.findAll();
     }
 
+    /**
+     * یافتن تراکنش بر اساس شناسه تراکنش.
+     */
     public Optional<PaymentTransaction> findByTransactionId(String transactionId) {
         return transactionRepository.findAll().stream()
                 .filter(tx -> transactionId.equals(tx.getTransactionId()))

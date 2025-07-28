@@ -21,11 +21,13 @@ public class PaymentController {
 
     @PostMapping("/initiate")
     public ResponseEntity<PaymentInitResponseDTO> initiate(@RequestBody PaymentInitRequestDTO dto) {
-        return ResponseEntity.ok(paymentService.initiatePayment(dto));
+        Long userId  = new Long("1");
+        return ResponseEntity.ok(paymentService.initiatePayment(dto,userId));
     }
 
     @PostMapping("/verify")
     public ResponseEntity<PaymentVerifyResponseDTO> verify(@RequestBody PaymentVerifyRequestDTO dto) {
-        return ResponseEntity.ok(paymentService.verifyPayment(dto));
+        Long userId  = new Long("1");
+        return ResponseEntity.ok(paymentService.verifyPayment(dto,userId));
     }
 }

@@ -5,5 +5,6 @@ public enum PaymentGatewayType {
     PAYIR,
     NEXTPAY,
     PAYPAL,
-    CASH_ON_DELIVERY
+    CASH_ON_DELIVERY,
+    MOCK
 }

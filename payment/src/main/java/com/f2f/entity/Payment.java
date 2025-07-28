@@ -1,6 +1,7 @@
 package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.enums.PaymentType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,9 +23,10 @@ public class Payment extends BaseEntity implements Serializable {
     @Column(name = "COMMENT")
     private String comment;
 
-    @OneToOne
-    @JoinColumn(name = "PAYMENT_TYPE_ID")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "PAYMENT_TYPE", nullable = false)
     private PaymentType paymentType;
+
 
     public Payment() {
     }

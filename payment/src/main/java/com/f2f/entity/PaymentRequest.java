@@ -3,10 +3,7 @@ package com.f2f.entity;
 import com.f2f.dbc.entity.BaseEntity;
 import com.f2f.enums.PaymentGatewayType;
 import com.f2f.enums.PaymentStatus;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +14,8 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "PAYMENT_REQUEST")
 public class PaymentRequest extends BaseEntity {
+
+    private Long userId;
 
     private Long orderId; // یا referenceId از سیستم سفارش
 
@@ -36,4 +35,8 @@ public class PaymentRequest extends BaseEntity {
 
     private LocalDateTime requestTime;
     private LocalDateTime paymentTime;
+
+    @Column(name = "SECURITY_TOKEN")
+    private String securityToken;
+
 }

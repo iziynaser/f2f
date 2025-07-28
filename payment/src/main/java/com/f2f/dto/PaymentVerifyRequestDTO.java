@@ -9,4 +9,5 @@ import lombok.Setter;
 public class PaymentVerifyRequestDTO {
     private String authority;
     private PaymentGateway gateway;
+    private String callbackUrl;
 }

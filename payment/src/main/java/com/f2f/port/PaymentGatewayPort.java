@@ -7,4 +7,5 @@ import com.f2f.entity.PaymentRequest;
 public interface PaymentGatewayPort {
     PaymentInitResponseDTO initiate(PaymentRequest request);
     PaymentVerifyResponseDTO verify(String authority, Long amount);
+    public String getGatewayName();
 }
