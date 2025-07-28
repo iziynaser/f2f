@@ -1,6 +1,5 @@
 package com.f2f.dbc.entity;
 
-import com.vladmihalcea.hibernate.type.array.StringArrayType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
