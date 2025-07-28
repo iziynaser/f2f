@@ -1,12 +1,17 @@
 package com.f2f.gateway;
 
+import com.f2f.config.GatewayRateLimiter;
 import com.f2f.config.ZarinpalProperties;
 import com.f2f.dto.PaymentInitResponseDTO;
 import com.f2f.dto.PaymentVerifyResponseDTO;
 import com.f2f.dto.zarinpal.ZarinpalInitResponse;
 import com.f2f.dto.zarinpal.ZarinpalVerifyResponse;
+import com.f2f.entity.PaymentGatewayConfig;
 import com.f2f.entity.PaymentRequest;
+import com.f2f.enums.PaymentGatewayType;
 import com.f2f.port.PaymentGatewayPort;
+import com.f2f.service.PaymentGatewayConfigService;
+import io.github.bucket4j.Bucket;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -21,9 +26,9 @@ import java.util.Map;
 @Component
 @RequiredArgsConstructor
 public class ZarinpalGateway implements PaymentGatewayPort {
-
+    private final GatewayRateLimiter rateLimiter;
     private final RestTemplate restTemplate = new RestTemplate();
-    private final ZarinpalProperties properties;
+    private final PaymentGatewayConfigService configService;
 
     private static final String SANDBOX_REQUEST_URL = "https://sandbox.zarinpal.com/pg/rest/WebGate/PaymentRequest.json";
     private static final String SANDBOX_VERIFY_URL = "https://sandbox.zarinpal.com/pg/rest/WebGate/PaymentVerification.json";
@@ -33,12 +38,21 @@ public class ZarinpalGateway implements PaymentGatewayPort {
 
     @Override
     public PaymentInitResponseDTO initiate(PaymentRequest request) {
-        String url = properties.isSandbox() ? SANDBOX_REQUEST_URL : LIVE_REQUEST_URL;
+
+        Bucket bucket = rateLimiter.resolveBucket("ZARINPAL");
+        if (!bucket.tryConsume(1)) {
+            throw new RuntimeException("Rate limit exceeded for ZARINPAL gateway.");
+        }
+
+        // دریافت تنظیمات از DB
+        PaymentGatewayConfig config = configService.getConfig(PaymentGatewayType.ZARINPAL);
+
+        String url = config.isSandbox() ? SANDBOX_REQUEST_URL : LIVE_REQUEST_URL;
 
         Map<String, Object> payload = new HashMap<>();
-        payload.put("merchant_id", properties.getMerchantId());
+        payload.put("merchant_id", config.getMerchantId());
         payload.put("amount", request.getAmount());
-        payload.put("callback_url", request.getCallbackUrl());
+        payload.put("callback_url", config.getCallbackUrl());
         payload.put("description", "پرداخت سفارش #" + request.getOrderId());
 
         HttpHeaders headers = new HttpHeaders();
@@ -60,10 +74,19 @@ public class ZarinpalGateway implements PaymentGatewayPort {
 
     @Override
     public PaymentVerifyResponseDTO verify(String authority, Long amount) {
-        String url = properties.isSandbox() ? SANDBOX_VERIFY_URL : LIVE_VERIFY_URL;
+
+        Bucket bucket = rateLimiter.resolveBucket("ZARINPAL");
+        if (!bucket.tryConsume(1)) {
+            throw new RuntimeException("Rate limit exceeded for ZARINPAL gateway.");
+        }
+
+        // دریافت تنظیمات از DB
+        PaymentGatewayConfig config = configService.getConfig(PaymentGatewayType.ZARINPAL);
+
+        String url = config.isSandbox() ? SANDBOX_VERIFY_URL : LIVE_VERIFY_URL;
 
         Map<String, Object> payload = new HashMap<>();
-        payload.put("merchant_id", properties.getMerchantId());
+        payload.put("merchant_id", config.getMerchantId());
         payload.put("amount", amount);
         payload.put("authority", authority);
 
@@ -81,5 +104,10 @@ public class ZarinpalGateway implements PaymentGatewayPort {
                 data.getRefId().toString(),
                 "پرداخت موفق با کد پیگیری: " + data.getRefId()
         );
+    }
+
+    @Override
+    public String getGatewayName() {
+        return PaymentGatewayType.ZARINPAL.name();
     }
 }
