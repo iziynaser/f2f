@@ -1,7 +1,7 @@
 package com.f2f.service;
 
 import com.f2f.dto.ProductColorDTO;
-import com.f2f.dao.ProductColorDao;
+import com.f2f.repository.ProductColorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,10 +11,10 @@ import java.util.List;
 public class ProductColorService {
 
     @Autowired
-    ProductColorDao productColorDao ;
+    ProductColorRepository productColorRepository;
 
     public List<ProductColorDTO> getListOfProductColors(Long productId){
-        List<ProductColorDTO> productColorList = productColorDao.getListOfProductColors(productId);
+        List<ProductColorDTO> productColorList = productColorRepository.getListOfProductColors(productId);
         return productColorList ;
     }
 }

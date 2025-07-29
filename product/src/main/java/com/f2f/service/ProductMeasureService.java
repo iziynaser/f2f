@@ -1,10 +1,10 @@
 package com.f2f.service;
 
-import com.f2f.dao.ProductDao;
-import com.f2f.dao.ProductMeasureDao;
 import com.f2f.dbc.domain.EntityNotFoundException;
 import com.f2f.entity.Product;
 import com.f2f.entity.ProductMeasure;
+import com.f2f.repository.ProductMeasureRepository;
+import com.f2f.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
@@ -16,13 +16,13 @@ import java.util.Optional;
 public class ProductMeasureService {
 
     @Autowired
-    ProductMeasureDao productMeasureDao;
+    ProductMeasureRepository productMeasureRepository;
 
     @Autowired
-    ProductDao productDao;
+    ProductRepository productDao;
 
     public ProductMeasure save(ProductMeasure productMeasure){
-        ProductMeasure feature = productMeasureDao.save(productMeasure);
+        ProductMeasure feature = productMeasureRepository.save(productMeasure);
         return feature;
     }
 
@@ -31,7 +31,7 @@ public class ProductMeasureService {
         Optional<Product> optionalProduct = productDao.findById(Long.valueOf(productId));
         Product product = optionalProduct.orElseThrow(EntityNotFoundException::new);
 
-        pm = productMeasureDao.findAllByProduct(product);
+        pm = productMeasureRepository.findAllByProduct(product);
 
         return pm;
     }

@@ -1,7 +1,7 @@
 package com.f2f.service;
 
-import com.f2f.dao.ProductTypeDao;
 import com.f2f.entity.ProductType;
+import com.f2f.repository.ProductTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,19 +11,19 @@ import java.util.List;
 public class ProductTypeService {
 
     @Autowired
-    ProductTypeDao productTypeDao;
+    ProductTypeRepository productTypeRepository;
 
     public List<ProductType> findAll(){
-        List<ProductType> result = (List<ProductType>) productTypeDao.findAll();
+        List<ProductType> result = (List<ProductType>) productTypeRepository.findAll();
         return result;
     }
 
     public ProductType save(ProductType m) {
-        ProductType savedProductType = productTypeDao.save(m);
+        ProductType savedProductType = productTypeRepository.save(m);
         return savedProductType;
     }
 
     public void delete(ProductType m) {
-        productTypeDao.delete(m);
+        productTypeRepository.delete(m);
     }
 }

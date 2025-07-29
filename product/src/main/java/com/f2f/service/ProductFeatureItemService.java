@@ -1,8 +1,8 @@
 package com.f2f.service;
 
-import com.f2f.dao.ProductFeatureItemDao;
 import com.f2f.entity.ProductFeatureGroup;
 import com.f2f.entity.ProductFeatureItem;
+import com.f2f.repository.ProductFeatureItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,12 +12,12 @@ import java.util.List;
 public class ProductFeatureItemService {
 
     @Autowired
-    ProductFeatureItemDao productFeatureItemDao;
+    ProductFeatureItemRepository productFeatureItemRepository;
 
     public ProductFeatureItem save(ProductFeatureItem pfi, ProductFeatureGroup pfg) {
-        String featureItemName = productFeatureItemDao.findProductFeatureItemsByName(pfi.getName(),pfg);
+        String featureItemName = productFeatureItemRepository.findProductFeatureItemsByName(pfi.getName(),pfg);
         if(featureItemName==null) {
-            ProductFeatureItem result = productFeatureItemDao.save(pfi);
+            ProductFeatureItem result = productFeatureItemRepository.save(pfi);
             return result;
         }else
             return pfi;
@@ -28,7 +28,7 @@ public class ProductFeatureItemService {
 //    }
 
     public List<ProductFeatureItem> loadProductFeatureItems(ProductFeatureGroup productFeatureGroup){
-        List<ProductFeatureItem> productFeatureItemList = productFeatureItemDao.loadProductFeatureItems(productFeatureGroup);
+        List<ProductFeatureItem> productFeatureItemList = productFeatureItemRepository.loadProductFeatureItems(productFeatureGroup);
         return productFeatureItemList;
     }
 }

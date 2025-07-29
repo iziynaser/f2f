@@ -1,7 +1,7 @@
 package com.f2f.service;
 
-import com.f2f.dao.RelatedProductsDao;
 import com.f2f.dto.RelatedProductsDTO;
+import com.f2f.repository.RelatedProductsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +12,7 @@ import java.util.List;
 public class RelatedProductsService {
 
     @Autowired
-    RelatedProductsDao relatedProductsDao;
+    RelatedProductsRepository relatedProductsRepository;
 
     public List<RelatedProductsDTO> listOfRelatedProducts(Long productId) {
         //return relatedProductsDao.listOfRelatedProducts(productId);

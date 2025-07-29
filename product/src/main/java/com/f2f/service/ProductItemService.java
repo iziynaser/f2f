@@ -1,7 +1,7 @@
 package com.f2f.service;
 
-import com.f2f.dao.ProductItemRepository;
 import com.f2f.entity.ProductItem;
+import com.f2f.repository.ProductItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;

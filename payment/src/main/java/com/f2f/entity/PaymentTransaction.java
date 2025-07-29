@@ -37,6 +37,18 @@ public class PaymentTransaction extends BaseEntity {
     @Column(nullable = false)
     private PaymentStatus status; // CREATED, SUCCESS, FAILED, PENDING
 
+    @Column(name = "SETTLED")
+    private boolean settled; // true if money settled to merchant
+
+    @Column(name = "SETTLEMENT_DATE")
+    private LocalDateTime settlementDate;
+
+    @Column(name = "REFUNDED")
+    private boolean refunded;
+
+    @Column(name = "REFUND_REASON")
+    private String refundReason;
+
     private String transactionId; // شناسه تراکنش در درگاه
 
     private LocalDateTime createdAt;

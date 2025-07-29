@@ -1,9 +1,9 @@
 package com.f2f.adapter;
 
-import com.f2f.dao.ProductItemRepository;
 import com.f2f.dto.ProductItemDTO;
 import com.f2f.mapper.ProductItemMapper;
 import com.f2f.port.ProductItemPort;
+import com.f2f.repository.ProductItemRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

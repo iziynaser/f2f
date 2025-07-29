@@ -1,9 +1,9 @@
 package com.f2f.service;
 
-import com.f2f.dao.ProductItemRepository;
 import com.f2f.dto.PriceHistoryDTO;
 import com.f2f.entity.ProductItem;
 import com.f2f.entity.ProductPrice;
+import com.f2f.repository.ProductItemRepository;
 
 import java.util.ArrayList;
 import java.util.List;

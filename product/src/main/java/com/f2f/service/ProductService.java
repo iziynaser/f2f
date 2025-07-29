@@ -9,12 +9,12 @@ import com.f2f.entity.Product;
 import com.f2f.entity.ProductItem;
 import com.f2f.mapper.ProductMapper;
 import com.f2f.port.*;
-import jakarta.persistence.Tuple;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.f2f.repository.ProductFeatureGroupRepository;
+import com.f2f.repository.ProductItemRepository;
+import com.f2f.repository.ProductRepository;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,12 +23,11 @@ import java.util.stream.Collectors;
 @Component
 public class ProductService {
 
-    private final ProductDao productDao;
     private final CommentLikeSummaryService likesSummaryService;
     private final ImageAccessPort imageAccessService;
     private final ProductColorService productColorService;
     private final ProductItemService productItemService;
-    private final ProductFeatureGroupDao productFeatureGroupDao;
+    private final ProductFeatureGroupRepository productFeatureGroupRepository;
     private final ProductRepository productRepository;
     private final ProductItemRepository productItemRepository;
     private final ProductMapper productMapper;
@@ -39,20 +38,19 @@ public class ProductService {
     private final BrandPort brandPort;
     private final ProductCategoriesPort productCategoriesPort;
 
-    public ProductService(ProductDao productDao, ProductRepository productRepository,
+    public ProductService( ProductRepository productRepository,
                           ProductItemRepository productItemRepository,
                           ProductMapper productMapper,
                           ImageAccessPort imageAccessService,
                           ProductColorService productColorService,
                           CommentLikeSummaryService likesSummaryService,
                           ProductItemService productItemService,
-                          ProductFeatureGroupDao productFeatureGroupDao,
+                          ProductFeatureGroupRepository productFeatureGroupRepository,
                           PriceCalculationPort priceCalculationPort,
                           InventoryPort inventoryPort,
                           DiscountPort discountPort,
                           BrandPort brandPort,
                           ProductCategoriesPort productCategoriesPort) {
-        this.productDao = productDao;
         this.productRepository = productRepository;
         this.productItemRepository = productItemRepository;
         this.productMapper = productMapper;
@@ -60,7 +58,7 @@ public class ProductService {
         this.productColorService = productColorService;
         this.likesSummaryService = likesSummaryService;
         this.productItemService = productItemService;
-        this.productFeatureGroupDao = productFeatureGroupDao;
+        this.productFeatureGroupRepository = productFeatureGroupRepository;
         this.priceCalculationPort = priceCalculationPort;
         this.inventoryPort = inventoryPort;
         this.discountPort = discountPort;
@@ -69,11 +67,11 @@ public class ProductService {
     }
 
     public List<String> findAllByNameContains(String name) {
-        return productDao.findAllByNameContains(name);
+        return productRepository.findAllByNameContains(name);
     }
 
     public List<ProductDTO> findAllAvailableProducts() {
-        List<ProductInfo> allAvailableProducts = productDao.findAllAvailableProducts();
+        List<ProductInfo> allAvailableProducts = productRepository.findAllAvailableProducts();
         List<ProductDTO> productDTOList = new ArrayList<>();
 
         allAvailableProducts.forEach(product -> {
@@ -193,24 +191,24 @@ public class ProductService {
     }
 
     public List<FeaturesDTO> getListOfFeatures(Long productId) {
-        return productFeatureGroupDao.getListOfFeatures(productId);
+        return productFeatureGroupRepository.getListOfFeatures(productId);
     }
 
     public Product findProductById(Long id) {
-        return productDao.findById(id).orElseThrow(EntityNotFoundException::new);
+        return productRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
     public Product findProductMainPartWithId(Long productId) {
-        return productDao.findById(productId).orElseThrow(EntityNotFoundException::new);
+        return productRepository.findById(productId).orElseThrow(EntityNotFoundException::new);
     }
 
     public Long findCommentTargetNo(Long productId) {
-        Product p = productDao.findById(productId).orElseThrow(EntityNotFoundException::new);
+        Product p = productRepository.findById(productId).orElseThrow(EntityNotFoundException::new);
         return 0L;
     }
 
     public List<NameValueDTO> getNameValuesOfProducts() {
-        return productDao.getNameValuesOfProducts();
+        return productRepository.getNameValuesOfProducts();
     }
 
     public ProductItem findMainItemForProduct(Long productId) {

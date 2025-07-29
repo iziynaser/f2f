@@ -1,7 +1,7 @@
 package com.f2f.controller;
 
-import com.f2f.dao.PImageRepository;
 import com.f2f.entity.ProductImage;
+import com.f2f.repository.PImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
