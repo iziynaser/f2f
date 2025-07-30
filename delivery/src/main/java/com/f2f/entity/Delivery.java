@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @Table(name = "DELIVERY")
 public class Delivery extends BaseEntity implements Serializable {
 
+    @Column(name = "user_acc_id")
     private Long userAccountId;
 
     @ManyToOne(fetch = FetchType.LAZY)

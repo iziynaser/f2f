@@ -5,7 +5,6 @@ import com.f2f.service.DeliveryService;
 import com.f2f.service.OstanService;
 import com.f2f.service.ShahrService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,17 +32,17 @@ public class DeliveryController {
         return ResponseEntity.ok(updated);
     }
 
-    @DeleteMapping("/{id}/user/{userId}")
-    public ResponseEntity<Void> deleteDelivery(@PathVariable Long id,
+    @DeleteMapping("/{deliveryId}/user/{userId}")
+    public ResponseEntity<Void> deleteDelivery(@PathVariable Long deliveryId,
                                                @PathVariable Long userId) {
-        deliveryService.deleteDelivery(id, userId);
+        deliveryService.deleteDelivery(deliveryId, userId);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/{id}/user/{userId}")
-    public ResponseEntity<DeliveryDTO> getDelivery(@PathVariable Long id,
+    @GetMapping("/{deliveryId}/user/{userId}")
+    public ResponseEntity<DeliveryDTO> getDelivery(@PathVariable Long deliveryId,
                                                    @PathVariable Long userId) {
-        DeliveryDTO dto = deliveryService.getDeliveryById(id, userId);
+        DeliveryDTO dto = deliveryService.getDeliveryById(deliveryId, userId);
         return ResponseEntity.ok(dto);
     }
 
@@ -54,11 +53,17 @@ public class DeliveryController {
         return ResponseEntity.ok(deliveries);
     }
 
-    @PostMapping("/{id}/default/user/{userId}")
-    public ResponseEntity<Void> setDefaultDelivery(@PathVariable Long id,
+    @PostMapping("/{deliveryId}/default/user/{userId}")
+    public ResponseEntity<Void> setDefaultDelivery(@PathVariable Long deliveryId,
                                                    @PathVariable Long userId) {
-        deliveryService.setDefaultDelivery(id, userId);
+        deliveryService.setDefaultDelivery(deliveryId, userId);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/user/{userId}/default")
+    public ResponseEntity<DeliveryDTO> getDefaultDelivery(@PathVariable Long userId) {
+        DeliveryDTO defaultDelivery = deliveryService.getDefaultDeliveryForUser(userId);
+        return ResponseEntity.ok(defaultDelivery);
     }
 
 }

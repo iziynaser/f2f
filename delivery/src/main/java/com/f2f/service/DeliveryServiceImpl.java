@@ -29,6 +29,16 @@ public class DeliveryServiceImpl implements DeliveryService {
         delivery.setActive(true);
         delivery.setDeliveryStatus(DeliveryStatus.PENDING);
         //delivery.setCreatedAt(LocalDateTime.now());
+
+        //disable other default adress if exist
+        if(dto.isDefault()){
+            deliveryRepository.findDefaultDelivery(dto.getUserAccountId())
+                    .ifPresent(del -> {
+                        del.setDefault(false);
+                        deliveryRepository.save(del);
+                    });
+        }
+
         Delivery saved = deliveryRepository.save(delivery);
         return deliveryMapper.toDTO(saved);
     }
@@ -46,6 +56,16 @@ public class DeliveryServiceImpl implements DeliveryService {
         updated.setId(id);
         //updated.setCreatedAt(existing.getCreatedAt());
         updated.setActive(existing.isActive());
+
+        //
+        if(dto.isDefault()){
+            deliveryRepository.findDefaultDelivery(dto.getUserAccountId())
+                    .ifPresent(del -> {
+                        del.setDefault(false);
+                        deliveryRepository.save(del);
+                    });
+        }
+
         Delivery saved = deliveryRepository.save(updated);
         return deliveryMapper.toDTO(saved);
     }
@@ -72,18 +92,26 @@ public class DeliveryServiceImpl implements DeliveryService {
     }
 
     @Override
-    public void setDefaultDelivery(Long id, Long userAccountId) {
+    public void setDefaultDelivery(Long deliveryId, Long userAccountId) {
         // غیر فعال کردن آدرس پیش‌فرض قبلی
-        deliveryRepository.findFirstByUserAccountIdAndIsDefaultTrue(userAccountId)
+        deliveryRepository.findDefaultDelivery(userAccountId)
                 .ifPresent(delivery -> {
                     delivery.setDefault(false);
                     deliveryRepository.save(delivery);
                 });
 
         // فعال کردن آدرس جدید به عنوان پیش‌فرض
-        Delivery delivery = deliveryRepository.findByIdAndUserAccountId(id, userAccountId)
+        Delivery delivery = deliveryRepository.findByIdAndUserAccountId(deliveryId, userAccountId)
                 .orElseThrow(() -> new RuntimeException("Delivery not found"));
         delivery.setDefault(true);
         deliveryRepository.save(delivery);
     }
+
+    @Override
+    public DeliveryDTO getDefaultDeliveryForUser(Long userAccountId) {
+        Delivery delivery = deliveryRepository.findDefaultDelivery(userAccountId)
+                .orElseThrow(() -> new RuntimeException("Default delivery not found for user"));
+        return deliveryMapper.toDTO(delivery);
+    }
+
 }

@@ -18,4 +18,7 @@ public interface DeliveryService {
     List<DeliveryDTO> getAllDeliveriesForUser(Long userAccountId);
 
     void setDefaultDelivery(Long id, Long userAccountId);
+
+    DeliveryDTO getDefaultDeliveryForUser(Long userAccountId);
+
 }
