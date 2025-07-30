@@ -18,4 +18,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("select p.id as id ,p.name as name from Product  p")
     List<NameValueDTO> getNameValuesOfProducts();
+
+    @Query("select p.id as id, p.name as name, p.comment as comment, p.isVirtual as isVirtual, p.releaseDate as releaseDate, p.productCode as productCode, p.introDate as introDate, p.internalName as internalName, p.disContinuedDate as disContinuedDate from Product p where p.id = :id")
+    ProductInfo findProductItemInfoById(@Param("id") Long id);
+
+
 }

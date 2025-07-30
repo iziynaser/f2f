@@ -2,10 +2,12 @@ package com.f2f.controller;
 
 import com.f2f.dbc.dto.NameValueDTO;
 import com.f2f.dto.ProductDTO;
+import com.f2f.dto.ProductPriceResponseDTO;
 import com.f2f.entity.Product;
 import com.f2f.service.CommentLikeSummaryService;
 import com.f2f.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,7 +48,12 @@ public class ProductController {
             return product;
     }
 
-    @ResponseBody
+    @GetMapping("/{productId}")
+    public ProductDTO getProductItemInfoById(@RequestParam(required = true) Long productId) {
+        return productService.getProductItemInfoById(productId);
+    }
+
+        @ResponseBody
     @GetMapping("/nameValue")
     public List<NameValueDTO> getNameValuesOfProducts(){
         List<NameValueDTO> result = productService.getNameValuesOfProducts();

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@Table(name = "INVENTORYAUDIT")
+@Table(name = "INVENTORY_AUDIT")
 public class InventoryAudit   extends BaseEntity {
 
     private Long productItemId ;

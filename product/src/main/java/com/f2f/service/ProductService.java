@@ -72,114 +72,128 @@ public class ProductService {
 
     public List<ProductDTO> findAllAvailableProducts() {
         List<ProductInfo> allAvailableProducts = productRepository.findAllAvailableProducts();
-        List<ProductDTO> productDTOList = new ArrayList<>();
+        return allAvailableProducts.stream()
+                .map(this::convertToProductDTO)
+                .collect(Collectors.toList());
+    }
 
-        allAvailableProducts.forEach(product -> {
-            ProductDTO dto = new ProductDTO();
-            dto.setId(product.getId().toString());
-            dto.setName(product.getName());
-            dto.setComment(product.getComment());
-            dto.setIsVirtual(product.getIsVirtual());
-            dto.setReleaseDate(product.getReleaseDate());
-            dto.setProductCode(product.getProductCode());
-            dto.setIntroDate(product.getIntroDate());
-            dto.setInternalName(product.getInternalName());
-            dto.setDisContinuedDate(product.getDisContinuedDate());
+    private ProductDTO convertToProductDTO(ProductInfo product) {
+        ProductDTO dto = new ProductDTO();
 
-            dto.setCardImageUrl(
-                    imageAccessService.getCardImageUrlForProduct(product.getId())
-                            .orElse("/images/default-card.jpg")
-            );
+        setBasicProductInfo(dto, product);
+        setCardImageUrl(dto, product.getId());
+        setLikeSummary(dto);
+        setProductColors(dto, product.getId());
+        setPriceInventoryBrandCategory(dto, product);
 
-            try {
-                CommentLikeSummaryDTO likeSummary = likesSummaryService.getLikeSummaryByTargetId(Long.valueOf(dto.getId()));
-                if (likeSummary != null) {
-                    dto.setTotalLikes(likeSummary.getTotalLikes());
-                    dto.setTotalDislikes(likeSummary.getTotalDislikes());
-                }
-            } catch (Exception e) {
-                System.out.println("Like Summary Error: " + e.getMessage());
+        return dto;
+    }
+
+    private void setBasicProductInfo(ProductDTO dto, ProductInfo product) {
+        dto.setId(product.getId().toString());
+        dto.setName(product.getName());
+        dto.setComment(product.getComment());
+        dto.setIsVirtual(product.getIsVirtual());
+        dto.setReleaseDate(product.getReleaseDate());
+        dto.setProductCode(product.getProductCode());
+        dto.setIntroDate(product.getIntroDate());
+        dto.setInternalName(product.getInternalName());
+        dto.setDisContinuedDate(product.getDisContinuedDate());
+    }
+
+    private void setCardImageUrl(ProductDTO dto, Long productId) {
+        String url = imageAccessService.getCardImageUrlForProduct(productId)
+                .orElse("/images/default-card.jpg");
+        dto.setCardImageUrl(url);
+    }
+
+    private void setLikeSummary(ProductDTO dto) {
+        try {
+            CommentLikeSummaryDTO likeSummary = likesSummaryService.getLikeSummaryByTargetId(Long.valueOf(dto.getId()));
+            if (likeSummary != null) {
+                dto.setTotalLikes(likeSummary.getTotalLikes());
+                dto.setTotalDislikes(likeSummary.getTotalDislikes());
             }
+        } catch (Exception e) {
+            System.out.println("Like Summary Error: " + e.getMessage());
+        }
+    }
 
-            try {
-                List<ProductColorDTO> colorList = productColorService.getListOfProductColors(product.getId());
-                if (colorList != null && !colorList.isEmpty()) {
-                    List<ProductColorDTO> uniqueColors = colorList.stream()
-                            .filter(c -> c.getCode() != null && !c.getCode().isBlank())
-                            .collect(Collectors.collectingAndThen(
-                                    Collectors.toMap(ProductColorDTO::getCode, c -> c, (c1, c2) -> c1),
-                                    map -> new ArrayList<>(map.values())
-                            ));
-                    dto.setColors(uniqueColors);
-                } else {
-                    ProductColorDTO defaultColor = new ProductColorDTO();
-                    defaultColor.setName("پیش‌فرض");
-                    defaultColor.setCode("white");
-                    dto.setColors(List.of(defaultColor));
-                }
-            } catch (Exception e) {
-                ProductColorDTO defaultColor = new ProductColorDTO();
-                defaultColor.setName("پیش‌فرض");
-                defaultColor.setCode("white");
-                dto.setColors(List.of(defaultColor));
+    private void setProductColors(ProductDTO dto, Long productId) {
+        try {
+            List<ProductColorDTO> colorList = productColorService.getListOfProductColors(productId);
+            if (colorList != null && !colorList.isEmpty()) {
+                List<ProductColorDTO> uniqueColors = colorList.stream()
+                        .filter(c -> c.getCode() != null && !c.getCode().isBlank())
+                        .collect(Collectors.collectingAndThen(
+                                Collectors.toMap(ProductColorDTO::getCode, c -> c, (c1, c2) -> c1),
+                                map -> new ArrayList<>(map.values())
+                        ));
+                dto.setColors(uniqueColors);
+            } else {
+                setDefaultColor(dto);
             }
+        } catch (Exception e) {
+            setDefaultColor(dto);
+        }
+    }
 
-            try {
-                Optional<ProductItem> optionalItem = productItemService.findMainItemForProduct(product.getId());
-                if (optionalItem.isPresent()) {
-                    ProductItem mainItem = optionalItem.get();
-                    if (mainItem.getDefaultPrice() != null) {
-                        long basePrice = mainItem.getDefaultPrice();
+    private void setDefaultColor(ProductDTO dto) {
+        ProductColorDTO defaultColor = new ProductColorDTO();
+        defaultColor.setName("پیش‌فرض");
+        defaultColor.setCode("white");
+        dto.setColors(List.of(defaultColor));
+    }
 
-                        Context context = new Context();
-                        //context.setBrandId(mainItem.getBrand() != null ? mainItem.getBrand().getId() : null);
-                        context.setBrandId(mainItem.getBrandId());
-                        context.setGeoLocation("TEHRAN");
-                        context.setQuantity(1);
-                        context.setRequestDate(LocalDate.now());
-                        //context.//put("productId", productItem.getProduct().getId());
-                        context.setProductItemId(mainItem.getId());
+    private void setPriceInventoryBrandCategory(ProductDTO dto, ProductInfo product) {
+        try {
+            Optional<ProductItem> optionalItem = productItemService.findMainItemForProduct(product.getId());
+            if (optionalItem.isPresent()) {
+                ProductItem mainItem = optionalItem.get();
 
-                        PriceCalculationResult result = priceCalculationPort.calculateFinalPriceWithDetail(basePrice, context);
+                if (mainItem.getDefaultPrice() != null) {
+                    long basePrice = mainItem.getDefaultPrice();
 
-                        dto.setBasePrice(basePrice);
-                        dto.setFinalPrice(result.getFinalPrice());
-                        dto.setDiscountAmount(basePrice - result.getFinalPrice());
-                        dto.setAppliedRuleName(result.getAppliedRuleName());
+                    Context context = new Context();
+                    context.setBrandId(mainItem.getBrandId());
+                    context.setGeoLocation("TEHRAN");
+                    context.setQuantity(1);
+                    context.setRequestDate(LocalDate.now());
+                    context.setProductItemId(mainItem.getId());
 
-                        if (result.getNonFinancialDiscounts() != null) {
-                            dto.setNonFinancialBenefits(result.getNonFinancialDiscounts());
-                        }
-                    }
+                    PriceCalculationResult result = priceCalculationPort.calculateFinalPriceWithDetail(basePrice, context);
 
-                    int remainCount = inventoryPort.getRemainingCountByProductItemId(mainItem.getId());
-                    dto.setAvailable(remainCount > 0);
-                    dto.setQuantity(remainCount);
+                    dto.setBasePrice(basePrice);
+                    dto.setFinalPrice(result.getFinalPrice());
+                    dto.setDiscountAmount(basePrice - result.getFinalPrice());
+                    dto.setAppliedRuleName(result.getAppliedRuleName());
 
-                    //brand
-                    if (mainItem.getBrandId() != null) {
-                        brandPort.findById(mainItem.getBrandId())
-                                .ifPresent(dto::setBrand);
-                    }
-
-                    // دسته‌بندی اصلی (از ProductCategories)
-                    Optional<ProductCategoriesDTO> primaryCategory = productCategoriesPort.getPrimaryCategoryForProduct(product.getId());
-                    if(primaryCategory.isPresent()){
-                        ProductCategoriesDTO primaryCategoryDTO = primaryCategory.get();
-                        CategoryDTO categoryDTO = new CategoryDTO();
-                        categoryDTO.setName(primaryCategoryDTO.getCategoryName());
-                        categoryDTO.setCategoryCode(String.valueOf(primaryCategoryDTO.getCategoryId()));
-                        dto.setCategory(categoryDTO);
+                    if (result.getNonFinancialDiscounts() != null) {
+                        dto.setNonFinancialBenefits(result.getNonFinancialDiscounts());
                     }
                 }
-            } catch (Exception e) {
-                System.out.println("Price calculation error for product ID " + product.getId() + ": " + e.getMessage());
+
+                int remainCount = inventoryPort.getRemainingCountByProductItemId(mainItem.getId());
+                dto.setAvailable(remainCount > 0);
+                dto.setQuantity(remainCount);
+
+                if (mainItem.getBrandId() != null) {
+                    brandPort.findById(mainItem.getBrandId())
+                            .ifPresent(dto::setBrand);
+                }
+
+                Optional<ProductCategoriesDTO> primaryCategory = productCategoriesPort.getPrimaryCategoryForProduct(product.getId());
+                if (primaryCategory.isPresent()) {
+                    ProductCategoriesDTO primaryCategoryDTO = primaryCategory.get();
+                    CategoryDTO categoryDTO = new CategoryDTO();
+                    categoryDTO.setName(primaryCategoryDTO.getCategoryName());
+                    categoryDTO.setCategoryCode(String.valueOf(primaryCategoryDTO.getCategoryId()));
+                    dto.setCategory(categoryDTO);
+                }
             }
-
-            productDTOList.add(dto);
-        });
-
-        return productDTOList;
+        } catch (Exception e) {
+            System.out.println("Price calculation error for product ID " + product.getId() + ": " + e.getMessage());
+        }
     }
 
     public Product save(Product product) {
@@ -214,5 +228,13 @@ public class ProductService {
     public ProductItem findMainItemForProduct(Long productId) {
         Optional<ProductItem> p = productItemRepository.findFirstByProductIdOrderByIdAsc(productId);
         return p.get();
+    }
+
+    public ProductDTO getProductItemInfoById(Long productId) {
+        ProductInfo productInfo = productRepository.findProductItemInfoById(productId);
+        if (productInfo == null) {
+            return null; // یا می‌توانید Exception پرتاب کنید
+        }
+        return convertToProductDTO(productInfo);
     }
 }

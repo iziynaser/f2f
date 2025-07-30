@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "SUPPLIERPRODUCT")
+@Table(name = "SUPPLIER_PRODUCT")
 public class SupplierProduct  extends BaseEntity implements Serializable {
 
     private LocalDate availableFromDate;
