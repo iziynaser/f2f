@@ -1,6 +1,6 @@
 package com.f2f.service;
 
-import com.f2f.dao.PersonDao;
+
 import com.f2f.dbc.domain.EntityNotFoundException;
 import com.f2f.dto.OrderDTO;
 import com.f2f.dto.OrderItemDTO;
@@ -16,6 +16,7 @@ import com.f2f.port.ImageAccessPort;
 import com.f2f.port.ProductItemPort;
 import com.f2f.repository.OrderRepository;
 import com.f2f.repository.OrderStatusRepository;
+import com.f2f.repository.PersonRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,13 +30,13 @@ public class OrderServiceImpl implements OrderService {
     private final OrderMapper orderMapper;
     private final OrderRepository orderRepository;
     private final OrderStatusRepository orderStatusRepository;
-    private final PersonDao personRepository;
+    private final PersonRepository personRepository;
     private final ImageAccessPort imageAccessService;
 
     private final ProductItemPort productItemPort;
 
     public OrderServiceImpl(OrderMapper orderMapper, OrderRepository orderRepository,
-                            OrderStatusRepository orderStatusRepository, PersonDao personRepository, ImageAccessPort imageAccessService, ProductItemPort productItemPort) {
+                            OrderStatusRepository orderStatusRepository, PersonRepository personRepository, ImageAccessPort imageAccessService, ProductItemPort productItemPort) {
         this.orderMapper = orderMapper;
         this.orderRepository = orderRepository;
         this.orderStatusRepository = orderStatusRepository;

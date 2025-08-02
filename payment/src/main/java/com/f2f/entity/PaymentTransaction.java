@@ -8,13 +8,14 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "PAYMENT_TRANSACTION")
 @Getter
 @Setter
-public class PaymentTransaction extends BaseEntity {
+public class PaymentTransaction extends BaseEntity implements Serializable {
 
     @Column(nullable = false)
     private Long orderId;

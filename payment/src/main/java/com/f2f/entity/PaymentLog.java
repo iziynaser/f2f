@@ -6,13 +6,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "PAYMENT_LOG")
 @Getter
 @Setter
-public class PaymentLog extends BaseEntity {
+public class PaymentLog extends BaseEntity implements Serializable {
 
     @Column(name = "PAYMENT_REQUEST_ID", nullable = false)
     private Long paymentRequestId;

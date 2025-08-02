@@ -4,9 +4,7 @@ import com.f2f.dbc.entity.BaseEntity;
 
 import com.f2f.enums.OrderStatusEnum;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -18,6 +16,8 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "ORDERS")
 public class Order  extends BaseEntity implements Serializable {

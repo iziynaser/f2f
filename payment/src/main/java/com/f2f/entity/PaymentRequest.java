@@ -7,16 +7,19 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "PAYMENT_REQUEST")
-public class PaymentRequest extends BaseEntity {
+public class PaymentRequest extends BaseEntity implements Serializable {
 
+    @Column(name="user_acc_id")
     private Long userId;
 
+    @Column(name = "order_id")
     private Long orderId; // یا referenceId از سیستم سفارش
 
     @Enumerated(EnumType.STRING)
@@ -33,7 +36,10 @@ public class PaymentRequest extends BaseEntity {
 
     private String callbackUrl;
 
+    @Column(name = "request_time")
     private LocalDateTime requestTime;
+
+    @Column(name = "payment_time")
     private LocalDateTime paymentTime;
 
     @Column(name = "SECURITY_TOKEN")

@@ -1,20 +1,18 @@
 package com.f2f.reporting.order.service;
 
-import com.f2f.dao.PersonDao;
 import com.f2f.dto.OrderDTO;
 import com.f2f.mapper.OrderMapper;
 import com.f2f.reporting.order.dto.CustomerOrderCountReportDTO;
 import com.f2f.repository.OrderRepository;
 import com.f2f.repository.OrderStatusRepository;
+import com.f2f.repository.PersonRepository;
 import com.f2f.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public abstract class OrderReportServiceImpl implements OrderService {
@@ -32,7 +30,7 @@ public abstract class OrderReportServiceImpl implements OrderService {
     private OrderStatusRepository orderStatusRepository;
 
     @Autowired
-    private PersonDao personRepository;
+    private PersonRepository personRepository;
 
     @Override
     @Transactional(readOnly = true)
