@@ -63,10 +63,11 @@ public class CheckoutServiceImpl implements CheckoutService {
             throw new ResourceNotFoundException("address.not.found", new Object[]{request.getDeliveryInfo().getAddressId()});
         }
 
-        PersonDTO customer = personService.findById(request.getCustomerId());
-        if (customer == null) {
-            throw new ResourceNotFoundException("customer.not.found", new Object[]{request.getCustomerId()});
-        }
+//        PersonDTO customer = personService.findById(request.getCustomerId())
+//                .orElseThrow(()->new ResourceNotFoundException("customer.not.found", new Object[]{request.getCustomerId()}));
+        PersonEntity customerEntity = personService.findEntityById(request.getCustomerId())
+                .orElseThrow(() -> new ResourceNotFoundException("customer.not.found", new Object[]{request.getCustomerId()}));
+
 
         // بررسی تکراری بودن سفارش (مثلاً اگر orderCode قبلاً ایجاد شده)
         String orderCode = generateOrderCode(request.getCustomerId());
@@ -76,7 +77,7 @@ public class CheckoutServiceImpl implements CheckoutService {
         }
 
         Order orderEntity = Order.builder()
-                .customer(personMapper.toEntity(customer))
+                .customer(customerEntity)
                 .orderDate(LocalDateTime.now())
                 .deliveryDate(LocalDate.parse(request.getDeliveryInfo().getDeliveryDay()))
                 .deliveryTime(LocalTime.parse(request.getDeliveryInfo().getDeliveryTime()))

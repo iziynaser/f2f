@@ -7,6 +7,7 @@ import com.f2f.repository.PersonRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,6 +26,11 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
+    public Optional<PersonEntity> findEntityById(Long id) {
+        return personRepository.findById(id);
+    }
+
+    @Override
     public PersonDTO save(PersonDTO personDTO) {
         PersonEntity person = personMapper.toEntity(personDTO);
         person = personRepository.save(person);
@@ -32,10 +38,9 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public PersonDTO findById(Long id) {
+    public Optional<PersonDTO> findById(Long id) {
         return personRepository.findById(id)
-                .map(personMapper::toDTO)
-                .orElse(null);
+                .map(personMapper::toDTO);
     }
 
     @Override
