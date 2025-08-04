@@ -15,17 +15,17 @@ import java.util.List;
 @NoArgsConstructor
 public class OrderDTO {
 
-    private Long id; // شناسه سفارش
-    private String orderCode; // کد سفارش برای نمایش
+    private Long id;
+    private String orderCode;
     private Long customerId;
     private LocalDateTime orderDate;
 
     private LocalDate deliveryDate;
     private LocalTime deliveryTime;
 
-    private OrderStatusEnum currentStatus; // بهتر از String
-    private Long totalAmount; // جمع کل سفارش، اگر نیاز به محاسبه هست
+    private OrderStatusEnum currentStatus;
+    private Long totalAmount;
 
     private List<OrderItemDTO> items;
-    private List<OrderStatusDTO> statusHistory; // اختیاری برای نمایش کامل
+    private List<OrderStatusDTO> statusHistory;
 }

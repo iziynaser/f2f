@@ -3,6 +3,10 @@ package com.f2f.controller;
 import com.f2f.dbc.domain.EntityNotFoundException;
 import com.f2f.dto.OrderItemDTO;
 import com.f2f.enums.OrderStatusEnum;
+import com.f2f.exception.ResourceNotFoundException;
+import com.f2f.response.ApiSuccessResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,10 +17,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/f2f/orders")
 public class OrderController {
+
+    @Autowired
+    private MessageSource messageSource;
 
     private final OrderService orderService;
 
@@ -41,10 +49,18 @@ public class OrderController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrderDTO> getOrder(@PathVariable Long id) {
-        return orderService.getOrderById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<ApiSuccessResponse<OrderDTO>> getOrder(Locale locale, @PathVariable Long id) {
+        OrderDTO result = orderService.getOrderById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("order.not.found", new Object[]{id}));
+
+        String successMsg = messageSource.getMessage("order.retrieved.success",null,locale);
+
+        ApiSuccessResponse<OrderDTO> response = ApiSuccessResponse.<OrderDTO>builder()
+                .message(successMsg)
+                .detail(null)
+                .body(result)
+                .build();
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping
