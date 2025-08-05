@@ -4,6 +4,7 @@ import com.f2f.dto.PaymentInitRequestDTO;
 import com.f2f.dto.PaymentInitResponseDTO;
 import com.f2f.dto.PaymentVerifyRequestDTO;
 import com.f2f.dto.PaymentVerifyResponseDTO;
+import com.f2f.response.ApiSuccessResponse;
 import com.f2f.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,14 +21,18 @@ public class PaymentController {
     private final PaymentService paymentService;
 
     @PostMapping("/initiate")
-    public ResponseEntity<PaymentInitResponseDTO> initiate(@RequestBody PaymentInitRequestDTO dto) {
-        Long userId  = new Long("1");
-        return ResponseEntity.ok(paymentService.initiatePayment(dto,userId));
+    public ResponseEntity<ApiSuccessResponse<PaymentInitResponseDTO>> initiate(@RequestBody PaymentInitRequestDTO dto) {
+        Long userId = 1L;
+        PaymentInitResponseDTO response = paymentService.initiatePayment(dto, userId);
+        ApiSuccessResponse<PaymentInitResponseDTO> apiResponse = ApiSuccessResponse.of(response, "پرداخت با موفقیت آغاز شد");
+        return ResponseEntity.ok(apiResponse);
     }
 
     @PostMapping("/verify")
-    public ResponseEntity<PaymentVerifyResponseDTO> verify(@RequestBody PaymentVerifyRequestDTO dto) {
-        Long userId  = new Long("1");
-        return ResponseEntity.ok(paymentService.verifyPayment(dto,userId));
+    public ResponseEntity<ApiSuccessResponse<PaymentVerifyResponseDTO>> verify(@RequestBody PaymentVerifyRequestDTO dto) {
+        Long userId = 1L;
+        PaymentVerifyResponseDTO response = paymentService.verifyPayment(dto, userId);
+        ApiSuccessResponse<PaymentVerifyResponseDTO> apiResponse = ApiSuccessResponse.of(response, "پرداخت با موفقیت تأیید شد");
+        return ResponseEntity.ok(apiResponse);
     }
 }

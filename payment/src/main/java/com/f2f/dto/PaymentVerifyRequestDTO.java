@@ -10,4 +10,5 @@ public class PaymentVerifyRequestDTO {
     private String authority;
     private PaymentGateway gateway;
     private String callbackUrl;
+    private String token;
 }
