@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PaymentLogRepository extends JpaRepository<PaymentLog, Long> {
-    // در صورت نیاز، متدهای سفارشی اضافه کنید
+
 }

@@ -26,4 +26,18 @@ public class ApiSuccessResponse<T> {
     private final LocalDateTime dateTime = LocalDateTime.now(ZoneOffset.UTC);
 
     private final T body;
+
+    public static <T> ApiSuccessResponse<T> of(T body, String message) {
+        return ApiSuccessResponse.<T>builder()
+                .body(body)
+                .message(message)
+                .build();
+    }
+
+    public static <T> ApiSuccessResponse<T> empty(String message) {
+        return ApiSuccessResponse.<T>builder()
+                .message(message)
+                .build();
+    }
+
 }

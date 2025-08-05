@@ -23,7 +23,7 @@ public class PaymentGatewayConfig extends BaseEntity implements Serializable {
 
     private boolean active;
 
-    private boolean defaultGateway; // فقط یکی می‌تواند true باشد
+    private boolean defaultGateway;
 
     private String merchantId;
 

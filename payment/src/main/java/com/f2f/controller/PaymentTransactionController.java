@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/payment/transaction")
+@RequestMapping("/f2f/api/payment/transaction")
 @RequiredArgsConstructor
 public class PaymentTransactionController {
 
