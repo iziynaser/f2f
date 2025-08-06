@@ -38,7 +38,6 @@ public class ProductFeatureGroupService {
             for (ProductFeatureItem item : items) {
                 List<ProductFeatureValue> values = valueRepository.findByFeatureItemOrderByOrders(item);
                 for (ProductFeatureValue val : values) {
-                    System.out.println("Feature Value: " + val.getFeatureValue());
                     FeaturesDTO dto = new FeaturesDTOImpl(
                             group.getId(), group.getName(),
                             item.getId(), item.getName(),
