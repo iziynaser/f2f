@@ -1,23 +1,15 @@
 package com.f2f.controller;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PTree {
-
-    ProductFeatureTreeDTO treeData;
-    String productId ;
-
-    public ProductFeatureTreeDTO getTreeData() {
-        return treeData;
-    }
-
-    public void setTreeData(ProductFeatureTreeDTO treeData) {
-        this.treeData = treeData;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
+    private String productId;
+    private ProductFeatureTreeDTO treeData;
 }

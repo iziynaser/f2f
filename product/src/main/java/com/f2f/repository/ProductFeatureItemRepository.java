@@ -10,14 +10,29 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProductFeatureItemRepository extends JpaRepository<ProductFeatureItem,Long> {
+public interface ProductFeatureItemRepository extends JpaRepository<ProductFeatureItem, Long> {
 
-    ProductFeatureItem findAllByFeatureGroup(ProductFeatureGroup featureGroup);
+    List<ProductFeatureItem> findByFeatureGroup_IdOrderByOrders(Long groupId);
 
-    @Query("select name from ProductFeatureItem as t where name=:featureItemName and t.featureGroup=:featureGroup ")
-    String findProductFeatureItemsByName(@Param("featureItemName") String name,@Param("featureGroup") ProductFeatureGroup featureGroup);
+    boolean existsByNameAndFeatureGroup(String name, ProductFeatureGroup featureGroup);
 
-    @Query("select t from ProductFeatureItem  as t where t.featureGroup=:productFeatureGroup")
-    List<ProductFeatureItem> loadProductFeatureItems(@Param("productFeatureGroup") ProductFeatureGroup productFeatureGroup);
+    List<ProductFeatureItem> findAllByFeatureGroup(ProductFeatureGroup featureGroup);
 
+    @Query("""
+        SELECT t.name 
+        FROM ProductFeatureItem t 
+        WHERE t.name = :featureItemName AND t.featureGroup = :featureGroup
+    """)
+    String findProductFeatureItemsByName(@Param("featureItemName") String name,
+                                         @Param("featureGroup") ProductFeatureGroup featureGroup);
+
+    List<ProductFeatureItem> findByFeatureGroupOrderByOrders(ProductFeatureGroup featureGroup);
+
+    default List<ProductFeatureItem> loadProductFeatureItems(ProductFeatureGroup productFeatureGroup) {
+        return findByFeatureGroupOrderByOrders(productFeatureGroup);
+    }
+
+    default List<ProductFeatureItem> loadProductFeatureItemsFallback(ProductFeatureGroup productFeatureGroup) {
+        return findAllByFeatureGroup(productFeatureGroup);
+    }
 }

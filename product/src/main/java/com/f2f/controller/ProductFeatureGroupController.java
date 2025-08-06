@@ -1,126 +1,122 @@
 package com.f2f.controller;
 
+import com.f2f.dto.FeaturesDTO;
+import com.f2f.dto.ProductFeatureGroupDTO;
+import com.f2f.dto.ProductFeatureItemDTO;
+import com.f2f.dto.ProductFeatureValueDTO;
 import com.f2f.entity.Product;
 import com.f2f.entity.ProductFeatureGroup;
 import com.f2f.entity.ProductFeatureItem;
-import com.f2f.entity.ProductFeatureItems;
-import com.f2f.service.ProductFeatureGroupService;
-import com.f2f.service.ProductFeatureItemService;
-import com.f2f.service.ProductFeatureItemsService;
-import com.f2f.service.ProductService;
+import com.f2f.entity.ProductFeatureValue;
+import com.f2f.service.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
-@RequestMapping(value = "/f2f/productFeatureGroup/")
+@RestController
+@RequestMapping("/f2f/product-feature-group")
+@RequiredArgsConstructor
 public class ProductFeatureGroupController {
 
-    @Autowired
-    ProductService productService;
+    private final ProductService productService;
+    private final ProductFeatureGroupService groupService;
+    private final ProductFeatureItemService itemService;
+    private final ProductFeatureValueService valueService;
 
-    @Autowired
-    ProductFeatureGroupService productFeatureGroupService;
 
-    @Autowired
-    ProductFeatureItemService productFeatureItemService ;
-
-    @Autowired
-    ProductFeatureItemsService productFeatureItemsService ;
-
-    @RequestMapping(method = RequestMethod.GET)
-    @GetMapping(value = "/list")
-    @ResponseBody
-    List<ProductFeatureGroup> getListOfProductFeatureGroup(){
-        List<ProductFeatureGroup> list = productFeatureGroupService.findAll();
-        return list;
+    @GetMapping("/features")
+    public ResponseEntity<List<FeaturesDTO>> getProductFeatures(@RequestParam("productId") Long productId) {
+        List<FeaturesDTO> features = groupService.getListOfFeatures(productId);
+        return ResponseEntity.ok(features);
     }
 
-    @ResponseBody
-    @PostMapping(value = "/save")
-    public PTree createProductFeatureGroup(@RequestBody PTree pTree){
+    @GetMapping("/list")
+    public List<ProductFeatureGroupDTO> getAllFeatureGroups() {
+        return groupService.findAll();
+    }
 
-        String n = pTree.getTreeData().getName();
-        String v = pTree.getTreeData().getValue();
-        String productId = pTree.getProductId();
+    @PostMapping("/save")
+    public ResponseEntity<PTree> saveFeatureGroupTree(@RequestBody PTree pTree) {
+        Product product = productService.findProductById(Long.parseLong(pTree.getProductId()));
 
-        Product product = productService.findProductById(Long.valueOf(productId));
-        ProductFeatureGroup fg = new ProductFeatureGroup(n,v,1);
-        fg.setProduct(product);
+        ProductFeatureGroup group = new ProductFeatureGroup(
+                pTree.getTreeData().getName(),
+                pTree.getTreeData().getValue(),
+                0
+        );
+        group.setProduct(product);
+        ProductFeatureGroupDTO savedGroupDTO = groupService.save(group);
 
-        ProductFeatureGroup fgs = productFeatureGroupService.save(fg);
+        int itemOrder = 0;
+        for (ProductFeatureTreeDTO itemDTO : pTree.getTreeData().getChildren()) {
+            ProductFeatureItem item = new ProductFeatureItem();
+            item.setName(itemDTO.getName());
+            item.setFeatureValue(itemDTO.getValue());
+            item.setOrders(itemOrder++);
+            item.setFeatureGroup(group);
 
-        for(int i=0;i<pTree.getTreeData().getChildren().size();i++){
-            ProductFeatureTreeDTO pf = pTree.getTreeData().getChildren().get(i);
+            ProductFeatureItemDTO savedItemDTO = itemService.saveIfNotExists(item, group);
 
-            ProductFeatureItem pfi = new ProductFeatureItem();
-            pfi.setName(pf.getName());
-            pfi.setFeatureValue(pf.getValue());
-            pfi.setOrders(i);
-            pfi.setFeatureGroup(fgs);
-            ProductFeatureItem pfis = productFeatureItemService.save(pfi,fgs);
-
-            if(pf.getChildren()!=null)
-                for(int j=0;j<pf.getChildren().size();j++){
-                    ProductFeatureTreeDTO pfs = pf.getChildren().get(j);
-                    ProductFeatureItems pfjs = new ProductFeatureItems();
-                    pfjs.setName(pfs.getName());
-                    pfjs.setFeatureValue(pfs.getValue());
-                    pfjs.setFeatureItem(pfi);
-                    pfjs.setOrders(j);
-                    productFeatureItemsService.save(pfjs,pfis);
+            int valueOrder = 0;
+            if (itemDTO.getChildren() != null) {
+                for (ProductFeatureTreeDTO valueDTO : itemDTO.getChildren()) {
+                    ProductFeatureValue value = new ProductFeatureValue();
+                    value.setName(valueDTO.getName());
+                    value.setFeatureValue(valueDTO.getValue());
+                    value.setFeatureItem(item);
+                    value.setOrders(valueOrder++);
+                    valueService.saveIfNotExists(value, item);
                 }
+            }
         }
-        return pTree;
+        return ResponseEntity.ok(pTree);
     }
 
-    @ResponseBody
     @GetMapping("/load")
-    public PTree loadProductFeatureGroup(@RequestParam(value = "productId")String productId ){
+    public ResponseEntity<PTree> loadProductFeatureGroup(@RequestParam("productId") String productIdStr) {
+        Long productId = Long.parseLong(productIdStr);
+        Product product = productService.findProductById(productId);
+        List<ProductFeatureGroupDTO> groups = groupService.loadGroupsForProduct(product);
 
         PTree pTree = new PTree();
-        Product product = productService.findProductById(Long.valueOf(productId));
-        pTree.setProductId(productId);
+        pTree.setProductId(productIdStr);
 
-        ProductFeatureGroup pfg = productFeatureGroupService.loadProductFeatureGroupWithProductId(product);
-        List<ProductFeatureItem> productFeatureItem =productFeatureItemService.loadProductFeatureItems(pfg);
+        if (!groups.isEmpty()) {
+            ProductFeatureGroupDTO groupDTO = groups.get(0); // فرض یک گروه برای هر محصول
+            ProductFeatureTreeDTO groupTree = new ProductFeatureTreeDTO(groupDTO.getName(), groupDTO.getValue());
 
-        ProductFeatureTreeDTO featureTreeDTO = new ProductFeatureTreeDTO();
-        featureTreeDTO.setName(pfg.getName());
-        featureTreeDTO.setValue(pfg.getFeatureValue());
-        pTree.setTreeData(featureTreeDTO);
+            List<ProductFeatureTreeDTO> itemTrees = new ArrayList<>();
+            for (ProductFeatureItemDTO itemDTO : groupDTO.getItems()) {
+                ProductFeatureTreeDTO itemTree = new ProductFeatureTreeDTO(itemDTO.getName(), itemDTO.getValue());
 
-        for(int i=0;i<productFeatureItem.size();i++){
-            List<ProductFeatureTreeDTO> children = new ArrayList<ProductFeatureTreeDTO>();
-            ProductFeatureItem pfi =productFeatureItem.get(i);
-
-            ProductFeatureTreeDTO productFeatureDTO =new ProductFeatureTreeDTO(pfi.getName(),pfi.getFeatureValue());
-            children.add(productFeatureDTO);
-
-            List<ProductFeatureItems> items = productFeatureItemsService.loadProductFeatureItemsByFeatureItem(pfi);
-            for(int j=0;j<items.size();j++){
-                List<ProductFeatureTreeDTO> child = new ArrayList<ProductFeatureTreeDTO>();
-                ProductFeatureItems pi=items.get(j);
-                child.add(new ProductFeatureTreeDTO(pi.getName(),pi.getFeatureValue()));
-                productFeatureDTO.setChildren(child);
+                List<ProductFeatureTreeDTO> valueTrees = new ArrayList<>();
+                for (ProductFeatureValueDTO valueDTO : itemDTO.getValues()) {
+                    valueTrees.add(new ProductFeatureTreeDTO(valueDTO.getName(), valueDTO.getValue()));
+                }
+                itemTree.setChildren(valueTrees);
+                itemTrees.add(itemTree);
             }
-            featureTreeDTO.setChildren(children);
+            groupTree.setChildren(itemTrees);
+            pTree.setTreeData(groupTree);
         }
-        return pTree;
+
+        return ResponseEntity.ok(pTree);
     }
 
-    //todo: initialize the product_feature_group at first time when loaded features
-    /* also it is a bug from client side or server side
-        because when the product is created .. product feature group was not created */
-    boolean initializeProductFeatureGroupForProduct(@RequestParam(value = "productId")String productId ){
-        Product product = productService.findProductById(Long.valueOf(productId));
-        int c = productFeatureGroupService.isThereARecordOnProductFeatureGroupForProduct(product) ;
-        if(c==0){
-            productFeatureGroupService.save(new ProductFeatureGroup());
+    @PostMapping("/initialize")
+    public ResponseEntity<Boolean> initializeProductFeatureGroup(@RequestParam("productId") String productIdStr) {
+        Long productId = Long.parseLong(productIdStr);
+        Product product = productService.findProductById(productId);
+        boolean exists = groupService.hasGroupForProduct(product);
+
+        if (!exists) {
+            groupService.createDefaultGroupForProduct(product);
         }
-        return true ;
+        return ResponseEntity.ok(true);
     }
 }

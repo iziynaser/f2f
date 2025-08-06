@@ -9,24 +9,40 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface ProductFeatureGroupRepository extends JpaRepository<ProductFeatureGroup,Long> {
+public interface ProductFeatureGroupRepository extends JpaRepository<ProductFeatureGroup, Long> {
 
-    List<ProductFeatureGroup> findAll();
+    List<ProductFeatureGroup> findByProduct_IdOrderByOrders(Long productId);
 
-    @Query("select g.id as groupId,g.name as groupName,i.id as itemId,i.name as itemName,s.id as itemsId,s.name as itemsName " +
-            " from ProductFeatureGroup as g " +
-            " left join ProductFeatureItem as i " +
-            " on g = i.featureGroup " +
-            " left join ProductFeatureItems as s on i = s.featureItem " +
-            " where g.product.id=:id" +
-            " order by g.orders,i.orders,s.orders")
-    List<FeaturesDTO> getListOfFeatures(@Param("id") Long id);
+    List<ProductFeatureGroup> findByProduct_Id(Long productId);
 
-    @Query("select t from ProductFeatureGroup as t where t.product=:product")
-    ProductFeatureGroup loadProductFeatureGroupWithProductId(@Param("product") Product product);
+    @Query("""
+        select g.id as groupId, g.name as groupName,
+               i.id as itemId, i.name as itemName,
+               s.id as itemsId, s.name as itemsName
+        from ProductFeatureGroup g
+        left join ProductFeatureItem i on g = i.featureGroup
+        left join ProductFeatureValue s on i = s.featureItem
+        where g.product.id = :productId
+        order by g.orders, i.orders, s.orders
+    """)
+    List<FeaturesDTO> getListOfFeatures(@Param("productId") Long productId);
 
-    @Query("select 1 from ProductFeatureGroup as t where t.product=:product")
-    int isThereARecordOnProductFeatureGroup(@Param("product") Product product);
+    boolean existsByProduct(Product product);
+
+    Optional<ProductFeatureGroup> findByProduct(Product product);
+
+    @Query("""
+        SELECT g.id AS groupId, g.name AS groupName, 
+               i.id AS itemId, i.name AS itemName,
+               v.id AS valueId, v.name AS valueName
+        FROM ProductFeatureGroup g
+        LEFT JOIN g.features i
+        LEFT JOIN i.featureItems v
+        WHERE g.product.id = :productId
+        ORDER BY g.orders, i.orders, v.orders
+    """)
+    List<FeaturesDTO> getFeatureHierarchy(@Param("productId") Long productId);
 }

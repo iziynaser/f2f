@@ -20,7 +20,7 @@ public class ProductFeatureType extends BaseEntity {
      * ADDITIONAL
      */
 
-    @Column(name = "NAME")
+    @Column(name = "NAME",unique = true,nullable = false)
     private String name ;
 
     @Column(name = "VALUE")

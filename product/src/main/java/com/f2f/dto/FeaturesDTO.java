@@ -13,4 +13,5 @@ public interface FeaturesDTO {
     public String getItemsId() ;
 
     public String getItemsName() ;
+    public String getItemsValue();
 }

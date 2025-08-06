@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -20,14 +21,15 @@ public class ProductFeatureGroup extends BaseEntity implements Serializable {
     @Column(name = "FEATURE_GROUP_VALUE")
     private String featureValue;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 
     @Column(name = "ORDERS")
     private Integer orders;
 
-    @OneToMany(mappedBy = "featureGroup")
-    private List<ProductFeatureItem> features;
+    @OneToMany(mappedBy = "featureGroup",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<ProductFeatureItem> features = new ArrayList<>();
 
     public ProductFeatureGroup() {
     }
