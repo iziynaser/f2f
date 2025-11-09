@@ -23,7 +23,6 @@
         <module>dbc</module>
         <module>frontb</module>
         <module>frontf</module>
-        <module>auth</module>
         <module>content</module>
         <module>acc</module>
         <module>hr</module>
@@ -49,35 +48,88 @@
         <module>catalog</module>
         <module>comment</module>
         <module>Qa</module>
+        <module>appInfo</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>17</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <java.version>21</java.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+
+
+<!--        <java.version>25</java.version>-->
+<!--        <maven.compiler.source>${java.version}</maven.compiler.source>-->
+<!--        <maven.compiler.target>${java.version}</maven.compiler.target>-->
         <jakarta-servlet.version>5.0.0</jakarta-servlet.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-        <lombok.version>1.18.30</lombok.version>
+        <lombok.version>1.18.34</lombok.version>
     </properties>
 
     <repositories>
+        <!-- ✅ Mirror اصلی Maven Central -->
         <repository>
-            <id>central</id>
-            <name>Maven Repository Switchboard</name>
-            <layout>default</layout>
-            <url>https://repo1.maven.org/maven2</url>
+            <id>aliyun-maven</id>
+            <name>Aliyun Maven Central Mirror</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
+        <!-- ✅ JitPack برای پروژه‌های GitHub -->
+        <repository>
+            <id>jitpack.io</id>
+            <name>JitPack Repository</name>
+            <url>https://jitpack.io</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
+        <!-- ✅ Maven Central اصلی (اگر VPN داری یا اینترنت باز است) -->
+        <repository>
+            <id>maven-central</id>
+            <name>Maven Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+
+        <!-- ✅ Sonatype Snapshots برای نسخه‌های آزمایشی -->
+        <repository>
+            <id>sonatype-snapshots</id>
+            <name>Sonatype OSS Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
+        <!-- ✅ مخزن قبلی شما برای نیازهای خاص (اختیاری) -->
         <repository>
             <id>alfresco-public</id>
+            <name>Alfresco Public Repo</name>
             <url>https://artifacts.alfresco.com/nexus/content/repositories/public</url>
         </repository>
     </repositories>
+
 
     <!-- مدیریت مرکزی نسخه‌ها -->
     <dependencyManagement>
@@ -158,7 +210,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.plugin.version}</version>
+                <version>3.13.0</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
