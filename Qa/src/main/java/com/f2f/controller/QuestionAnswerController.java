@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/f2f/qas")
+@RequestMapping("/qas")
 public class QuestionAnswerController {
 
     @Autowired

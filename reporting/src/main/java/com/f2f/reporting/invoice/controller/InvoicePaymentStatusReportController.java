@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/invoices/payment-status")
+@RequestMapping("/invoices/payment-status")
 @RequiredArgsConstructor
 public class InvoicePaymentStatusReportController {
 

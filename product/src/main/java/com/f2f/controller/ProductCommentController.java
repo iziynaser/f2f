@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController("ProductCommentController")
-@RequestMapping("/f2f/productComments")
+@RequestMapping("/productComments")
 public class ProductCommentController {
 
     @Autowired

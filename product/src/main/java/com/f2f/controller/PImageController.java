@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/f2f/image")
+@RequestMapping("/image")
 public class PImageController {
 
     @Qualifier("PImageRepository")

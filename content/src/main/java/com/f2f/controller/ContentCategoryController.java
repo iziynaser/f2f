@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController("ContentCategoryController")
-@RequestMapping("/f2f/contentCategory")
+@RequestMapping("/contentCategory")
 @RequiredArgsConstructor
 public class ContentCategoryController {
 

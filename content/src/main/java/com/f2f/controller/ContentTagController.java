@@ -4,6 +4,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController("ContentTagController")
-@RequestMapping("/f2f/contentTag")
+@RequestMapping("/contentTag")
 public class ContentTagController {
 }

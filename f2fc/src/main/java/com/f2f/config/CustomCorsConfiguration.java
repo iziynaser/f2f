@@ -32,11 +32,14 @@ public class CustomCorsConfiguration {
 ///        corsConfiguration.addExposedHeader("head1");
 ///        corsConfiguration.addExposedHeader("Location");
         UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
+        urlBasedCorsConfigurationSource.registerCorsConfiguration("/api/**", corsConfiguration);
         urlBasedCorsConfigurationSource.registerCorsConfiguration("/oauth/**", corsConfiguration);
 
         urlBasedCorsConfigurationSource.registerCorsConfiguration("/f/**", corsConfiguration);
         urlBasedCorsConfigurationSource.registerCorsConfiguration("/b/**", corsConfiguration);
 
+        urlBasedCorsConfigurationSource.registerCorsConfiguration("/store/**", corsConfiguration);
+        urlBasedCorsConfigurationSource.registerCorsConfiguration("/admin/**", corsConfiguration);
 
         urlBasedCorsConfigurationSource.registerCorsConfiguration("/user/me", corsConfiguration);
         urlBasedCorsConfigurationSource.registerCorsConfiguration("/f2f/**", corsConfiguration);

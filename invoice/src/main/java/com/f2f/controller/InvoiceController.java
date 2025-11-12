@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/invoices")
+@RequestMapping("/invoices")
 public class InvoiceController {
 
     private final InvoiceService invoiceService;
@@ -65,7 +65,7 @@ public class InvoiceController {
  */
 
 @Controller("InvoiceController")
-@RequestMapping("/f2f/invoice")
+@RequestMapping("/invoice")
 public class InvoiceController {
 
     @Autowired

@@ -11,7 +11,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 @RestController
-@RequestMapping("/f2f/order-status")
+@RequestMapping("/order-status")
 public class OrderStatusController {
 
     private final OrderStatusService orderStatusService;

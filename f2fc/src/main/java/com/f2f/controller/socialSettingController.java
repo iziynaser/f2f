@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController("socialSettingController")
-@RequestMapping("/f2f/socialSetting")
+@RequestMapping("/socialSetting")
 public class socialSettingController {
 
     @Autowired

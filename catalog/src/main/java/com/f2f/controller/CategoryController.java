@@ -1,6 +1,7 @@
 package com.f2f.controller;
 
 import com.f2f.dto.CategoryDTO;
+import com.f2f.dto.CategoryTreeDTO;
 import com.f2f.entity.Category;
 import com.f2f.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/f2f/Category")
+@RequestMapping("/Category")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -19,6 +20,13 @@ public class CategoryController {
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
+
+    @GetMapping("/listTop10WithSub")
+    public ResponseEntity<List<CategoryTreeDTO>> getTop10WithSubCategories() {
+        List<CategoryTreeDTO> dtos = categoryService.findTop10WithSubCategories();
+        return ResponseEntity.ok(dtos);
+    }
+
 
     @PostMapping
     public ResponseEntity<Category> create(@RequestBody CategoryDTO categoryDTO) {
@@ -55,5 +63,4 @@ public class CategoryController {
         List<Category> categories = categoryService.findAllByParentCategoryAndCategoryType(parentCategoryId,categoryTypeId);
         return categories;
     }
-
 }

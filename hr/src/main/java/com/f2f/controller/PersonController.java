@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/persons")
+@RequestMapping("/persons")
 public class PersonController {
 
     private final PersonService personService;
@@ -56,7 +56,7 @@ public class PersonController {
  */
 
 @RestController("PersonController")
-@RequestMapping("/f2f/persons")
+@RequestMapping("/persons")
 //@CrossOrigin("*")
 public class PersonController {
 

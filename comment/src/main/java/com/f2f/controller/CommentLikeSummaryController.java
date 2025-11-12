@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/comment-likes")
+@RequestMapping("/comment-likes")
 @RequiredArgsConstructor
 public class CommentLikeSummaryController {
 

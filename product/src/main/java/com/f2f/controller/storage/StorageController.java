@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController("StorageController")
-@RequestMapping("/f2f/storage")
+@RequestMapping("/storage")
 public class StorageController {
 
     @Autowired

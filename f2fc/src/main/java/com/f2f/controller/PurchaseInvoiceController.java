@@ -10,7 +10,7 @@ package com.f2f.controller;
 public class PurchaseInvoiceController {}
 //
 //@RestController
-//@RequestMapping("/api/purchase-invoices")
+//@RequestMapping("/purchase-invoices")
 //public class PurchaseInvoiceController {
 //
 //    private final PurchaseInvoiceService purchaseInvoiceService;

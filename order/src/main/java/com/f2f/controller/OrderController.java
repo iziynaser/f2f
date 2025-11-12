@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Locale;
 
 @RestController
-@RequestMapping("/f2f/orders")
+@RequestMapping("/orders")
 public class OrderController {
 
     @Autowired

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController("InvoiceTypeController")
-@RequestMapping("/f2f/InvoiceType")
+@RequestMapping("/InvoiceType")
 public class InvoiceTypeController {
 
     @Autowired

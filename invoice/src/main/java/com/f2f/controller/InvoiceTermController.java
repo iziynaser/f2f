@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController("InvoiceTermController")
-@RequestMapping("/f2f/InvoiceTerm")
+@RequestMapping("/InvoiceTerm")
 public class InvoiceTermController {
 
     @Autowired

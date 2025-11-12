@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/f2f/aboutUs")
+@RequestMapping("/aboutUs")
 public class aboutUsController {
 
     @Autowired

@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/f2f/product-feature-group")
+@RequestMapping("/product-feature-group")
 @RequiredArgsConstructor
 public class ProductFeatureGroupController {
 

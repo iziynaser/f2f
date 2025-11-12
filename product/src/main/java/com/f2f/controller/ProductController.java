@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController("ProductController")
-@RequestMapping("/f2f/products")
+@RequestMapping("/products")
 public class ProductController {
 
     private final ProductService productService;
@@ -26,9 +26,22 @@ public class ProductController {
     }
 
     @GetMapping("/list")
-    public List<ProductDTO> getProducts(){
-        List<ProductDTO> list = productService.findAllAvailableProducts();
-        return list;
+    public List<ProductDTO> getProducts(@RequestParam(required = false) Long category){
+        List<ProductDTO> products ;
+        if(category != null){
+            products = productService.findAvailableProductsByCategory(category);
+        }else {
+            products = productService.findAllAvailableProducts();
+        }
+
+        return products;
+    }
+
+    @GetMapping("/byCategory")
+    public ResponseEntity<List<ProductDTO>> getProductsByCategory(
+            @RequestParam("categoryId") Long categoryId) {
+        List<ProductDTO> products = productService.findAvailableProductsByCategory(categoryId);
+        return ResponseEntity.ok(products);
     }
 
     @ResponseBody

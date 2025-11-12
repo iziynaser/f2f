@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController("SkillController")
-@RequestMapping("/f2f/skill")
+@RequestMapping("/skill")
 public class SkillController{
 
     @Autowired

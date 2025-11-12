@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController("BrandController")
-@RequestMapping("/f2f/brand")
+@RequestMapping("/brand")
 public class BrandController {
 
     private final BrandService brandService;

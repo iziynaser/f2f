@@ -14,7 +14,7 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/f2f/comments")
+@RequestMapping("/comments")
 public class CommentController {
 
     private final CommentAnalysisService commentAnalysisService;

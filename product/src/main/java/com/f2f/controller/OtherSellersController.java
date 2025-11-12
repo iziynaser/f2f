@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController("OtherSellersController")
-@RequestMapping("/f2f/otherSellers")
+@RequestMapping("/otherSellers")
 public class OtherSellersController {
 
     private final OtherSellersService otherSellersService;

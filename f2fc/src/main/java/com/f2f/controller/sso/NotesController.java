@@ -16,7 +16,7 @@ public class NotesController {}
 //    UserAccountDbcService userAccountService;
 //
 //    @ResponseBody
-//    @RequestMapping("/f2f/notes")
+//    @RequestMapping("/notes")
 //    public JsonObjects<Note> listNotes() {
 //        JsonObjects<Note> result= notesService.list(1,10,"id","asc");
 //        return result;

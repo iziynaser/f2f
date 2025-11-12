@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController("ContentController")
-@RequestMapping("/f2f/content")
+@RequestMapping("/content")
 @RequiredArgsConstructor
 public class ContentController {
 

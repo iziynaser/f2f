@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Locale;
 
 @RestController
-@RequestMapping("/f2f/checkout")
+@RequestMapping("/checkout")
 @RequiredArgsConstructor
 public class CheckoutController {
 
