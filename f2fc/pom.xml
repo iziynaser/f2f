@@ -183,6 +183,12 @@
             <version>0.0.3-SNAPSHOT</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.f2f</groupId>
+            <artifactId>auth</artifactId>
+            <version>0.0.3-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -224,7 +230,7 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <configuration>
-                        <skip>true</skip>
+                        <skip>false</skip>
                     </configuration>
                 </plugin>
 <!--                <plugin>-->

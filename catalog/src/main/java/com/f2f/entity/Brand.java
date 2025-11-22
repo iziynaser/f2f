@@ -11,7 +11,8 @@ import lombok.Setter;
 @Table(name = "BRAND")
 public class Brand extends BaseEntity {
 
-    private Long brand_code;
+    @Column(name = "CODE",unique = true,nullable = false)
+    private String code;
 
     @Column(name = "NAME")
     private String name;
@@ -19,7 +20,8 @@ public class Brand extends BaseEntity {
     @Column(name = "VALUE")
     private String value;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CATEGORY_ID")
     private Category category;
 
 }

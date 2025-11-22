@@ -40,13 +40,10 @@ public class BrandService {
     }
 
     public List<Brand> getAllBrandsByCategoryId(Category category){
-        List<Brand> brands = brandRepository.getAllByCategoryId(category);
+        List<Brand> brands = brandRepository.findBrandsByCategory(category.getId());
         return brands;
     }
 
-    /*
-    بازگرداندن برند کالا با استفاده از ای دی کالا
-     */
     public String getBrandNameByProductItemId(Long productItemId) {
         ProductItemDTO productItem = productItemRepository.findById(productItemId)
                 .orElseThrow(() -> new RuntimeException("Product Item with ID " + productItemId + " not found"));

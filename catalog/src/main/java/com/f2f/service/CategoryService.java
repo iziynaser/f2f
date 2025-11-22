@@ -3,9 +3,14 @@ package com.f2f.service;
 import com.f2f.dbc.domain.EntityNotFoundException;
 import com.f2f.dbc.entity.CategoryType;
 import com.f2f.dto.CategoryDTO;
+import com.f2f.dto.CategoryTreeDTO;
 import com.f2f.entity.Category;
+import com.f2f.mapper.CategoryMapper;
 import com.f2f.repository.CategoryRepository;
 import com.f2f.repository.CategoryTypeRepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,10 +20,20 @@ public class CategoryService {
 
     private final CategoryRepository categoryRepository;
     private final CategoryTypeRepository categoryTypeRepository;
+    private final CategoryMapper categoryMapper;
 
-    public CategoryService(CategoryRepository categoryRepository, CategoryTypeRepository categoryTypeRepository) {
+    public CategoryService(CategoryRepository categoryRepository,
+                           CategoryTypeRepository categoryTypeRepository,
+                            CategoryMapper categoryMapper) {
         this.categoryRepository = categoryRepository;
         this.categoryTypeRepository = categoryTypeRepository;
+        this.categoryMapper = categoryMapper;
+    }
+
+    public List<CategoryTreeDTO> findTop10WithSubCategories() {
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("name").ascending());
+        List<Category> categories = categoryRepository.findTopCategoriesWithoutParent(7);
+        return categoryMapper.toCategoryTreeDTOList(categories);
     }
 
     public Category save(CategoryDTO categoryDTO) {

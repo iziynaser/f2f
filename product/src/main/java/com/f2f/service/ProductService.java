@@ -76,6 +76,34 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
+    public List<ProductDTO> findAvailableProductsByCategory(Long categoryId) {
+        List<ProductInfo> products = productRepository.findAvailableProductsByCategory(categoryId);
+        return products.stream()
+                .map(this::convertToProductDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<ProductDTO> findProductsByFilter(Long categoryId, String brands, Long minPrice, Long maxPrice,
+                                                 String colors, String search, Boolean inStock,
+                                                 Integer page, Integer pageSize, Boolean original,
+                                                 Boolean cod, Boolean fastDelivery) {
+
+        List<ProductInfo> products;
+
+        if (categoryId != null) {
+            // مثال ساده
+            products = productRepository.findAvailableProductsByCategory(categoryId);
+        } else {
+            products = productRepository.findAllAvailableProducts();
+        }
+
+        // تبدیل به DTO
+        return products.stream()
+                .map(this::convertToProductDTO)
+                .collect(Collectors.toList());
+    }
+
+
     private ProductDTO convertToProductDTO(ProductInfo product) {
         ProductDTO dto = new ProductDTO();
 
