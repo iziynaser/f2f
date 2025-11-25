@@ -60,3 +60,14 @@
 
 امکان فیلتر بر اساس محصول، دسته‌بندی، مشتری و منطقه
 ///////////////////////////////////////////////////////
+
+
+// اسفتاده از اطلاعات در برنامه
+روش اول :
+Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+String username = authentication.getName();
+
+روش دوم:
+@GetMapping
+public ResponseEntity<?> test(@AuthenticationPrincipal UserDetails user) {...}
+

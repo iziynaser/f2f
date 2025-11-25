@@ -26,7 +26,7 @@ public class ApiSecurityConfig {
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/public/**", "/health", "/actuator/**").permitAll()
+                .requestMatchers("/public/**", "/health", "/actuator/**","/store/**","/api/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(jwtFilter, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);

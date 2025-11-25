@@ -49,7 +49,7 @@
         <module>comment</module>
         <module>Qa</module>
         <module>appInfo</module>
-        <module>auth</module>
+        <module>authClient</module>
     </modules>
 
     <properties>
