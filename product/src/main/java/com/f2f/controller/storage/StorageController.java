@@ -10,8 +10,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "*")
 @RestController("StorageController")
-@RequestMapping("/storage")
+@RequestMapping("/store/storage")
 public class StorageController {
 
     @Autowired

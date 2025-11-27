@@ -13,8 +13,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*")
 @RestController("BrandController")
-@RequestMapping("/brand")
+@RequestMapping("/store/brand")
 public class BrandController {
 
     private final BrandService brandService;

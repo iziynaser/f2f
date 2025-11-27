@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController("ProductColorController")
-@RequestMapping("/productColors")
+@RequestMapping("/store/productColors")
 public class ProductColorController {
 
     @Autowired

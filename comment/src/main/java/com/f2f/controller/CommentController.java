@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/comments")
+@RequestMapping("/store/comments")
 public class CommentController {
 
     private final CommentAnalysisService commentAnalysisService;
