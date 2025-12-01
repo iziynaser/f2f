@@ -7,8 +7,9 @@
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>authClient</artifactId>
+    <artifactId>f2f-authClient</artifactId>
     <packaging>jar</packaging>
+    <version>1.0.0</version>
 
     <properties>
         <java.version>17</java.version>

@@ -9,8 +9,10 @@
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>images</artifactId>
+    <artifactId>f2f-images</artifactId>
     <packaging>jar</packaging>
+    <version>1.0.0</version>
+
     <name>image management module</name>
     <description>module for managing images: upload,serve,process</description>
     <properties>
@@ -18,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>dbc</artifactId>
+            <artifactId>f2f-dbc</artifactId>
             <version>1.0</version>
         </dependency>
 

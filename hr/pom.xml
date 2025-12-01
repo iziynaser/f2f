@@ -9,8 +9,9 @@
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>hr</artifactId>
+    <artifactId>f2f-hr</artifactId>
     <packaging>jar</packaging> <!-- چون معمولاً ماژول‌های داخلی jar هستند -->
+    <version>1.0.0</version>
 
     <properties>
 <!--        <maven.compiler.source>17</maven.compiler.source>-->
@@ -25,7 +26,7 @@
         <!-- وابستگی به ماژول dbc -->
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>dbc</artifactId>
+            <artifactId>f2f-dbc</artifactId>
             <version>1.0</version>
         </dependency>
 

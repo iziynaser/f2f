@@ -9,8 +9,9 @@
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>promotion</artifactId>
+    <artifactId>f2f-promotion</artifactId>
     <packaging>jar</packaging>
+    <version>1.0.0</version>
 
     <properties>
 <!--        <maven.compiler.source>17</maven.compiler.source>-->
@@ -21,14 +22,14 @@
     <dependencies>
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>dbc</artifactId>
+            <artifactId>f2f-dbc</artifactId>
             <version>1.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>logging</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-logging</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <!-- Spring Boot Web با Jetty به جای Tomcat -->

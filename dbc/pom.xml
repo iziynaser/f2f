@@ -12,7 +12,7 @@
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>dbc</artifactId>
+    <artifactId>f2f-dbc</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 

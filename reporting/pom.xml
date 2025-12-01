@@ -11,9 +11,9 @@
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>reporting</artifactId>
-    <version>1.0</version>
+    <artifactId>f2f-reporting</artifactId>
     <packaging>jar</packaging>
+    <version>1.0.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,40 +22,40 @@
     <dependencies>
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>dbc</artifactId>
+            <artifactId>f2f-dbc</artifactId>
             <version>1.0</version>
         </dependency>
 
         <!-- سایر ماژول‌هایی که گزارش‌ها از آن‌ها استفاده می‌کنند -->
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>product</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-product</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>inventory</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-inventory</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>sales</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-sales</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>purchase</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-purchase</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>order</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-order</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>invoice</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-invoice</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <!-- MapStruct و Lombok برای mapping و کدنویسی تمیزتر -->

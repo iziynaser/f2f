@@ -9,7 +9,9 @@
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>budget</artifactId>
+    <artifactId>f2f-budget</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
 
     <properties>
 <!--        <maven.compiler.source>17</maven.compiler.source>-->
@@ -19,13 +21,13 @@
     <dependencies>
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>dbc</artifactId>
+            <artifactId>f2f-dbc</artifactId>
             <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>logging</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-logging</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 </project>

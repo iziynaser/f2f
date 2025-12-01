@@ -9,8 +9,10 @@
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>logging</artifactId>
+    <artifactId>f2f-logging</artifactId>
     <packaging>jar</packaging>
+    <version>1.0.0</version>
+
     <name>logging module</name>
     <description>shared logging module</description>
 

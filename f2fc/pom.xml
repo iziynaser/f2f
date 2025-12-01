@@ -11,8 +11,8 @@
     </parent>
 
     <packaging>war</packaging>
-    <artifactId>f2fc</artifactId>
-    <version>1.0</version>
+    <artifactId>f2f-c</artifactId>
+    <version>1.0.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -87,7 +87,7 @@
 
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>dbc</artifactId>
+            <artifactId>f2f-dbc</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>
@@ -95,98 +95,98 @@
         <!-- include other web modules -->
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>order</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-order</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>acc</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-acc</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>content</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-content</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>hr</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-hr</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>images</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
-        </dependency>
-
-                <dependency>
-                    <groupId>com.f2f</groupId>
-                    <artifactId>product</artifactId>
-                    <version>0.0.3-SNAPSHOT</version>
-                </dependency>
-
-        <dependency>
-            <groupId>com.f2f</groupId>
-            <artifactId>promotion</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-images</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>inventory</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-product</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>sales</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-promotion</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>purchase</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-inventory</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>catalog</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-sales</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>comment</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-purchase</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>Qa</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-catalog</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>delivery</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-comment</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>payment</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-Qa</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>authClient</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-delivery</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.f2f</groupId>
+            <artifactId>f2f-payment</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.f2f</groupId>
+            <artifactId>f2f-authClient</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
     </dependencies>

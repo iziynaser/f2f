@@ -9,8 +9,9 @@
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>delivery</artifactId>
+    <artifactId>f2f-delivery</artifactId>
     <packaging>jar</packaging> <!-- چون معمولاً ماژول‌های داخلی jar هستند -->
+    <version>1.0.0</version>
 
     <properties>
 <!--        <maven.compiler.source>17</maven.compiler.source>-->
@@ -25,13 +26,13 @@
         <!-- وابستگی به ماژول dbc -->
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>dbc</artifactId>
+            <artifactId>f2f-dbc</artifactId>
             <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>com.f2f</groupId>
-            <artifactId>logging</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <artifactId>f2f-logging</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <!-- Spring Boot Web با Jetty به جای Tomcat -->

@@ -9,7 +9,7 @@
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>skript</artifactId>
+    <artifactId>f2f-skript</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
