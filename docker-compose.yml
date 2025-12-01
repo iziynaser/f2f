@@ -1,33 +1,35 @@
 version: '3.8'
 
 services:
+
   app:
     container_name: f2fcore
-    build:
+    build: .
     environment:
-        - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/f2fdb
-        - SPRING_DATASOURCE_USERNAME=f2fuser
-        - SPRING_DATASOURCE_PASSWORD=f2fpass
-        - SPRING_PROFILES_ACTIVE=dev
-
+      SPRING_PROFILES_ACTIVE: docker
     ports:
-        - "8080:8080"
+      - "8080:8080"
     depends_on:
-        - db
+      - db
+      - redis
 
   db:
     image: postgres:13
     container_name: postgres-db-f2f
     environment:
-      POSTGRES_USER:f2fuser
-      POSTGRES_PASSWORD:f2fpass
+      POSTGRES_USER: f2fuser
+      POSTGRES_PASSWORD: f2fpass
+      POSTGRES_DB: f2fdb
     ports:
       - "5432:5432"
     volumes:
       - pg_data:/var/lib/postgresql/data
 
-  volumes:
-    - pg_data:/var/lib/postgresql/data
+  redis:
+    image: redis:7
+    container_name: redis-f2f
+    ports:
+      - "6379:6379"
 
-
-
+volumes:
+  pg_data:

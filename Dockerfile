@@ -2,6 +2,7 @@
 FROM maven:3.9.6-eclipse-temurin-21 AS builder
 
 ENV APP_NAME=f2fcore
+ENV SPRING_PROFILES_ACTIVE=docker
 
 WORKDIR /app
 
@@ -21,6 +22,9 @@ WORKDIR /app
 
 ##COPY --from=builder /app/target/f2f-c-1.0.0.war /app/app.war
 COPY f2fc/target/f2f-c-1.0.0.war /app/app.war
+
+##create image folder
+RUN mkdir -p /app/images
 
 EXPOSE 8080
 
