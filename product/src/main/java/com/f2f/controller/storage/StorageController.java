@@ -26,7 +26,7 @@ public class StorageController {
     @ResponseBody
     public List<String> listAllFiles(Model model,@RequestParam("type")String type,@RequestParam("productId") String productId){
         List<String> res = storageService.loadAll(productId,type).map(path-> ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/images/")
+                .path("api/store/images/")
                 .path(productId)
                 .path("/")
                 .path("stf")

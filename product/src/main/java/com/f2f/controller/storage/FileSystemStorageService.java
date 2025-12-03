@@ -80,6 +80,7 @@ public class FileSystemStorageService implements StorageService{
     public Stream<Path> loadAll(String productId,String type) {
         try{
             Path dirPathObj = Paths.get(rootLocation.toString(),productId,"stf",type);
+            System.out.println(dirPathObj.toString());
             return Files.walk(dirPathObj,1)
                     .filter(path -> !path.equals(dirPathObj))
                         .map(dirPathObj::relativize);

@@ -77,7 +77,7 @@ public class ExternalAuthFilter extends OncePerRequestFilter {
 
     private boolean isPublicPath(String path) {
         // مسیرهای عمومی فروشگاه
-        if (path.startsWith("/api/store/public") || path.equals("/api/store") || path.startsWith("/api/store/")) {
+        if (path.startsWith("/api/store/img") || path.startsWith("/api/store/images") || path.startsWith("/api/store/public") || path.equals("/api/store") || path.startsWith("/api/store/")) {
             // فقط مسیرهای PROTECTED_PATHS نیازمند توکن هستند
             return PROTECTED_PATHS.stream().noneMatch(path::startsWith);
         }
