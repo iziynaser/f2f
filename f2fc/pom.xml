@@ -188,7 +188,11 @@
             <artifactId>f2f-authClient</artifactId>
             <version>1.0.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.f2f</groupId>
+            <artifactId>f2f-skript</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

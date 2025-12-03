@@ -16,7 +16,7 @@ services:
 
   db:
     image: postgres:13
-    container_name: postgres-db-f2f
+    container_name: postgres-f2fdb
     environment:
       POSTGRES_USER: f2fuser
       POSTGRES_PASSWORD: f2fpass
@@ -28,7 +28,7 @@ services:
 
   redis:
     image: redis:7
-    container_name: redis-f2f
+    container_name: redis-f2fdb
     ports:
       - "6379:6379"
 

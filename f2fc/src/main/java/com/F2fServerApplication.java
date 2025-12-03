@@ -12,16 +12,15 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication(
         scanBasePackageClasses = {}
         ,
-        scanBasePackages = {"com.f2f"}
+        scanBasePackages = {"com"}
 
         )
-@PropertySources({
-        @PropertySource(value="classpath:application.properties"),
-        @PropertySource(value = "classpath:postgresFile.properties"),
-        @PropertySource(value = "classpath:storage.properties")
-})
-
-public class F2fServerApplication{
+//@PropertySources({
+//        @PropertySource("classpath:application.properties"),
+//        @PropertySource("classpath:postgresFile.properties"),
+//        @PropertySource("classpath:storage.properties")
+//})
+public class F2fServerApplication {
 
     public static void main(String[] args) {
         System.out.println("start f2f server application!");

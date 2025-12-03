@@ -1,7 +1,7 @@
 FROM maven:3.9.6-eclipse-temurin-21 AS builder
 
 ENV APP_NAME=f2fcore
-ENV SPRING_PROFILES_ACTIVE=docker
+##ENV SPRING_PROFILES_ACTIVE=docker
 
 WORKDIR /app
 COPY . .
