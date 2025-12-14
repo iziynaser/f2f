@@ -1,57 +1,56 @@
-# f2fCore
-### 
-F2fCore is a small a Spring boot application 
-it is project base learning(PBL) for SpringBoot and Java.
+# f2fCore – Backend Server
 
-### usage 
-for practical use,its better to use  the f2f application.this app is not recommended.
+📘 این پروژه یک **backend مالتی ماژول Spring Boot** است و به عنوان پروژه آموزشی (Project Based Learning) برای Spring Boot و Java طراحی شده است.
 
-### parts
-this app consist of the following parts:
-1. login
-2. content
-3. hr
-4. accounting
-5. warehouse
-6. portal
-7. report
+> ⚠️ توجه
+> این پروژه برای **کار عملی واقعی توصیه نمی‌شود** و بیشتر برای یادگیری و نمونه‌سازی مناسب است.
 
-the resources I used in this app are listed below as far as i can remember:
-- ### References of this app
-1. https://attacomsian.com/blog/spring-jpa-specification
-2. https://ofbiz.apache.org
-3. https://github.com/iziynaser/oauth2-server
-4. https://github.com/iziynaser/wallride
-## frameworks
+---
 
+## 🎯 اهداف
+- یادگیری و تست مفاهیم Spring Boot و Java
+- ارائه نمونه ماژول‌های متعدد در یک پروژه مالتی ماژول
+- فراهم‌کردن ساختار برای مستندات و مشارکت توسعه‌دهندگان
 
-##github
+---
 
+## 🗂 ماژول‌ها
+این پروژه شامل ماژول‌های زیر است:
 
-##the tools used for developing and debug
-1. visual studio code
-2. intellij community edtion
-3. json view pro (plugin for chrome/firefox)
+1. dbc
+2. frontb
+3. frontf
+4. content
+5. acc
+6. hr
+7. order
+8. asset
+9. budget
+10. delivery
+11. f2f-i18n
+12. skript
+13. logging
+14. images
+15. shopping
+16. product
+17. promotion
+18. inventory
+19. payment
+20. reporting
+21. purchase
+22. sales
+23. invoice
+24. f2fc
+25. catalog
+26. comment
+27. Qa
+28. appInfo
+29. authClient
 
-##upload images
-برای اپلود تصاویر محصولات باید تنظیمات ذیل انجام شود
-۱. ایجاد پوشه اپلود
-این پوشه در کنار پوشه سورس بایستی ایجاد شود
+---
 
-## naming requestmapping 
-هم نام با کلاس کنترلر است تنها عبارت کنترلر در ان ذکر نمی شود
-
-
-## requestcalls
-1. {get}
-   2. http://localhost:8080/f2f/relatedProducts/list?productId=1
-2. {post}
-
-## handle error for development
-1.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: 
-    Required String parameter 'productId' is not present]
-    {production mode : ignore log the err}
-    {development mode : log the error}
-
-##properties
-storage.properties ??
+## ⚙️ استفاده محلی
+```bash
+# Build and run the application
+mvn clean install
+mvn spring-boot:run

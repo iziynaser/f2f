@@ -34,7 +34,6 @@
         <module>skript</module>
         <module>logging</module>
         <module>images</module>
-        <module>docs</module>
         <module>shopping</module>
         <module>product</module>
         <module>promotion</module>
