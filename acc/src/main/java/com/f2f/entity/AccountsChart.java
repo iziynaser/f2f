@@ -1,14 +1,24 @@
 package com.f2f.entity;
 
+
 import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.enums.AccountLevel;
+import com.f2f.enums.AccountNature;
+import com.f2f.enums.DebitCreditType;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 
 
 import java.io.Serializable;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
-@Table(name = "ACCOUNTS_CHART")
+@Table(name = "ACCOUNTS_CHART",
+uniqueConstraints = {@UniqueConstraint(columnNames = {"ACCOUNT_CODE"})})
 public class AccountsChart extends BaseEntity implements Serializable {
 
     @Column(name = "ACCOUNTS_NAME")
@@ -16,14 +26,10 @@ public class AccountsChart extends BaseEntity implements Serializable {
 
     //@Id
     @Column(name = "ACCOUNT_CODE",nullable = false,unique = true)
-    private String code ;
+    private String accountCode ;
 
     @Column(name = "ACCOUNTS_DESC")
     private String description;
-
-    //@OneToOne
-    //@JoinColumn(name = "CURRENCY_ID")
-    private Currency currency;
 
     @Column(name = "ACCOUNTS_COLOR")
     private String color;
@@ -31,111 +37,60 @@ public class AccountsChart extends BaseEntity implements Serializable {
     @Column(name = "ACCOUNTS_STATUS")
     private String status;
 
-    //@OneToOne
-    //@JoinColumn(name = "ACCOUNTS_TYPE_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ACCOUNT_TYPE_ID")
     private AccountType accountType;
 
-    //@OneToOne
-    //@JoinColumn(name = "ACCOUNT_GROUP_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ACCOUNT_GROUP_ID")
     private AccountGroup accountGroup;
 
-    //@ManyToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "PARENT_ACCOUNT_CODE",nullable = true)
-    private AccountsChart parentAccount;
-
-    @OneToMany(fetch = FetchType.LAZY)
-    //@JoinTable(name="PARENT_ACCOUNT_CODE", joinColumns = {@JoinColumn(name = "ACCOUNT_CODE")},
-    //           inverseJoinColumns = {@JoinColumn(name = "PARENT_ACCOUNT_CODE")})
+    @OneToMany(mappedBy = "parentAccount", fetch = FetchType.LAZY)
+    @BatchSize(size = 50)
     private List<AccountsChart> subAccounts ;//= new ArrayList<AccountsChart>();
 
-    public String getName() {
-        return name;
-    }
+    @Column(name = "LEVEL_INDEX", nullable = false)
+    private int levelIndex;// سطح حساب (1 = کل، 2 = معین، 3 = تفضیلی، ...)
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @Enumerated(EnumType.STRING)
+    @Column(name = "LEVEL_TYPE", nullable = false)
+    private AccountLevel accountLevel;
 
-    public String getCode() {
-        return code;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @BatchSize(size = 50)
+    @JoinColumn(name = "PARENT_ID")
+    private AccountsChart parentAccount;
 
-    public void setCode(String code) {
-        this.code = code;
-    }
 
-    public String getDescription() {
-        return description;
-    }
+    @Enumerated(EnumType.STRING)
+    @Column(name = "NORMAL_BALANCE", nullable = false)
+    private DebitCreditType normalBalance;
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    @Enumerated(EnumType.STRING)
+    @Column(name="ACCOUNT_NATURE", nullable=false)
+    private AccountNature accountNature;
 
-    public Currency getCurrency() {
-        return currency;
-    }
+    @Column(name="IS_CONTROL_ACCOUNT")
+    private Boolean controlAccount;//در حساب‌های مانند مشتریان و فروشندگان باید مشخص شود که معین‌ها زیر مجموعه چه کلّی هستند.
 
-    public void setCurrency(Currency currency) {
-        this.currency = currency;
-    }
+    @Column(name="IS_POSTABLE")
+    private Boolean postable = true;//برای جلوگیری از اشتباه کاربر در ثبت سند روی حساب‌هایی که shouldn’t accept postings.
 
-    public String getColor() {
-        return color;
-    }
+    @Column(name = "IS_ACTIVE")
+    private Boolean active = true;
 
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public AccountsChart getParentAccount() {
-        return parentAccount;
-    }
-
-    public void setParentAccount(AccountsChart parentAccount) {
-        this.parentAccount = parentAccount;
-    }
-
-    public List<AccountsChart> getSubAccounts() {
-        return subAccounts;
-    }
-
-    public void setSubAccounts(List<AccountsChart> subAccounts) {
-        this.subAccounts = subAccounts;
-    }
+    @ManyToOne
+    @JoinColumn(name="CATEGORY_ID")
+    private AccountCategory category;
 
     public AccountsChart() {
     }
 
-    public AccountType getAccountType() {
-        return accountType;
-    }
-
-    public void setAccountType(AccountType accountType) {
-        this.accountType = accountType;
-    }
-
-    public AccountGroup getAccountGroup() {
-        return accountGroup;
-    }
-
-    public void setAccountGroup(AccountGroup accountGroup) {
-        this.accountGroup = accountGroup;
-    }
-
-    public AccountsChart(String name, String code, String description, Currency currency, String color, String status, AccountType accountType, AccountGroup accountGroup, AccountsChart parentAccount, List<AccountsChart> subAccounts) {
+    public AccountsChart(String name, String description, String color, String status, AccountType accountType, AccountGroup accountGroup, AccountsChart parentAccount, List<AccountsChart> subAccounts) {
         this.name = name;
-        this.code = code;
+        //this.code = code;
         this.description = description;
-        this.currency = currency;
+        //this.currency = currency;
         this.color = color;
         this.status = status;
         this.accountType = accountType;
@@ -143,4 +98,5 @@ public class AccountsChart extends BaseEntity implements Serializable {
         this.parentAccount = parentAccount;
         this.subAccounts = subAccounts;
     }
+
 }

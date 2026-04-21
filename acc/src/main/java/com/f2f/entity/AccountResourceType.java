@@ -4,8 +4,11 @@ import com.f2f.dbc.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
-
+@Getter
+@Setter
 @Entity
 @Table(name = "ACCOUNT_RESOURCE_TYPE")
 public class AccountResourceType extends BaseEntity {
@@ -15,22 +18,6 @@ public class AccountResourceType extends BaseEntity {
 
     @Column(name = "DESCRIPTION")
     private String description;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public AccountResourceType() {
     }
