@@ -1,0 +1,22 @@
+این قسمت در ERPها تعیین می‌کند:
+
+وقتی یک Invoice ثبت می‌شود → چه حساب‌هایی Debit/Credit می‌شوند؟
+وقتی Payment اتفاق می‌افتد → چه حساب‌هایی تحت تأثیر قرار می‌گیرند؟
+وقتی Inventory Receipt دارید → خورد به موجودی؟ خورد به حساب کالای در جریان؟ VAT؟
+
+باید یک «AccountingEventEngine» طراحی کنیم شامل:
+قالب eventها (EventDefinition)
+قالب ruleها
+مقداردهی اتوماتیک سطرهای سند حسابداری
+
+AccountingEvent {
+eventType: SALE_INVOICE
+rules: [
+{ debit: ACC_RECEIVABLE, credit: SALES, formula: amountWithoutTax },
+{ debit: ACC_VAT_INPUT, credit: VAT_PAYABLE, formula: vatAmount },
+...
+]
+}
+
+این یکی از مهم‌ترین بخش‌هایی است که سیستم تو هنوز ندارد.
+اگر بخواهی می‌توانم طراحی کامل schema + سرویس‌ها + engine + evaluator را برایت بنویسم.
