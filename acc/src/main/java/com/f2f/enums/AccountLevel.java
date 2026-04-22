@@ -19,6 +19,4 @@ public enum AccountLevel {
         return order;
     }
 
-
-
 }

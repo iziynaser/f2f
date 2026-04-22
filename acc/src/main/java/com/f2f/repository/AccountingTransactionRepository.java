@@ -29,5 +29,6 @@ public interface AccountingTransactionRepository extends JpaRepository<Accountin
 
     List<AccountingTransaction> findBySourceModuleAndSourceId(String module, Long sourceId);
 
+    boolean existsByAccountingPeriodAndTransactionStatus(AccountingPeriod period, TransactionStatus transactionStatus);
 }
 

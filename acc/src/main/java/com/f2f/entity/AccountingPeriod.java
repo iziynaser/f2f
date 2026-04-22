@@ -1,6 +1,7 @@
 package com.f2f.entity;
 
 import com.f2f.dbc.entity.BaseEntity;
+import com.f2f.enums.PeriodStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,8 +37,8 @@ public class AccountingPeriod extends BaseEntity implements Serializable {
     @Column(name = "PERIOD_NUMBER")
     private Short periodNumber;
 
-    @Column(name = "IS_CLOSED")
-    public Boolean isClosed = false ;
+    @Enumerated(EnumType.STRING)
+    public PeriodStatus isClosed = PeriodStatus.OPENED ;
 
     @OneToMany(mappedBy = "accountingPeriod")
     private List<AccountingTransaction> transactions;

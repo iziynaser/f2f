@@ -40,6 +40,9 @@ public class AccountBalance  extends BaseEntity implements Serializable {
     @Column(name = "creditTotal")
     private BigDecimal creditTotal = BigDecimal.ZERO;
 
+    @Column(name = "closingBalance")
+    private BigDecimal closingBalance = BigDecimal.ZERO;
+
     @Column(name = "lastUpdated")
     private LocalDateTime lastUpdated;
 

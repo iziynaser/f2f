@@ -13,10 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @Transactional
@@ -71,9 +68,9 @@ public class AccountingBalanceUpdaterService {
             BigDecimal net = info.amountFunctional;
 
             AccountBalance bal;
-            List<AccountBalance> list = balanceRepository.findByAccountAndPeriod(acc, period);
-            if(!list.isEmpty()) {
-                 bal = list.get(0);
+            Optional<AccountBalance> obl = balanceRepository.findByAccountAndPeriod(acc, period);
+            if(obl.isPresent()) {
+                 bal = obl.get();
             }else{
                 bal = createBalance(acc, period);
             };
