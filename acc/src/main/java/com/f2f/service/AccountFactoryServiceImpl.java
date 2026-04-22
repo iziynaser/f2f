@@ -40,6 +40,10 @@ public class AccountFactoryServiceImpl implements AccountFactoryService {
     }
 
     private AccountLevel getNextLevel(AccountLevel parent) {
+        int ordinal = parent.ordinal() ;
+        if(ordinal + 1 >= AccountLevel.values().length ) {
+            return parent;
+        }
         return AccountLevel.values()[parent.ordinal() + 1];
     }
 

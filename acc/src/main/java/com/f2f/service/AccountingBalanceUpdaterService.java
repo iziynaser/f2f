@@ -70,11 +70,13 @@ public class AccountingBalanceUpdaterService {
             AccountingPeriod period = info.period;
             BigDecimal net = info.amountFunctional;
 
-//            AccountBalance bal = balanceRepository
-//                    .findByAccountAndPeriod(acc, period)
-//                    .orElseGet(() -> createBalance(acc, period));
-
-            AccountBalance bal = new AccountBalance();
+            AccountBalance bal;
+            List<AccountBalance> list = balanceRepository.findByAccountAndPeriod(acc, period);
+            if(!list.isEmpty()) {
+                 bal = list.get(0);
+            }else{
+                bal = createBalance(acc, period);
+            };
 
             if (net.compareTo(BigDecimal.ZERO) > 0) {
                 bal.setDebitTotal(bal.getDebitTotal().add(net));
@@ -96,6 +98,6 @@ public class AccountingBalanceUpdaterService {
         b.setDebitTotal(BigDecimal.ZERO);
         b.setCreditTotal(BigDecimal.ZERO);
         b.setOpeningBalance(BigDecimal.ZERO);
-        return balanceRepository.save(b);
+        return b;//balanceRepository.save(b);
     }
 }

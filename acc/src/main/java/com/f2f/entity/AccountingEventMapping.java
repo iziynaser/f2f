@@ -11,10 +11,6 @@ import lombok.Setter;
 @Entity
 public class AccountingEventMapping extends BaseEntity {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-
     @Enumerated(EnumType.STRING)
     private AccountingEventType eventType;
 

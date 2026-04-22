@@ -22,8 +22,8 @@ public class TransactionValidationService {
 
         for (AccountTransactionDetail item : dto.getAccountTransactionDetails()) {
 
-            BigDecimal debit = DebitCreditType.DEBIT.compareTo(item.getDebitCreditType())==0 ? BigDecimal.ZERO : item.getAmountFunctional();
-            BigDecimal credit = DebitCreditType.CREDIT.compareTo(item.getDebitCreditType())==0 ? BigDecimal.ZERO : item.getAmountFunctional();
+            BigDecimal debit = item.getDebitCreditType()==DebitCreditType.DEBIT ? item.getAmountFunctional() : BigDecimal.ZERO;
+            BigDecimal credit = item.getDebitCreditType()==DebitCreditType.CREDIT ? item.getAmountFunctional() : BigDecimal.ZERO;
 
             if (debit.compareTo(BigDecimal.ZERO) > 0 &&
                     credit.compareTo(BigDecimal.ZERO) > 0) {

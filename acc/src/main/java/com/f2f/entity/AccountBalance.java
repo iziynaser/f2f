@@ -43,8 +43,4 @@ public class AccountBalance  extends BaseEntity implements Serializable {
     @Column(name = "lastUpdated")
     private LocalDateTime lastUpdated;
 
-
 }
-
-
-

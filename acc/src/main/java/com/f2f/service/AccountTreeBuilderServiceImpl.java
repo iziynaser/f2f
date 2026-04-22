@@ -40,7 +40,8 @@ public class AccountTreeBuilderServiceImpl implements AccountTreeBuilderService 
     }
 
     private void sortTree(AccountTreeNode node) {
-        //node.getChildren().sort(Comparator.comparing(n -> n.getAccount().getAccountCode()));
-        //node.getChildren().forEach(this::sortTree);
+        //node.getChildren().sort(Comparator.comparing(n -> n.getCode()));
+        node.getChildren().sort(Comparator.comparing(AccountTreeNode::getName));
+        node.getChildren().forEach(this::sortTree);
     }
 }

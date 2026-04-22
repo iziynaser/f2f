@@ -30,7 +30,6 @@ public class AccountTransactionDetail extends BaseEntity implements Serializable
     @JoinColumn(name = "FLOATING_DETAIL_ID")
     private FloatingDetail floatingDetail;
 
-
     @Column(name = "DEBIT_CREDIT",nullable = false)
     private DebitCreditType debitCreditType;
 

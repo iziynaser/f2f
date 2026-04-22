@@ -16,7 +16,7 @@ public class TransactionNumberGeneratorService {
     }
 
     @Transactional
-    public synchronized Long generate() {
+    public Long generate() {
 
         Long max = numberSequenceService.next("TX");
 

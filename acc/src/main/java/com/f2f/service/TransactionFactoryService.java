@@ -5,6 +5,7 @@ import com.f2f.dto.TransactionItemRequest;
 import com.f2f.entity.AccountTransactionDetail;
 import com.f2f.entity.AccountingTransaction;
 import com.f2f.entity.AccountsChart;
+import com.f2f.enums.DebitCreditType;
 import com.f2f.enums.TransactionStatus;
 import com.f2f.repository.AccountRepository;
 import org.springframework.stereotype.Service;
@@ -31,14 +32,14 @@ public class TransactionFactoryService {
         tx.setTransactionNumber(transNumber);
         tx.setTransactionDate(dto.transactionDate);
         tx.setDescription(dto.description);
-        tx.setStatus(TransactionStatus.DRAFT);
+        tx.setTransactionStatus(TransactionStatus.DRAFT);
 
         return tx;
     }
 
     public AccountingTransaction createDraft(CreateTransactionRequest request, Long userId) {
         AccountingTransaction transaction = new AccountingTransaction();
-        transaction.setStatus(TransactionStatus.DRAFT); // Set status to DRAFT
+        transaction.setTransactionStatus(TransactionStatus.DRAFT); // Set status to DRAFT
         List<AccountTransactionDetail> details = new ArrayList<>();
         List<TransactionItemRequest> items = request.getItems() ;
         for (int i = 0; i < items.size(); i++) {
@@ -49,14 +50,23 @@ public class TransactionFactoryService {
                     .orElseThrow(() -> new IllegalArgumentException("Account not found: " + item.getAccountId()));
 
             detail.setAccountsChart(account);
-            BigDecimal amount = item.getCredit()==null ? item.getDebit() : item.getCredit() ;
-            detail.setAmountFunctional(amount);
-            detail.setDebitCreditType(item.getDebitCreditType()); // DEBIT or CREDIT
+
+            BigDecimal amount = BigDecimal.ZERO;
+            if(item.getDebit() != null) {
+                detail.setAmountFunctional(item.getDebit());
+                detail.setDebitCreditType(DebitCreditType.DEBIT); // DEBIT or CREDIT
+            }else if(item.getCredit() != null) {
+                detail.setAmountFunctional(item.getCredit());
+                detail.setDebitCreditType(DebitCreditType.CREDIT); // DEBIT or CREDIT
+            }
+
             detail.setAccountingTransaction(transaction); // Link detail to transaction
 
             details.add(detail);
         }
         transaction.setPostedBy(userId);
+        transaction.setApprovedBy(userId);
+
         transaction.setAccountTransactionDetails(details);
         return transaction;
     }

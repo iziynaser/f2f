@@ -13,6 +13,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "number_seq")
 public class NumberSequence extends BaseEntity {
+
     private String sequenceKey ;
     private Long lastNumber;
 }

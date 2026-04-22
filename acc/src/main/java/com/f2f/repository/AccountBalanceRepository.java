@@ -10,5 +10,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AccountBalanceRepository extends JpaRepository<AccountBalance, Long> {
-    //Optional<AccountBalance> findByAccountAndPeriod(AccountsChart acc, AccountingPeriod period);
+    List<AccountBalance> findByAccountAndPeriod(AccountsChart acc, AccountingPeriod period);
 }
