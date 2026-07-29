@@ -1,0 +1,32 @@
+INSERT INTO accounting_period
+(
+    id,
+    period_name,
+    fiscal_year,
+    from_date,
+    to_date,
+    period_number,
+    is_closed,
+    company_id,
+    branch_id,
+    record_status,
+    version,
+    date_created,
+    last_modified
+)
+VALUES
+    (
+        1,
+        'فروردین 1404',
+        1404,
+        '2025-03-21',
+        '2025-04-20',
+        1,
+        'OPENED',
+        1,
+        1,
+        0,
+        0,
+        NOW(),
+        NOW()
+    );
