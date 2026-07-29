@@ -30,4 +30,8 @@ public class CustomerAccount extends BaseEntity {
     @Column(name = "PERSON_ID")
     private Long personId;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ACCOUNT_ID", nullable = false)
+    private AccountingChart account;
+
 }
