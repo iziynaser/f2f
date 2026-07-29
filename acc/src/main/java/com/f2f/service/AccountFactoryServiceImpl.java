@@ -1,8 +1,8 @@
 package com.f2f.service;
 
-import com.f2f.dto.CreateAccountRequest;
-import com.f2f.dto.UpdateAccountRequest;
-import com.f2f.entity.AccountsChart;
+import com.f2f.dto.chartOfAccount.CreateAccountRequest;
+import com.f2f.dto.chartOfAccount.UpdateAccountRequest;
+import com.f2f.entity.AccountingChart;
 import com.f2f.enums.AccountLevel;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,9 +18,9 @@ public class AccountFactoryServiceImpl implements AccountFactoryService {
     }
 
     @Override
-    public AccountsChart createAccount(AccountsChart parent, CreateAccountRequest dto) {
+    public AccountingChart createAccount(AccountingChart parent, CreateAccountRequest dto) {
 
-        AccountsChart acc = new AccountsChart();
+        AccountingChart acc = new AccountingChart();
 
         acc.setParentAccount(parent);
         acc.setName(dto.name);
@@ -31,7 +31,7 @@ public class AccountFactoryServiceImpl implements AccountFactoryService {
         acc.setAccountCode(codeGenerator.generateChildCode(parent));
 
         acc.setAccountNature(dto.accountNature != null ? dto.accountNature : parent.getAccountNature());
-        acc.setNormalBalance(dto.normalBalance != null ? dto.normalBalance : parent.getNormalBalance());
+        acc.setNormalBalance(dto.debitCreditType != null ? dto.debitCreditType : parent.getNormalBalance());
 
         acc.setPostable(dto.postable != null ? dto.postable : true);
         acc.setActive(dto.active != null ? dto.active : true);
@@ -48,7 +48,7 @@ public class AccountFactoryServiceImpl implements AccountFactoryService {
     }
 
     @Override
-    public void updateAccount(AccountsChart acc, UpdateAccountRequest dto) {
+    public void updateAccount(AccountingChart acc, UpdateAccountRequest dto) {
 
         if (dto.name != null)
             acc.setName(dto.name);

@@ -1,6 +1,5 @@
 package com.f2f.dto;
 
-import com.f2f.entity.AccountsChart;
 import lombok.Getter;
 import lombok.Setter;
 

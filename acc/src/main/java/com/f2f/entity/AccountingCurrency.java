@@ -11,10 +11,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "currency")
-public class Currency  extends BaseEntity {
+@Table(name = "ACCOUNTING_CURRENCY")
+public class AccountingCurrency extends BaseEntity {
 
-    @Column(name = "currencyname")
+    @Column(name = "currency_name")
     private String currencyname ;
 
 }

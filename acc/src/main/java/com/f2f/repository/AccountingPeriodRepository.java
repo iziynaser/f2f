@@ -10,5 +10,25 @@ import java.util.Optional;
 
 public interface AccountingPeriodRepository extends JpaRepository<AccountingPeriod, Long> {
 
+
+    @Query("""
+        select p from AccountingPeriod p
+        where :date between p.fromDate and p.toDate
+    """)
+    Optional<AccountingPeriod> findPeriodByDate(LocalDate date);
+
+
+    Optional<AccountingPeriod>
+    findFirstByCompanyIdAndBranchIdAndFiscalYearOrderByPeriodNumberAsc(
+            Long companyId,
+            Long branchId,
+            Integer fiscalYear
+    );
+
+    Optional<AccountingPeriod> findFirstByCompanyIdAndBranchIdAndFiscalYearOrderByFromDateAsc(
+            Long companyId,
+            Long branchId,
+            Integer fiscalYear
+    );
 }
 

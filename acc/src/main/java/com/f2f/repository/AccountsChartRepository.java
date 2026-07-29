@@ -1,6 +1,6 @@
 package com.f2f.repository;
 
-import com.f2f.entity.AccountsChart;
+import com.f2f.entity.AccountingChart;
 import com.f2f.enums.AccountLevel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -8,32 +8,32 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 
-public interface AccountsChartRepository extends JpaRepository<AccountsChart, Long> {
-    AccountsChart findByAccountCode(String code);
+public interface AccountsChartRepository extends JpaRepository<AccountingChart, Long> {
+    AccountingChart findByAccountCode(String code);
 
-    List<AccountsChart> findByPostableTrue();
+    List<AccountingChart> findByPostableTrue();
 
-    List<AccountsChart> findByLevelIndex(int levelIndex);
+    List<AccountingChart> findByLevelIndex(int levelIndex);
 
-    List<AccountsChart> findByAccountLevel(AccountLevel level);
+    List<AccountingChart> findByAccountLevel(AccountLevel level);
 
-    List<AccountsChart> findByParentAccount(AccountsChart parent);
+    List<AccountingChart> findByParentAccount(AccountingChart parent);
 
     @Query("""
-        select a from AccountsChart a 
+        select a from AccountingChart a 
         where lower(a.name) like lower(concat('%', :keyword, '%'))
            or lower(a.accountCode) like lower(concat('%', :keyword, '%'))
     """)
-    List<AccountsChart> search(String keyword);
+    List<AccountingChart> search(String keyword);
 
-    List<AccountsChart> findByParentAccountId(Long parentId);
+    List<AccountingChart> findByParentAccountId(Long parentId);
 
-    @Query("SELECT a FROM AccountsChart a WHERE a.postable = true")
-    List<AccountsChart> findPostableAccounts();
+    @Query("SELECT a FROM AccountingChart a WHERE a.postable = true")
+    List<AccountingChart> findPostableAccounts();
 
     boolean existsByAccountCode(String accountCode);
 
-    List<AccountsChart> findByParentAccountIsNullOrderByAccountCodeAsc();
+    List<AccountingChart> findByParentAccountIsNullOrderByAccountCodeAsc();
 }
 
 

@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "ACCOUNT_RESOURCE_TYPE")
+@Table(name = "ACCOUNTING_RESOURCE_TYPE")
 public class AccountResourceType extends BaseEntity {
 
     @Column(name = "NAME")

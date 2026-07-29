@@ -1,7 +1,7 @@
 package com.f2f.service;
 
-import com.f2f.entity.AccountsChart;
-import com.f2f.repository.AccountRepository;
+import com.f2f.entity.AccountingChart;
+import com.f2f.repository.AccountsChartRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,19 +12,19 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class AccountCodeGeneratorServiceImpl implements AccountCodeGeneratorService {
 
-    private final AccountRepository accountRepository;
+    private final AccountsChartRepository accountRepository;
 
-    public AccountCodeGeneratorServiceImpl(AccountRepository accountRepository) {
+    public AccountCodeGeneratorServiceImpl(AccountsChartRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
 
     @Override
-    public String generateChildCode(AccountsChart parent) {
+    public String generateChildCode(AccountingChart parent) {
 
-        List<AccountsChart> children =
+        List<AccountingChart> children =
                 accountRepository.findByParentAccountId(parent.getId());
 
-        children.sort(Comparator.comparing(AccountsChart::getAccountCode));
+        children.sort(Comparator.comparing(AccountingChart::getAccountCode));
 
         if (children.isEmpty()) {
             return parent.getAccountCode() + "01";
@@ -39,3 +39,4 @@ public class AccountCodeGeneratorServiceImpl implements AccountCodeGeneratorServ
     }
 
 }
+

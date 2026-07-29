@@ -1,6 +1,6 @@
-package com.f2f.dto;
+package com.f2f.dto.chartOfAccount;
 
-import com.f2f.entity.AccountsChart;
+import com.f2f.entity.AccountingChart;
 import com.f2f.enums.AccountLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +18,7 @@ public class AccountTreeNode {
     public AccountLevel accountLevel;
     public List<AccountTreeNode> children = new ArrayList<>();
 
-    public AccountTreeNode(AccountsChart acc) {
+    public AccountTreeNode(AccountingChart acc) {
         this.id = acc.getId();
         this.code = acc.getAccountCode();
         this.name = acc.getName();

@@ -1,44 +1,55 @@
 package com.f2f.service;
 
-import com.f2f.dto.CreateTransactionRequest;
+import com.f2f.dto.*;
+import com.f2f.dto.chartOfAccount.CreateTransactionRequest;
+import com.f2f.dto.transactions.AccountingTransactionResponseDto;
 import com.f2f.entity.AccountingTransaction;
 import com.f2f.enums.TransactionStatus;
+import com.f2f.mapper.AccountingTransactionMapper;
 import com.f2f.repository.AccountingTransactionRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Transactional
+import java.util.List;
+import java.util.Optional;
+
 @Service
+@Transactional
 public class AccountingTransactionService {
 
     private final TransactionNumberGeneratorService numberGenerator;
     private final TransactionFactoryService factoryService;
     private final TransactionLifecycleManagerService lifecycleService;
     private final AccountingTransactionRepository txRepo;
+    private final AccountingTransactionMapper mapper;
 
     public AccountingTransactionService(
             TransactionNumberGeneratorService numberGenerator,
             TransactionFactoryService factoryService,
             TransactionLifecycleManagerService lifecycleService,
-            AccountingTransactionRepository txRepo) {
+            AccountingTransactionRepository txRepo,
+            AccountingTransactionMapper mapper) {
+
         this.numberGenerator = numberGenerator;
         this.factoryService = factoryService;
         this.lifecycleService = lifecycleService;
         this.txRepo = txRepo;
+        this.mapper = mapper;
     }
 
-    public AccountingTransaction createTransaction(CreateTransactionRequest req) {
+    public AccountingTransactionResponseDto createTransaction(CreateTransactionRequest req) {
 
-        AccountingTransaction tx =
+        AccountingTransactionResponseDto tx =
                 factoryService.createDraft(req, numberGenerator.generate());
 
-        return txRepo.save(tx);
+        return tx;
     }
 
     public AccountingTransaction post(Long id) {
 
-        AccountingTransaction tx = txRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Transaction not found"));
+        AccountingTransaction tx = findOrThrow(id);
 
         lifecycleService.changeStatus(tx, TransactionStatus.POSTED);
 
@@ -47,19 +58,16 @@ public class AccountingTransactionService {
 
     public AccountingTransaction lock(Long id) {
 
-        AccountingTransaction tx = txRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Transaction not found"));
+        AccountingTransaction tx = findOrThrow(id);
 
         lifecycleService.changeStatus(tx, TransactionStatus.LOCKED);
 
         return txRepo.save(tx);
     }
 
-
     public AccountingTransaction cancel(Long id) {
 
-        AccountingTransaction tx = txRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Transaction not found"));
+        AccountingTransaction tx = findOrThrow(id);
 
         lifecycleService.changeStatus(tx, TransactionStatus.CANCELLED);
 
@@ -68,11 +76,69 @@ public class AccountingTransactionService {
 
     public AccountingTransaction reverse(Long id) {
 
-        AccountingTransaction tx = txRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Transaction not found"));
+        AccountingTransaction tx = findOrThrow(id);
 
         lifecycleService.changeStatus(tx, TransactionStatus.REVERSED);
 
         return txRepo.save(tx);
+    }
+
+    public Optional<AccountingTransaction> getById(Long id) {
+        return txRepo.findById(id);
+    }
+
+    public AccountingTransaction update(Long id, CreateTransactionRequest req) {
+
+        AccountingTransaction tx = findOrThrow(id);
+
+        if (tx.getTransactionStatus() != TransactionStatus.DRAFT) {
+            throw new RuntimeException("Only DRAFT transaction can be edited");
+        }
+
+        //factoryService.updateDraft(tx, req);
+
+        return txRepo.save(tx);
+    }
+
+    public void delete(Long id) {
+
+        AccountingTransaction tx = findOrThrow(id);
+
+        if (tx.getTransactionStatus() != TransactionStatus.DRAFT &&
+                tx.getTransactionStatus() != TransactionStatus.CANCELLED) {
+
+            throw new RuntimeException("Only DRAFT or CANCELLED transactions can be deleted");
+        }
+
+        txRepo.delete(tx);
+    }
+
+    public Page<TransactionSummaryDTO> searchTransactions(
+            TransactionSearchFilter filter,
+            Pageable pageable) {
+
+        return txRepo.search(filter, pageable);
+    }
+
+    public TransactionDTO getTransaction(Long id) {
+
+        TransactionDTO dto = txRepo.findDetailedById(id);
+
+        if (dto == null) {
+            throw new RuntimeException("Transaction not found");
+        }
+
+        return dto;
+    }
+
+    public List<JournalEntryDTO> getJournal(JournalFilter filter) {
+
+        return txRepo.findJournalEntries(filter);
+    }
+
+    private AccountingTransaction findOrThrow(Long id) {
+
+        return txRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Transaction not found"));
     }
 }

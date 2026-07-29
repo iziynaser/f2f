@@ -3,11 +3,10 @@ package com.f2f.service;
 import com.f2f.dto.BalanceUpdateInfo;
 import com.f2f.entity.AccountBalance;
 import com.f2f.entity.AccountTransactionDetail;
+import com.f2f.entity.AccountingChart;
 import com.f2f.entity.AccountingPeriod;
-import com.f2f.entity.AccountsChart;
 import com.f2f.enums.DebitCreditType;
 import com.f2f.repository.AccountBalanceRepository;
-import com.f2f.repository.AccountsChartRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,16 +19,195 @@ import java.util.*;
 public class AccountingBalanceUpdaterService {
 
     private final AccountBalanceRepository balanceRepository;
-    private final AccountsChartRepository accountRepository;
 
     public AccountingBalanceUpdaterService(
-            AccountBalanceRepository balanceRepository,
-            AccountsChartRepository accountRepository) {
+            AccountBalanceRepository balanceRepository) {
         this.balanceRepository = balanceRepository;
-        this.accountRepository = accountRepository;
     }
 
 
+
+
+    private AccountBalance createBalance(AccountingChart acc, AccountingPeriod p) {
+        AccountBalance b = new AccountBalance();
+        b.setAccount(acc);
+        b.setPeriod(p);
+        b.setDebitTotal(BigDecimal.ZERO);
+        b.setCreditTotal(BigDecimal.ZERO);
+        b.setOpeningBalance(BigDecimal.ZERO);
+        b.setLastUpdated(LocalDateTime.now());
+        return b;//balanceRepository.save(b);
+    }
+
+    private void propagateToParents(
+            AccountingChart account,
+            AccountingPeriod period,
+            BigDecimal debit,
+            BigDecimal credit
+    ) {
+
+        AccountingChart parent = account.getParentAccount();
+
+        while (parent != null) {
+
+            AccountingChart finalParent = parent;
+            AccountBalance parentBalance =
+                    balanceRepository
+                            .findByAccountAndPeriod(parent, period)
+                            .orElseGet(() -> createBalance(finalParent, period));
+
+            if (parentBalance.getDebitTotal() == null)
+                parentBalance.setDebitTotal(BigDecimal.ZERO);
+
+            if (parentBalance.getCreditTotal() == null)
+                parentBalance.setCreditTotal(BigDecimal.ZERO);
+
+            parentBalance.setDebitTotal(
+                    parentBalance.getDebitTotal().add(debit)
+            );
+
+            parentBalance.setCreditTotal(
+                    parentBalance.getCreditTotal().add(credit)
+            );
+
+            parentBalance.setLastUpdated(LocalDateTime.now());
+
+            balanceRepository.save(parentBalance);
+
+            parent = parent.getParentAccount();
+        }
+    }
+
+    public void applyBalances(List<AccountTransactionDetail> details) {
+
+        Map<String, BalanceUpdateInfo> map = new HashMap<>();
+
+        for (AccountTransactionDetail d : details) {
+
+            AccountingChart acc = d.getAccountingChart();
+            AccountingPeriod period = d.getAccountingTransaction().getAccountingPeriod();
+
+            if (acc == null)
+                throw new IllegalStateException("Account is NULL in transaction detail");
+
+            String key = acc.getId() + "_" + period.getId();
+
+            map.compute(key, (k, val) -> {
+
+                if (val == null)
+                    val = new BalanceUpdateInfo(acc, period);
+
+                BigDecimal amount = d.getAmountFunctional();
+
+                if (d.getDebitCreditType() == DebitCreditType.DEBIT) {
+                    val.debit = val.debit.add(amount);
+                } else {
+                    val.credit = val.credit.add(amount);
+                }
+
+                return val;
+            });
+        }
+
+        List<AccountBalance> balances = new ArrayList<>();
+
+        for (BalanceUpdateInfo info : map.values()) {
+
+            AccountBalance bal =
+                    balanceRepository
+                            .findByAccountAndPeriod(info.account, info.period)
+                            .orElseGet(() -> createBalance(info.account, info.period));
+
+            if (bal.getDebitTotal() == null)
+                bal.setDebitTotal(BigDecimal.ZERO);
+
+            if (bal.getCreditTotal() == null)
+                bal.setCreditTotal(BigDecimal.ZERO);
+
+            bal.setDebitTotal(
+                    bal.getDebitTotal().add(info.debit)
+            );
+
+            bal.setCreditTotal(
+                    bal.getCreditTotal().add(info.credit)
+            );
+
+            bal.setLastUpdated(LocalDateTime.now());
+
+            balances.add(bal);
+
+            propagateToParents(
+                    info.account,
+                    info.period,
+                    info.debit,
+                    info.credit
+            );
+        }
+
+        balanceRepository.saveAll(balances);
+    }
+
+
+}
+
+
+
+
+/*
+public void applyBalances(List<AccountTransactionDetail> details) {
+
+    Map<String, BalanceUpdateInfo> map = new HashMap<>();
+
+    for (AccountTransactionDetail d : details) {
+
+        AccountsChart acc = d.getAccountsChart();
+        AccountingPeriod period = d.getAccountingTransaction().getAccountingPeriod();
+
+        String key = acc.getId() + "_" + period.getId();
+
+        map.compute(key, (k, val) -> {
+
+            if (val == null) {
+                val = new BalanceUpdateInfo(acc, period);
+            }
+
+            if (d.getDebitCreditType() == DebitCreditType.DEBIT) {
+                val.debit = val.debit.add(d.getAmountFunctional());
+            } else {
+                val.credit = val.credit.add(d.getAmountFunctional());
+            }
+
+            return val;
+        });
+    }
+
+    List<AccountBalance> balList = new ArrayList<>();
+
+    for (BalanceUpdateInfo info : map.values()) {
+
+        AccountBalance bal =
+            balanceRepository.findByAccountAndPeriod(info.account, info.period)
+            .orElseGet(() -> createBalance(info.account, info.period));
+
+        bal.setDebitTotal(
+            bal.getDebitTotal().add(info.debit)
+        );
+
+        bal.setCreditTotal(
+            bal.getCreditTotal().add(info.credit)
+        );
+
+        bal.setLastUpdated(LocalDateTime.now());
+
+        balList.add(bal);
+    }
+
+    balanceRepository.saveAll(balList);
+}
+
+ */
+
+/*
     public void applyBalances(List<AccountTransactionDetail> details) {
 
         Map<String, BalanceUpdateInfo> updateMap = new HashMap<>();
@@ -87,14 +265,4 @@ public class AccountingBalanceUpdaterService {
         balanceRepository.saveAll(balList);
     }
 
-
-    private AccountBalance createBalance(AccountsChart acc, AccountingPeriod p) {
-        AccountBalance b = new AccountBalance();
-        b.setAccount(acc);
-        b.setPeriod(p);
-        b.setDebitTotal(BigDecimal.ZERO);
-        b.setCreditTotal(BigDecimal.ZERO);
-        b.setOpeningBalance(BigDecimal.ZERO);
-        return b;//balanceRepository.save(b);
-    }
-}
+ */

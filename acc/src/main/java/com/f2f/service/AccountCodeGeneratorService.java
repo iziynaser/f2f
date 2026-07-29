@@ -1,8 +1,8 @@
 package com.f2f.service;
 
-import com.f2f.entity.AccountsChart;
+import com.f2f.entity.AccountingChart;
 
 public interface AccountCodeGeneratorService {
-    String generateChildCode(AccountsChart parent);
+    String generateChildCode(AccountingChart parent);
 }
 

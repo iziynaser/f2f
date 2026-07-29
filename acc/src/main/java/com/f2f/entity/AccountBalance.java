@@ -8,9 +8,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Collection;
 
 @Getter
 @Setter
@@ -25,11 +23,17 @@ public class AccountBalance  extends BaseEntity implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "ACCOUNT_ID",nullable = false)
-    private AccountsChart account;
+    private AccountingChart account;
 
     @ManyToOne
     @JoinColumn(name = "PERIOD_ID",nullable = false)
     private AccountingPeriod period;
+
+    @Column
+    private String currency;//for extended develop
+
+    @Column
+    private String branch;//for extended develop
 
     @Column(name = "openingBalance")
     private BigDecimal openingBalance = BigDecimal.ZERO;
@@ -40,8 +44,9 @@ public class AccountBalance  extends BaseEntity implements Serializable {
     @Column(name = "creditTotal")
     private BigDecimal creditTotal = BigDecimal.ZERO;
 
-    @Column(name = "closingBalance")
-    private BigDecimal closingBalance = BigDecimal.ZERO;
+    //حذف می کنیم.
+    //@Column(name = "closingBalance")
+    //private BigDecimal closingBalance = BigDecimal.ZERO;
 
     @Column(name = "lastUpdated")
     private LocalDateTime lastUpdated;

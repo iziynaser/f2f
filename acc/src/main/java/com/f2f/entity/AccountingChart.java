@@ -17,9 +17,9 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "ACCOUNTS_CHART",
+@Table(name = "ACCOUNTING_CHART",
 uniqueConstraints = {@UniqueConstraint(columnNames = {"ACCOUNT_CODE"})})
-public class AccountsChart extends BaseEntity implements Serializable {
+public class AccountingChart extends BaseEntity implements Serializable {
 
     @Column(name = "ACCOUNTS_NAME")
     private String name;//name
@@ -47,7 +47,7 @@ public class AccountsChart extends BaseEntity implements Serializable {
 
     @OneToMany(mappedBy = "parentAccount", fetch = FetchType.LAZY)
     @BatchSize(size = 50)
-    private List<AccountsChart> subAccounts ;//= new ArrayList<AccountsChart>();
+    private List<AccountingChart> subAccounts ;//= new ArrayList<AccountsChart>();
 
     @Column(name = "LEVEL_INDEX", nullable = false)
     private int levelIndex;// سطح حساب (1 = کل، 2 = معین، 3 = تفضیلی، ...)
@@ -59,12 +59,12 @@ public class AccountsChart extends BaseEntity implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @BatchSize(size = 50)
     @JoinColumn(name = "PARENT_ID")
-    private AccountsChart parentAccount;
+    private AccountingChart parentAccount;
 
 
     @Enumerated(EnumType.STRING)
     @Column(name = "NORMAL_BALANCE", nullable = false)
-    private DebitCreditType normalBalance;
+    private DebitCreditType normalBalance;/*بدهکار یا بستانکار ذاتی*/
 
     @Enumerated(EnumType.STRING)
     @Column(name="ACCOUNT_NATURE", nullable=false)
@@ -83,10 +83,10 @@ public class AccountsChart extends BaseEntity implements Serializable {
     @JoinColumn(name="CATEGORY_ID")
     private AccountCategory category;
 
-    public AccountsChart() {
+    public AccountingChart() {
     }
 
-    public AccountsChart(String name, String description, String color, String status, AccountType accountType, AccountGroup accountGroup, AccountsChart parentAccount, List<AccountsChart> subAccounts) {
+    public AccountingChart(String name, String description, String color, String status, AccountType accountType, AccountGroup accountGroup, AccountingChart parentAccount, List<AccountingChart> subAccounts) {
         this.name = name;
         //this.code = code;
         this.description = description;

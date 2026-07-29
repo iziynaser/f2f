@@ -15,7 +15,7 @@ public class AccountingEventMapping extends BaseEntity {
     private AccountingEventType eventType;
 
     @ManyToOne
-    private AccountsChart account;
+    private AccountingChart account;
 
     private String description;
 

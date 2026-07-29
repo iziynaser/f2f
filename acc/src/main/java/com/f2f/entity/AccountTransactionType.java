@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Entity
-@Table(name = "TRANSACTION_TYPE")
+@Table(name = "ACCOUNTING_TRANSACTION_TYPE")
 public class AccountTransactionType extends BaseEntity implements Serializable {
 
     @Column(name = "NAME")

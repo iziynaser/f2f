@@ -1,7 +1,7 @@
 package com.f2f.service;
 
-import com.f2f.dto.AccountTreeNode;
-import com.f2f.entity.AccountsChart;
+import com.f2f.dto.chartOfAccount.AccountTreeNode;
+import com.f2f.entity.AccountingChart;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -10,19 +10,19 @@ import java.util.*;
 public class AccountTreeBuilderServiceImpl implements AccountTreeBuilderService {
 
     @Override
-    public List<AccountTreeNode> buildTree(List<AccountsChart> accounts) {
+    public List<AccountTreeNode> buildTree(List<AccountingChart> accounts) {
 
         Map<Long, AccountTreeNode> map = new HashMap<>();
 
         // مرحله ۱: Node ها
-        for (AccountsChart acc : accounts) {
+        for (AccountingChart acc : accounts) {
             map.put(acc.getId(), new AccountTreeNode(acc));
         }
 
         // مرحله ۲: Parent/Child linkage
         List<AccountTreeNode> roots = new ArrayList<>();
 
-        for (AccountsChart acc : accounts) {
+        for (AccountingChart acc : accounts) {
             AccountTreeNode node = map.get(acc.getId());
 
             if (acc.getParentAccount() == null) {
