@@ -1,10 +1,10 @@
 package com.f2f.service;
 
-import com.f2f.dto.AccountTreeNode;
-import com.f2f.dto.CreateAccountRequest;
-import com.f2f.dto.UpdateAccountRequest;
-import com.f2f.entity.AccountsChart;
-import com.f2f.repository.AccountRepository;
+import com.f2f.dto.chartOfAccount.AccountTreeNode;
+import com.f2f.dto.chartOfAccount.CreateAccountRequest;
+import com.f2f.dto.chartOfAccount.UpdateAccountRequest;
+import com.f2f.entity.AccountingChart;
+import com.f2f.repository.AccountsChartRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,13 +14,13 @@ import java.util.List;
 @Transactional
 public class ChartOfAccountServiceImpl implements ChartOfAccountService {
 
-    private final AccountRepository accountRepository;
+    private final AccountsChartRepository accountRepository;
     private final AccountValidationService validationService;
     private final AccountFactoryService factoryService;
     private final AccountTreeBuilderService treeBuilderService;
 
     public ChartOfAccountServiceImpl(
-            AccountRepository accountRepository,
+            AccountsChartRepository accountRepository,
             AccountValidationService validationService,
             AccountFactoryService factoryService,
             AccountTreeBuilderService treeBuilderService
@@ -32,23 +32,23 @@ public class ChartOfAccountServiceImpl implements ChartOfAccountService {
     }
 
     @Override
-    public AccountsChart createAccount(CreateAccountRequest dto) {
+    public AccountingChart createAccount(CreateAccountRequest dto) {
 
-        AccountsChart parent =
+        AccountingChart parent =
                 accountRepository.findById(dto.parentId)
                         .orElseThrow(() -> new RuntimeException("Parent account not found"));
 
         validationService.validateCreate(parent, dto);
 
-        AccountsChart newAcc = factoryService.createAccount(parent, dto);
+        AccountingChart newAcc = factoryService.createAccount(parent, dto);
 
         return accountRepository.save(newAcc);
     }
 
     @Override
-    public AccountsChart updateAccount(Long id, UpdateAccountRequest dto) {
+    public AccountingChart updateAccount(Long id, UpdateAccountRequest dto) {
 
-        AccountsChart acc = getById(id);
+        AccountingChart acc = getById(id);
 
         validationService.validateUpdate(acc, dto);
 
@@ -59,14 +59,14 @@ public class ChartOfAccountServiceImpl implements ChartOfAccountService {
 
     @Override
     @Transactional(readOnly = true)
-    public AccountsChart getById(Long id) {
+    public AccountingChart getById(Long id) {
         return accountRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Account not found"));
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<AccountsChart> getAll() {
+    public List<AccountingChart> getAll() {
         return accountRepository.findAll();
     }
 
@@ -75,4 +75,13 @@ public class ChartOfAccountServiceImpl implements ChartOfAccountService {
     public List<AccountTreeNode> getAccountTree() {
         return treeBuilderService.buildTree(getAll());
     }
+
+    @Override
+    public void deleteAccount(Long id) {
+
+        AccountingChart acc = getById(id);
+        accountRepository.delete(acc);
+    }
+
+
 }
