@@ -1,4 +1,4 @@
-package com.f2f.dto;
+package com.f2f.dto.chartOfAccount;
 
 import lombok.Getter;
 import lombok.Setter;

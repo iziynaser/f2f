@@ -39,6 +39,11 @@ public class TransactionLifecycleManagerService {
                 cancel(tx);
                 break;
 
+            case REVERSED:
+                throw new UnsupportedOperationException("use reverse transaction service");
+                //reverse(tx);
+                //break;
+
             default:
                 throw new IllegalArgumentException("Unsupported target status: " + targetStatus);
         }
@@ -79,6 +84,9 @@ public class TransactionLifecycleManagerService {
     }
 
     private void post(AccountingTransaction tx) {
+
+        if(!tx.getTransactionStatus().equals(TransactionStatus.DRAFT))
+            throw new IllegalArgumentException("Invalid transaction status: " + tx.getTransactionStatus());
 
         validationService.validate(tx);
         balanceUpdaterService.applyBalances(tx.getAccountTransactionDetails());

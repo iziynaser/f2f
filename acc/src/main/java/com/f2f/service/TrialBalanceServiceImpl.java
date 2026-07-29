@@ -4,8 +4,8 @@ import com.f2f.dto.AccountingPeriodDto;
 import com.f2f.dto.TrialBalanceLineDto;
 import com.f2f.dto.TrialBalanceReportDto;
 import com.f2f.entity.AccountTransactionDetail;
+import com.f2f.entity.AccountingChart;
 import com.f2f.entity.AccountingPeriod;
-import com.f2f.entity.AccountsChart;
 import com.f2f.enums.DebitCreditType;
 import com.f2f.repository.AccountTransactionDetailRepository;
 import com.f2f.repository.AccountingPeriodRepository;
@@ -36,16 +36,16 @@ public class TrialBalanceServiceImpl implements TrialBalanceService {
         List<AccountTransactionDetail> details =
                 detailRepository.findAllPostedForTrialBalance(periodId);
 
-        Map<AccountsChart, List<AccountTransactionDetail>> grouped =
-                details.stream().collect(Collectors.groupingBy(AccountTransactionDetail::getAccountsChart));
+        Map<AccountingChart, List<AccountTransactionDetail>> grouped =
+                details.stream().collect(Collectors.groupingBy(AccountTransactionDetail::getAccountingChart));
 
         List<TrialBalanceLineDto> lines = new ArrayList<>();
         BigDecimal totalDebit = BigDecimal.ZERO;
         BigDecimal totalCredit = BigDecimal.ZERO;
 
-        for (Map.Entry<AccountsChart, List<AccountTransactionDetail>> e : grouped.entrySet()) {
+        for (Map.Entry<AccountingChart, List<AccountTransactionDetail>> e : grouped.entrySet()) {
 
-            AccountsChart acc = e.getKey();
+            AccountingChart acc = e.getKey();
             List<AccountTransactionDetail> list = e.getValue();
 
             BigDecimal debitSum = BigDecimal.ZERO;
