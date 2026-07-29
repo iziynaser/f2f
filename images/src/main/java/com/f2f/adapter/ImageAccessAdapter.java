@@ -1,5 +1,6 @@
 package com.f2f.adapter;
 
+
 import com.f2f.port.ImageAccessPort;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

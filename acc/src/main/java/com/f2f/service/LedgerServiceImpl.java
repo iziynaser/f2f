@@ -4,12 +4,9 @@ import com.f2f.dto.*;
 import com.f2f.entity.AccountBalance;
 import com.f2f.entity.AccountTransactionDetail;
 import com.f2f.entity.AccountingPeriod;
-import com.f2f.entity.AccountsChart;
+import com.f2f.entity.AccountingChart;
 import com.f2f.enums.DebitCreditType;
-import com.f2f.repository.AccountBalanceRepository;
-import com.f2f.repository.AccountRepository;
-import com.f2f.repository.AccountTransactionDetailRepository;
-import com.f2f.repository.AccountingPeriodRepository;
+import com.f2f.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,14 +23,15 @@ import java.util.stream.Collectors;
 public class LedgerServiceImpl implements LedgerService {
 
     private final AccountTransactionDetailRepository detailRepository;
-    private final AccountRepository accountRepository;
+
+    private final AccountsChartRepository accountRepository;
     private final AccountingPeriodRepository periodRepository;
     private final AccountBalanceRepository balanceRepository;
 
     @Override
     public AccountLedgerDto getAccountLedger(Long accountId, Long periodId) {
 
-        AccountsChart account = accountRepository.findById(accountId)
+        AccountingChart account = accountRepository.findById(accountId)
                 .orElseThrow(() -> new RuntimeException("Account not found"));
 
         AccountingPeriod period = periodRepository.findById(periodId)
@@ -79,13 +77,13 @@ public class LedgerServiceImpl implements LedgerService {
         return dto;
     }
 
-    private AccountsChartDto maptoAccountsChartDto(AccountsChart accountsChart) {
+    private AccountsChartDto maptoAccountsChartDto(AccountingChart accountingChart) {
         AccountsChartDto chartDto = new AccountsChartDto();
-        chartDto.setAccountCode(accountsChart.getAccountCode());
-        chartDto.setAccountType(accountsChart.getAccountType());
-        chartDto.setColor(accountsChart.getColor());
-        chartDto.setName(accountsChart.getName());
-        chartDto.setDescription(accountsChart.getDescription());
+        chartDto.setAccountCode(accountingChart.getAccountCode());
+        chartDto.setAccountType(accountingChart.getAccountType());
+        chartDto.setColor(accountingChart.getColor());
+        chartDto.setName(accountingChart.getName());
+        chartDto.setDescription(accountingChart.getDescription());
         return chartDto;
     }
 
@@ -98,13 +96,13 @@ public class LedgerServiceImpl implements LedgerService {
         List<AccountTransactionDetail> details =
                 detailRepository.findGeneralLedgerForPeriod(periodId);
 
-        Map<AccountsChart, List<AccountTransactionDetail>> grouped =
-                details.stream().collect(Collectors.groupingBy(AccountTransactionDetail::getAccountsChart));
+        Map<AccountingChart, List<AccountTransactionDetail>> grouped =
+                details.stream().collect(Collectors.groupingBy(AccountTransactionDetail::getAccountingChart));
 
         List<GeneralLedgerAccountDto> accounts = new ArrayList<>();
 
-        for (Map.Entry<AccountsChart, List<AccountTransactionDetail>> entry : grouped.entrySet()) {
-            AccountsChart acc = entry.getKey();
+        for (Map.Entry<AccountingChart, List<AccountTransactionDetail>> entry : grouped.entrySet()) {
+            AccountingChart acc = entry.getKey();
             List<AccountTransactionDetail> list = entry.getValue();
 
             BigDecimal running = BigDecimal.ZERO;
