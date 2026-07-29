@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 public class BalanceSheetSectionDto {
     private String sectionName; // مثلاً "دارایی‌های جاری"
-    private List<AccountBalanceDto> accounts;
+    private List<AccountBalanceDTO> accounts;
     private BigDecimal total;
 }
 
