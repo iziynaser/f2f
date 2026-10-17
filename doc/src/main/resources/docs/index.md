@@ -28,6 +28,9 @@ hero:
     - theme: alt
       text:  توسعه و برنامه نویسی
       link: /dev-guide/
+    - theme: alt
+      text:  لایسنس
+      link: license.md
 
 features:
   - title: فروشگاه اینترنتی
@@ -36,6 +39,12 @@ features:
     details: سیستم مدیریت قدرتمند و  برای پردازش سفارشات ، مدیریت موجودی ، مشتریان ، گزارشها است .
     
 ---
+
+## 🧱 تکنولوژی برنامه های کاربردی
+- **back end : java , spring boot**
+- front : vue js
+- database : postgres
+
 
 ## 🧱 تکنولوژی مستندات
 - **VitePress**
