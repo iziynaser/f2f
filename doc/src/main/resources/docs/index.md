@@ -25,6 +25,10 @@ hero:
     - theme: alt
       text:  گیت وی
       link: /gate-way-guide/
+    - theme: alt
+      text:  توسعه و برنامه نویسی
+      link: /dev-guide/
+
 features:
   - title: فروشگاه اینترنتی
     details: نرم افزار کاربردی برای راه اندازی فروشگاه انلاین. برای عرضه ، نمایش ، خرید و معرفی محصولات اینترنتی

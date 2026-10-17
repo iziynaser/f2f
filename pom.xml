@@ -49,6 +49,7 @@
         <module>Qa</module>
         <module>appInfo</module>
         <module>authClient</module>
+        <module>doc</module>
     </modules>
 
     <properties>
