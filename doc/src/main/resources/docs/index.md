@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: مشاهده نسخه دمو
-      link: /demo
+      link: /admin-guide/
     - theme: alt
       text: مشتریان/کاربران
       link: /users
