@@ -1,0 +1,28 @@
+<spring:beans xmlns="http://membrane-soa.org/proxies/1/"
+              xmlns:spring="http://www.springframework.org/schema/beans"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+					    http://membrane-soa.org/proxies/1/ http://membrane-soa.org/schemas/proxies-1.xsd">
+
+<router>
+
+    <api port="80">
+        <request>
+            <if test="exchange.request.uri.contains('/api/store/auth/')">
+                <log message="Redirect to auth service: ${exchange.request.uri}"/>
+                <rewriter>
+                    <map from="/api/store/auth" to="http://localhost:8090/api/auth"/>
+                </rewriter>
+            </if>
+            <if test="not exchange.request.uri.contains('/api/store/auth')">
+                <log message="redirect to default service: ${exchange.request.uri}"/>
+                <rewriter>
+                    <map from=".*" to="http://localhost:8080/"/>
+                </rewriter>
+            </if>
+        </request>
+    </api>
+
+</router>
+
+</spring:beans>
