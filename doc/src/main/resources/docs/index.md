@@ -3,9 +3,10 @@
 layout: home
 
 hero:
-  name: "face2face"
+  name: "verjik"
   text: "ERP/../CRM"
   tagline:  یادگیری و مستندسازی progressive توسعه نرم‌افزارهای کاربردی
+            همراه چابکی برای فروشگاه های انلاین و شرکت های متوسط که می خواهند هر روز یک قدم به جلو بپرند.
   actions:
     - theme: brand
       text: مشاهده نسخه دمو
@@ -30,7 +31,10 @@ hero:
       link: /dev-guide/
     - theme: alt
       text:  لایسنس
-      link: license.md
+      link: license.md      
+    - theme: alt
+      text:  درباره ورجیک
+      link: /site/about.md
 
 features:
   - title: فروشگاه اینترنتی
