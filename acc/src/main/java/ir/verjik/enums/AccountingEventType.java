@@ -1,0 +1,18 @@
+package ir.verjik.enums;
+
+public enum AccountingEventType {
+
+    SALE_REVENUE,
+    SALE_CASH,
+    SALE_BANK,
+    SALE_DISCOUNT,
+    PURCHASE_INVENTORY,
+    PURCHASE_PAYABLE,
+    PAYMENT_SUPPLIER,
+    RECEIVE_CUSTOMER,
+    SALARY_EXPENSE,
+    TAX_PAYABLE,
+    INVENTORY_ADJUSTMENT
+
+}
+

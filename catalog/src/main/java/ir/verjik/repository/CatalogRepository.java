@@ -1,0 +1,13 @@
+package ir.verjik.repository;
+
+import ir.verjik.entity.Catalog;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+import java.util.Optional;
+
+public interface CatalogRepository extends JpaRepository<Catalog, Long> {
+    Optional<Catalog> findByName(String name);
+    List<Catalog> findByLocale(String locale);
+    boolean existsByName(String name);
+}

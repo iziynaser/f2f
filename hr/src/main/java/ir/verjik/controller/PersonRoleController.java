@@ -1,0 +1,24 @@
+package ir.verjik.controller;
+
+import ir.verjik.entity.PersonRole;
+import ir.verjik.service.PersonRoleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController("PersonRoleController")
+@RequestMapping("/PersonRole")
+public class PersonRoleController{
+
+    @Autowired
+    PersonRoleService personRoleService;
+
+    @GetMapping("/list")
+    public List<PersonRole> getPersonRoleList(){
+        List<PersonRole> list = personRoleService.findAll();
+        return list;
+    }
+}

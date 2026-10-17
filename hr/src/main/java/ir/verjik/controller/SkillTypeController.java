@@ -1,0 +1,24 @@
+package ir.verjik.controller;
+
+import ir.verjik.entity.SkillType;
+import ir.verjik.service.SkillTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController("SkillTypeController")
+@RequestMapping("/skillType")
+public class SkillTypeController {
+
+    @Autowired
+    SkillTypeService skillTypeService;
+
+    @GetMapping("/list")
+    public List<SkillType> getSkillTypes(){
+        List<SkillType> list =  skillTypeService.findAll();
+        return list;
+    }
+}

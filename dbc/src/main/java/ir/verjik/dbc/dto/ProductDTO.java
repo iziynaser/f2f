@@ -1,0 +1,63 @@
+package ir.verjik.dbc.dto;
+
+import ir.verjik.dto.BrandDTO;
+import ir.verjik.dto.CategoryDTO;
+import ir.verjik.dto.ProductColorDTO;
+import ir.verjik.dto.ProductPriceDTO;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
+
+@Getter
+@Setter
+public class ProductDTO implements java.io.Serializable {
+     private String name;
+     private String id;
+     private String comment;
+     private String isVirtual;
+     private String releaseDate;
+     private String productCode;
+     private String introDate;
+     private String internalName;
+     private String disContinuedDate;
+     private String description;
+     private String cardImageUrl;
+     private ProductPriceDTO price;
+
+     private Integer quantity;
+     private Boolean available;
+
+     private String type;
+
+     private Integer totalLikes;
+     private Integer totalDislikes;
+
+    // private List<String> brands;
+     private List<ProductColorDTO> colors;
+
+     private Long basePrice;
+     private Long finalPrice;
+     private Long discountAmount;
+     private String appliedRuleName; // Optional
+
+     private List<String> nonFinancialBenefits;
+
+    private BrandDTO brand;
+    private CategoryDTO category;
+
+    @Override
+     public String toString() {
+          return "ProductDTO{" +
+                  "name='" + name + '\'' +
+                  ", id='" + id + '\'' +
+                  ", comment='" + comment + '\'' +
+                  ", isVirtual='" + isVirtual + '\'' +
+                  ", releaseDate='" + releaseDate + '\'' +
+                  ", productCode='" + productCode + '\'' +
+                  ", introDate='" + introDate + '\'' +
+                  ", internalName='" + internalName + '\'' +
+                  ", disContinuedDate='" + disContinuedDate + '\'' +
+                  '}';
+     }
+}

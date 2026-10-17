@@ -1,0 +1,14 @@
+package ir.verjik.enums;
+
+public enum BenefitAction {
+    DISCOUNT_FIXED,
+    DISCOUNT_PERCENTAGE,
+    FREE_SHIPPING,
+    FAST_DELIVERY,
+    BUY_ONE_GET_ONE,
+    GIFT_ITEM,
+    RETURNABLE,
+    EXTRA_GUARANTEE,
+    BONUS_POINTS,
+    CUSTOM_BENEFIT
+}
