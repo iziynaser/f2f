@@ -1,7 +1,7 @@
 package ir.verjik.service;
 
-import com.f2f.dao.*;
-import com.f2f.entity.*;
+import ir.verjik.dao.*;
+import ir.verjik.entity.*;
 import ir.verjik.dao.*;
 import ir.verjik.entity.*;
 import ir.verjik.enums.StockOutReason;

@@ -4,24 +4,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.f2f</groupId>
-        <artifactId>f2fServer</artifactId>
+        <groupId>ir.verjik</groupId>
+        <artifactId>verjikServer</artifactId>
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>f2f-images</artifactId>
+    <artifactId>verjik-images</artifactId>
+    <name>verjik-images</name>
     <packaging>jar</packaging>
     <version>1.0.0</version>
 
-    <name>image management module</name>
     <description>module for managing images: upload,serve,process</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>com.f2f</groupId>
-            <artifactId>f2f-dbc</artifactId>
+            <groupId>ir.verjik</groupId>
+            <artifactId>verjik-dbc</artifactId>
             <version>1.0</version>
         </dependency>
 
@@ -72,8 +72,8 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.f2f</groupId>
-            <artifactId>f2f-dbc</artifactId>
+            <groupId>ir.verjik</groupId>
+            <artifactId>verjik-dbc</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>

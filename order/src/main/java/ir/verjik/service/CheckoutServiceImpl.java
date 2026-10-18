@@ -1,6 +1,6 @@
 package ir.verjik.service;
 
-import com.f2f.dto.*;
+import ir.verjik.dto.*;
 import ir.verjik.dto.CreateOrderRequest;
 import ir.verjik.dto.DeliveryDTO;
 import ir.verjik.dto.OrderDTO;

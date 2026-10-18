@@ -2,7 +2,6 @@ package ir.verjik.entity;
 
 import ir.verjik.dbc.entity.BaseEntity;
 import ir.verjik.dbc.entity.Gender;
-//import com.f2f.entity.order.Order;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

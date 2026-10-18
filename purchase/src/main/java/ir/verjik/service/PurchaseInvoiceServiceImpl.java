@@ -1,10 +1,5 @@
 package ir.verjik.service;
 
-//import com.f2f.dao.acc.invoice.PurchaseInvoiceRepository;
-//import com.f2f.dto.InvoiceDTO;
-//
-//import com.f2f.entity.invoice.Invoice;
-//import com.f2f.mapper.InvoiceMapper;
 import org.springframework.stereotype.Service;
 
 //import java.util.Optional;

@@ -1,7 +1,6 @@
 package ir.verjik.repository;
 
 
-import com.f2f.dto.*;
 import ir.verjik.dto.*;
 import ir.verjik.entity.AccountingTransaction;
 import org.springframework.data.domain.Page;

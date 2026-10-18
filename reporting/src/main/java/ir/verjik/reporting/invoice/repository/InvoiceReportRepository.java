@@ -17,7 +17,7 @@ import java.util.List;
 public interface InvoiceReportRepository extends CrudRepository<Invoice,Long>{
 
 
-//    @Query("SELECT new com.f2f.dto.DailySalesDTO(CAST(i.invoiceDate AS LocalDate), SUM(i.totalAmount)) " +
+//    @Query("SELECT new ir.verjik.dto.DailySalesDTO(CAST(i.invoiceDate AS LocalDate), SUM(i.totalAmount)) " +
 //            "FROM Invoice i " +
 //            "WHERE i.invoiceType.name = 'SALES' " +
 //            "GROUP BY CAST(i.invoiceDate AS LocalDate) " +
@@ -33,13 +33,13 @@ public interface InvoiceReportRepository extends CrudRepository<Invoice,Long>{
                                           @Param("start") LocalDateTime start,
                                           @Param("end") LocalDateTime end);
 
-    @Query("SELECT new com.f2f.dto.report.InvoiceTypeCountReportDTO(it.name, COUNT(i)) " +
+    @Query("SELECT new ir.verjik.dto.report.InvoiceTypeCountReportDTO(it.name, COUNT(i)) " +
             "FROM Invoice i " +
             "JOIN i.invoiceType it " +
             "GROUP BY it.name")
     List<InvoiceTypeCountReportDTO> getInvoiceCountByType();
 
-    @Query("SELECT new com.f2f.dto.report.InvoicePaymentStatusReportDTO(i.paymentStatus, COUNT(i), SUM(i.totalAmount)) " +
+    @Query("SELECT new ir.verjik.dto.report.InvoicePaymentStatusReportDTO(i.paymentStatus, COUNT(i), SUM(i.totalAmount)) " +
             "FROM Invoice i GROUP BY i.paymentStatus")
     List<InvoicePaymentStatusReportDTO> getInvoicePaymentStatusReport();
 
@@ -47,7 +47,7 @@ public interface InvoiceReportRepository extends CrudRepository<Invoice,Long>{
     List<Invoice> findByPaymentStatus(String paymentStatus);
 
 
-    @Query("SELECT new com.f2f.dto.DailySalesDTO(CAST(i.invoiceDate AS LocalDate), SUM(i.totalAmount)) " +
+    @Query("SELECT new ir.verjik.dto.DailySalesDTO(CAST(i.invoiceDate AS LocalDate), SUM(i.totalAmount)) " +
             "FROM Invoice i " +
             "WHERE i.invoiceType.name = 'SALES' " +
             "GROUP BY CAST(i.invoiceDate AS LocalDate) " +

@@ -1,6 +1,6 @@
 package ir.verjik.service;
 
-import com.f2f.dto.*;
+import ir.verjik.dto.*;
 import ir.verjik.dto.PaymentVerifyResponseDTO;
 import ir.verjik.entity.PaymentRequest;
 import ir.verjik.entity.PaymentTransaction;

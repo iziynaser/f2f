@@ -14,11 +14,11 @@ import java.util.List;
 @Repository
 public interface OrderReportRepository extends JpaRepository<Order, Long> {
 
-    @Query("SELECT new com.f2f.dto.CustomerOrderCountDTO(o.customer.id, CONCAT(o.customer.firstName, ' ', o.customer.lastName), COUNT(o)) " +
+    @Query("SELECT new ir.verjik.dto.CustomerOrderCountDTO(o.customer.id, CONCAT(o.customer.firstName, ' ', o.customer.lastName), COUNT(o)) " +
             "FROM Order o GROUP BY o.customer.id, o.customer.firstName, o.customer.lastName")
     List<CustomerOrderCountReportDTO> countOrdersByCustomer();
 
-    @Query("SELECT new com.f2f.dto.CustomerOrderReportDTO(o.id, o.orderCode, o.orderDate, o.currentStatus, " +
+    @Query("SELECT new ir.verjik.dto.CustomerOrderReportDTO(o.id, o.orderCode, o.orderDate, o.currentStatus, " +
             "COALESCE(SUM(oi.totalPrice), 0), COUNT(oi)) " +
             "FROM Order o LEFT JOIN o.orderItems oi " +
             "WHERE o.customer.id = :customerId " +
@@ -27,7 +27,7 @@ public interface OrderReportRepository extends JpaRepository<Order, Long> {
 
 
     @Query("""
-        SELECT new com.f2f.dto.OrderStatusSummaryDTO(o.currentStatus, COUNT(o))
+        SELECT new ir.verjik.dto.OrderStatusSummaryDTO(o.currentStatus, COUNT(o))
         FROM Order o
         GROUP BY o.currentStatus
     """)

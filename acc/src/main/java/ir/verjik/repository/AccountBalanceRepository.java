@@ -104,7 +104,7 @@ public interface AccountBalanceRepository extends JpaRepository<AccountBalance, 
         from AccountBalance b
         join b.account a
         where b.period.id = :periodId
-          and a.accountNature in (com.f2f.enums.AccountNature.REVENUE, com.f2f.enums.AccountNature.EXPENSE)
+          and a.accountNature in (ir.verjik.enums.AccountNature.REVENUE, ir.verjik.enums.AccountNature.EXPENSE)
           and (b.openingBalance + b.debitTotal - b.creditTotal) <> 0
     """)
     List<AccountBalance> findTemporaryAccounts(Long periodId);

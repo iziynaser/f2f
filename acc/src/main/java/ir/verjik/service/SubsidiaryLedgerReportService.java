@@ -3,7 +3,6 @@ package ir.verjik.service;
 import ir.verjik.dto.LedgerFilter;
 import ir.verjik.dto.SubsidiaryLedgerLine;
 import ir.verjik.dto.SubsidiaryLedgerReport;
-import com.f2f.entity.*;
 import ir.verjik.entity.*;
 import ir.verjik.enums.DebitCreditType;
 import ir.verjik.repository.AccountBalanceRepository;

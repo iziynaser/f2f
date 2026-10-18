@@ -8,7 +8,7 @@ import ir.verjik.entity.Product;
 import ir.verjik.entity.ProductFeatureGroup;
 import ir.verjik.entity.ProductFeatureItem;
 import ir.verjik.entity.ProductFeatureValue;
-import com.f2f.service.*;
+import ir.verjik.service.*;
 import ir.verjik.service.ProductFeatureGroupService;
 import ir.verjik.service.ProductFeatureItemService;
 import ir.verjik.service.ProductFeatureValueService;

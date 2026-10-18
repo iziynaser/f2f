@@ -14,7 +14,7 @@ public interface SalesInvoiceReportRepository extends JpaRepository<SalesInvoice
 
     List<SalesInvoice> findByInvoiceDateBetween(LocalDate startDate, LocalDate endDate);
 
-    @Query("SELECT new com.f2f.dto.DailySalesReportDTO(i.invoiceDate, COUNT(i), SUM(i.totalAmount)) " +
+    @Query("SELECT new ir.verjik.dto.DailySalesReportDTO(i.invoiceDate, COUNT(i), SUM(i.totalAmount)) " +
             "FROM SalesInvoice i " +
             "WHERE i.status = 'PAID' AND i.invoiceDate BETWEEN :startDate AND :endDate " +
             "GROUP BY i.invoiceDate")
@@ -22,7 +22,7 @@ public interface SalesInvoiceReportRepository extends JpaRepository<SalesInvoice
                                                   @Param("endDate") LocalDate endDate);
 
         @Query("""
-        SELECT new com.f2f.dto.SalesReportDTO(
+        SELECT new ir.verjik.dto.SalesReportDTO(
             :startDate,
             :endDate,
             COALESCE(SUM(i.totalAmount), 0),
@@ -30,7 +30,7 @@ public interface SalesInvoiceReportRepository extends JpaRepository<SalesInvoice
         )
         FROM SalesInvoice i
         WHERE i.invoiceDate BETWEEN :startDate AND :endDate
-          AND i.status = com.f2f.enums.SalesStatus.PAID
+          AND i.status = ir.verjik.enums.SalesStatus.PAID
     """)
         SalesReportDTO getSalesReportBetweenDates(LocalDate startDate, LocalDate endDate);
 

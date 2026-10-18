@@ -92,7 +92,7 @@ public class AccountTransactionDetailRepositoryImpl implements AccountTransactio
                 WHERE d.accountingChart.id = :accId
                   AND t.transactionDate >= :from
                   AND t.transactionDate <= :to
-                  AND t.transactionStatus = com.f2f.enums.TransactionStatus.POSTED
+                  AND t.transactionStatus = ir.verjik.enums.TransactionStatus.POSTED
                 """;
 
         BigDecimal result = em.createQuery(jpql, BigDecimal.class)
@@ -124,7 +124,7 @@ public class AccountTransactionDetailRepositoryImpl implements AccountTransactio
                 WHERE d.accountingChart.id = :accId
                   AND t.transactionDate >= :from
                   AND t.transactionDate <= :to
-                  AND t.transactionStatus = com.f2f.enums.TransactionStatus.POSTED
+                  AND t.transactionStatus = ir.verjik.enums.TransactionStatus.POSTED
                 """;
 
         BigDecimal result = em.createQuery(jpql, BigDecimal.class)
@@ -155,7 +155,7 @@ public class AccountTransactionDetailRepositoryImpl implements AccountTransactio
                 JOIN d.accountingTransaction t
                 WHERE d.accountingChart.id = :accId
                   AND t.transactionDate < :beforeDate
-                  AND t.transactionStatus = com.f2f.enums.TransactionStatus.POSTED
+                  AND t.transactionStatus = ir.verjik.enums.TransactionStatus.POSTED
                 """;
 
         BigDecimal result = em.createQuery(jpql, BigDecimal.class)
@@ -190,7 +190,7 @@ public class AccountTransactionDetailRepositoryImpl implements AccountTransactio
         join d.accountingTransaction t
         where d.accountingChart.id = :accId
           and t.transactionDate between :from and :to
-          and d.debitCreditType = com.f2f.enums.DebitCreditType.CREDIT
+          and d.debitCreditType = ir.verjik.enums.DebitCreditType.CREDIT
     """;
 
         BigDecimal result = em.createQuery(jpql, BigDecimal.class)

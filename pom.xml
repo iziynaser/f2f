@@ -12,12 +12,12 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.f2f</groupId>
-    <artifactId>f2fServer</artifactId>
+    <groupId>ir.verjik</groupId>
+    <artifactId>verjikServer</artifactId>
     <version>0.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>f2fServer</name>
-    <description>f2f backend server</description>
+    <name>verjikServer</name>
+    <description>verjik backend server</description>
 
     <modules>
         <module>dbc</module>
@@ -30,7 +30,7 @@
         <module>asset</module>
         <module>budget</module>
         <module>delivery</module>
-        <module>f2f-i18n</module>
+        <module>i18n</module>
         <module>skript</module>
         <module>logging</module>
         <module>images</module>
@@ -43,7 +43,7 @@
         <module>purchase</module>
         <module>sales</module>
         <module>invoice</module>
-        <module>f2fc</module>
+        <module>verj</module>
         <module>catalog</module>
         <module>comment</module>
         <module>Qa</module>

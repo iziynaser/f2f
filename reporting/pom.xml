@@ -6,12 +6,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.f2f</groupId>
-        <artifactId>f2fServer</artifactId>
+        <groupId>ir.verjik</groupId>
+        <artifactId>verjikServer</artifactId>
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>f2f-reporting</artifactId>
+    <artifactId>verjik-reporting</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
 
@@ -21,40 +21,40 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.f2f</groupId>
-            <artifactId>f2f-dbc</artifactId>
+            <groupId>ir.verjik</groupId>
+            <artifactId>verjik-dbc</artifactId>
             <version>1.0</version>
         </dependency>
 
         <!-- سایر ماژول‌هایی که گزارش‌ها از آن‌ها استفاده می‌کنند -->
         <dependency>
-            <groupId>com.f2f</groupId>
-            <artifactId>f2f-product</artifactId>
+            <groupId>ir.verjik</groupId>
+            <artifactId>verjik-product</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>com.f2f</groupId>
-            <artifactId>f2f-inventory</artifactId>
+            <groupId>ir.verjik</groupId>
+            <artifactId>verjik-inventory</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>com.f2f</groupId>
-            <artifactId>f2f-sales</artifactId>
+            <groupId>ir.verjik</groupId>
+            <artifactId>verjik-sales</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>com.f2f</groupId>
-            <artifactId>f2f-purchase</artifactId>
+            <groupId>ir.verjik</groupId>
+            <artifactId>verjik-purchase</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>com.f2f</groupId>
-            <artifactId>f2f-order</artifactId>
+            <groupId>ir.verjik</groupId>
+            <artifactId>verjik-order</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>com.f2f</groupId>
-            <artifactId>f2f-invoice</artifactId>
+            <groupId>ir.verjik</groupId>
+            <artifactId>verjik-invoice</artifactId>
             <version>1.0.0</version>
         </dependency>
 

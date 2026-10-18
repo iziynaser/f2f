@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.f2f</groupId>
-        <artifactId>f2fServer</artifactId>
+        <groupId>ir.verjik</groupId>
+        <artifactId>verjikServer</artifactId>
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>f2f-asset</artifactId>
+    <artifactId>verjik-asset</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
 
@@ -21,14 +21,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.f2f</groupId>
-            <artifactId>f2f-dbc</artifactId>
+            <groupId>ir.verjik</groupId>
+            <artifactId>verjik-dbc</artifactId>
             <version>1.0</version>
         </dependency>
 
         <dependency>
-            <groupId>com.f2f</groupId>
-            <artifactId>f2f-logging</artifactId>
+            <groupId>ir.verjik</groupId>
+            <artifactId>verjik-logging</artifactId>
             <version>1.0.0</version>
         </dependency>
 

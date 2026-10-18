@@ -4,7 +4,7 @@
 # 2️⃣ CONTRIBUTING.md
 
 ```md
-# مشارکت در f2fCore Backend
+# مشارکت در verjik Core Backend
 
 از علاقه شما برای مشارکت در توسعه و مستندات backend بسیار خوشحالیم! ❤️
 

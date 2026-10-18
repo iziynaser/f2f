@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface ProductColorRepository extends JpaRepository<ProductColor, Long> {
 
-    @Query("select distinct new com.f2f.dto.ProductColorDTO(c.name, c.value) " +
+    @Query("select distinct new ir.verjik.dto.ProductColorDTO(c.name, c.value) " +
             "from ProductItem pi " +
             "join pi.color c " +
             "where pi.product.id = :productId")

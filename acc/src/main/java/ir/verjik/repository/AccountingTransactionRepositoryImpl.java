@@ -1,7 +1,6 @@
 package ir.verjik.repository;
 
 
-import com.f2f.dto.*;
 import ir.verjik.dto.*;
 import ir.verjik.entity.AccountTransactionDetail;
 import ir.verjik.entity.AccountingTransaction;
@@ -214,7 +213,7 @@ public class AccountingTransactionRepositoryImpl
     public List<JournalEntryDTO> findJournalEntries(JournalFilter f) {
 
         String jpql = """
-            select new com.f2f.dto.JournalEntryDTO(
+            select new ir.verjik.dto.JournalEntryDTO(
                 t.id,
                 t.transactionNumber,
                 t.transactionDate,
@@ -223,9 +222,9 @@ public class AccountingTransactionRepositoryImpl
                 a.id,
                 a.accountCode,
                 a.accountName,
-                case when d.debitCreditType = com.f2f.enums.DebitCreditType.DEBIT
+                case when d.debitCreditType = ir.verjik.enums.DebitCreditType.DEBIT
                      then d.amountFunctional else 0 end,
-                case when d.debitCreditType = com.f2f.enums.DebitCreditType.CREDIT
+                case when d.debitCreditType = ir.verjik.enums.DebitCreditType.CREDIT
                      then d.amountFunctional else 0 end
             )
             from AccountingTransaction t
@@ -258,10 +257,10 @@ public class AccountingTransactionRepositoryImpl
 
         String jpql = """
         select coalesce(
-               sum(case when d.debitCreditType = com.f2f.enums.DebitCreditType.DEBIT
+               sum(case when d.debitCreditType = ir.verjik.enums.DebitCreditType.DEBIT
                         then d.amountFunctional else 0 end)
                -
-               sum(case when d.debitCreditType = com.f2f.enums.DebitCreditType.CREDIT
+               sum(case when d.debitCreditType = ir.verjik.enums.DebitCreditType.CREDIT
                         then d.amountFunctional else 0 end)
         , 0)
         from AccountTransactionDetail d
@@ -286,7 +285,7 @@ public class AccountingTransactionRepositoryImpl
         join d.accountingTransaction t
         where d.accountingChart.id = :accId
           and t.transactionDate between :from and :to
-          and d.debitCreditType = com.f2f.enums.DebitCreditType.DEBIT
+          and d.debitCreditType = ir.verjik.enums.DebitCreditType.DEBIT
     """;
 
         BigDecimal result = em.createQuery(jpql, BigDecimal.class)

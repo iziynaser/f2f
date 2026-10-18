@@ -11,7 +11,7 @@ import java.util.List;
 public interface InventoryReportRepository extends JpaRepository<Inventory, Long> {
 
     @Query("""
-    SELECT new com.f2f.dto.InventoryReportDTO(
+    SELECT new ir.verjik.dto.InventoryReportDTO(
         i.productItemId,
         pi.name,
         i.totalStock,
@@ -25,7 +25,7 @@ public interface InventoryReportRepository extends JpaRepository<Inventory, Long
     List<InventoryReportDTO> getInventoryReport();
 
     @Query("""
-        SELECT new com.f2f.dto.report.InventoryStockReportDTO(
+        SELECT new ir.verjik.dto.report.InventoryStockReportDTO(
             i.productItem.id,
             i.productItem.name,
             i.warehouse.id,

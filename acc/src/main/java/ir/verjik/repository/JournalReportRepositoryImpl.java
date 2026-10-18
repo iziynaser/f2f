@@ -22,7 +22,7 @@ public class JournalReportRepositoryImpl implements JournalReportRepository {
     public List<JournalEntryDTO> getJournal(LocalDate from, LocalDate to) {
 
         String jpql = """
-            SELECT new com.f2f.dto.JournalEntryDTO(
+            SELECT new ir.verjik.dto.JournalEntryDTO(
                 t.id,
                 t.transactionNumber,
                 t.transactionDate,
@@ -31,9 +31,9 @@ public class JournalReportRepositoryImpl implements JournalReportRepository {
                 a.id,
                 a.accountCode,
                 a.accountName,
-                CASE WHEN d.debitCreditType = com.f2f.enums.DebitCreditType.DEBIT
+                CASE WHEN d.debitCreditType = ir.verjik.enums.DebitCreditType.DEBIT
                      THEN d.amountFunctional ELSE 0 END,
-                CASE WHEN d.debitCreditType = com.f2f.enums.DebitCreditType.CREDIT
+                CASE WHEN d.debitCreditType = ir.verjik.enums.DebitCreditType.CREDIT
                      THEN d.amountFunctional ELSE 0 END
             )
             FROM AccountingTransaction t
@@ -58,7 +58,7 @@ public class JournalReportRepositoryImpl implements JournalReportRepository {
     public List<JournalEntryDTO> getJournalByPeriod(Long periodId) {
 
         String jpql = """
-            SELECT new com.f2f.dto.JournalEntryDTO(
+            SELECT new ir.verjik.dto.JournalEntryDTO(
                 t.id,
                 t.transactionNumber,
                 t.transactionDate,
@@ -67,9 +67,9 @@ public class JournalReportRepositoryImpl implements JournalReportRepository {
                 a.id,
                 a.accountCode,
                 a.name,
-                CASE WHEN d.debitCreditType = com.f2f.enums.DebitCreditType.DEBIT
+                CASE WHEN d.debitCreditType = ir.verjik.enums.DebitCreditType.DEBIT
                      THEN d.amountFunctional ELSE 0 END,
-                CASE WHEN d.debitCreditType = com.f2f.enums.DebitCreditType.CREDIT
+                CASE WHEN d.debitCreditType = ir.verjik.enums.DebitCreditType.CREDIT
                      THEN d.amountFunctional ELSE 0 END
             )
             FROM AccountingTransaction t
@@ -92,7 +92,7 @@ public class JournalReportRepositoryImpl implements JournalReportRepository {
     public List<JournalEntryDTO> getJournalByTransactionId(Long transactionId) {
 
         String jpql = """
-            SELECT new com.f2f.dto.JournalEntryDTO(
+            SELECT new ir.verjik.dto.JournalEntryDTO(
                 t.id,
                 t.transactionNumber,
                 t.transactionDate,
@@ -101,9 +101,9 @@ public class JournalReportRepositoryImpl implements JournalReportRepository {
                 a.id,
                 a.accountCode,
                 a.name,
-                CASE WHEN d.debitCreditType = com.f2f.enums.DebitCreditType.DEBIT
+                CASE WHEN d.debitCreditType = ir.verjik.enums.DebitCreditType.DEBIT
                      THEN d.amountFunctional ELSE 0 END,
-                CASE WHEN d.debitCreditType = com.f2f.enums.DebitCreditType.CREDIT
+                CASE WHEN d.debitCreditType = ir.verjik.enums.DebitCreditType.CREDIT
                      THEN d.amountFunctional ELSE 0 END
             )
             FROM AccountingTransaction t

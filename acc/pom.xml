@@ -6,12 +6,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.f2f</groupId>
-        <artifactId>f2fServer</artifactId>
+        <groupId>ir.verjik</groupId>
+        <artifactId>verjikServer</artifactId>
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>f2f-acc</artifactId>
+    <artifactId>verjik-acc</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
 
@@ -23,14 +23,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.f2f</groupId>
-            <artifactId>f2f-dbc</artifactId>
+            <groupId>ir.verjik</groupId>
+            <artifactId>verjik-dbc</artifactId>
             <version>1.0</version>
         </dependency>
 
         <dependency>
-            <groupId>com.f2f</groupId>
-            <artifactId>f2f-logging</artifactId>
+            <groupId>ir.verjik</groupId>
+            <artifactId>verjik-logging</artifactId>
             <version>1.0.0</version>
         </dependency>
 

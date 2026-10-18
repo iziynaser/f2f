@@ -11,7 +11,7 @@ public interface PurchaseOrderReportRepository extends JpaRepository<PurchaseOrd
     public boolean existsByOrderNumber(String orderNumber);
 
     @Query("""
-        SELECT new com.f2f.dto.report.SupplierPerformanceDTO(
+        SELECT new ir.verjik.dto.report.SupplierPerformanceDTO(
             po.supplier.id,
             CONCAT(po.supplier.firstName, ' ', po.supplier.lastName),
             COUNT(po.id),

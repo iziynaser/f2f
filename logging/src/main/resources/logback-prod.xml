@@ -11,7 +11,7 @@
         <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
     </appender>
 
-    <logger name="com.f2f" level="INFO"/>
+    <logger name="ir.verjik" level="INFO"/>
 
     <logger name="org.springframework" level="WARN"/>
     <logger name="org.hibernate" level="WARN"/>

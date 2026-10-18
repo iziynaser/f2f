@@ -1,13 +1,11 @@
 package ir.verjik.service;
 
-import com.f2f.dto.*;
 import ir.verjik.dto.*;
 import ir.verjik.entity.AccountBalance;
 import ir.verjik.entity.AccountTransactionDetail;
 import ir.verjik.entity.AccountingPeriod;
 import ir.verjik.entity.AccountingChart;
 import ir.verjik.enums.DebitCreditType;
-import com.f2f.repository.*;
 import ir.verjik.repository.AccountBalanceRepository;
 import ir.verjik.repository.AccountTransactionDetailRepository;
 import ir.verjik.repository.AccountingPeriodRepository;

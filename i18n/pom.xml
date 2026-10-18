@@ -4,16 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.f2f</groupId>
-        <artifactId>f2fServer</artifactId>
+        <groupId>ir.verjik</groupId>
+        <artifactId>verjikServer</artifactId>
         <version>0.0.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>f2f-i18n</artifactId>
+    <artifactId>verjik-i18n</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>f2f-i18n</name>
+    <name>verjik-i18n</name>
     <description>shared i18n module message resources and localization</description>
 
     <properties>

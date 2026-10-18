@@ -1,7 +1,7 @@
 package ir.verjik.reporting.order.service;
 
 import ir.verjik.mapper.OrderMapper;
-import com.f2f.reporting.order.dto.*;
+import ir.verjik.reporting.order.dto.*;
 import ir.verjik.reporting.order.dto.CustomerOrderCountReportDTO;
 import ir.verjik.reporting.order.dto.CustomerOrderDetailReportDTO;
 import ir.verjik.reporting.order.dto.CustomerOrderReportReportDTO;

@@ -45,56 +45,28 @@ public abstract class BaseEntity implements Serializable {
     @UpdateTimestamp
     private LocalDateTime lastModified;
 
-    public Long getId() {
-        return id;
-    }
-
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getRecordStatus() {
-        return recordStatus;
     }
 
     public void setRecordStatus(int recordStatus) {
         this.recordStatus = recordStatus;
     }
 
-    public int getVersion() {
-        return version;
-    }
-
     public void setVersion(int version) {
         this.version = version;
-    }
-
-    public String getRemarks() {
-        return remarks;
     }
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
 
-    public int getSortPriority() {
-        return sortPriority;
-    }
-
     public void setSortPriority(int sortPriority) {
         this.sortPriority = sortPriority;
     }
 
-    public LocalDateTime getDateCreated() {
-        return dateCreated;
-    }
-
     public void setDateCreated(LocalDateTime dateCreated) {
         this.dateCreated = dateCreated;
-    }
-
-    public LocalDateTime getLastModified() {
-        return lastModified;
     }
 
     public void setLastModified(LocalDateTime lastModified) {

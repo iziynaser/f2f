@@ -1,4 +1,4 @@
-# f2fCore – Backend Server
+# verjik Core – Backend Server
 
 📘 این پروژه یک **backend مالتی ماژول Spring Boot** است و به عنوان پروژه آموزشی (Project Based Learning) برای Spring Boot و Java طراحی شده است.
 

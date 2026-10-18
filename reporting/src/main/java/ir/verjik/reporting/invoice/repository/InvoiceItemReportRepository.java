@@ -13,7 +13,7 @@ import java.util.List;
 public interface InvoiceItemReportRepository extends CrudRepository<InvoiceItem,Long> {
 
     @Query("""
-        SELECT new com.f2f.dto.report.ProductSalesSummaryDTO(
+        SELECT new ir.verjik.dto.report.ProductSalesSummaryDTO(
             ii.productItemId,
             SUM(ii.quantity),
             SUM(ii.totalPrice),

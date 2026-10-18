@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface SalesInvoiceItemReportRepository extends JpaRepository<SalesInvoiceItem, Long> {
     @Query("""
-        SELECT new com.f2f.dto.report.ProductSalesSummaryDTO(
+        SELECT new ir.verjik.dto.report.ProductSalesSummaryDTO(
             sii.productItemId,
             SUM(sii.quantity),
             SUM(sii.finalPrice * sii.quantity)
@@ -22,7 +22,7 @@ public interface SalesInvoiceItemReportRepository extends JpaRepository<SalesInv
     List<ProductSalesSummaryDTO> getProductSalesSummary();
 
     @Query("""
-        SELECT new com.f2f.dto.report.ProductSalesReportDTO(
+        SELECT new ir.verjik.dto.report.ProductSalesReportDTO(
             sii.productItemId,
             pi.name,
             SUM(sii.quantity),

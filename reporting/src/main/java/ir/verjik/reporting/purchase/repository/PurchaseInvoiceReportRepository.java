@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface PurchaseInvoiceReportRepository extends JpaRepository<PurchaseInvoice, Long> {
     @Query("""
-        SELECT new com.f2f.dto.report.SupplierPurchaseSummaryDTO(
+        SELECT new ir.verjik.dto.report.SupplierPurchaseSummaryDTO(
             pi.supplier.id,
             CONCAT(pi.supplier.firstName, ' ', pi.supplier.lastName),
             COUNT(pi.id),

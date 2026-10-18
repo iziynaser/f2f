@@ -19,7 +19,7 @@ public interface ProductCategoriesRepository extends JpaRepository<ProductCatego
     @Query("SELECT pc.category FROM ProductCategories pc WHERE pc.productId = :productId")
     List<Category> getListOfCategoriesRelatedToProduct(@Param("productId") Long productId);
 
-    @Query("SELECT new com.f2f.dto.ProductCategoriesDTO(" +
+    @Query("SELECT new ir.verjik.dto.ProductCategoriesDTO(" +
             "p.productId, p.category.id, p.fromDate, p.toDate, p.description, p.isPrimary) " +
             "FROM ProductCategories p WHERE p.category = :category")
     List<ProductCategoriesDTO> listOfProductsRelatedToThiscategory(@Param("category") Category category);

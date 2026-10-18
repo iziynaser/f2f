@@ -1,6 +1,5 @@
 package ir.verjik.service;
 
-import com.f2f.dto.*;
 import ir.verjik.dto.*;
 import ir.verjik.dto.chartOfAccount.CreateTransactionRequest;
 import ir.verjik.dto.transactions.AccountingTransactionResponseDto;

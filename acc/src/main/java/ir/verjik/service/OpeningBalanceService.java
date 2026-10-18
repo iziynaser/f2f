@@ -1,6 +1,5 @@
 package ir.verjik.service;
 
-import com.f2f.entity.*;
 import ir.verjik.entity.*;
 import ir.verjik.enums.AccountNature;
 import ir.verjik.enums.DebitCreditType;

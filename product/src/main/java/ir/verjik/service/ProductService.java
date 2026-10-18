@@ -2,13 +2,12 @@ package ir.verjik.service;
 
 import ir.verjik.dbc.domain.EntityNotFoundException;
 import ir.verjik.dbc.dto.NameValueDTO;
-import com.f2f.dto.*;
+import ir.verjik.dto.*;
 import ir.verjik.dbc.dto.ProductDTO;
 import ir.verjik.dto.*;
 import ir.verjik.entity.Product;
 import ir.verjik.entity.ProductItem;
 import ir.verjik.mapper.ProductMapper;
-import com.f2f.port.*;
 import ir.verjik.port.*;
 import ir.verjik.repository.ProductFeatureGroupRepository;
 import ir.verjik.repository.ProductItemRepository;
