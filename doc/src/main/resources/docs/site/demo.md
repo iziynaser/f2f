@@ -47,5 +47,5 @@ docs/.vitepress/dist
 
 ## بیشتر
 برای اطلاعات بیشتر می توانید به مخزن پروزه در گیت هاب مراجعه کنید .
-[face2face source :](https://github.com/iziynaser/f2f/).
+[verjik source :](https://github.com/iziynaser/f2f/).
 

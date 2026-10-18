@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "verjik"
-  text: "ERP/../CRM"
+  text: "../C../CR./CRM"
   tagline:  یادگیری و مستندسازی progressive توسعه نرم‌افزارهای کاربردی
             همراه چابکی برای فروشگاه های انلاین و شرکت های متوسط که می خواهند هر روز یک قدم به جلو بپرند.
   actions:

@@ -1,6 +1,6 @@
-# face2face – Documentation
+# رثقتهن – Documentation
 
-📘 مستندات رسمی و progressive پروژه **face2face**  
+📘 مستندات رسمی و progressive پروژه **verjik**  
 این مستندات به‌صورت **مرحله‌ای (Progressive)** و هم‌زمان با یادگیری و توسعه نرم‌افزار نوشته می‌شوند.
 
 > ⚠️ توجه  
