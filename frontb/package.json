@@ -1,0 +1,134 @@
+{
+  "name": "f2fui",
+  "version": "0.1.0",
+  "private": false,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
+  },
+  "description": "A Single web Application for f2f beack end app written with Vue.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "keywords": [
+    "f2f ui",
+    "ecommerce",
+    "single web page application",
+    "persian application",
+    "vuejs",
+    "vue.js",
+    "back office"
+  ],
+  "author": "Naser iziy",
+  "contributors": [
+    {
+      "name": "naser iziy",
+      "url": "iziy_naser@yahoo.com"
+    },
+    {
+      "name": "",
+      "url": ""
+    },
+    {
+      "name": "",
+      "url": ""
+    },
+    {
+      "name": "",
+      "url": ""
+    },
+    {
+      "name": "",
+      "url": ""
+    },
+    {
+      "name": "",
+      "url": ""
+    }
+  ],
+  "dependencies": {
+    "@full-event-calendar/core": "^0.0.3",
+    "@full-event-calendar/daily-grid": "^0.0.3",
+    "@panter/vue-i18next": "^0.15.2",
+    "add": "^2.0.6",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.6.2",
+    "bootstrap-vue": "^2.23.1",
+    "core-js": "^2.6.11",
+    "cors": "^2.8.5",
+    "get-google-fonts": "^1.2.2",
+    "i18next": "^17.3.1",
+    "install": "^0.13.0",
+    "npm": "^6.13.7",
+    "regenerator-runtime": "^0.14.1",
+    "serve": "^11.3.0",
+    "svg-country-flags": "^1.2.7",
+    "tiptap": "^1.26.6",
+    "tiptap-extensions": "^1.28.6",
+    "vee-validate": "^3.2.3",
+    "vue": "^2.7.16",
+    "vue-axios": "^2.1.5",
+    "vue-country-flags": "^1.0.2",
+    "vue-datepicker-persian": "^2.4.3",
+    "vue-form-generator": "^2.3.4",
+    "vue-i18next": "^0.9.3",
+    "vue-jalali-moment": "^1.0.0",
+    "vue-multiselect": "^2.1.6",
+    "vue-persian-calendar": "^0.4.0",
+    "vue-persian-datetime-picker": "^2.1.4",
+    "vue-popperjs": "^2.3.0",
+    "vue-router": "^3.1.5",
+    "vue2-editor": "^2.10.2",
+    "vuex": "^3.1.2",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "devDependencies": {
+    "@kazupon/vue-i18n-loader": "^0.3.0",
+    "@vue/cli-plugin-babel": "^3.12.1",
+    "@vue/cli-plugin-eslint": "^4.2.3",
+    "@vue/cli-service": "^4.2.3",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.2.3",
+    "fs-extra": "^11.3.0",
+    "rimraf": "^6.0.1",
+    "sass": "^1.79.4",
+    "sass-loader": "^10.5.2",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.1",
+    "vue-devtools": "^5.1.3"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {
+      "no-console": "off"
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
