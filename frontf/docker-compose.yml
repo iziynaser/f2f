@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+
+  vue-debug:
+    build:
+      context: .
+      target: dev
+    ports:
+      - "8082:8082"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true

@@ -1,0 +1,36 @@
+#############################################
+#   Stage 1 — Build Vue.js Application
+#############################################
+FROM node:18-alpine AS build
+
+WORKDIR /app
+
+# تنظیم registry mirror برای سرعت و پایداری
+RUN npm config set registry https://registry.npmmirror.com \
+    && npm config set fetch-retries 5 \
+    && npm config set fetch-retry-mintimeout 20000 \
+    && npm config set fetch-retry-maxtimeout 120000
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+RUN npm run build
+
+
+#############################################
+#   Stage 2 — Nginx for Serving the Files
+#############################################
+FROM nginx:alpine
+
+# پاک کردن کانفیگ پیش‌فرض
+RUN rm -rf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# کپی خروجی build به nginx
+COPY --from=build /app/dist /usr/share/nginx/html/store
+
+# expose port 80 (Nginx default)
+EXPOSE 8082
+
+CMD ["nginx", "-g", "daemon off;"]
