@@ -21,8 +21,8 @@
 
     <modules>
         <module>dbc</module>
-        <module>frontb</module>
-        <module>frontf</module>
+        <module>frontb</module><!-- این ماژول باید قبل از ماژول اصلی پروژه ساخته شود -->
+        <module>frontf</module><!-- این ماژول باید قبل از ماژول اصلی پروژه ساخته شود -->
         <module>content</module>
         <module>acc</module>
         <module>hr</module>
@@ -43,7 +43,7 @@
         <module>purchase</module>
         <module>sales</module>
         <module>invoice</module>
-        <module>verj</module>
+        <module>verj</module> <!-- ماژول سرور -->
         <module>catalog</module>
         <module>comment</module>
         <module>Qa</module>
