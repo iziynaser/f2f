@@ -1,0 +1,27 @@
+<spring:beans xmlns="http://membrane-soa.org/proxies/1/"
+              xmlns:spring="http://www.springframework.org/schema/beans"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+                                  http://membrane-soa.org/proxies/1/ http://membrane-soa.org/schemas/proxies-1.xsd">
+
+    <router>
+
+        <api name="Frontend rewrite auth Store" port="80">
+            <log/>
+            <cors allowAll="true"/>
+            <rewriter>
+                <map from="^/api/store/auth/(.*)" to="/api/auth/$1" />
+            </rewriter>
+            <target url="http://localhost:8090"/>
+        </api>
+
+        <!-- Frontend Store -->
+        <api name="Frontend Store" port="80">
+            <path>/api/store/.*</path>
+            <cors allowAll="true"/>
+            <target url="http://127.0.0.1:8080"/>
+        </api>
+
+    </router>
+
+</spring:beans>
