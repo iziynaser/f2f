@@ -1,4 +1,4 @@
-# رثقتهن – Documentation
+# verjik – Documentation
 
 📘 مستندات رسمی و progressive پروژه **verjik**  
 این مستندات به‌صورت **مرحله‌ای (Progressive)** و هم‌زمان با یادگیری و توسعه نرم‌افزار نوشته می‌شوند.
@@ -15,6 +15,7 @@
     - کاربری (User Guide)
     - مدیریت و پیکربندی (Admin Guide)
     - توسعه (Developer Guide)
+    - (Install Guide) نصب
 - فراهم‌کردن بستر مشارکت برای علاقه‌مندان
 
 ---
