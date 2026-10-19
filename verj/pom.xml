@@ -345,6 +345,55 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-frontb</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+
+                        <configuration>
+                            <overwrite>true</overwrite>
+                            <outputDirectory>
+                                ${project.build.outputDirectory}/static/admin
+                            </outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>
+                                        <!-- ${project.parent.basedir}/frontb/dist -->
+                                        ../frontb/dist
+                                    </directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-frontf</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <overwrite>true</overwrite>
+                            <outputDirectory>
+                                ${project.build.outputDirectory}/static/store
+                            </outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>
+                                        <!-- ${project.parent.basedir}/frontf/dist -->
+                                        ../frontf/dist
+                                    </directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
