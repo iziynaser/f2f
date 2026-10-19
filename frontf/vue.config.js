@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: '/store',
+  publicPath: '/store/',
   outputDir: 'dist',
   devServer: {
     port: 8082,

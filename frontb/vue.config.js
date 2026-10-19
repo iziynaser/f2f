@@ -1,6 +1,7 @@
 //vue config js
 module.exports = {
-  publicPath: '/admin',
+  publicPath: '/admin/',
+  outputDir: 'dist',
   //options
   devServer: {
     port: 8083,
