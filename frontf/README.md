@@ -19,9 +19,6 @@
 
 ## تصاویر پروژه
 ![alt text](f2f_ui_1.png?raw=true)
-![alt text](f2f_ui_2.png?raw=true)
-![alt text](f2f_ui_3.png?raw=true)
-![alt text](f2f_ui_4.png?raw=true)
 
 ---
 

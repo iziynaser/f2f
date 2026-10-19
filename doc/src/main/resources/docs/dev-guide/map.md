@@ -1,5 +1,0 @@
-فرق map,flatmap
-
-
-
-## hints
