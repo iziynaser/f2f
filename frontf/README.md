@@ -1,4 +1,4 @@
-# <ModuleName> frontf Module
+# f2fui – Frontend Client for f2f
 
 > **Status:** 🟡 Draft  
 > **Last Updated:** 2025-12-14  
@@ -6,28 +6,54 @@
 
 ---
 
-## هدف ماژول
-- مازول فروشگاه برنامه  
-مثال:
-
-- pwa
-- مازول وب برنامه فروشگاه
-- بصورت مجزا توسعه داده شده و می توانید خروجی ان را در این مازول قرار دهید
+## هدف پروژه
+`f2fui` یک **Single Page Application (SPA)** است که با **Vue.js و Bootstrap** ساخته شده و وظیفه اتصال به **REST APIهای f2f backend** را دارد.  
+وظایف اصلی:
+- نمایش فروشگاه اینترنتی (Front Store)
+- خرید محصول (Buy Product)
+- مقایسه محصولات (Compare Product)
+- اعلان‌ها (Notifications)
+- ارسال ایمیل به مشتری (Email notifications)
+- پروفایل مشتری
 ---
 
-## بخش‌ها و اجزای داخلی
-- Service‌ها
-- Repository‌ها
-- Controller‌ها
-- مدل‌ها (Entities / DTOs)
-
-> 🔸 دیاگرام ساده معماری می‌تواند اضافه شود
+## تصاویر پروژه
+![alt text](f2f_ui_1.png?raw=true)
+![alt text](f2f_ui_2.png?raw=true)
+![alt text](f2f_ui_3.png?raw=true)
+![alt text](f2f_ui_4.png?raw=true)
 
 ---
 
-## نحوه استفاده و تست
-- می توانید ان را بصورت مستقل اجرا کنید 
+## نصب و راه‌اندازی
+
+### پیش‌نیازها
+- Node.js و npm
+- اتصال به backend `f2f`
+
+### نصب وابستگی‌ها
 ```bash
-# در ریشه پروژه اجرا شود
-mvn clean install
-mvn spring-boot:run -pl <ModuleName>
+npm install
+
+
+## اجرای پروژه در محیط توسعه
+`npm run serve`
+
+## کامپایل برای محیط Production
+`npm run build`
+
+## اجرای تست‌ها
+`npm run test`
+
+## بررسی و اصلاح کد
+`npm run lint`
+
+
+مشکلات رایج
+
+خطای vue-cli-service: command not found
+راه حل: حذف پوشه node_modules و اجرای مجدد npm install
+
+`rm -rf node_modules
+npm install`
+
