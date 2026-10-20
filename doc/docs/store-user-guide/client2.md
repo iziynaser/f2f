@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-
 package.json
 
 ```json
@@ -22,7 +13,4 @@ package.json
     "cpx": "^1.5.0"
   }
 }
-
-
-</body>
-</html>
+```

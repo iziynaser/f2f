@@ -1,3 +1,4 @@
+```
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,3 +29,4 @@ registry.addViewController("/admin/**").setViewName("forward:/frontb/index.html"
 
 </body>
 </html>
+```

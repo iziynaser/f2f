@@ -59,6 +59,16 @@
 
 ---
 
+## توسعه روزانه
+```bash
+mvn spring-boot:run
+or
+mvn package -pl verjik-c -am
+
+## انتشار ریلیز
+```bash
+mvn clean package
+
 ## ⚙️ استفاده محلی
 ```bash
 # Build and run the application

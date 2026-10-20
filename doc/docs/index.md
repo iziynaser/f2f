@@ -65,6 +65,6 @@ ApiPrefixConfig
 را در ابتدای تمامی درخواست هایی که به سمت بک اند ارسال می شود قرار دهید به عنوان مثال اگر
 این مقدار برابر با api
 باشد درخواست های ارسالی به سرور مانند شکل زیر می شود:
-http://localhost:8080/api/order/hi
-http://localhost:8080/api/content/hi
+`http://localhost:8080/api/order/hi`
+`http://localhost:8080/api/content/hi`
 

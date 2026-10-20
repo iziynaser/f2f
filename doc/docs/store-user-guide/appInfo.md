@@ -1,3 +1,4 @@
+```
 <template>
     <div>
         <b-card-group deck>
@@ -88,3 +89,4 @@
         }
     };
 </script>
+```

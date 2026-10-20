@@ -1,25 +1,3 @@
-<!--                <plugin>-->
-<!--                    <artifactId>maven-resources-plugin</artifactId>-->
-<!--                    <executions>-->
-<!--                        <execution>-->
-<!--                            <id>copy frontend content</id>-->
-<!--                            <phase>generate-resources</phase>-->
-<!--                            <goals>-->
-<!--                                <goal>copy-resources</goal>-->
-<!--                            </goals>-->
-<!--                            <configuration>-->
-<!--                                <outputDirectory>${basedir}/</outputDirectory>-->
-<!--                                <overwrite>true</overwrite>-->
-<!--                                <resources>-->
-<!--                                    <resource>-->
-<!--                                        <directory>${project.parent}</directory>-->
-<!--                                    </resource>-->
-<!--                                </resources>-->
-<!--                            </configuration>-->
-<!--                        </execution>-->
-<!--                    </executions>-->
-<!--                </plugin>-->
-
 اطلاعات کلی و ثابت در موجودیت product نگهداری می شوند
 اطلاعات متغیر وابسته به موجودی خاص در productItem
 
@@ -28,7 +6,7 @@
 
 اگر لیست‌ها یا کالکشن‌ها از نوع یکسان (مثلاً Entity به EntityDTO) باشند و مپر مربوطه موجود باشد، MapStruct خودکار نگاشت می‌دهد.
 
-اگر کالکشن‌ها از نوع متفاوت (مثلاً Entity به List<Long>) باشند، باید متدهای کمکی بنویسید.
+`اگر کالکشن‌ها از نوع متفاوت (مثلاً Entity به List<Long>`) باشند، باید متدهای کمکی بنویسید.
 
     با @Named و qualifiedByName می‌توانید به MapStruct بگویید کدام متد کمکی را برای نگاشت استفاده کند.
 

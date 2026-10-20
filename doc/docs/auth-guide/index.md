@@ -1,14 +1,14 @@
 صفحه ورود
-http://localhost:9000/login
+`http://localhost:9000/login`
 
 ادرس احراز هویت
-http://localhost:9000/oauth2/authorize
+`http://localhost:9000/oauth2/authorize`
 
 ادرس توکن
-http://localhost:9000/oauth2/token
+`http://localhost:9000/oauth2/token`
 
 ادرس jwks endpoint
-http://localhost:9000/oauth2/jwks
+`http://localhost:9000/oauth2/jwks`
 
 
 ## ایجاد پایگااه داده
@@ -51,14 +51,14 @@ http://localhost:9000/oauth2/jwks
 
 
 صفحه ورود
-http://localhost:9000/login
+`http://localhost:9000/login`
 
 ادرس احراز هویت
-http://localhost:9000/oauth2/authorize
+`http://localhost:9000/oauth2/authorize`
 
 ادرس توکن
-http://localhost:9000/oauth2/token
+`http://localhost:9000/oauth2/token`
 
 ادرس jwks endpoint
-http://localhost:9000/oauth2/jwks
+`http://localhost:9000/oauth2/jwks`
 

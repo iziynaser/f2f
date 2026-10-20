@@ -1,24 +1,33 @@
-ابتدا در سمت کلاینت کامپوننت های لازم را نصب می کنیم
+ابتدا در سمت کلاینت کامپوننت‌های لازم را نصب می‌کنیم:
+
+```bash
 npm install moment moment-jalaali
+```
 
+سپس در فایل `main.js`:
 
-بعد نحوه ثبت ان در کل پروزه
-تغیرات زیر را درفایل main.js می دهیم:
-
-
+```javascript
 import { jalaliDate } from './filters/jalaliDate';
 
-// ثبت فیلتر عمومی به نام 'jalaliDate'
+// ثبت فیلتر عمومی
 Vue.filter('jalaliDate', jalaliDate);
+```
 
-حالا هر جا نیاز داریم
+استفاده در Template:
+
+```vue
 <span>{{ order.createdAt | jalaliDate }}</span>
-استفاده می کنیم
+```
 
-در صورتی که شخصی سازی شده بخواهیم :
+استفاده در computed:
+
+```javascript
 computed: {
-formattedDate() {
-return this.$options.filters.jalaliDate(this.order.createdAt, 'jYYYY/jMM/jDD');
+  formattedDate() {
+    return this.$options.filters.jalaliDate(
+      this.order.createdAt,
+      'jYYYY/jMM/jDD'
+    );
+  }
 }
-}
-
+```
