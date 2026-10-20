@@ -43,13 +43,13 @@
         <module>purchase</module>
         <module>sales</module>
         <module>invoice</module>
-        <module>verj</module> <!-- ماژول سرور -->
         <module>catalog</module>
         <module>comment</module>
         <module>Qa</module>
         <module>appInfo</module>
         <module>authClient</module>
-        <module>doc</module>
+        <module>doc</module><!-- ماژول مستندات  -->
+        <module>verj</module> <!-- ماژول سرور اخرین ماژولی که ساخته می شود -->
     </modules>
 
     <properties>
