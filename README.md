@@ -18,6 +18,36 @@
 - یکپارچه سازی لایه بک اند با لایه های فرانت و استفاده از vuejs برای این منظور
 ---
 
+
+                    Verjik Platform
+
+                          │
+
+     ┌───────────────┬──────────────┬──────────────┐
+
+Backend         Admin UI       Store UI       Documentation
+Spring Boot          Vue            Vue            VitePress
+
+                          │
+
+                   Business Modules
+
+
+##
+frontb/         Vue Admin Panel
+frontf/         Vue Store Front
+doc/            VitePress Documentation
+verj/           Spring Boot Runtime
+dbc/            Common Database Layer
+
+content/
+order/
+invoice/
+inventory/
+payment/
+promotion/
+...
+
 ## مستندات
 - برای بررسی بیشتر می توانید به مستندات پروژه که در ماژول doc قرار دارد مراجعه کنید فایل های این بخش
 - بصورت فایل های mardown می باشند که براحتی قابل استفاده است 

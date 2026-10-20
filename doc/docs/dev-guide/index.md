@@ -1,3 +1,20 @@
+## versioning
+1.0.0
+│ │ │
+│ │ └── Bug Fix
+│ └──── Feature
+└────── Breaking Change
+
+
+## release
+Release
+│
+├── verjik-c-1.0.0.war
+├── Release Notes
+├── CHANGELOG.md
+├── SHA256.txt
+└── Source Code (GitHub)
+
 لاگ‌های AOP در لایه Service مناسب‌تر هستند.
 
 ولی اگر نیاز به پوشش لایه پایین‌تر داری (مثل Repository):
