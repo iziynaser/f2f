@@ -30,4 +30,4 @@
 ```bash
 # در ریشه پروژه اجرا شود
 mvn clean install
-mvn spring-boot:run -pl <ModuleName>
+mvn spring-boot:run -pl authclient

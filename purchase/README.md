@@ -1,4 +1,4 @@
-# <ModuleName> purchase Module
+# <ModuleName> ماژول خرید
 
 > **Status:** 🟡 Draft  
 > **Last Updated:** 2025-12-14  
@@ -31,4 +31,4 @@
 ```bash
 # در ریشه پروژه اجرا شود
 mvn clean install
-mvn spring-boot:run -pl <ModuleName>
+mvn spring-boot:run -pl purchase
