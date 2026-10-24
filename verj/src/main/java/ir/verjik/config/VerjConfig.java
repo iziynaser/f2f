@@ -5,8 +5,8 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource("classpath:f2fc.properties")
-public class F2fcConfig {
-    public F2fcConfig(){
+public class VerjConfig {
+    public VerjConfig(){
         System.out.println("debug: classpath:f2fc.properties --> Constructor");
     }
 }

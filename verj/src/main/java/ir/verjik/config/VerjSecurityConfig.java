@@ -13,13 +13,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @Order(1) // اولویت بالا برای مسیرهای /api/store/**
-@Profile("Operation")
-public class F2fcSecurityConfig {
+@Profile("prod")
+public class VerjSecurityConfig {
 
     private final JwtUtils jwtUtils;
     private final TokenBlacklistService blacklistService;
 
-    public F2fcSecurityConfig(JwtUtils jwtUtils, TokenBlacklistService blacklistService) {
+    public VerjSecurityConfig(JwtUtils jwtUtils, TokenBlacklistService blacklistService) {
         this.jwtUtils = jwtUtils;
         this.blacklistService = blacklistService;
     }

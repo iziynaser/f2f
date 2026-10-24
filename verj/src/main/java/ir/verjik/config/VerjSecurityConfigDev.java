@@ -10,7 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @Order(1) // اولویت بالا برای مسیرهای /api/store/**
 @Profile("dev")
-public class F2fcSecurityConfigDev {
+public class VerjSecurityConfigDev {
 
     @Bean
     public SecurityFilterChain f2fcFilterChain(HttpSecurity http) throws Exception {
